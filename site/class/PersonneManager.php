@@ -18,7 +18,20 @@
 
             return $persos;
         }
-        
+
+         public function getPersonne($id) {
+            $q = $this->_db->prepare('SELECT codePe, type, nom, prenom, email, login, mdp FROM Personne WHERE codePe = :id');
+            $q->execute(array(
+                'id' => $id
+            ));
+
+            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+                $personne = new Personne($donnees);
+            }
+
+            return $personne;
+        }
+
         public function setDb(PDO $db) {
             $this->_db = $db;
         }
