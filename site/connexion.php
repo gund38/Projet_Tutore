@@ -20,7 +20,7 @@
             $pass = $_POST['mdp'];
         }
 
-        $bdd = connexionBD();
+        $bdd = ConnexionBD::getInstance()->getBDD();
         unset($_POST);
 
         $kid = login($bdd, $login, $pass);

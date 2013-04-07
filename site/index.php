@@ -19,7 +19,7 @@
             // Non disponible dans cette version (manque un plugin)
             //override_function('print', '$text', 'print(utf8_encode($text));');
 
-            $bdd = connexionBD();
+            $bdd = ConnexionBD::getInstance()->getBDD();
 
 //            $_SESSION['bdd'] = $bdd;
             $manager = new PersonneManager($bdd);
