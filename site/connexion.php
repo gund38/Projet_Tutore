@@ -8,6 +8,7 @@
 
     spl_autoload_register('chargerClasse');
     include_once 'fonctions.php';
+    supprimerMessageAvertissement();
 
     unset($_GET);
 
@@ -30,6 +31,8 @@
             printf("");
             $_SESSION['personneCo']->afficher();
         }
+    } else {
+        header("Location: index.php");
     }
 
     function error($ec) {
