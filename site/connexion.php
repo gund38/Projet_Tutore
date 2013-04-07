@@ -1,9 +1,11 @@
 <?php
+
     session_start();
 
     function chargerClasse($classe) {
-        require 'class/'. $classe . '.php';
+        require 'class/' . $classe . '.php';
     }
+
     spl_autoload_register('chargerClasse');
     include_once 'fonctions.php';
 
@@ -12,10 +14,10 @@
     if (isset($_POST['login']) && isset($_POST['mdp'])) {
         if (get_magic_quotes_gpc()) {
             $login = stripslashes($_POST['login']);
-            $pass  = stripslashes($_POST['mdp']);
+            $pass = stripslashes($_POST['mdp']);
         } else {
             $login = $_POST['login'];
-            $pass  = $_POST['mdp'];
+            $pass = $_POST['mdp'];
         }
 
         $bdd = connexionBD();
@@ -61,4 +63,5 @@
 
         return $reponse;
     }
+
 ?>

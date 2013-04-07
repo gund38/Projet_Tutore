@@ -1,6 +1,7 @@
 <?php
-    class PersonneManager
-    {
+
+    class PersonneManager {
+
         private $_db; // Instance de PDO
 
         public function __construct($db) {
@@ -19,7 +20,7 @@
             return $persos;
         }
 
-         public function getPersonne($id) {
+        public function getPersonne($id) {
             $q = $this->_db->prepare('SELECT codePe, type, nom, prenom, email, login, mdp FROM Personne WHERE codePe = :id');
             $q->execute(array(
                 'id' => $id
@@ -35,5 +36,7 @@
         public function setDb(PDO $db) {
             $this->_db = $db;
         }
+
     }
+
 ?>

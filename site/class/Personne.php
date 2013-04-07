@@ -1,6 +1,7 @@
 <?php
-    class Personne
-    {
+
+    class Personne {
+
         private $_codePe;
         private $_type;
         private $_nom;
@@ -17,7 +18,7 @@
         public function hydrate(array $donnees) {
             foreach ($donnees as $key => $value) {
                 // On récupère le nom du setter correspondant à l'attribut.
-                $method = 'set'.ucfirst($key);
+                $method = 'set' . ucfirst($key);
 
                 // Si le setter correspondant existe.
                 if (method_exists($this, $method)) {
@@ -35,12 +36,12 @@
 //            echo $txt;
 
             echoBD($this->_codePe . ' '
-                . $this->_type . ' '
-                . $this->_nom . ' '
-                . $this->_prenom . ' '
-                . $this->_email . ' '
-                . $this->_login . ' '
-                . $this->_mdp . '<br />');
+                    . $this->_type . ' '
+                    . $this->_nom . ' '
+                    . $this->_prenom . ' '
+                    . $this->_email . ' '
+                    . $this->_login . ' '
+                    . $this->_mdp . '<br />');
 //            echoBD("<br />" . $this->_nom);
         }
 
@@ -75,5 +76,7 @@
         public function degats() {
             return $this->_degats;
         }
+
     }
+
 ?>

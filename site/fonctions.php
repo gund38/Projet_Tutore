@@ -1,4 +1,5 @@
 <?php
+
     function connexionBD() {
         $bdd = null;
 
@@ -11,7 +12,8 @@
         return $bdd;
     }
 
-    function echoBD ($text) {
+    function echoBD($text) {
         echo(utf8_encode($text));
     }
+
 ?>
