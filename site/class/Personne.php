@@ -35,7 +35,7 @@
 //            $txt = "éàùô ";
 //            echo $txt;
 
-            echoBD($this->_codePe . ' '
+            echo echoBD($this->_codePe . ' '
                     . $this->_type . ' '
                     . $this->_nom . ' '
                     . $this->_prenom . ' '

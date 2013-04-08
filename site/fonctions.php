@@ -1,7 +1,40 @@
 <?php
 
     function echoBD($text) {
-        echo(utf8_encode($text));
+        return utf8_encode($text);
+    }
+
+    function listeDepartement() {
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $req = $bdd->query('SELECT codeDe, codePostal, nom
+            FROM ListeDepartement
+            ORDER BY codeDE');
+
+        $liste = array();
+
+        while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
+            $liste[] = array(
+                'codeDe' => $donnees['codeDe'],
+                'nom' => echoBD($donnees['codePostal'] . " - " . $donnees['nom'])
+            );
+        }
+
+        return $liste;
+    }
+
+    function listeType() {
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $req = $bdd->query("SHOW COLUMNS
+            FROM Offre
+            LIKE 'type'");
+
+        $donnees = $req->fetch(PDO::FETCH_ASSOC);
+
+        $liste = explode("','", substr(echoBD($donnees['Type']), 6, -2));
+
+        return $liste;
     }
 
     function supprimerMessageAvertissement() {

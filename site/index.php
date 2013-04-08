@@ -31,6 +31,8 @@
                 $personnes[$i]->afficher();
                 echo "<br />";
             }
+
+            listeType();
         ?>
 
         <form action="connexion.php" method="post">
@@ -61,7 +63,25 @@
                     </td>
                     <td>
                         <label for="departement">Département : </label>
-                        <input type="text" name="departement" id="departement" />
+                        <select name="departement" id="departement">
+                            <?php
+                                $liste = listeDepartement();
+                                $bool = true;
+
+                                foreach ($liste as $value) {
+                                    if ($bool) {
+                                        $bool = false;
+                                        echo "\t";
+                                    } else {
+                                        echo "\t\t\t\t";
+                                    }
+
+                                    echo "<option value=\"" . $value['codeDe']
+                                            . "\">" . $value['nom']
+                                            . "</option>\n";
+                                }
+                            ?>
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +91,25 @@
                     </td>
                     <td>
                         <label for="type">Type : </label>
-                        <input type="text" name="type" id="type" />
+                        <select name="type" id="type">
+                            <?php
+                                $liste = listeType();
+                                $bool = true;
+
+                                foreach ($liste as $value) {
+                                    if ($bool) {
+                                        $bool = false;
+                                        echo "\t";
+                                    } else {
+                                        echo "\t\t\t\t";
+                                    }
+
+                                    echo "<option value=\"" . $value
+                                            . "\">" . $value
+                                            . "</option>\n";
+                                }
+                            ?>
+                        </select>
                     </td>
                 </tr>
                 <tr>
