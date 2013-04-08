@@ -16,6 +16,15 @@
                 $fichierActuel .= '?' . $_SERVER['QUERY_STRING'];
             }
 
+            foreach ($_FILES as $fichier => $valeurs) {
+                $nom = substr($valeurs['tmp_name'], 1);
+
+                if ($valeurs['error'] == 0
+                        && move_uploaded_file($valeurs['tmp_name'], $nom)) {
+                    $_SESSION['sauvegardeFILES'][$fichier]['tmp_name'] = $nom;
+                }
+            }
+
             header('Location: ' . $fichierActuel);
             exit;
         }
