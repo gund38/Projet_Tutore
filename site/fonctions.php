@@ -37,9 +37,11 @@
         return $liste;
     }
 
-    function supprimerMessageAvertissement() {
-        //session_start();
+    function validerFloat($floatATester) {
+        return preg_match('/^[0-9]+((,|.)[0-9]{1,2})?$/', $floatATester) ? $floatATester : false;
+    }
 
+    function supprimerMessageAvertissement() {
         if (!empty($_POST) OR !empty($_FILES)) {
             $_SESSION['sauvegarde'] = $_POST;
             $_SESSION['sauvegardeFILES'] = $_FILES;

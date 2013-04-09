@@ -35,13 +35,13 @@
 //            $txt = "éàùô ";
 //            echo $txt;
 
-            echo echoBD($this->_codePe . ' '
-                    . $this->_type . ' '
-                    . $this->_nom . ' '
-                    . $this->_prenom . ' '
-                    . $this->_email . ' '
-                    . $this->_login . ' '
-                    . $this->_mdp . '<br />');
+            echo echoBD($this->_codePe . " "
+                    . $this->_type . " "
+                    . $this->_nom . " "
+                    . $this->_prenom . " "
+                    . $this->_email . " "
+                    . $this->_login . " "
+                    . $this->_mdp . "<br />");
 //            echoBD("<br />" . $this->_nom);
         }
 

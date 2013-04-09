@@ -119,6 +119,9 @@ pre strong {
 	text-decoration: underline;
 }
 
+#erreur {
+    color: red;
+}
 
 /* --- NOTES ---
 
@@ -132,14 +135,14 @@ pre strong {
 	Mais ce retrait de 6px est un peu faiblard: on le renforce donc.
 	Notez bien que les feuilles de styles des gabarits pourront augmenter
 	ce retrait, ou bien l'annuler.
-	
+
 3.	Voici quelques exemples de collections cohérentes de fontes (propriété
 	CSS "font-family"):
 	font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
 	font-family: "Times New Roman", Times, "Nimbus Roman No9 L", serif;
-		
+
 4.	Taille du texte de base de la page. Dépend de la taille du texte par
 	défaut du navigateur (souvent 16px), et des réglages de l'utilisateur.
 	À adapter en fonction de la fonte choisie, et du rendu souhaité.

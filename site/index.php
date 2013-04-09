@@ -6,15 +6,16 @@
         <meta charset="UTF-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
+
     <body>
         <?php
 
             function chargerClasse($classe) {
-                require 'class/' . $classe . '.php';
+                require_once 'class/' . $classe . '.php';
             }
 
             spl_autoload_register('chargerClasse');
-            include_once 'fonctions.php';
+            require_once 'fonctions.php';
 
             // Non disponible dans cette version (manque un plugin)
             //override_function('print', '$text', 'print(utf8_encode($text));');
@@ -27,10 +28,13 @@
 
             $taille = count($personnes);
 
+            echo "<p>\n";
             for ($i = 0; $i < $taille; $i++) {
+                echo "\t\t";
                 $personnes[$i]->afficher();
-                echo "<br />";
+                echo "<br />\n";
             }
+            echo "\t</p>\n";
 
             listeType();
         ?>
@@ -43,6 +47,8 @@
                 <input type="submit" value="Envoyer" />
             </p>
         </form>
+
+        <br />
 
         <form action="ajouterOffre.php" method="post" enctype="multipart/form-data">
             <table>
@@ -65,20 +71,20 @@
                         <label for="departement">Département : </label>
                         <select name="departement" id="departement">
                             <?php
-                                $liste = listeDepartement();
-                                $bool = true;
+                                $listeDep = listeDepartement();
+                                $first = true;
 
-                                foreach ($liste as $value) {
-                                    if ($bool) {
-                                        $bool = false;
+                                foreach ($listeDep as $value) {
+                                    if ($first) {
+                                        $first = false;
                                         echo "\t";
                                     } else {
                                         echo "\t\t\t\t";
                                     }
 
                                     echo "<option value=\"" . $value['codeDe']
-                                            . "\">" . $value['nom']
-                                            . "</option>\n";
+                                    . "\">" . $value['nom']
+                                    . "</option>\n";
                                 }
                             ?>
                         </select>
@@ -88,15 +94,19 @@
                     <td>
                         <label for="remuneration">Rémunération : </label>
                         <input type="text" name="remuneration" id="remuneration" />
+                        <select name="periodicite" id="pericodicite">
+                            <option value="mois">€ / mois</option>
+                            <option value="annee">€ / an</option>
+                        </select>
                     </td>
                     <td>
                         <label for="type">Type : </label>
                         <select name="type" id="type">
                             <?php
-                                $liste = listeType();
+                                $listeType = listeType();
                                 $bool = true;
 
-                                foreach ($liste as $value) {
+                                foreach ($listeType as $value) {
                                     if ($bool) {
                                         $bool = false;
                                         echo "\t";
@@ -105,8 +115,8 @@
                                     }
 
                                     echo "<option value=\"" . $value
-                                            . "\">" . $value
-                                            . "</option>\n";
+                                    . "\">" . $value
+                                    . "</option>\n";
                                 }
                             ?>
                         </select>
@@ -114,6 +124,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                        <br />
                         <label for="fichier">Sélectionner le fichier pdf à uploader (max : 2Mo) : </label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
                         <input type="file" name="fichier" id="fichier" />
@@ -122,6 +133,12 @@
                 <tr>
                     <td colspan="2">
                         <input type="submit" value="Envoyer" />
+                        <label id="erreur" style="color: red">
+                            <?php
+                                echo isset($_SESSION['erreurs']) ? $_SESSION['erreurs'] : "";
+                                unset($_SESSION['erreurs'])
+                            ?>
+                        </label>
                     </td>
                 </tr>
             </table>
