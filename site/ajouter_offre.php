@@ -17,6 +17,7 @@
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
+    <body>
         <div id="global">
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
@@ -46,38 +47,46 @@
                 </ul>
             </div>
             <div id="contenu">
-                <p>Ajouter une offre.</p>
+                <h2>Ajouter une offre</h2>
 
                 <form action="ajouterOffre.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>
                                 <label for="intitule">Intitulé : </label>
+                            </td>
+                            <td>
                                 <input type="text" name="intitule" id="intitule" />
                             </td>
                             <td>
                                 <label for="entreprise">Entreprise / Organisation : </label>
+                            </td>
+                            <td>
                                 <input type="text" name="entreprise" id="entreprise" />
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label for="ville">Ville : </label>
+                            </td>
+                            <td>
                                 <input type="text" name="ville" id="ville" />
                             </td>
                             <td>
                                 <label for="departement">Département : </label>
+                            </td>
+                            <td>
                                 <select name="departement" id="departement">
                                     <?php
                                         $listeDep = listeDepartement();
-                                        $first = true;
+                                        $firstDep = true;
 
                                         foreach ($listeDep as $value) {
-                                            if ($first) {
-                                                $first = false;
+                                            if ($firstDep) {
+                                                $firstDep = false;
                                                 echo "\t";
                                             } else {
-                                                echo "\t\t\t\t";
+                                                echo "\t\t\t\t\t";
                                             }
 
                                             echo "<option value=\"" . $value['codeDe']
@@ -91,37 +100,41 @@
                         <tr>
                             <td>
                                 <label for="remuneration">Rémunération : </label>
+                            </td>
+                            <td>
                                 <input type="text" name="remuneration" id="remuneration" />
-                                <select name="periodicite" id="pericodicite">
+                                <select name="periodicite" id="periodicite">
                                     <option value="mois">€ / mois</option>
                                     <option value="annee">€ / an</option>
                                 </select>
                             </td>
                             <td>
                                 <label for="type">Type : </label>
+                            </td>
+                            <td>
                                 <select name="type" id="type">
                                     <?php
                                         $listeType = listeType();
-                                        $bool = true;
+                                        $firstType = true;
 
                                         foreach ($listeType as $value) {
-                                            if ($bool) {
-                                                $bool = false;
+                                            if ($firstType) {
+                                                $firstType = false;
                                                 echo "\t";
                                             } else {
-                                                echo "\t\t\t\t";
+                                                echo "\t\t\t\t\t";
                                             }
 
                                             echo "<option value=\"" . $value
                                             . "\">" . $value
                                             . "</option>\n";
                                         }
-                                    ?>l
+                                    ?>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="4">
                                 <br />
                                 <label for="fichier">Sélectionner le fichier pdf à uploader (max : 2Mo) : </label>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
@@ -129,12 +142,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="4">
                                 <input type="submit" value="Envoyer" />
+                                <br />
                                 <label id="erreur" style="color: red">
                                     <?php
-                                        echo isset($_SESSION['erreurs']) ? $_SESSION['erreurs'] : "";
-                                        unset($_SESSION['erreurs'])
+                                        if (isset($_SESSION['erreurs'])) {
+                                            echo count(explode("<br />", $_SESSION['erreurs'])) > 2 ? "\tErreurs :" : "\tErreur :";
+                                            echo "<br />\n";
+                                            echo $_SESSION['erreurs'];
+                                            unset($_SESSION['erreurs']);
+                                        } else {
+                                            echo "\n";
+                                        }
                                     ?>
                                 </label>
                             </td>

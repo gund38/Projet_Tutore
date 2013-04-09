@@ -36,8 +36,6 @@
                 echo "<br />\n";
             }
             echo "\t</p>\n";
-
-            listeType();
         ?>
 
         <form action="connexion.php" method="post">

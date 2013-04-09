@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 
     function chargerClasse($classe) {
@@ -10,6 +9,9 @@
     require_once 'fonctions.php';
 
     supprimerMessageAvertissement();
+    $fichierRetour = "ajouter_offre.php";
+    $nbTabs = 5;
+    $nbRetours = 1;
 
 //    print_r($_FILES);
 //    echo "<br />";
@@ -50,7 +52,7 @@
         'intitule' => "",
         'entreprise' => "",
         'ville' => "",
-        'remuneration' => "Le salaire doit &ecirc;tre un entier ou un nombre &agrave; 1 ou 2 d&eacute;cimales positif (le s&eacute;parateur peut &ecirc;tre une virgule ou un point)"
+        'remuneration' => "Le salaire doit être un entier ou un nombre à 1 ou 2 décimales positif (le séparateur peut être une virgule ou un point)"
     );
 
     $nbrErreurs = 0;
@@ -58,10 +60,10 @@
 
     foreach ($options as $cle => $valeur) { //Parcourir tous les champs voulus.
         if (empty($_POST[$cle])) { //Si le champ est vide.
-            $_SESSION['erreurs'] .= "Veuillez remplir le champ " . $cle . ".<br/>";
+            $_SESSION['erreurs'] .= indenter("Veuillez remplir le champ " . $cle . ".<br />", $nbTabs, $nbRetours);
             $nbrErreurs++;
         } elseif ($resultat[$cle] === false) { //S'il n'est pas valide.
-            $_SESSION['erreurs'] .= $messageErreur[$cle] . "<br />";
+            $_SESSION['erreurs'] .= indenter($messageErreur[$cle] . "<br />", $nbTabs, $nbRetours);
             $nbrErreurs++;
         }
     }
@@ -74,32 +76,32 @@
 
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
-            $_SESSION['erreurs'] .= "Fichier trop grand !<br />";
+            $_SESSION['erreurs'] .= indenter("Fichier trop grand !<br />", $nbTabs, $nbRetours);
 //                die();
             $nbrErreurs++;
             break;
 
         case UPLOAD_ERR_PARTIAL:
-            $_SESSION['erreurs'] .= "Fichier reçu partiellement !<br />";
+            $_SESSION['erreurs'] .= indenter("Fichier reçu partiellement !<br />", $nbTabs, $nbRetours);
 //                die();
             $nbrErreurs++;
             break;
 
         case UPLOAD_ERR_NO_FILE:
-            $_SESSION['erreurs'] .= "Pas de fichier !<br />";
+            $_SESSION['erreurs'] .= indenter("Pas de fichier !<br />", $nbTabs, $nbRetours);
 //                die();
             $nbrErreurs++;
             break;
 
         default:
-            $_SESSION['erreurs'] .= "Erreur avec le fichier !<br />";
+            $_SESSION['erreurs'] .= indenter("Erreur avec le fichier !<br />", $nbTabs, $nbRetours);
 //                die();
             $nbrErreurs++;
             break;
     }
 
     if ($nbrErreurs != 0) {
-        header("Location: index.php");
+        header("Location: $fichierRetour");
         die();
     }
 
@@ -108,20 +110,20 @@
     if (strcmp($extension_upload, "pdf") == 0) {
 //        echo "Extension OK !<br />";
     } else {
-        $_SESSION['erreurs'] .= "Mauvaise extension, seul les fichiers PDF sont accept&eacute;s !<br />";
+        $_SESSION['erreurs'] .= indenter("Mauvaise extension, seul les fichiers PDF sont acceptés !<br />", $nbTabs, $nbRetours);
         supprimerFichierTemp();
-        header("Location: index.php");
+        header("Location: $fichierRetour");
         die();
     }
 
     $nom = "pdf/" . uniqid() . ".pdf";
 
     if (rename($_FILES['fichier']['tmp_name'], $nom)) {
-//        echo "Rename r&eacute;ussi<br />";
+//        echo "Rename réussi<br />";
     } else {
-        $_SESSION['erreurs'] .= "Fail du rename<br />";
+        $_SESSION['erreurs'] .= indenter("Fail du rename<br />", $nbTabs, $nbRetours);
         supprimerFichierTemp();
-        header("Location: index.php");
+        header("Location: $fichierRetour");
         die();
     }
 
@@ -129,10 +131,10 @@
 
     function supprimerFichierTemp() {
         if (unlink($_FILES['fichier']['tmp_name'])) {
-//            echo "Suppression r&eacute;ussie<br />";
+//            echo "Suppression réussie<br />";
         } else {
-            $_SESSION['erreurs'] .= "Fail de la suppression<br />";
-            header("Location: index.php");
+            $_SESSION['erreurs'] .= indenter("Fail de la suppression<br />", 5, 1);
+            header("Location: ajouter_offre.php");
             die();
         }
     }

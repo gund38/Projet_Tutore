@@ -41,6 +41,13 @@
         return preg_match('/^[0-9]+((,|.)[0-9]{1,2})?$/', $floatATester) ? $floatATester : false;
     }
 
+    function indenter($text, $nbTabs, $nbRetours) {
+        $tabs = str_repeat("\t", $nbTabs);
+        $retours = str_repeat("\n", $nbRetours);
+
+        return $tabs . $text . $retours;
+    }
+
     function supprimerMessageAvertissement() {
         if (!empty($_POST) OR !empty($_FILES)) {
             $_SESSION['sauvegarde'] = $_POST;
