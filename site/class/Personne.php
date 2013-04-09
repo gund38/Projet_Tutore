@@ -1,5 +1,8 @@
 <?php
 
+    /**
+     * Classe qui représente une personne
+     */
     class Personne {
 
         private $_codePe;
@@ -10,11 +13,23 @@
         private $_login;
         private $_mdp;
 
+        /**
+         * Constructeur
+         *
+         * @param array $donnees Données de la personne
+         */
         public function __construct(array $donnees) {
-            include_once 'fonctions.php';
+            require_once 'fonctions.php';
             $this->hydrate($donnees);
         }
 
+        /**
+         * Permet d'hydrater l'instance de la classe,
+         * c'est-à-dire d'effectuer automatiquement
+         * l'attribution des valeurs aus attributs
+         *
+         * @param array $donnees Données de la personne
+         */
         public function hydrate(array $donnees) {
             foreach ($donnees as $key => $value) {
                 // On récupère le nom du setter correspondant à l'attribut.
@@ -30,11 +45,10 @@
             }
         }
 
+        /**
+         * Affiche les infos de la personne
+         */
         public function afficher() {
-//            echo "éàùô ";
-//            $txt = "éàùô ";
-//            echo $txt;
-
             echo echoBD($this->_codePe . " "
                     . $this->_type . " "
                     . $this->_nom . " "
@@ -42,39 +56,68 @@
                     . $this->_email . " "
                     . $this->_login . " "
                     . $this->_mdp . "<br />");
-//            echoBD("<br />" . $this->_nom);
         }
 
+        /**
+         * Setter de $_codePe
+         *
+         * @param int $codePe
+         */
         public function setCodePe($codePe) {
             $this->_codePe = $codePe;
         }
 
+        /**
+         * Setter de $_nom
+         *
+         * @param string $type
+         */
         public function setType($type) {
             $this->_type = $type;
         }
 
+        /**
+         * Setter de $_nom
+         *
+         * @param string $nom
+         */
         public function setNom($nom) {
             $this->_nom = $nom;
         }
 
+        /**
+         * Setter de $_prenom
+         *
+         * @param string $prenom
+         */
         public function setPrenom($prenom) {
             $this->_prenom = $prenom;
         }
 
+        /**
+         * Setter de $_email
+         *
+         */
         public function setEmail($email) {
             $this->_email = $email;
         }
 
+        /**
+         * Setter de $_login
+         *
+         * @param string $login
+         */
         public function setLogin($login) {
             $this->_login = $login;
         }
 
+        /**
+         * Setter de $_mdp
+         *
+         * @param string $mdp
+         */
         public function setMdp($mdp) {
             $this->_mdp = $mdp;
-        }
-
-        public function degats() {
-            return $this->_degats;
         }
 
     }

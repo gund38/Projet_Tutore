@@ -1,4 +1,5 @@
 <?php
+    // Démarrage de la session et chargement des fichiers utiles
     session_start();
 
     function chargerClasse($classe) {

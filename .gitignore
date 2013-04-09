@@ -1,3 +1,5 @@
 *.zip
 site/tmp/*
 site/pdf/*
+site/Doxyfile
+site/Doxygen/*

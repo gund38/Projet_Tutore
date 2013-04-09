@@ -144,7 +144,7 @@
                         <tr>
                             <td colspan="4">
                                 <input type="submit" value="Envoyer" />
-                                <br />
+                                <br /><br />
                                 <label id="erreur" style="color: red">
                                     <?php
                                         if (isset($_SESSION['erreurs'])) {
@@ -152,6 +152,18 @@
                                             echo "<br />\n";
                                             echo $_SESSION['erreurs'];
                                             unset($_SESSION['erreurs']);
+                                        } else {
+                                            echo "\n";
+                                        }
+                                    ?>
+                                </label>
+                                <label id="sortie" style="color: blue">
+                                    <?php
+                                        if (isset($_SESSION['sortie'])) {
+//                                            echo count(explode("<br />", $_SESSION['erreurs'])) > 2 ? "\tErreurs :" : "\tErreur :";
+                                            echo "<br />\n";
+                                            echo $_SESSION['sortie'];
+                                            unset($_SESSION['sortie']);
                                         } else {
                                             echo "\n";
                                         }
