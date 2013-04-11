@@ -5,7 +5,11 @@
      */
     class PersonneManager {
 
-        private $_db; // Instance de PDO
+        /**
+         *
+         * @var PDO
+         */
+        private $_db;
 
         /**
          * Contructeur

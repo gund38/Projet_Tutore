@@ -59,6 +59,15 @@
         }
 
         /**
+         * Getter de $_type
+         *
+         * @return string
+         */
+        public function getType() {
+            return $this->_type;
+        }
+
+        /**
          * Setter de $_codePe
          *
          * @param int $codePe
@@ -68,7 +77,7 @@
         }
 
         /**
-         * Setter de $_nom
+         * Setter de $_type
          *
          * @param string $type
          */
@@ -97,6 +106,7 @@
         /**
          * Setter de $_email
          *
+         * @param string $email
          */
         public function setEmail($email) {
             $this->_email = $email;
