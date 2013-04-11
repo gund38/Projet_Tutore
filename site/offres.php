@@ -1,3 +1,14 @@
+<?php
+    // Démarrage de la session et chargement des fichiers utiles
+    session_start();
+
+    function chargerClasse($classe) {
+        require_once 'class/' . $classe . '.php';
+    }
+
+    spl_autoload_register('chargerClasse');
+    require_once 'fonctions.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +28,7 @@
                 <hr/>
                 <ul id="sous_menu">
                     <li>
-                        <a href="index.html">Accueil</a>
+                        <a href="index.php">Accueil</a>
                     </li>
                     <li>
                         <a href="profil.html">Mon Profil</a>
@@ -26,7 +37,7 @@
                         <a href="recherche_profil.html">Rechercher un profil</a>
                     </li>
                     <li>
-                        <a href="offres.html">Offres Emplois/Stage</a>
+                        <a href="offres.php">Offres Emplois/Stage</a>
                     </li>
                     <li>
                         <a href="ajouter_offre.php">Ajouter une offre</a>
@@ -38,6 +49,21 @@
             </div>
             <div id="contenu">
                 <p>Consulter les offres.</p>
+                <?php
+                    $bdd = ConnexionBD::getInstance()->getBDD();
+
+                    $managerOffre = new OffreManager($bdd);
+                    $offres = $managerOffre->getList();
+                    $taille = count($offres);
+
+                    echo "<p>\n";
+                    for ($i = 0; $i < $taille; $i++) {
+                        echo "\t\t";
+                        $offres[$i]->afficher();
+                        echo "<br />\n";
+                    }
+                    echo "\t</p>\n";
+                ?>
             </div>
         </div>
     </body>

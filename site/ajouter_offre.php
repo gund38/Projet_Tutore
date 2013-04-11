@@ -27,7 +27,7 @@
                 <hr/>
                 <ul id="sous_menu">
                     <li>
-                        <a href="index.html">Accueil</a>
+                        <a href="index.php">Accueil</a>
                     </li>
                     <li>
                         <a href="profil.html">Mon Profil</a>
@@ -36,7 +36,7 @@
                         <a href="recherche_profil.html">Rechercher un profil</a>
                     </li>
                     <li>
-                        <a href="offres.html">Offres Emplois/Stage</a>
+                        <a href="offres.php">Offres Emplois/Stage</a>
                     </li>
                     <li>
                         <a href="ajouter_offre.php">Ajouter une offre</a>

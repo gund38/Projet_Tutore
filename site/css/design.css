@@ -134,7 +134,7 @@ body {
 	display: inline-block;    
 	border-right: 5px solid;
 	vertical-align: top;
-	width: 60%;
+	width: 50%;
 	margin-top: 10px; /*pour aligner avec #contenu > :first-child */
 	padding: 10px 20px;
 }
@@ -151,12 +151,12 @@ body {
 	line-height:50px;
 	text-align:center;
 	vertical-align:middle;
-	background:url(./images/boutonnoir.png) no-repeat;
+	background:url(../images/boutonnoir.png) no-repeat;
 	color:white;
 	text-decoration:none;
 }
 #profil_bouton a:hover {
-	background:url(./images/boutonnoir2.png) no-repeat;
+	background:url(../images/boutonnoir2.png) no-repeat;
 }
 #profil_general
 {	

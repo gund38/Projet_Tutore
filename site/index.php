@@ -10,44 +10,54 @@
     require_once 'fonctions.php';
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
     <head>
-        <title>Site des ancien étudiants</title>
-        <meta charset="UTF-8" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/design.css" />
+        <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
     <body>
-        <?php
-            // Non disponible dans cette version (manque un plugin)
-            //override_function('print', '$text', 'print(utf8_encode($text));');
+        <div id="global">
+            <div id="entete">
+                <h1>Site Web des Anciens Étudiants du Master TI</h1>
+            </div>
+            <div id="navigation">
+                <h1>MENU</h1>
+                <hr/>
+                <ul id="sous_menu">
+                    <li>
+                        <a href="index.php">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="profil.html">Mon Profil</a>
+                    </li>
+                    <li>
+                        <a href="recherche_profil.html">Rechercher un profil</a>
+                    </li>
+                    <li>
+                        <a href="offres.php">Offres Emplois/Stage</a>
+                    </li>
+                    <li>
+                        <a href="ajouter_offre.php">Ajouter une offre</a>
+                    </li>
+                    <li>
+                        <a href="statistiques.html">Statistiques</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="contenu">
+                <p>Index.</p>
+                <form action="connexion.php" method="post">
+                    <p>
+                        <label for="login">Login : </label><input type="text" name="login" id="login" /><br />
+                        <label for="mdp">Mot de passe : </label> <input type="password" name="mdp" id="mdp" /><br />
 
-            $bdd = ConnexionBD::getInstance()->getBDD();
-
-            $manager = new PersonneManager($bdd);
-
-            $personnes = $manager->getList();
-
-            $taille = count($personnes);
-
-            echo "<p>\n";
-            for ($i = 0; $i < $taille; $i++) {
-                echo "\t\t";
-                $personnes[$i]->afficher();
-                echo "<br />\n";
-            }
-            echo "\t</p>\n";
-        ?>
-
-        <form action="connexion.php" method="post">
-            <p>
-                <label for="login">Login : </label><input type="text" name="login" id="login" /><br />
-                <label for="mdp">Mot de passe : </label> <input type="password" name="mdp" id="mdp" /><br />
-
-                <input type="submit" value="Envoyer" />
-            </p>
-        </form>
-
-        <br />
+                        <input type="submit" value="Envoyer" />
+                    </p>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

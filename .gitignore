@@ -3,3 +3,8 @@ site/tmp/*
 site/pdf/*
 site/Doxyfile
 site/Doxygen/*
+*.html~
+*.php~
+*.js~
+*.css~
+*.gitignore~
