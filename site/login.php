@@ -32,7 +32,7 @@
                                     <a href="#">Ajouter une offre</a>
                             </li>
                             <li>
-                                    <a href="statistiques.html">Statistiques</a>
+                                    <a href="statistiques.php">Statistiques</a>
                             </li>
                     </ul>
             </div>-->

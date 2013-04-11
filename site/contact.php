@@ -65,10 +65,10 @@
                         <a href="index.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="profil.html">Mon Profil</a>
+                        <a href="profil.php">Mon Profil</a>
                     </li>
                     <li>
-                        <a href="recherche_profil.html">Rechercher un profil</a>
+                        <a href="recherche_profil.php">Rechercher un profil</a>
                     </li>
                     <li>
                         <a href="offres.php">Offres Emplois/Stage</a>
@@ -77,7 +77,7 @@
                         <a href="ajouter_offre.php">Ajouter une offre</a>
                     </li>
                     <li>
-                        <a href="statistiques.html">Statistiques</a>
+                        <a href="statistiques.php">Statistiques</a>
                     </li>
                 </ul>
             </div>
