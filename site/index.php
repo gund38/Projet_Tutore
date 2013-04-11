@@ -1,13 +1,15 @@
 <?php
-    // Démarrage de la session et chargement des fichiers utiles
-    session_start();
 
+    // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
         require_once 'class/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
     require_once 'fonctions.php';
+
+    // Démarrage de la session
+    session_start();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">

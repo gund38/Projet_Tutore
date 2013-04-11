@@ -1,13 +1,16 @@
 <?php
 
-    session_start();
-
+    // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require 'class/' . $classe . '.php';
+        require_once 'class/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
-    include_once 'fonctions.php';
+    require_once 'fonctions.php';
+
+    // Démarrage de la session
+    session_start();
+
     supprimerMessageAvertissement();
 
     unset($_GET);
