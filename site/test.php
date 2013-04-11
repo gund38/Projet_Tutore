@@ -53,6 +53,7 @@
                 echo "<br />\n";
             }
             echo "\t</p>\n";
+            echo "test";
         ?>
 
         <form action="connexion.php" method="post">
