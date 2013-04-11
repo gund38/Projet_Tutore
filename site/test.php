@@ -9,7 +9,8 @@
     spl_autoload_register('chargerClasse');
     require_once 'fonctions.php';
 ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
     <head>
         <title>Site des ancien étudiants</title>
