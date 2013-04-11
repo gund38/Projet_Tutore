@@ -1,4 +1,5 @@
 <?php
+
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
         require_once 'class/' . $classe . '.php';
@@ -39,13 +40,12 @@
                 echo "<br />\n";
             }
             echo "\t</p>\n";
-            
-            
-            
+
+
             $managerOffre = new OffreManager($bdd);
             $offres = $managerOffre->getList();
             $taille = count($offres);
-            
+
             echo "<p>\n";
             for ($i = 0; $i < $taille; $i++) {
                 echo "\t\t";
@@ -53,10 +53,6 @@
                 echo "<br />\n";
             }
             echo "\t</p>\n";
-            
-            
-            
-            
         ?>
 
         <form action="connexion.php" method="post">
