@@ -11,15 +11,11 @@
         </li>
 
         <li>
-            <a href="profil.php">Mon Profil</a>
-        </li>
-
-        <li>
             <a href="recherche_profil.php">Rechercher un profil</a>
         </li>
 
         <li>
-            <a href="offres.php">Offres Emplois/Stage</a>
+            <a href="offres.php">Offres d'Emploi / Stage</a>
         </li>
 
         <li>
@@ -31,12 +27,13 @@
         </li>
 
         <li>
-            <a href="contact.php">Contacts</a>
+            <a href="contact.php">Contact</a>
         </li>
 
         <li>
-            <a href="#">Déconnexion</a>
+            <a href="deconnexion.php">Déconnexion</a>
         </li>
+
     </ul>
 
 </div>

@@ -1,3 +1,16 @@
+<?php
+
+    // Chargement des fichiers de classes et de fonctions
+    function chargerClasse($classe) {
+        require_once 'class/' . $classe . '.php';
+    }
+
+    spl_autoload_register('chargerClasse');
+    require_once 'fonctions.php';
+
+    // Démarrage de la session
+    session_start();
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,30 +40,14 @@
             <div id="entete">
                 <h1>Site Web des Anciens Etudiants du Master TI</h1>
             </div>
-            <div id="navigation">
-                <h1>MENU</h1>
-                <hr/>
-                <ul id="sous_menu">
-                    <li>
-                        <a href="index.php">Accueil</a>
-                    </li>
-                    <li>
-                        <a href="profil.php">Mon Profil</a>
-                    </li>
-                    <li>
-                        <a href="recherche_profil.php">Rechercher un profil</a>
-                    </li>
-                    <li>
-                        <a href="offres.php">Offres Emplois/Stage</a>
-                    </li>
-                    <li>
-                        <a href="ajouter_offre.php">Ajouter une offre</a>
-                    </li>
-                    <li>
-                        <a href="statistiques.php">Statistiques</a>
-                    </li>
-                </ul>
-            </div>
+            <?php
+                // Appel dynamique du menu selon l'identité de la personne
+                if (isset($_SESSION['personneCo'])) {
+                    require_once 'fonction_menu.php';
+                } else {
+                    require_once 'menu_V.php';
+                }
+            ?>
             <div id="contenu">
                 <div id="profil_photo">
                     <IMG SRC="images/photo_profil.png" ALT="Photo du Profil" TITLE="Photo du Profil" width="200px">

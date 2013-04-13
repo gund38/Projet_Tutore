@@ -26,50 +26,12 @@
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
             </div>
-            <!--            <div id="navigation">
-                            <h1>MENU</h1>
-                            <hr/>
-                            <ul id="sous_menu">
-                                <li>
-                                    <a href="index.php">Accueil</a>
-                                </li>
-                                <li>
-                                    <a href="profil.php">Mon Profil</a>
-                                </li>
-                                <li>
-                                    <a href="recherche_profil.php">Rechercher un profil</a>
-                                </li>
-                                <li>
-                                    <a href="offres.php">Offres Emplois/Stage</a>
-                                </li>
-                                <li>
-                                    <a href="ajouter_offre.php">Ajouter une offre</a>
-                                </li>
-                                <li>
-                                    <a href="statistiques.php">Statistiques</a>
-                                </li>
-                            </ul>
-                        </div>-->
             <?php
-//                include "class/Personne.php";
-//                $data = unserialize($_SESSION['personneCo']);
-//                print_r($data);
-//                if(isset($_SESSION['msg'])) {
-//                    echo $_SESSION['msg'];
-//                    unset($_SESSION['msg']);
-//                }
-//                echo "<br />";
-
+                // Appel dynamique du menu selon l'identité de la personne
                 if (isset($_SESSION['personneCo'])) {
-//                    echo gettype($_SESSION['personneCo']) . "<br />";
-//
-//                    echo get_class($_SESSION['personneCo']) . "<br />";
-//                    print_r($_SESSION['personneCo']);
-//                    $_SESSION['personneCo']->afficher();
-//                    echo "<br />";
-                    include "fonction_menu.php";
-//                    echo "<br />";
-                    unset($_SESSION['personneCo']);
+                    require_once 'fonction_menu.php';
+                } else {
+                    require_once 'menu_V.php';
                 }
             ?>
             <div id="contenu">

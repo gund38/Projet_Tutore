@@ -11,10 +11,6 @@
         </li>
 
         <li>
-            <a href="recherche_profil.php">Rechercher un profil</a>
-        </li>
-
-        <li>
             <a href="offres.php">Offres d'Emploi / Stage</a>
         </li>
 
@@ -22,10 +18,7 @@
             <a href="contact.php">Contact</a>
         </li>
 
-        <li>
-            <a href="deconnexion.php">Déconnexion</a>
-        </li>
-
     </ul>
 
 </div>
+
