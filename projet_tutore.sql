@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.7deb7
+-- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Sam 23 Mars 2013 à 19:51
--- Version du serveur: 5.1.66
--- Version de PHP: 5.3.3-7+squeeze15
+-- Client: localhost
+-- Généré le : Sam 13 Avril 2013 à 19:29
+-- Version du serveur: 5.5.29
+-- Version de PHP: 5.3.10-1ubuntu3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de données: `projet_tutore`
 --
+DROP DATABASE `projet_tutore`;
+CREATE DATABASE `projet_tutore` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `projet_tutore`;
 
 -- --------------------------------------------------------
 
@@ -37,11 +41,6 @@ CREATE TABLE IF NOT EXISTS `Diplome` (
   PRIMARY KEY (`codeDi`),
   KEY `codePe` (`codePe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `Diplome`
---
-
 
 -- --------------------------------------------------------
 
@@ -67,11 +66,6 @@ CREATE TABLE IF NOT EXISTS `ExpPro` (
   KEY `departement` (`departement`),
   KEY `codePe` (`codePe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `ExpPro`
---
-
 
 -- --------------------------------------------------------
 
@@ -215,12 +209,15 @@ CREATE TABLE IF NOT EXISTS `Offre` (
   PRIMARY KEY (`codeO`),
   KEY `codePe` (`codePe`),
   KEY `departement` (`departement`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `Offre`
 --
 
+INSERT INTO `Offre` (`codeO`, `codePe`, `dateDepot`, `type`, `intitule`, `entreprise`, `ville`, `departement`, `remuneration`, `cheminPDF`) VALUES
+(1, 4, '2013-04-11 10:54:25', 'Emploi', 'Développeur Web', 'Google', 'Paris', 75, 2500, 'pdf/516696242cac0.pdf'),
+(2, 3, '2013-04-11 10:55:22', 'Stage', 'Développeur Java', 'Java&co', 'Pau', 64, 1543, 'pdf/516696242cac0.pdf');
 
 -- --------------------------------------------------------
 
@@ -237,13 +234,19 @@ CREATE TABLE IF NOT EXISTS `Personne` (
   `email` varchar(30) NOT NULL,
   `login` varchar(30) NOT NULL,
   `mdp` varchar(30) NOT NULL,
-  PRIMARY KEY (`codePe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`codePe`),
+  UNIQUE KEY `login_unique` (`login`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `Personne`
 --
 
+INSERT INTO `Personne` (`codePe`, `type`, `nom`, `prenom`, `email`, `login`, `mdp`) VALUES
+(1, 'Etudiant', 'Dubois', 'Nicolas', 'DU@gmail.com', 'DU', 'chemise'),
+(2, 'Enseignant', 'Lacayrelle', 'Annig', 'BD@gmail.com', 'Lacayrelle', 'bd'),
+(3, 'Administrateur', 'Belloir', 'Nicolas', 'UML@gmail.com', 'Belloir', 'uml'),
+(4, 'Ancien_etudiant', 'Bélellou', 'Kévin', 'polo@gmail.com', 'polo', 'marco');
 
 -- --------------------------------------------------------
 
@@ -265,11 +268,6 @@ CREATE TABLE IF NOT EXISTS `Profil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `Profil`
---
-
-
---
 -- Contraintes pour les tables exportées
 --
 
@@ -283,18 +281,22 @@ ALTER TABLE `Diplome`
 -- Contraintes pour la table `ExpPro`
 --
 ALTER TABLE `ExpPro`
-  ADD CONSTRAINT `ExpPro_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `ExpPro_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ExpPro_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ExpPro_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `Offre`
 --
 ALTER TABLE `Offre`
-  ADD CONSTRAINT `Offre_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `Offre_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `Offre_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `Offre_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `Profil`
 --
 ALTER TABLE `Profil`
   ADD CONSTRAINT `Profil_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
