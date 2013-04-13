@@ -123,6 +123,10 @@ pre strong {
     color: red;
 }
 
+#sortie {
+    color: blue;
+}
+
 /* --- NOTES ---
 
 1.	Ce "font-size: 100%" est normalement inutile. On l'utilise uniquement

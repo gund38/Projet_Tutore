@@ -73,22 +73,6 @@
     }
 
     /**
-     * Gère l'indentation du code au niveau du source html
-     * Ne sert pas vraiment à grand chose, à part faire joli
-     *
-     * @param string $text Texte à indenter
-     * @param int $nbTabs Nombre de tabulations
-     * @param int $nbRetours Nombre de retours chariot
-     * @return string
-     */
-    function indenter($text, $nbTabs = 0, $nbRetours = 0) {
-        $tabs = str_repeat("\t", $nbTabs);
-        $retours = str_repeat("\n", $nbRetours);
-
-        return $tabs . $text . $retours;
-    }
-
-    /**
      * Affiche le menu correspondant à l'indentité de l'utilisateur
      */
     function afficherMenu() {
@@ -204,7 +188,7 @@
             }
 
             // Redirection
-            header('Location: ' . $fichierActuel);
+            header("Location: $fichierActuel");
             exit;
         }
 

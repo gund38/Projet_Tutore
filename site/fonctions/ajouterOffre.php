@@ -1,4 +1,5 @@
 <?php
+
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
         require_once '../classes/' . $classe . '.php';
@@ -14,8 +15,6 @@
     supprimerMessageAvertissement();
 
     $fichierRetour = "../ajouter_offre.php";
-    $nbTabs = 5;
-    $nbRetours = 1;
 
     /*
      * Création du tableau d'options pour la vérification et
@@ -69,16 +68,16 @@
 
     // Nombre d'erreurs et concaténation de tous les messages d'erreurs
     $nbErreurs = 0;
-    $_SESSION['erreurs'] = "";
+    $_SESSION['erreurs_ajout'] = "";
 
     // On parcourt les champs voulus
     foreach ($options as $cle => $valeur) {
         // Si le champ est vide
         if (empty($_POST[$cle])) {
-            $_SESSION['erreurs'] .= indenter("Veuillez remplir le champ " . $cle . ".<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= "Veuillez remplir le champ " . ucfirst($cle) . ".<br />\n";
             $nbErreurs++;
         } elseif ($resultat[$cle] === false) { // S'il n'est pas valide
-            $_SESSION['erreurs'] .= indenter($messageErreur[$cle] . "<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= $messageErreur[$cle] . "<br />\n";
             $nbErreurs++;
         }
     }
@@ -91,22 +90,22 @@
 
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
-            $_SESSION['erreurs'] .= indenter("Fichier trop grand !<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= "Fichier trop grand !<br />\n";
             $nbErreurs++;
             break;
 
         case UPLOAD_ERR_PARTIAL:
-            $_SESSION['erreurs'] .= indenter("Fichier reçu partiellement !<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= "Fichier reçu partiellement !<br />\n";
             $nbErreurs++;
             break;
 
         case UPLOAD_ERR_NO_FILE:
-            $_SESSION['erreurs'] .= indenter("Pas de fichier !<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= "Pas de fichier !<br />\n";
             $nbErreurs++;
             break;
 
         default:
-            $_SESSION['erreurs'] .= indenter("Erreur avec le fichier !<br />", $nbTabs, $nbRetours);
+            $_SESSION['erreurs_ajout'] .= "Erreur avec le fichier !<br />\n";
             $nbErreurs++;
             break;
     }
@@ -114,7 +113,7 @@
     // S'il y a au moins une erreur, on se redirige vers le formulaire
     if ($nbErreurs != 0) {
         header("Location: $fichierRetour");
-        die();
+        exit;
     }
 
     // On extrait l'extension du fichier uploadé
@@ -123,14 +122,14 @@
     if (strcmp($extension_upload, "pdf") == 0) {
         // L'extension est bonne, on ne fait rien
     } else {
-        $_SESSION['erreurs'] .= indenter("Mauvaise extension, seul les fichiers PDF sont acceptés !<br />", $nbTabs, $nbRetours);
+        $_SESSION['erreurs_ajout'] .= "Mauvaise extension, seul les fichiers PDF sont acceptés !<br />\n";
 
         // Suppression du fichier temporaire
         supprimerFichierTemp();
 
         // Redirection
         header("Location: $fichierRetour");
-        die();
+        exit;
     }
 
     /*
@@ -142,22 +141,22 @@
     if (rename($_FILES['fichier']['tmp_name'], $nom)) {
         // Le renommage s'est bien passé, on ne fait rien
     } else {
-        $_SESSION['erreurs'] .= indenter("Fail du rename<br />", $nbTabs, $nbRetours);
+        $_SESSION['erreurs_ajout'] .= "Fail du rename<br />\n";
 
         // Suppression du fichier temporaire
         supprimerFichierTemp();
 
         // Redirection
         header("Location: $fichierRetour");
-        die();
+        exit;
     }
 
     /*
      * Si tout s'est bien passé, on prépare un message de succès
      * et on se redirige vers le formulaire
      */
-    unset($_SESSION['erreurs']);
-    $_SESSION['sortie'] = indenter("L'offre a été ajoutée !<br />", $nbTabs, $nbRetours);
+    unset($_SESSION['erreurs_ajout']);
+    $_SESSION['sortie_ajout'] = "L'offre a été ajoutée !<br />\n";
     header("Location: $fichierRetour");
 
     /**
@@ -167,9 +166,9 @@
         if (unlink($_FILES['fichier']['tmp_name'])) {
             // La suppression s'est bien passé, on ne fait rien
         } else {
-            $_SESSION['erreurs'] .= indenter("Fail de la suppression<br />", 5, 1);
+            $_SESSION['erreurs_ajout'] .= "Fail de la suppression<br />\n";
             header("Location: ../ajouter_offre.php");
-            die();
+            exit;
         }
     }
 

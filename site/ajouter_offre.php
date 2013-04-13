@@ -67,16 +67,8 @@
                                 <select name="departement" id="departement">
                                     <?php
                                         $listeDep = listeDepartement();
-                                        $firstDep = true;
 
                                         foreach ($listeDep as $value) {
-                                            if ($firstDep) {
-                                                $firstDep = false;
-                                                echo "\t";
-                                            } else {
-                                                echo "\t\t\t\t\t";
-                                            }
-
                                             echo "<option value=\"" . $value['codeDe']
                                             . "\">" . $value['nom']
                                             . "</option>\n";
@@ -103,16 +95,8 @@
                                 <select name="type" id="type">
                                     <?php
                                         $listeType = listeType();
-                                        $firstType = true;
 
                                         foreach ($listeType as $value) {
-                                            if ($firstType) {
-                                                $firstType = false;
-                                                echo "\t";
-                                            } else {
-                                                echo "\t\t\t\t\t";
-                                            }
-
                                             echo "<option value=\"" . $value
                                             . "\">" . $value
                                             . "</option>\n";
@@ -133,24 +117,24 @@
                             <td colspan="4">
                                 <input type="submit" value="Envoyer" />
                                 <br /><br />
-                                <label id="erreur" style="color: red">
+                                <label id="erreur">
                                     <?php
-                                        if (isset($_SESSION['erreurs'])) {
-                                            echo count(explode("<br />", $_SESSION['erreurs'])) > 2 ? "\tErreurs :" : "\tErreur :";
+                                        if (isset($_SESSION['erreurs_ajout'])) {
+                                            echo substr_count($_SESSION['erreurs_ajout'], "<br />\n") > 2 ? "Erreurs :" : "Erreur :";
                                             echo "<br />\n";
-                                            echo $_SESSION['erreurs'];
-                                            unset($_SESSION['erreurs']);
+                                            echo $_SESSION['erreurs_ajout'];
+                                            unset($_SESSION['erreurs_ajout']);
                                         } else {
                                             echo "\n";
                                         }
                                     ?>
                                 </label>
-                                <label id="sortie" style="color: blue">
+                                <label id="sortie">
                                     <?php
-                                        if (isset($_SESSION['sortie'])) {
+                                        if (isset($_SESSION['sortie_ajout'])) {
                                             echo "<br />\n";
-                                            echo $_SESSION['sortie'];
-                                            unset($_SESSION['sortie']);
+                                            echo $_SESSION['sortie_ajout'];
+                                            unset($_SESSION['sortie_ajout']);
                                         } else {
                                             echo "\n";
                                         }
