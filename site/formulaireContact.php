@@ -15,7 +15,7 @@
             $destinataire = "admin_masterti@yopmail.com";
             $sujet = "Formulaire de contact";
             $entete = 'From : ' . $email . '';
-            $message = '' . "\n" . ' Site : Anciens Etudiants  ' . "\n" . ' Message : ' . $message . '';
+            $message = '' . "\n" . ' Site : Anciens Étudiants  ' . "\n" . ' Message : ' . $message . '';
 
             //mail($destinataire, $sujet, $message, $entete);
             $_SESSION['info'] = "Votre email à été envoyé";

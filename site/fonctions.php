@@ -89,6 +89,65 @@
     }
 
     /**
+     * Vérifie qu'un utilisateur a le droit d'accéder à une page
+     *
+     * @param string $scriptName
+     * @return boolean
+     */
+    function verifierAcces($scriptName) {
+        $scriptName = substr(strrchr($scriptName, '/'), 1);
+
+        if (isset($_SESSION['personneCo'])) {
+            $identite = $_SESSION['personneCo']->getType();
+        } else {
+            $identite = "Visiteur";
+        }
+
+        $scriptsAutorises = array(
+            'Visiteur' => array(
+                'offres.php',
+                'contact.php'
+            ),
+            'Etudiant' => array(
+                'recherche_profil.php',
+                'offres.php',
+                'contact.php'
+            ),
+            'Ancien_etudiant' => array(
+                'profil.php',
+                'recherche_profil.php',
+                'offres.php',
+                'ajouter_offre.php',
+                'contact.php'
+            ),
+            'Enseignant' => array(
+                'recherche_profil.php',
+                'offres.php',
+                'ajouter_offre.php',
+                'statistiques.php',
+                'contact.php'
+            ),
+            'Administrateur' => array(
+                'recherche_profil.php',
+                'offres.php',
+                'ajouter_offre.php',
+                'statistiques.php'
+            )
+        );
+
+        $autorise = false;
+
+        foreach ($scriptsAutorises[$identite] as $value) {
+            if (strcmp($scriptName, $value) === 0) {
+                $autorise = true;
+                break;
+            }
+        }
+
+        return $autorise;
+    }
+
+    /**
      * Supprime l'avertissement du navigateur
      * lors du renvoi d'un formulaire
      */
