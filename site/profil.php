@@ -2,11 +2,11 @@
 
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once 'classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
-    require_once 'fonctions.php';
+    require_once 'fonctions/fonctions.php';
 
     // Démarrage de la session
     session_start();
@@ -46,11 +46,7 @@
             </div>
             <?php
                 // Appel dynamique du menu selon l'identité de la personne
-                if (isset($_SESSION['personneCo'])) {
-                    require_once 'fonction_menu.php';
-                } else {
-                    require_once 'menu_V.php';
-                }
+                afficherMenu();
             ?>
             <div id="contenu">
                 <div id="profil_photo">

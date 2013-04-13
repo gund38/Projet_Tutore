@@ -1,7 +1,7 @@
 <?php
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once '../classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
@@ -13,7 +13,7 @@
     // Suppresion du message en cas de renvoi du formulaire
     supprimerMessageAvertissement();
 
-    $fichierRetour = "ajouter_offre.php";
+    $fichierRetour = "../ajouter_offre.php";
     $nbTabs = 5;
     $nbRetours = 1;
 
@@ -168,7 +168,7 @@
             // La suppression s'est bien passé, on ne fait rien
         } else {
             $_SESSION['erreurs'] .= indenter("Fail de la suppression<br />", 5, 1);
-            header("Location: ajouter_offre.php");
+            header("Location: ../ajouter_offre.php");
             die();
         }
     }

@@ -23,7 +23,7 @@
         </li>
 
         <li>
-            <a href="deconnexion.php">Déconnexion</a>
+            <a href="fonctions/deconnexion.php">Déconnexion</a>
         </li>
 
     </ul>

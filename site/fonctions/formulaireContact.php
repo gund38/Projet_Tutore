@@ -24,13 +24,13 @@
             $_SESSION['erreur'] = "Adresse email invalide";
         }
 
-        header("Location: contact.php");
+        header("Location: ../contact.php");
         exit;
     }
     //Si les champs n'ont pas été correctement remplie, on envoie un message d'erreur
     else {
         $_SESSION['erreur'] = "Veuillez remplir tous les champs";
-        header("Location: contact.php");
+        header("Location: ../contact.php");
         exit;
     }
 ?>

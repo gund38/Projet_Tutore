@@ -2,11 +2,11 @@
 
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once 'classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
-    require_once 'fonctions.php';
+    require_once 'fonctions/fonctions.php';
 
     // Démarrage de la session
     session_start();
@@ -32,16 +32,12 @@
             </div>
             <?php
                 // Appel dynamique du menu selon l'identité de la personne
-                if (isset($_SESSION['personneCo'])) {
-                    require_once 'fonction_menu.php';
-                } else {
-                    require_once 'menu_V.php';
-                }
+                afficherMenu();
             ?>
             <div id="contenu">
                 <h2>Ajouter une offre</h2>
 
-                <form action="ajouterOffre.php" method="post" enctype="multipart/form-data">
+                <form action="fonctions/ajouterOffre.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>
@@ -152,7 +148,6 @@
                                 <label id="sortie" style="color: blue">
                                     <?php
                                         if (isset($_SESSION['sortie'])) {
-//                                            echo count(explode("<br />", $_SESSION['erreurs'])) > 2 ? "\tErreurs :" : "\tErreur :";
                                             echo "<br />\n";
                                             echo $_SESSION['sortie'];
                                             unset($_SESSION['sortie']);

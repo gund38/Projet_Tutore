@@ -89,6 +89,32 @@
     }
 
     /**
+     * Affiche le menu correspondant à l'indentité de l'utilisateur
+     */
+    function afficherMenu() {
+        if (!isset($_SESSION['personneCo'])) {
+            require_once 'menus/menu_V.php';
+        } else {
+            switch ($_SESSION['personneCo']->getType()) {
+            case "Enseignant":
+                require_once 'menus/menu_enseignant.php';
+                break;
+            case "Etudiant":
+                require_once 'menus/menu_E.php';
+                break;
+            case "Ancien_etudiant":
+                require_once 'menus/menu_AE.php';
+                break;
+            case "Administrateur":
+                require_once 'menus/menu_admin.php';
+                break;
+            default:
+                echo "Erreur lors de l'inclusion du menu";
+            }
+        }
+    }
+
+    /**
      * Vérifie qu'un utilisateur a le droit d'accéder à une page
      *
      * @param string $scriptName

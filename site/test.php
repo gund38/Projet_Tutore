@@ -2,11 +2,11 @@
 
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once 'classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
-    require_once 'fonctions.php';
+    require_once 'fonctions/fonctions.php';
 
     // Démarrage de la session
     session_start();
@@ -55,14 +55,5 @@
             echo "\t</p>\n";
             echo "test";
         ?>
-
-        <form action="connexion.php" method="post">
-            <p>
-                <label for="login">Login : </label><input type="text" name="login" id="login" /><br />
-                <label for="mdp">Mot de passe : </label> <input type="password" name="mdp" id="mdp" /><br />
-
-                <input type="submit" value="Envoyer" />
-            </p>
-        </form>
     </body>
 </html>

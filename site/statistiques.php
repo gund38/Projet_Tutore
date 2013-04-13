@@ -2,11 +2,11 @@
 
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once 'classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
-    require_once 'fonctions.php';
+    require_once 'fonctions/fonctions.php';
 
     // Démarrage de la session
     session_start();
@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
         <script src="js/amcharts.js" type="text/javascript"></script>
-        <script type="text/javascript" src="script_statistiques.js"></script>
+        <script type="text/javascript" src="js/script_statistiques.js"></script>
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
@@ -34,12 +34,8 @@
             </div>
         </div>
         <?php
-                // Appel dynamique du menu selon l'identité de la personne
-            if (isset($_SESSION['personneCo'])) {
-                require_once 'fonction_menu.php';
-            } else {
-                require_once 'menu_V.php';
-            }
+            // Appel dynamique du menu selon l'identité de la personne
+            afficherMenu();
         ?>
         <div id="contenu">
             <h2>Exemples de statistiques</h2>

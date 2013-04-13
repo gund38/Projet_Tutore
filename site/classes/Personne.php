@@ -19,7 +19,7 @@
          * @param array $donnees Données de la personne
          */
         public function __construct(array $donnees) {
-            require_once 'fonctions.php';
+            require_once '../fonctions/fonctions.php';
             $this->hydrate($donnees);
         }
 

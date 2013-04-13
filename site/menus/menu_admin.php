@@ -27,11 +27,11 @@
         </li>
 
         <li>
-            <a href="contact.php">Contact</a>
+            <a href="#">Gérer les comptes</a>
         </li>
 
         <li>
-            <a href="deconnexion.php">Déconnexion</a>
+            <a href="fonctions/deconnexion.php">Déconnexion</a>
         </li>
 
     </ul>

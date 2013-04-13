@@ -2,7 +2,7 @@
 
     // Chargement des fichiers de classes et de fonctions
     function chargerClasse($classe) {
-        require_once 'class/' . $classe . '.php';
+        require_once '../classes/' . $classe . '.php';
     }
 
     spl_autoload_register('chargerClasse');
@@ -32,14 +32,12 @@
         if ($kid == -1) {
             error(3);
         } else {
-//            printf("");
-//            $_SESSION['personneCo']->afficher();
             $_SESSION['msg'] .= "Connexion reussie";
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit;
         }
     } else {
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
 
     function error($ec) {
@@ -48,9 +46,6 @@
     }
 
     function login($bdd, $login, $pass) {
-        //$fixedlogin = mysql_real_escape_string($login);
-        //$fixedpass  = mysql_real_escape_string($pass);
-
         $req = $bdd->prepare('SELECT codePe
             FROM Personne
             WHERE login = :login AND mdp = :mdp');
@@ -63,14 +58,10 @@
         $reponse = -1;
 
         while ($donnees = $req->fetch()) {
-//            echo "OK : " . $donnees['codePe'];
-
             $manager = new PersonneManager($bdd);
             $_SESSION['personneCo'] = $manager->getPersonne($donnees['codePe']);
 
-
             $_SESSION['msg'] .= get_class($_SESSION['personneCo']);
-            //include "fonction_menu.php";
 
             $reponse = 0;
         }
