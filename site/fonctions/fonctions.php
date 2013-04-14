@@ -179,7 +179,7 @@
              * on les sauvegarde dans un dossier temporaire
              */
             foreach ($_FILES as $fichier => $valeurs) {
-                $nom = substr($valeurs['tmp_name'], 1);
+                $nom = '../tmp/' . substr(strrchr($valeurs['tmp_name'], '/'), 1);
 
                 if ($valeurs['error'] == 0
                         && move_uploaded_file($valeurs['tmp_name'], $nom)) {

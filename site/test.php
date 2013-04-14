@@ -53,7 +53,66 @@
                 echo "<br />\n";
             }
             echo "\t</p>\n";
-            echo "test";
+
+
+
+            $texte = "L'âme, l'esprit et le corps sont à nous ! Will&co + #";
+            $encode = utf8_encode($texte);
+            $decode = utf8_decode($texte);
+            $filter = filter_var($texte, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP);
+            $escape = mysql_real_escape_string($texte);
+            $encodeDecode = utf8_decode($filter);
+            $htmlDecode = html_entity_decode($filter);
+            $encodeFilter = utf8_encode($htmlDecode);
+
+            echo "texte = " . $texte . "<br />\n";
+            echo "encode = " . $encode . "<br />\n";
+            echo "decode = " . $decode . "<br />\n";
+            echo "filter = " . $filter . "<br />\n";
+            echo "escape = " . $escape . "<br />\n";
+            echo "encodeDecode = " . $encodeDecode . "<br />\n";
+            echo "htmlDecode = " . $htmlDecode . "<br />\n";
+            echo "encodeFilter = " . $encodeFilter . "<br />\n";
+
+            $mega = $texte . ' ; '
+                    . $encode . ' ; '
+                    . $decode . ' ; '
+                    . $filter . ' ; '
+                    . $escape. ' ; '
+                    . $encodeDecode . ' ; '
+                    . $htmlDecode . ' ; '
+                    . $encodeFilter;
+
+//            $req = $bdd->prepare('INSERT INTO test (texte)
+//                VALUES (:text)');
+//
+//            $req->execute(array(
+//                'text' => $mega
+//            ));
+//var_dump($req);
+//            $req->closeCursor();
+
+//            $req = $bdd->query('INSERT INTO test (texte)
+////                VALUES (' . $mega . ')');
+//            var_dump($req);
+
+
+            $req->closeCursor();
+
+            $req = $bdd->query('SELECT texte
+                FROM test
+                WHERE id = 24');
+            var_dump($req);
+
+            echo "<br /><br />";
+            while ($donnees = $req->fetch()) {
+                print_r($donnees['texte']);
+                echo "<br /><br />\n";
+                echo echoBD($donnees['texte']);
+                echo "<br />";
+            }
+
+//            $sql = 'SELECT texte INTO test';
         ?>
     </body>
 </html>

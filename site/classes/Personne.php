@@ -19,7 +19,8 @@
          * @param array $donnees Données de la personne
          */
         public function __construct(array $donnees) {
-            require_once '../fonctions/fonctions.php';
+            //require_once '../fonctions/fonctions.php';
+
             $this->hydrate($donnees);
         }
 
@@ -56,6 +57,15 @@
                     . $this->_email . " "
                     . $this->_login . " "
                     . $this->_mdp . "<br />");
+        }
+
+        /**
+         * Getter de $_codePe
+         *
+         * @return int
+         */
+        public function getCodePe() {
+            return $this->_codePe;
         }
 
         /**

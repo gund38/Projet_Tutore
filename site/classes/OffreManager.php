@@ -59,12 +59,24 @@
         /**
          * Ajoute une offre dans la BD
          *
-         * @todo Compléter
-         *
-         * @param type $donnees
+         * @param array $donnees
+         * @return boolean
          */
         public function addOffre($donnees) {
+            $resultat = false;
 
+            $req = $this->_db->prepare('INSERT INTO
+                Offre (codePe, type, intitule, entreprise, ville, departement, remuneration, cheminPDF)
+                VALUES (:codePe, :type, :intitule, :entreprise, :ville, :departement, :remuneration, :cheminPDF)');
+
+            // Exécution de la requête
+            $req->execute($donnees);
+
+            if ($req !== false) {
+                $resultat = true;
+            }
+
+            return $resultat;
         }
 
         /**

@@ -23,15 +23,15 @@
     $options = array(
         'intitule' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
         ),
         'entreprise' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
         ),
         'ville' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
         ),
         'remuneration' => array(
             'filter' => FILTER_CALLBACK,
@@ -51,6 +51,12 @@
      */
     foreach ($options as $cle => $valeur) {
         $resultat[$cle] = filter_var($_POST[$cle], $valeur['filter'], $valeur['flags']);
+
+        // Un autre nettoyage des variables pour éviter tout problème
+        if (get_magic_quotes_gpc()) {
+            $resultat[$cle] = stripslashes($resultat[$cle]);
+        }
+        $resultat[$cle] = html_entity_decode($resultat[$cle]);
     }
 
     /*
@@ -136,7 +142,7 @@
      * Préparation du nouveau nom du fichier,
      * basé sur un identifiant unique
      */
-    $nom = "pdf/" . uniqid() . ".pdf";
+    $nom = "../pdf/" . uniqid() . ".pdf";
 
     if (rename($_FILES['fichier']['tmp_name'], $nom)) {
         // Le renommage s'est bien passé, on ne fait rien
@@ -145,6 +151,32 @@
 
         // Suppression du fichier temporaire
         supprimerFichierTemp();
+
+        // Redirection
+        header("Location: $fichierRetour");
+        exit;
+    }
+
+    // Création d'un OffreManager pour l'insertion
+    $offreManager = new OffreManager(ConnexionBD::getInstance()->getBDD());
+
+    // Création du tableau de données
+    $donnees = array(
+        'codePe' => $_SESSION['personneCo']->getCodePe(),
+        'type' => $_POST['type'],
+        'intitule' => $resultat['intitule'],
+        'entreprise' => $resultat['entreprise'],
+        'ville' => $resultat['ville'],
+        'departement' => $_POST['departement'],
+        'remuneration' => strcmp($_POST['periodicite'], "mois") == 0 ? $resultat['remuneration'] : $resultat['remuneration'] / 12,
+        'cheminPDF' => substr(strrchr($nom, '/'), 1)
+    );
+
+    // Insertion
+    $ajout = $offreManager->addOffre($donnees);
+
+    if ($ajout === false) {
+        $_SESSION['erreurs_ajout'] .= "Fail de l'insertion dans la BD<br />\n";
 
         // Redirection
         header("Location: $fichierRetour");

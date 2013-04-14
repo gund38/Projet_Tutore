@@ -22,7 +22,8 @@
          * @param array $donnees Données de l'offre
          */
         public function __construct(array $donnees) {
-            require_once 'fonctions/fonctions.php';
+            //require_once 'fonctions/fonctions.php';
+            
             $this->hydrate($donnees);
         }
 
@@ -52,7 +53,7 @@
          * Affiche les infos de l'offre
          */
         public function afficher() {
-            echo echoBD($this->_codeO . " "
+            echo /*echoBD*/($this->_codeO . " "
                     . $this->_codePe . " "
                     . $this->_dateDepot . " "
                     . $this->_type . " "
