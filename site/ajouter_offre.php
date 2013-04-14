@@ -47,8 +47,6 @@
             ?>
             <div id="contenu">
                 <h2>Ajouter une offre</h2>
-                <p>Veuillez éviter les lettres majuscules accentuées, elles ne s'afficheraient pas correctement</p>
-
                 <form action="fonctions/ajouterOffre.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>

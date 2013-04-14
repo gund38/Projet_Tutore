@@ -52,13 +52,13 @@
          * Affiche les infos de la personne
          */
         public function afficher() {
-            echo echoBD($this->_codePe . " "
+            echo $this->_codePe . " "
                     . $this->_type . " "
                     . $this->_nom . " "
                     . $this->_prenom . " "
                     . $this->_email . " "
                     . $this->_login . " "
-                    . $this->_mdp . "<br />");
+                    . $this->_mdp . "<br />";
         }
 
         /**

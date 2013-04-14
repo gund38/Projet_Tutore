@@ -34,15 +34,15 @@
     $options = array(
         'intitule' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => ''
         ),
         'entreprise' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => ''
         ),
         'ville' => array(
             'filter' => FILTER_SANITIZE_STRING,
-            'flags' => FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP
+            'flags' => ''
         ),
         'remuneration' => array(
             'filter' => FILTER_CALLBACK,
@@ -67,7 +67,6 @@
         if (get_magic_quotes_gpc()) {
             $resultat[$cle] = stripslashes($resultat[$cle]);
         }
-        $resultat[$cle] = html_entity_decode($resultat[$cle]);
     }
 
     /*

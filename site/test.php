@@ -59,7 +59,7 @@
             $texte = "L'âme, l'esprit et le corps sont à nous ! Will&co + #";
             $encode = utf8_encode($texte);
             $decode = utf8_decode($texte);
-            $filter = filter_var($texte, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_AMP);
+            $filter = filter_var($texte, FILTER_SANITIZE_STRING);//, /*FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH | */FILTER_FLAG_ENCODE_AMP);
             $escape = mysql_real_escape_string($texte);
             $encodeDecode = utf8_decode($filter);
             $htmlDecode = html_entity_decode($filter);
@@ -75,11 +75,11 @@
             echo "encodeFilter = " . $encodeFilter . "<br />\n";
 
             $mega = $texte . ' ; '
-                    . $encode . ' ; '
-                    . $decode . ' ; '
-                    . $filter . ' ; '
-                    . $escape. ' ; '
-                    . $encodeDecode . ' ; '
+                    //. $encode . ' ; '
+                    //. $decode . ' ; '
+                    . "              filter = " . $filter . ' ; '
+                    //. $escape. ' ; '
+                    //. $encodeDecode . ' ; '
                     . $htmlDecode . ' ; '
                     . $encodeFilter;
 
@@ -89,7 +89,7 @@
 //            $req->execute(array(
 //                'text' => $mega
 //            ));
-//var_dump($req);
+//
 //            $req->closeCursor();
 
 //            $req = $bdd->query('INSERT INTO test (texte)
@@ -97,19 +97,17 @@
 //            var_dump($req);
 
 
-            $req->closeCursor();
+//            $req->closeCursor();
 
             $req = $bdd->query('SELECT texte
                 FROM test
-                WHERE id = 24');
-            var_dump($req);
+                WHERE id = 29');
+
 
             echo "<br /><br />";
             while ($donnees = $req->fetch()) {
                 print_r($donnees['texte']);
-                echo "<br /><br />\n";
-                echo echoBD($donnees['texte']);
-                echo "<br />";
+                echo "<br />\n";
             }
 
 //            $sql = 'SELECT texte INTO test';

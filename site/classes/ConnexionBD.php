@@ -14,6 +14,7 @@
         private function __construct() {
             try {
                 $this->_bdd = new PDO('mysql:host=localhost;dbname=projet_tutore', 'gund38', 'gund38');
+                $this->_bdd->query('SET NAMES utf8');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }

@@ -7,16 +7,6 @@
      */
 
     /**
-     * Permet l'encodage en UTF-8 des textes sortis de la BD
-     *
-     * @param string $text Le texte à encoder
-     * @return string
-     */
-    function echoBD($text) {
-        return utf8_encode($text);
-    }
-
-    /**
      * Retourne la liste des départements depuis la BD
      *
      * @return array
@@ -35,7 +25,7 @@
         while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
             $liste[] = array(
                 'codeDe' => $donnees['codeDe'],
-                'nom' => echoBD($donnees['codePostal'] . " - " . $donnees['nom'])
+                'nom' => $donnees['codePostal'] . " - " . $donnees['nom']
             );
         }
 
@@ -62,7 +52,7 @@
          * On enlève donc les 6 premiers et les 2 derniers caractères
          * avant de découper la chaîne selon le caratère ','
          */
-        $liste = explode("','", substr(echoBD($donnees['Type']), 6, -2));
+        $liste = explode("','", substr($donnees['Type'], 6, -2));
 
         return $liste;
     }

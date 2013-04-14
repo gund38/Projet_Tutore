@@ -61,9 +61,6 @@
     $login = filter_var($login, $filter, $flags);
     $pass = filter_var($pass, $filter, $flags);
 
-    $login = addslashes($login);
-    $pass = addslashes($pass);
-
     // On supprime $_POST dont on n'a plus besoin
     unset($_POST);
 
