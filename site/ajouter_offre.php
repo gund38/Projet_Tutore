@@ -20,8 +20,10 @@
     // Démarrage de la session
     session_start();
 
+    // On vérifie si l'on a le droit d'accéder à cette page
     if (!verifierAcces(__FILE__)) {
-        header("Location: index.php");
+        $_SESSION['erreur_droits'] = true;
+        header("Location: login.php");
     }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -78,6 +80,7 @@
                             <td>
                                 <select name="departement" id="departement">
                                     <?php
+                                        // Récupération de la liste des départements
                                         $listeDep = listeDepartement();
 
                                         foreach ($listeDep as $value) {
@@ -106,6 +109,7 @@
                             <td>
                                 <select name="type" id="type">
                                     <?php
+                                        // Récupération de la liste des types d'offres
                                         $listeType = listeType();
 
                                         foreach ($listeType as $value) {
@@ -135,6 +139,7 @@
                 <br />
                 <label id="erreur">
                     <?php
+                        // Gestion des erreurs au niveau de l'ajout d'une offre
                         if (isset($_SESSION['erreurs_ajout'])) {
                             echo substr_count($_SESSION['erreurs_ajout'], "<br />\n") > 2 ? "Erreurs :" : "Erreur :";
                             echo "<br />\n";
@@ -147,6 +152,7 @@
                 </label>
                 <label id="sortie">
                     <?php
+                        // Gestion de la réussite de l'ajout d'une offre
                         if (isset($_SESSION['sortie_ajout'])) {
                             echo "<br />\n";
                             echo $_SESSION['sortie_ajout'];

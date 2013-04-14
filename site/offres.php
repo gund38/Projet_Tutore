@@ -20,8 +20,10 @@
     // Démarrage de la session
     session_start();
 
+    // On vérifie si l'on a le droit d'accéder à cette page
     if (!verifierAcces(__FILE__)) {
-        header("Location: index.php");
+        $_SESSION['erreur_droits'] = true;
+        header("Location: login.php");
     }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"

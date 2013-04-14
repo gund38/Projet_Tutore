@@ -162,14 +162,28 @@
      * @return boolean
      */
     function verifierAcces($scriptName) {
+        // On récupère le nom de la page appelante
         $scriptName = substr(strrchr($scriptName, '/'), 1);
 
+        /**
+         * On récupère l'identité de l'utilisateur
+         * Si celui-ci n'est pas connecté, c'est un Visiteur
+         */
         if (isset($_SESSION['personneCo'])) {
             $identite = $_SESSION['personneCo']->getType();
         } else {
             $identite = "Visiteur";
         }
 
+        /**
+         * Tableau des droits
+         *
+         * NOTE : Certaines pages ne sont pas indiquées,
+         * notamment index.php (car tout le monde y a accès),
+         * login.php (car c'est la page vers laquelle on est redirigé)
+         * et les pages de fonctions (comme connexion.php ou deconnexion.php,
+         * qui ne sont pas soumises à cette vérification)
+         */
         $scriptsAutorises = array(
             'Visiteur' => array(
                 'offres.php',
@@ -204,6 +218,10 @@
 
         $autorise = false;
 
+        /**
+         * On parcourt le tableau pour savoir si l'utilisateur a les droits
+         * Si oui, on sort de la boucle
+         */
         foreach ($scriptsAutorises[$identite] as $value) {
             if (strcmp($scriptName, $value) === 0) {
                 $autorise = true;

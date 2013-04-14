@@ -11,7 +11,11 @@
         </li>
 
         <li>
-            <a href="offres.php">Offres d'Emploi / Stage</a>
+            <a href="login.php">Connexion</a>
+        </li>
+
+        <li>
+            <a href="offres.php">Offres d'Emploi</a>
         </li>
 
         <li>

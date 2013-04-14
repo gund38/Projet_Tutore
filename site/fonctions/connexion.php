@@ -26,10 +26,11 @@
     supprimerMessageAvertissement();
 
     unset($_GET);
-    $fichierRetour = "../index.php";
+    $fichierRetour = "../login.php";
     $nbErreurs = 0;
     $_SESSION['erreurs_connexion'] = "";
 
+    // Vérification que les variables ne soient pas vides
     if (empty($_POST['login'])) {
         $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Login.<br />\n";
         $nbErreurs++;

@@ -20,8 +20,10 @@
     // Démarrage de la session
     session_start();
 
+    // On vérifie si l'on a le droit d'accéder à cette page
     if (!verifierAcces(__FILE__)) {
-        header("Location: index.php");
+        $_SESSION['erreur_droits'] = true;
+        header("Location: login.php");
     }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -64,7 +66,6 @@
         <link rel="stylesheet" href="css/contact.css" />
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
-
     <body>
         <div id="global">
             <div id="entete">
@@ -75,13 +76,10 @@
                 afficherMenu();
             ?>
             <div id="contenu">
-
                 <form  action="fonctions/formulaireContact.php" method="post">
-
                     <fieldset>
-
                         <legend>Formulaire de contact</legend>
-                        </br>
+                        <br />
                         <label for="label_message">Votre message :</label>
                         <textarea name="message" rows="8" cols="45" id="label_message" placeholder="Taper votre texte.">
                             <?php
@@ -113,7 +111,6 @@
                                     echo $_SESSION['info'];
                             ?>
                         </span>
-
                     </fieldset>
                 </form>
             </div>

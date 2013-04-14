@@ -2,8 +2,6 @@
     /**
      * Page de connexion
      *
-     * @todo À remplir ou à enlever
-     *
      * @author Kévin Bélellou et Nicolas Dubois
      */
 
@@ -21,10 +19,6 @@
 
     // Démarrage de la session
     session_start();
-
-    if (!verifierAcces(__FILE__)) {
-        header("Location: index.php");
-    }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,8 +39,63 @@
                 // Appel dynamique du menu selon l'identité de la personne
                 afficherMenu();
             ?>
-            <div id="contenu" style="margin-right:70px;margin-left:70px">
-                <a href="index.php">Se connecter au site</a>
+            <div id="contenu">
+                <p>Se connecter au site</p>
+                <label id="erreur">
+                    <?php
+                        // Gestion des erreurs au niveau des droits d'accès aux pages
+                        if (isset($_SESSION['erreur_droits'])) {
+                            if (isset($_SESSION['personneCo'])) {
+                                echo "Vous n'avez pas le droit d'accéder à cette page !";
+                            } else {
+                                echo "Vous devez vous connecter pour accéder à cette page";
+                            }
+                            echo "<br /><br />\n";
+                            unset($_SESSION['erreur_droits']);
+                        } else {
+                            echo "\n";
+                        }
+                    ?>
+                </label>
+                <form action="fonctions/connexion.php" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="login">Login : </label>
+                            </td>
+                            <td>
+                                <input type="text" name="login" id="login" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="mdp">Mot de passe : </label>
+                            </td>
+                            <td>
+                                <input type="password" name="mdp" id="mdp" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Envoyer" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <br />
+                <label id="erreur">
+                    <?php
+                        // Gestion des erreurs au niveau de la connexion
+                        if (isset($_SESSION['erreurs_connexion'])) {
+                            echo substr_count($_SESSION['erreurs_connexion'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
+                            echo "<br />\n";
+                            echo $_SESSION['erreurs_connexion'];
+                            unset($_SESSION['erreurs_connexion']);
+                        } else {
+                            echo "\n";
+                        }
+                    ?>
+                </label>
             </div>
         </div>
     </body>
