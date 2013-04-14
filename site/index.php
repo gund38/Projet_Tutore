@@ -1,6 +1,15 @@
 <?php
+    /**
+     * Page d'accueil du site
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
 
-    // Chargement des fichiers de classes et de fonctions
+    /**
+     * Chargement des fichiers de classes
+     *
+     * @param string $classe La classe à charger
+     */
     function chargerClasse($classe) {
         require_once 'classes/' . $classe . '.php';
     }

@@ -1,6 +1,17 @@
 <?php
+    /**
+     * Ce fichier permet l'ajout d'une offre dans la BD
+     * Les informations rentrées dans le formulaire
+     * seront d'abord vérifiées et nettoyées
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
 
-    // Chargement des fichiers de classes et de fonctions
+    /**
+     * Chargement des fichiers de classes
+     *
+     * @param string $classe La classe à charger
+     */
     function chargerClasse($classe) {
         require_once '../classes/' . $classe . '.php';
     }
@@ -131,7 +142,7 @@
         $_SESSION['erreurs_ajout'] .= "Mauvaise extension, seul les fichiers PDF sont acceptés !<br />\n";
 
         // Suppression du fichier temporaire
-        supprimerFichierTemp();
+        supprimerFichierTemp($_FILES['fichier']['tmp_name']);
 
         // Redirection
         header("Location: $fichierRetour");
@@ -150,7 +161,7 @@
         $_SESSION['erreurs_ajout'] .= "Fail du rename<br />\n";
 
         // Suppression du fichier temporaire
-        supprimerFichierTemp();
+        supprimerFichierTemp($_FILES['fichier']['tmp_name']);
 
         // Redirection
         header("Location: $fichierRetour");
@@ -178,6 +189,9 @@
     if ($ajout === false) {
         $_SESSION['erreurs_ajout'] .= "Fail de l'insertion dans la BD<br />\n";
 
+        // Suppression du fichier temporaire
+        supprimerFichierTemp($nom);
+
         // Redirection
         header("Location: $fichierRetour");
         exit;
@@ -190,18 +204,4 @@
     unset($_SESSION['erreurs_ajout']);
     $_SESSION['sortie_ajout'] = "L'offre a été ajoutée !<br />\n";
     header("Location: $fichierRetour");
-
-    /**
-     * Fonction de suppression du fichier temporaire uploadé
-     */
-    function supprimerFichierTemp() {
-        if (unlink($_FILES['fichier']['tmp_name'])) {
-            // La suppression s'est bien passé, on ne fait rien
-        } else {
-            $_SESSION['erreurs_ajout'] .= "Fail de la suppression<br />\n";
-            header("Location: ../ajouter_offre.php");
-            exit;
-        }
-    }
-
 ?>

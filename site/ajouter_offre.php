@@ -1,6 +1,15 @@
 <?php
+    /**
+     * Page d'ajout d'une offre d'emploi ou de stage
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
 
-    // Chargement des fichiers de classes et de fonctions
+    /**
+     * Chargement des fichiers de classes
+     *
+     * @param string $classe La classe à charger
+     */
     function chargerClasse($classe) {
         require_once 'classes/' . $classe . '.php';
     }
@@ -45,7 +54,7 @@
                                 <label for="intitule">Intitulé : </label>
                             </td>
                             <td colspan="3">
-                                <input type="text" name="intitule" id="intitule" size="55" />
+                                <input type="text" name="intitule" id="intitule" size="50%" />
                             </td>
                         </tr>
                         <tr>

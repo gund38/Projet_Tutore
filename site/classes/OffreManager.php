@@ -2,6 +2,8 @@
 
     /**
      * Manager d'Offre
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
      */
     class OffreManager {
 

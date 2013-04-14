@@ -2,6 +2,8 @@
 
     /**
      * Classe qui représente une offre
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
      */
     class Offre {
 
@@ -23,7 +25,7 @@
          */
         public function __construct(array $donnees) {
             //require_once 'fonctions/fonctions.php';
-            
+
             $this->hydrate($donnees);
         }
 

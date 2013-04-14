@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Ce fichier contient toues les fonctions
+     * utilisées par le site
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
 
     /**
      * Permet l'encodage en UTF-8 des textes sortis de la BD
@@ -73,6 +79,57 @@
     }
 
     /**
+     * Teste les identifiants et retourne vrai s'ils existent,
+     * faux sinon
+     *
+     * @param type $login Login de la personne
+     * @param type $pass Mot de passe de la personne
+     * @return boolean
+     */
+    function login($login, $pass) {
+        // Récupération de la connexion à la BD
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        // Préparation de la requête
+        $req = $bdd->prepare('SELECT codePe
+            FROM Personne
+            WHERE login = :login AND mdp = :mdp');
+
+        // Exécution de la requête
+        $req->execute(array(
+            'login' => $login,
+            'mdp' => $pass
+        ));
+
+        $reponse = false;
+
+        // Création du managerPersonne
+        $manager = new PersonneManager($bdd);
+
+        // S'il y a un résultat, on enregistre la Personne
+        while ($donnees = $req->fetch()) {
+            $_SESSION['personneCo'] = $manager->getPersonne($donnees['codePe']);
+
+            $reponse = true;
+        }
+
+        return $reponse;
+    }
+
+    /**
+     * Fonction de suppression du fichier temporaire uploadé
+     *
+     * @param string $fichier Chemin du fichier à supprimer
+     */
+    function supprimerFichierTemp($fichier) {
+        if (unlink($fichier)) {
+            // La suppression s'est bien passé, on ne fait rien
+        } else {
+            $_SESSION['erreurs_ajout'] .= "Fail de la suppression<br />\n";
+        }
+    }
+
+    /**
      * Affiche le menu correspondant à l'indentité de l'utilisateur
      */
     function afficherMenu() {
@@ -80,20 +137,20 @@
             require_once 'menus/menu_V.php';
         } else {
             switch ($_SESSION['personneCo']->getType()) {
-            case "Enseignant":
-                require_once 'menus/menu_enseignant.php';
-                break;
-            case "Etudiant":
-                require_once 'menus/menu_E.php';
-                break;
-            case "Ancien_etudiant":
-                require_once 'menus/menu_AE.php';
-                break;
-            case "Administrateur":
-                require_once 'menus/menu_admin.php';
-                break;
-            default:
-                echo "Erreur lors de l'inclusion du menu";
+                case "Enseignant":
+                    require_once 'menus/menu_enseignant.php';
+                    break;
+                case "Etudiant":
+                    require_once 'menus/menu_E.php';
+                    break;
+                case "Ancien_etudiant":
+                    require_once 'menus/menu_AE.php';
+                    break;
+                case "Administrateur":
+                    require_once 'menus/menu_admin.php';
+                    break;
+                default:
+                    echo "Erreur lors de l'inclusion du menu";
             }
         }
     }
@@ -101,7 +158,7 @@
     /**
      * Vérifie qu'un utilisateur a le droit d'accéder à une page
      *
-     * @param string $scriptName
+     * @param string $scriptName Le nom du script qui doit être vérifié
      * @return boolean
      */
     function verifierAcces($scriptName) {

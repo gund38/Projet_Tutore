@@ -2,6 +2,8 @@
 
     /**
      * Classe qui représente une personne
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
      */
     class Personne {
 

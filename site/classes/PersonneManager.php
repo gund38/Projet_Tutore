@@ -2,6 +2,8 @@
 
     /**
      * Manager de Personne
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
      */
     class PersonneManager {
 

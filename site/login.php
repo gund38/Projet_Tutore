@@ -1,6 +1,17 @@
 <?php
+    /**
+     * Page de connexion
+     *
+     * @todo À remplir ou à enlever
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
 
-    // Chargement des fichiers de classes et de fonctions
+    /**
+     * Chargement des fichiers de classes
+     *
+     * @param string $classe La classe à charger
+     */
     function chargerClasse($classe) {
         require_once 'classes/' . $classe . '.php';
     }
