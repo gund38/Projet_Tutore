@@ -30,7 +30,11 @@
         public function getList() {
             $offres = array();
 
-            $q = $this->_db->query('SELECT codeO, codePe, dateDepot, type, intitule, entreprise, ville, departement, remuneration, cheminPDF FROM Offre ORDER BY codeO');
+            $q = $this->_db->query('SELECT
+                codeO, codePe, dateDepot, type, intitule, entreprise, ville,
+                departement, remuneration, cheminPDF
+                FROM Offre
+                ORDER BY codeO');
 
             while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
                 $offres[] = new Offre($donnees);
@@ -46,7 +50,12 @@
          * @return Personne
          */
         public function getOffre($id) {
-            $q = $this->_db->prepare('SELECT codeO, codePe, dateDepot, type, intitule, entreprise, ville, departement, remuneration, cheminPDF FROM Personne WHERE codeO = :id');
+            $q = $this->_db->prepare('SELECT
+                codeO, codePe, dateDepot, type, intitule, entreprise, ville,
+                departement, remuneration, cheminPDF
+                FROM Personne
+                WHERE codeO = :id');
+
             $q->execute(array(
                 'id' => $id
             ));

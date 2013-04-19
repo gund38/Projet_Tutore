@@ -1,11 +1,11 @@
 <?php
 
     /**
-     * Manager de Personne
+     * Manager de Profil
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */
-    class PersonneManager {
+    class ProfilManager {
 
         /**
          *
@@ -23,35 +23,37 @@
         }
 
         /**
-         * Retourne la liste de toutes les personnes dans la BD
+         * Retourne la liste de tous les profils
          *
-         * @return array of Personne
+         * @return array of Profil
          */
         public function getList() {
-            $persos = array();
+            $profils = array();
 
             $q = $this->_db->query('SELECT
-                codePe, type, nom, prenom, email, login, mdp
-                FROM Personne
-                ORDER BY nom');
+                codePe, promo, visibiliteEmail, dateNaissance,
+                visibiliteDateNaissance, cheminPhoto, visibilitePhoto, pagePerso
+                FROM Profil
+                ORDER BY codePe');
 
             while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
-                $persos[] = new Personne($donnees);
+                $profils[] = new Profil($donnees);
             }
 
-            return $persos;
+            return $profils;
         }
 
         /**
-         * Retourne la personne désignée par son id
+         * Retourne le profil désigné par son id
          *
-         * @param int $id Id de la personne à récupérer
-         * @return Personne
+         * @param int $id Id du profil à récupérer
+         * @return Profil
          */
-        public function getPersonne($id) {
+        public function getProfil($id) {
             $q = $this->_db->prepare('SELECT
-                codePe, type, nom, prenom, email, login, mdp
-                FROM Personne
+                codePe, promo, visibiliteEmail, dateNaissance,
+                visibiliteDateNaissance, cheminPhoto, visibilitePhoto, pagePerso
+                FROM Profil
                 WHERE codePe = :id');
 
             $q->execute(array(
@@ -59,10 +61,10 @@
             ));
 
             while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
-                $personne = new Personne($donnees);
+                $profil = new Profil($donnees);
             }
 
-            return $personne;
+            return $profil;
         }
 
         /**

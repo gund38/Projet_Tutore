@@ -21,8 +21,6 @@
          * @param array $donnees Données de la personne
          */
         public function __construct(array $donnees) {
-            //require_once '../fonctions/fonctions.php';
-
             $this->hydrate($donnees);
         }
 
@@ -53,13 +51,15 @@
          */
         public function afficher() {
             echo $this->_codePe . " "
-                    . $this->_type . " "
-                    . $this->_nom . " "
-                    . $this->_prenom . " "
-                    . $this->_email . " "
-                    . $this->_login . " "
-                    . $this->_mdp . "<br />";
+            . $this->_type . " "
+            . $this->_nom . " "
+            . $this->_prenom . " "
+            . $this->_email . " "
+            . $this->_login . " "
+            . $this->_mdp . "<br />";
         }
+
+        //---------------Getters---------------//
 
         /**
          * Getter de $_codePe
@@ -78,6 +78,35 @@
         public function getType() {
             return $this->_type;
         }
+
+        /**
+         * Getter de $_nom
+         *
+         * @return string
+         */
+        public function getNom() {
+            return $this->_nom;
+        }
+
+        /**
+         * Getter de $_prenom
+         *
+         * @return string
+         */
+        public function getPrenom() {
+            return $this->_prenom;
+        }
+
+        /**
+         * Getter de $_email
+         *
+         * @return string
+         */
+        public function getEmail() {
+            return $this->_email;
+        }
+
+        //---------------Setters---------------//
 
         /**
          * Setter de $_codePe

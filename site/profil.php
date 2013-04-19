@@ -49,7 +49,6 @@
             //-->
         </script>
     </head>
-
     <body>
         <div id="global">
             <div id="entete">
@@ -60,11 +59,16 @@
                 afficherMenu();
             ?>
             <div id="contenu">
+                <?php
+                    $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
+
+                    $profil = $profilManager->getProfil($_SESSION['personneCo']->getCodePe());
+                ?>
                 <div id="profil_photo">
                     <IMG SRC="images/photo_profil.png" ALT="Photo du Profil" TITLE="Photo du Profil" width="200px">
                 </div>
                 <div id="profil_description">
-                    <h4>Ramoloss</h4>
+                    <h4>Ramoloss -> <?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
                     <p>
                         Très lent et endormi, il lui faut 5 secondes pour ressentir la douleur d'une attaque.
                         Lent et stupide, il aime se la couler douce en observant l'activité autour de lui.
@@ -76,14 +80,13 @@
                 </div>
                 <div id="profil_bouton">
                     <table>
-                        <tr><td> <a href="#">Sauvegarder</a> </td><td>
-                        <tr><td> <a href="#">Voir mon profil public</a> </td><td>
-                        <tr><td> <a href="#">Réinitialiser mon profil</a> </td><td>
+                        <tr><td> <a href="#">Sauvegarder</a> </td></tr>
+                        <tr><td> <a href="#">Voir mon profil public</a> </td></tr>
+                        <tr><td> <a href="#">Réinitialiser mon profil</a> </td></tr>
                     </table>
                 </div>
                 <div id="profil_general">
                     <div class="systeme_onglets">
-
                         <span class="onglet_0 onglet" id="onglet_info" onclick="javascript:change_onglet('info');">Informations personnelles</span>
                         <span class="onglet_0 onglet" id="onglet_diplome" onclick="javascript:change_onglet('diplome');">Parcours scolaires</span>
                         <span class="onglet_0 onglet" id="onglet_prof" onclick="javascript:change_onglet('prof');">Vie active</span>
