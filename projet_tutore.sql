@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Sam 13 Avril 2013 à 19:29
+-- Généré le : Ven 19 Avril 2013 à 16:36
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.3.10-1ubuntu3.6
 
@@ -19,9 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `projet_tutore`
 --
-DROP DATABASE `projet_tutore`;
-CREATE DATABASE `projet_tutore` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `projet_tutore`;
 
 -- --------------------------------------------------------
 
@@ -33,11 +30,11 @@ DROP TABLE IF EXISTS `Diplome`;
 CREATE TABLE IF NOT EXISTS `Diplome` (
   `codeDi` int(8) NOT NULL AUTO_INCREMENT,
   `codePe` int(8) NOT NULL,
-  `visibilite` tinyint(1) NOT NULL,
-  `annee` int(4) NOT NULL,
+  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
+  `annee` int(4) DEFAULT NULL,
   `type` enum('Licence','Master') NOT NULL,
-  `discipline` varchar(30) NOT NULL,
-  `etablissement` varchar(30) NOT NULL,
+  `discipline` varchar(30) DEFAULT NULL,
+  `etablissement` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`codeDi`),
   KEY `codePe` (`codePe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -52,16 +49,16 @@ DROP TABLE IF EXISTS `ExpPro`;
 CREATE TABLE IF NOT EXISTS `ExpPro` (
   `codeEP` int(8) NOT NULL AUTO_INCREMENT,
   `codePe` int(8) NOT NULL,
-  `visibilite` tinyint(1) NOT NULL,
-  `dateDebut` date NOT NULL,
+  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
+  `dateDebut` date DEFAULT NULL,
   `dateFin` date DEFAULT NULL,
-  `enCours` tinyint(1) NOT NULL,
-  `intitule` varchar(30) NOT NULL,
-  `entreprise` varchar(30) NOT NULL,
-  `ville` varchar(30) NOT NULL,
+  `enCours` tinyint(1) NOT NULL DEFAULT '0',
+  `intitule` varchar(30) DEFAULT NULL,
+  `entreprise` varchar(30) DEFAULT NULL,
+  `ville` varchar(30) DEFAULT NULL,
   `departement` int(3) NOT NULL,
-  `salaire` enum('< 5000','>2000000000') NOT NULL,
-  `visibiliteSalaire` tinyint(1) NOT NULL,
+  `salaire` enum('< 5000','>2000000000') DEFAULT NULL,
+  `visibiliteSalaire` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codeEP`),
   KEY `departement` (`departement`),
   KEY `codePe` (`codePe`)
@@ -209,15 +206,15 @@ CREATE TABLE IF NOT EXISTS `Offre` (
   PRIMARY KEY (`codeO`),
   KEY `codePe` (`codePe`),
   KEY `departement` (`departement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `Offre`
 --
 
 INSERT INTO `Offre` (`codeO`, `codePe`, `dateDepot`, `type`, `intitule`, `entreprise`, `ville`, `departement`, `remuneration`, `cheminPDF`) VALUES
-(1, 4, '2013-04-11 10:54:25', 'Emploi', 'Développeur Web', 'Google', 'Paris', 75, 2500, 'pdf/516696242cac0.pdf'),
-(2, 3, '2013-04-11 10:55:22', 'Stage', 'Développeur Java', 'Java&co', 'Pau', 64, 1543, 'pdf/516696242cac0.pdf');
+(7, 4, '2013-04-14 15:26:55', 'Stage', 'Développeur Java / C++', 'éâêîôûùèà', 'éâêîôûùèà', 9, 120000, '516acabf55bf8.pdf'),
+(8, 4, '2013-04-14 15:27:50', 'Emploi', 'ÉTUDIANT INGÉNIEUR', 'Google&co', 'L&#39;Île-de-France', 1, 144000, '516acaf653c6a.pdf');
 
 -- --------------------------------------------------------
 
@@ -258,14 +255,21 @@ DROP TABLE IF EXISTS `Profil`;
 CREATE TABLE IF NOT EXISTS `Profil` (
   `codePe` int(8) NOT NULL,
   `promo` int(4) NOT NULL,
-  `visibiliteEmail` tinyint(1) NOT NULL,
-  `dateNaissance` date NOT NULL,
-  `visibiliteDateNaissance` tinyint(1) NOT NULL,
+  `visibiliteEmail` tinyint(1) NOT NULL DEFAULT '0',
+  `dateNaissance` date DEFAULT NULL,
+  `visibiliteDateNaissance` tinyint(1) NOT NULL DEFAULT '0',
   `cheminPhoto` varchar(30) DEFAULT NULL,
-  `visibilitePhoto` tinyint(1) NOT NULL,
+  `visibilitePhoto` tinyint(1) NOT NULL DEFAULT '0',
   `pagePerso` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`codePe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Profil`
+--
+
+INSERT INTO `Profil` (`codePe`, `promo`, `visibiliteEmail`, `dateNaissance`, `visibiliteDateNaissance`, `cheminPhoto`, `visibilitePhoto`, `pagePerso`) VALUES
+(4, 2014, 0, NULL, 0, NULL, 0, NULL);
 
 --
 -- Contraintes pour les tables exportées
