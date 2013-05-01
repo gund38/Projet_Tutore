@@ -4,6 +4,7 @@
 html {
 	font-size: 100%; /* Voir -> Note 1 à la fin de la feuille de styles. */
 }
+
 body {
 	margin: 0;
 	padding: 10px 20px; /* Note -> 2 */
@@ -18,26 +19,39 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	margin: 1em 0 .5em 0; /* -> 6 */
 }
+
 h1, h2 {
 	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
 	font-weight: normal; /* -> 7 */
 }
+
 h1 {
 	font-size: 3em; /* -> 8 */
 	font-style: italic;
 }
-h2 {font-size: 1.8em;}
-h3 {font-size: 1.2em;}
-h4 {font-size: 1em;}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1em;
+}
 
 /* Listes */
 ul, ol {
 	margin: .75em 0 .75em 24px;
 	padding: 0; /* -> 9 */
 }
+
 ul {
 	list-style: square;
 }
+
 li {
 	margin: 0;
 	padding: 0;
@@ -47,6 +61,7 @@ li {
 p {
 	margin: .75em 0;
 }
+
 li p, blockquote p {
 	margin: .5em 0;
 }
@@ -57,9 +72,11 @@ blockquote, q {
 	font-style: italic;
 	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
 }
+
 blockquote {
 	margin: .75em 0 .75em 24px;
 }
+
 cite {
 	font-style: italic;
 }
@@ -69,9 +86,11 @@ a {
 	color: mediumblue;
 	text-decoration: underline;
 }
+
 a:hover, a:focus {
 	color: crimson;
 }
+
 a img {
 	border: none; /* -> 10 */
 }
@@ -80,6 +99,7 @@ a img {
 em {
 	font-style: italic;
 }
+
 strong {
 	font-weight: bold;
 	color: dimgray;
@@ -92,6 +112,7 @@ pre, code {
 	font-size: 100%;
 	font-family: "Bitstream Vera Mono", "Lucida Console", "Courier New", monospace;
 }
+
 pre {
 	width: 90%;
 	overflow: auto;
@@ -101,20 +122,24 @@ pre {
 	background: #eee;
 	color: #555;
 }
+
 pre strong {
 	font-weight: normal;
 	color: black;
 }
+
 #copyright {
 	margin: 20px 0 5px 0;
 	text-align: right;
 	font-size: .8em;
 	color: #848F63;
 }
+
 #copyright a {
 	color: #848F63;
 	text-decoration: none;
 }
+
 #copyright a:hover, #copyright a:focus {
 	text-decoration: underline;
 }

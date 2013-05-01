@@ -1,26 +1,26 @@
 /************** Design du formulaire de contact *************/
 label {
-    display:block;
-    width:150px;
-    float:left;
-    text-align:left;
-    padding-right:5px;
-    margin-bottom:2px;
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: left;
+    padding-right: 5px;
+    margin-bottom: 2px;
 }
-fieldset
-{
+
+fieldset {
     border: solid 1px #222;
 }
-fieldset legend
-{
+
+fieldset legend {
     padding: 0 10px;
     border-left: #222 1px solid;
     border-right: #222 1px solid;
     font-size: 1.2em;
     color: #222;
 }
-#formulaire_contact textarea
-{
-    width:180px;
-    height:150px;
+
+#formulaire_contact textarea {
+    width: 180px;
+    height: 150px;
 }

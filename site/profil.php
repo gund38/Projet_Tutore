@@ -65,14 +65,14 @@
                     $profil = $profilManager->getProfil($_SESSION['personneCo']->getCodePe());
                 ?>
                 <div id="profil_photo">
-                    <IMG SRC="images/photo_profil.png" ALT="Photo du Profil" TITLE="Photo du Profil" width="200px">
+                    <img src="images/photo_profil.png" alt="Photo du Profil" title="Photo du Profil" width="200px">
                 </div>
                 <div id="profil_description">
                     <h4>Ramoloss -> <?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
                     <p>
                         Très lent et endormi, il lui faut 5 secondes pour ressentir la douleur d'une attaque.
                         Lent et stupide, il aime se la couler douce en observant l'activité autour de lui.
-                        Un Pokémon crétin constamment dans la lune qui aime pêcher avec sa queue. Endormi ou éveillé, il 						n'y a aucune différence.
+                        Un Pokémon crétin constamment dans la lune qui aime pêcher avec sa queue. Endormi ou éveillé, il n'y a aucune différence.
                         Il est tellement paresseux, qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
                         Une sève sucrée coule du bout de sa queue. Peu nutritive, elle reste agréable a mâchouiller.
                         Il est tellement paresseux qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
@@ -102,14 +102,21 @@
 
                     <div class="contenu_onglet" id="contenu_onglet_prof">
                         <p>BRA BRA BRA.</p>
-                        <HR width=1 size=500 style="background-color:black;">
+                        <div class="boutons_visibilite">
+                            <p>BRA BRA BRA left.</p>
+                        </div>
+                        <div class="infos_onglet">
+                            <p>BRA BRA BRA right.</p>
+                            <p>BRA BRA BRA right.</p>
+                        </div>
+<!--                        <hr width=1 size=500 style="background-color:black;" align="left" />-->
                     </div>
                 </div>
             </div>
         </div>
         <script type="text/javascript">
             //<!--
-            var anc_onglet = 'info';
+            var anc_onglet = 'prof';
             change_onglet(anc_onglet);
             //-->
         </script>

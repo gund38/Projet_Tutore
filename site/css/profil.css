@@ -19,30 +19,30 @@
 {
     text-decoration:underline;
 }
-#profil_bouton
-{
+#profil_bouton {
     display: inline-block;
     width: 10%;
-    margin-top:10px;
+    margin-top: 10px;
     /*border : 1px solid blue;*/
 }
-#profil_bouton a
-{
-    display:block;
+
+#profil_bouton a {
+    display: block;
     vertical-align: top;
-    width:150px;
-    line-height:50px;
-    text-align:center;
-    vertical-align:middle;
-    background:url(../images/boutonnoir.png) no-repeat;
-    color:white;
-    text-decoration:none;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background: url(../images/boutonnoir.png) no-repeat;
+    color: white;
+    text-decoration: none;
 }
+
 #profil_bouton a:hover {
-    background:url(../images/boutonnoir2.png) no-repeat;
+    background: url(../images/boutonnoir2.png) no-repeat;
 }
-#profil_general
-{
+
+#profil_general {
     margin-top: 10px;
-    padding-top:10px;
+    padding-top: 10px;
 }
