@@ -79,7 +79,7 @@
                                 <select name="departement" id="departement">
                                     <?php
                                         // Récupération de la liste des départements
-                                        $listeDep = listeDepartement();
+                                        $listeDep = listeDepartements();
 
                                         foreach ($listeDep as $value) {
                                             echo "<option value=\"" . $value['codeDe']
@@ -107,10 +107,10 @@
                             <td>
                                 <select name="type" id="type">
                                     <?php
-                                        // Récupération de la liste des types d'offres
-                                        $listeType = listeType();
+                                        // Récupération de la liste des types d'offre
+                                        $listeTypes = listeTypesOffre();
 
-                                        foreach ($listeType as $value) {
+                                        foreach ($listeTypes as $value) {
                                             echo "<option value=\"" . $value
                                             . "\">" . $value
                                             . "</option>\n";

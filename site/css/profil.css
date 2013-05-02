@@ -1,13 +1,12 @@
 /***************************** Positionement page du profil ***********************************/
-#profil_photo
-{
+#profil_photo {
     display: inline-block;
     width: 200px;
     border: 5px solid;
     vertical-align: top;
 }
-#profil_description
-{
+
+#profil_description {
     display: inline-block;
     /*border-right: 5px solid;*/
     vertical-align: top;
@@ -15,10 +14,11 @@
     margin-top: 10px; /*pour aligner avec #contenu > :first-child */
     padding: 1px 20px;
 }
-#profil_description h4
-{
-    text-decoration:underline;
+
+#profil_description h4 {
+    text-decoration: underline;
 }
+
 #profil_bouton {
     display: inline-block;
     width: 10%;
@@ -27,7 +27,7 @@
 }
 
 #profil_bouton a {
-    display: block;
+    display: inline-block;
     vertical-align: top;
     width: 150px;
     line-height: 50px;

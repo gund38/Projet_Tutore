@@ -154,7 +154,7 @@ body {
 
 #profil_description {
 	display: inline-block;
-	border-right: 5px solid;
+/*	border-right: 5px solid;*/
 	vertical-align: top;
 	width: 50%;
 	margin-top: 10px; /*pour aligner avec #contenu > :first-child */
@@ -164,7 +164,9 @@ body {
 #profil_bouton {
 	display: inline-block;
 	width: 15%;
-	margin-top:10px;
+	margin-top: 10px;
+        margin-right: 20px;
+        float: right;
 }
 
 #profil_bouton a {
@@ -184,7 +186,23 @@ body {
 
 #profil_general {
 	margin-top: 10px;
-	border : 1px solid blue;
+/*	border : 1px solid blue;*/
+}
+
+#profil_general td {
+    padding: 10px;
+}
+
+.colonne_visi {
+    border-right: 1px solid #000;
+}
+
+.colonne_visi .iPhoneCheckContainer {
+    width: 80px;
+}
+
+.colonne_visi .iPhoneCheckContainer .iPhoneCheckHandle {
+    width: 25px;
 }
 
 /* --- NOTES ---

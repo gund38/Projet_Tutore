@@ -11,7 +11,7 @@
      *
      * @return array
      */
-    function listeDepartement() {
+    function listeDepartements() {
         // Récupératon de la connexion à la BD
         $bdd = ConnexionBD::getInstance()->getBDD();
 
@@ -33,11 +33,61 @@
     }
 
     /**
-     * Retourne la liste des types d'offres depuis la BD
+     * Retourne la liste des types de diplôme depuis la BD
      *
      * @return array
      */
-    function listeType() {
+    function listeTypesDiplome() {
+        // Récupératon de la connexion à la BD
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $req = $bdd->query("SHOW COLUMNS
+            FROM Diplome
+            LIKE 'type'");
+
+        $donnees = $req->fetch(PDO::FETCH_ASSOC);
+
+        /*
+         * La chaîne reçue est de la forme "enum('Licence','Master',...)"
+         * On enlève donc les 6 premiers et les 2 derniers caractères
+         * avant de découper la chaîne selon le caratère ','
+         */
+        $liste = explode("','", substr($donnees['Type'], 6, -2));
+
+        return $liste;
+    }
+
+    /**
+     * Retourne la liste des tranches de salaire depuis la BD
+     *
+     * @return array
+     */
+    function listeTranchesSalaire() {
+        // Récupératon de la connexion à la BD
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $req = $bdd->query("SHOW COLUMNS
+            FROM ExpPro
+            LIKE 'salaire'");
+
+        $donnees = $req->fetch(PDO::FETCH_ASSOC);
+
+        /*
+         * La chaîne reçue est de la forme "enum('< 25000 €','Entre 25000 € et 30000 €',...)"
+         * On enlève donc les 6 premiers et les 2 derniers caractères
+         * avant de découper la chaîne selon le caratère ','
+         */
+        $liste = explode("','", substr($donnees['Type'], 6, -2));
+
+        return $liste;
+    }
+
+    /**
+     * Retourne la liste des types d'offre depuis la BD
+     *
+     * @return array
+     */
+    function listeTypesOffre() {
         // Récupératon de la connexion à la BD
         $bdd = ConnexionBD::getInstance()->getBDD();
 
@@ -48,7 +98,7 @@
         $donnees = $req->fetch(PDO::FETCH_ASSOC);
 
         /*
-         * La chaîne reçue est de la forme "enum('Emploi','Type')"
+         * La chaîne reçue est de la forme "enum('Emploi','Stage')"
          * On enlève donc les 6 premiers et les 2 derniers caractères
          * avant de découper la chaîne selon le caratère ','
          */
