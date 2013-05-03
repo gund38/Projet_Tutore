@@ -61,7 +61,7 @@
                     <table>
                         <tr>
                             <td>
-                                <label for="login">Login : </label>
+                                <label for="login">Login&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="login" id="login" />
@@ -69,7 +69,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="mdp">Mot de passe : </label>
+                                <label for="mdp">Mot de passe&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="password" name="mdp" id="mdp" />

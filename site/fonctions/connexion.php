@@ -31,6 +31,9 @@
     $_SESSION['erreurs_connexion'] = "";
 
     // Vérification que les variables ne soient pas vides
+    /**
+     * @TODO modifier ce test en test générique
+     */
     if (empty($_POST['login'])) {
         $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Login.<br />\n";
         $nbErreurs++;

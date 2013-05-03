@@ -16,6 +16,9 @@
         private $_visibilitePhoto;
         private $_pagePerso;
 
+        private $_diplomes;
+        private $_expPros;
+
         /**
          * Constructeur
          *
@@ -23,6 +26,10 @@
          */
         public function __construct(array $donnees) {
             $this->hydrate($donnees);
+
+            // Initialisation des tableaux
+            $this->_diplomes = array();
+            $this->_expPros = array();
         }
 
         /**
@@ -45,6 +52,19 @@
                     echo 'Erreur avec ' . $method . "<br />";
                 }
             }
+        }
+
+        /**
+         * Permet d'obtenir, pour ce profil, la liste
+         * des diplômes et des expériences professionnelles
+         */
+        public function obtenirProfilComplet() {
+            $bdd = ConnexionBD::getInstance()->getBDD();
+            $diplomeManager = new DiplomeManager($bdd);
+            $expProManager = new ExpProManager($bdd);
+
+            $this->_diplomes = $diplomeManager->getDiplomes($this->_codePe);
+            $this->_expPros = $expProManager->getExpPros($this->_codePe);
         }
 
         //---------------Getters---------------//
@@ -119,6 +139,24 @@
          */
         public function getPagePerso() {
             return $this->_pagePerso;
+        }
+
+        /**
+         * Getter de $_diplomes
+         *
+         * @return array of Diplome
+         */
+        public function getDiplomes() {
+            return $this->_diplomes;
+        }
+
+        /**
+         * Getter de $_expPros
+         *
+         * @return array of ExpPro
+         */
+        public function getExpPros() {
+            return $this->_expPros;
         }
 
         //---------------Setters---------------//

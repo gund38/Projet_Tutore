@@ -1,7 +1,7 @@
 <?php
     /**
-     * Ce fichier contient toues les fonctions
-     * utilisées par le site
+     * Ce fichier contient une grande partie de
+     * toutes les fonctions utilisées par le site
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */

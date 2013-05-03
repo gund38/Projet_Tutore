@@ -51,7 +51,7 @@
                     <table>
                         <tr>
                             <td>
-                                <label for="intitule">Intitulé : </label>
+                                <label for="intitule">Intitulé&nbsp;:</label>
                             </td>
                             <td colspan="3">
                                 <input type="text" name="intitule" id="intitule" size="50%" />
@@ -59,13 +59,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="entreprise">Entreprise / Organisation : </label>
+                                <label for="entreprise">Entreprise / Organisation&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="entreprise" id="entreprise" />
                             </td>
                             <td>
-                                <label for="ville">Ville : </label>
+                                <label for="ville">Ville&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="ville" id="ville" />
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="departement">Département : </label>
+                                <label for="departement">Département&nbsp;:</label>
                             </td>
                             <td>
                                 <select name="departement" id="departement">
@@ -90,7 +90,7 @@
                                 </select>
                             </td>
                             <td>
-                                <label for="remuneration">Rémunération : </label>
+                                <label for="remuneration">Rémunération&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="remuneration" id="remuneration" />
@@ -102,7 +102,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="type">Type : </label>
+                                <label for="type">Type&nbsp;:</label>
                             </td>
                             <td>
                                 <select name="type" id="type">
@@ -122,7 +122,7 @@
                         <tr>
                             <td colspan="4">
                                 <br />
-                                <label for="fichier">Sélectionner le fichier pdf à uploader (max : 2Mo) : </label>
+                                <label for="fichier">Sélectionner le fichier pdf à uploader (max&nbsp;:&nbsp;2Mo)&nbsp;:</label>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
                                 <input type="file" name="fichier" id="fichier" />
                             </td>

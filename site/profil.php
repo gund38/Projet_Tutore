@@ -182,14 +182,14 @@
                             <fieldset>
                                 <table>
                                     <tr>
-                                        <th>Visibilité publique</th>
+                                        <th class="colonne_visi">Visibilité publique</th>
                                     </tr>
                                     <tr>
                                         <td class="colonne_visi">
                                             <input type="checkbox" name="visi_photo" id="visi_photo" />
                                         </td>
                                         <td>
-                                            <label for="photo">Photo de profil : </label>
+                                            <label for="photo">Photo de profil&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
@@ -201,7 +201,7 @@
                                             <input type="checkbox" name="visi_date_naiss" id="visi_date_naiss" />
                                         </td>
                                         <td>
-                                            <label for="date_naiss">Date de naissance : </label>
+                                            <label for="date_naiss">Date de naissance&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="text" name="date_naiss" id="date_naiss" size="10%" style="min-width: 120px" />
@@ -212,7 +212,7 @@
                                             <input type="checkbox" name="visi_email" id="visi_email" />
                                         </td>
                                         <td>
-                                            <label for="email">Email : </label>
+                                            <label for="email">Email&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="email" name="email" id="email" size="30%" />
@@ -223,7 +223,7 @@
                                             <input type="checkbox" name="visi_page" id="visi_page" />
                                         </td>
                                         <td>
-                                            <label for="page">Page perso : </label>
+                                            <label for="page">Page perso&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="email" name="page" id="page" size="30%" />
@@ -235,11 +235,11 @@
 
                         <div class="contenu_onglet" id="contenu_onglet_diplomes">
                             <fieldset>
-                                <legend>Master</legend>
+                                <!--<legend>Master</legend>-->
 
                                 <table>
                                     <tr>
-                                        <th>Visibilité publique</th>
+                                        <th class="colonne_visi">Visibilité publique</th>
                                     </tr>
                                     <tr>
                                         <td class="colonne_visi" rowspan="4">
@@ -248,7 +248,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="annee_dip1">Année d'obtention : </label>
+                                            <label for="annee_dip1">Année d'obtention&nbsp;:</label>
                                         </td>
                                         <td colspan="3">
                                             <input type="text" name="annee_dip1" id="annee_dip1" maxlength="4" size="5%" style="min-width: 60px" />
@@ -256,7 +256,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="type_dip1">Diplôme obtenu : </label>
+                                            <label for="type_dip1">Diplôme obtenu&nbsp;:</label>
                                         </td>
                                         <td>
                                             <select name="type_dip1" id="type_dip1">
@@ -273,7 +273,7 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <label for="disc_dip1">Discipline : </label>
+                                            <label for="disc_dip1">Discipline&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="text" name="disc_dip1" id="disc_dip1" />
@@ -281,7 +281,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="etabli_dip1">Établissement : </label>
+                                            <label for="etabli_dip1">Établissement&nbsp;:</label>
                                         </td>
                                         <td colspan="3">
                                             <input type="text" name="etabli_dip1" id="etabli_dip1" size="30%" />
@@ -293,11 +293,11 @@
 
                         <div class="contenu_onglet" id="contenu_onglet_exppros">
                             <fieldset>
-<!--                                <legend></legend>-->
+                                <!--<legend></legend>-->
 
                                 <table>
                                     <tr>
-                                        <th>Visibilité publique</th>
+                                        <th class="colonne_visi">Visibilité publique</th>
                                     </tr>
                                     <tr>
                                         <td class="colonne_visi" rowspan="6">
@@ -306,7 +306,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="annee_deb_exp1">Date de début : </label>
+                                            <label for="annee_deb_exp1">Date de début&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="text" name="annee_deb_exp1" id="annee_deb_exp1" class="date_deb_fin" size="10%" style="min-width: 140px" />
@@ -314,7 +314,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="annee_fin_exp1">Date de fin : </label>
+                                            <label for="annee_fin_exp1">Date de fin&nbsp;:</label>
                                         </td>
                                         <td colspan="3">
                                             <input type="text" name="annee_fin_exp1" id="annee_fin_exp1" class="date_deb_fin" size="10%" style="min-width: 140px" />
@@ -324,7 +324,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="inti_exp1">Intitulé : </label>
+                                            <label for="inti_exp1">Intitulé&nbsp;:</label>
                                         </td>
                                         <td colspan="3">
                                             <input type="text" name="inti_exp1" id="inti_exp1" size="50%" />
@@ -332,7 +332,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="entre_exp1">Entreprise : </label>
+                                            <label for="entre_exp1">Entreprise&nbsp;:</label>
                                         </td>
                                         <td colspan="3">
                                             <input type="text" name="entre_exp1" id="entre_exp1" size="50%" />
@@ -340,13 +340,13 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label for="ville_exp1">Ville : </label>
+                                            <label for="ville_exp1">Ville&nbsp;:</label>
                                         </td>
                                         <td>
-                                            <input type="text" name="ville_exp1" id="ville_exp1" />
+                                            <input type="text" name="ville_exp1" id="ville_exp1" size="15%" />
                                         </td>
                                         <td>
-                                            <label for="dep_exp1">Département : </label>
+                                            <label for="dep_exp1">Département&nbsp;:</label>
                                         </td>
                                         <td>
                                             <select name="dep_exp1" id="dep_exp1">
@@ -368,7 +368,7 @@
                                             <input type="checkbox" name="visi_salaire_exp1" id="visi_salaire_exp1" />
                                         </td>
                                         <td>
-                                            <label for="salaire_exp1">Salaire annuel : </label>
+                                            <label for="salaire_exp1">Salaire annuel&nbsp;:</label>
                                         </td>
                                         <td>
                                             <select name="salaire_exp1" id="salaire_exp1">
