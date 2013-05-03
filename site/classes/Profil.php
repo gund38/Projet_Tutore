@@ -50,6 +50,24 @@
         //---------------Getters---------------//
 
         /**
+         * Getter de $_codePe
+         *
+         * @return int
+         */
+        public function getCodePe() {
+            return $this->_codePe;
+        }
+
+        /**
+         * Getter de $_promo
+         *
+         * @return int
+         */
+        public function getPromo() {
+            return $this->_promo;
+        }
+
+        /**
          * Getter de $_visibiliteEmail
          *
          * @return boolean
