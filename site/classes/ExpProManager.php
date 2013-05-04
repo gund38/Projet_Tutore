@@ -36,7 +36,8 @@
                 codeEP, codePe, visibilite, dateDebut, dateFin, enCours, intitule,
                 entreprise, ville, departement, salaire, visibiliteSalaire
                 FROM ExpPro
-                WHERE codePe = :id');
+                WHERE codePe = :id
+                ORDER BY dateDebut DESC');
 
             $q->execute(array(
                 'id' => $id

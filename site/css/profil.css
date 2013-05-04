@@ -46,3 +46,7 @@
     margin-top: 10px;
     padding-top: 10px;
 }
+
+#profil_general fieldset {
+    margin-bottom: 20px;
+}

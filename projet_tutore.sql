@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Ven 19 Avril 2013 à 16:36
+-- Généré le : Sam 04 Mai 2013 à 15:58
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.3.10-1ubuntu3.6
 
@@ -25,6 +25,8 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `Diplome`
 --
+-- Création: Sam 04 Mai 2013 à 13:54
+--
 
 DROP TABLE IF EXISTS `Diplome`;
 CREATE TABLE IF NOT EXISTS `Diplome` (
@@ -32,17 +34,28 @@ CREATE TABLE IF NOT EXISTS `Diplome` (
   `codePe` int(8) NOT NULL,
   `visibilite` tinyint(1) NOT NULL DEFAULT '0',
   `annee` int(4) DEFAULT NULL,
-  `type` enum('Licence','Master') NOT NULL,
+  `type` enum('IUT','Licence','Master') NOT NULL,
   `discipline` varchar(30) DEFAULT NULL,
   `etablissement` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`codeDi`),
   KEY `codePe` (`codePe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `Diplome`
+--
+
+INSERT INTO `Diplome` (`codeDi`, `codePe`, `visibilite`, `annee`, `type`, `discipline`, `etablissement`) VALUES
+(2, 4, 0, 2012, 'Licence', 'Informatique', 'UFR Sciences, UPPA, Pau'),
+(3, 4, 1, 2014, 'Master', 'Technologie de l''Internet', 'UFR Sciences, UPPA, Pau'),
+(4, 4, 1, 2011, 'IUT', 'Informatique', 'IUT de Bayonne, UPPA, Anglet');
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `ExpPro`
+--
+-- Création: Dim 14 Avril 2013 à 16:20
 --
 
 DROP TABLE IF EXISTS `ExpPro`;
@@ -62,12 +75,22 @@ CREATE TABLE IF NOT EXISTS `ExpPro` (
   PRIMARY KEY (`codeEP`),
   KEY `departement` (`departement`),
   KEY `codePe` (`codePe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `ExpPro`
+--
+
+INSERT INTO `ExpPro` (`codeEP`, `codePe`, `visibilite`, `dateDebut`, `dateFin`, `enCours`, `intitule`, `entreprise`, `ville`, `departement`, `salaire`, `visibiliteSalaire`) VALUES
+(2, 4, 1, '2011-04-01', '2011-06-30', 0, 'Développeur Web Stagiaire', 'A.T.I.', 'Bayonne', 65, '< 5000', 0),
+(3, 4, 1, '2012-10-01', NULL, 1, 'Développeur Web', 'UPPA', 'Pau', 65, '>2000000000', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `ListeDepartement`
+--
+-- Création: Mer 10 Avril 2013 à 22:13
 --
 
 DROP TABLE IF EXISTS `ListeDepartement`;
@@ -190,6 +213,8 @@ INSERT INTO `ListeDepartement` (`codeDe`, `Nom`, `codePostal`) VALUES
 --
 -- Structure de la table `Offre`
 --
+-- Création: Mer 10 Avril 2013 à 22:13
+--
 
 DROP TABLE IF EXISTS `Offre`;
 CREATE TABLE IF NOT EXISTS `Offre` (
@@ -221,6 +246,8 @@ INSERT INTO `Offre` (`codeO`, `codePe`, `dateDepot`, `type`, `intitule`, `entrep
 --
 -- Structure de la table `Personne`
 --
+-- Création: Sam 13 Avril 2013 à 15:26
+--
 
 DROP TABLE IF EXISTS `Personne`;
 CREATE TABLE IF NOT EXISTS `Personne` (
@@ -250,6 +277,8 @@ INSERT INTO `Personne` (`codePe`, `type`, `nom`, `prenom`, `email`, `login`, `md
 --
 -- Structure de la table `Profil`
 --
+-- Création: Ven 03 Mai 2013 à 15:09
+--
 
 DROP TABLE IF EXISTS `Profil`;
 CREATE TABLE IF NOT EXISTS `Profil` (
@@ -261,6 +290,7 @@ CREATE TABLE IF NOT EXISTS `Profil` (
   `cheminPhoto` varchar(30) DEFAULT NULL,
   `visibilitePhoto` tinyint(1) NOT NULL DEFAULT '0',
   `pagePerso` varchar(30) DEFAULT NULL,
+  `visibilitePagePerso` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codePe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -268,8 +298,32 @@ CREATE TABLE IF NOT EXISTS `Profil` (
 -- Contenu de la table `Profil`
 --
 
-INSERT INTO `Profil` (`codePe`, `promo`, `visibiliteEmail`, `dateNaissance`, `visibiliteDateNaissance`, `cheminPhoto`, `visibilitePhoto`, `pagePerso`) VALUES
-(4, 2014, 0, NULL, 0, NULL, 0, NULL);
+INSERT INTO `Profil` (`codePe`, `promo`, `visibiliteEmail`, `dateNaissance`, `visibiliteDateNaissance`, `cheminPhoto`, `visibilitePhoto`, `pagePerso`, `visibilitePagePerso`) VALUES
+(4, 2014, 1, '1990-04-16', 0, NULL, 1, 'www.polo.marco', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `test`
+--
+-- Création: Sam 13 Avril 2013 à 19:59
+--
+
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE IF NOT EXISTS `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `texte` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+
+--
+-- Contenu de la table `test`
+--
+
+INSERT INTO `test` (`id`, `texte`) VALUES
+(29, 'L''âme, l''esprit et le corps sont à nous ! Will&co + # ;               filter = L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + #'),
+(30, 'L''Ã¢me, l''esprit et le corps sont Ã  nous ! Will&co + # ;               filter = L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + # ; L&#39;ÃƒÂ¢me, l&#39;esprit et le corps sont ÃƒÂ  nous ! Will&co + #'),
+(31, 'L''âme, l''esprit et le corps sont à nous ! Will&co + # ;               filter = L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + #');
 
 --
 -- Contraintes pour les tables exportées

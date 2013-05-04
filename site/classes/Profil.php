@@ -15,6 +15,7 @@
         private $_cheminPhoto;
         private $_visibilitePhoto;
         private $_pagePerso;
+        private $_visibilitePagePerso;
 
         private $_diplomes;
         private $_expPros;
@@ -159,6 +160,15 @@
             return $this->_expPros;
         }
 
+        /**
+         * Getter de $_visibilitePagePerso
+         *
+         * @return boolean
+         */
+        public function getVisibilitePagePerso() {
+            return $this->_visibilitePagePerso;
+        }
+
         //---------------Setters---------------//
 
         /**
@@ -231,6 +241,15 @@
          */
         public function setPagePerso($pagePerso) {
             $this->_pagePerso = $pagePerso;
+        }
+
+        /**
+         * Setter de $_visibilitePagePerso
+         *
+         * @param boolean $visibilitePagePerso
+         */
+        public function setVisibilitePagePerso($visibilitePagePerso) {
+            $this->_visibilitePagePerso = $visibilitePagePerso;
         }
 
     }

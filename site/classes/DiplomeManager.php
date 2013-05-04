@@ -34,7 +34,8 @@
             $q = $this->_db->prepare('SELECT
                 codeDi, codePe, visibilite, annee, type, discipline, etablissement
                 FROM Diplome
-                WHERE codePe = :id');
+                WHERE codePe = :id
+                ORDER BY annee DESC');
 
             $q->execute(array(
                 'id' => $id
