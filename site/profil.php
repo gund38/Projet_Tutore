@@ -1,6 +1,6 @@
 <?php
     /**
-     * Page d'affichage du profil d'un ancien étudiant
+     * Page de modification du profil d'un ancien étudiant
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */
@@ -167,7 +167,7 @@
                 <div id="profil_bouton">
                     <table>
                         <tr><td> <a href="#" onclick="document.formProfil.submit();">Sauvegarder</a> </td></tr>
-                        <tr><td> <a href="#">Voir mon profil public</a> </td></tr>
+                        <tr><td> <a href="profil_public-<?php echo $profil->getCodePe(); ?>.php">Voir mon profil public</a> </td></tr>
                         <tr><td> <a href="#">Réinitialiser mon profil</a> </td></tr>
                     </table>
                 </div>
