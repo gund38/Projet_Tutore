@@ -26,6 +26,7 @@
         header("Location: login.php");
     }
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
     <?php
@@ -61,34 +62,45 @@
 <html>
     <head>
         <meta charset="utf-8" />
+
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
         <link rel="stylesheet" href="css/contact.css" />
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
+
     <body>
         <div id="global">
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
             </div>
+
             <?php
                 // Appel dynamique du menu selon l'identité de la personne
                 afficherMenu();
             ?>
+
             <div id="contenu">
                 <form  action="fonctions/formulaireContact.php" method="post">
                     <fieldset>
                         <legend>Formulaire de contact</legend>
+
                         <br />
+
                         <label for="label_message">Votre message :</label>
+
                         <textarea name="message" rows="8" cols="45" id="label_message" placeholder="Taper votre texte.">
                             <?php
                                 if (isset($_POST['message']))
                                     echo htmlspecialchars($_POST['message']);
                             ?>
                         </textarea>
+
                         <br />
+
                         <label for ="label_email">Votre email :</label>
+
                         <input type="text" name="email" id="label_email"
                                value="
                                <?php
@@ -96,21 +108,25 @@
                                        echo htmlspecialchars($_POST['email']);
                                ?>"
                                placeholder="truc@truc.truc"/>
+
                         <br />
                         <br />
+
                         <input type="submit" value="Envoyer" />
-                        <span style="color:red;">
+
+                        <label class="erreur">
                             <?php
                                 if (isset($_SESSION['erreur']))
                                     echo $_SESSION['erreur'];
                             ?>
-                        </span>
-                        <span style="color:green">
+                        </label>
+
+                        <label class="sortie">
                             <?php
                                 if (isset($_SESSION['info']))
                                     echo $_SESSION['info'];
                             ?>
-                        </span>
+                        </label>
                     </fieldset>
                 </form>
             </div>

@@ -26,13 +26,16 @@
         header("Location: login.php");
     }
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta charset="utf-8" />
+
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
@@ -41,12 +44,15 @@
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
             </div>
+
             <?php
                 // Appel dynamique du menu selon l'identité de la personne
                 afficherMenu();
             ?>
+
             <div id="contenu">
                 <h2>Ajouter une offre</h2>
+
                 <form action="fonctions/ajouterOffre.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
@@ -134,8 +140,10 @@
                         </tr>
                     </table>
                 </form>
+
                 <br />
-                <label id="erreur">
+
+                <label class="erreur">
                     <?php
                         // Gestion des erreurs au niveau de l'ajout d'une offre
                         if (isset($_SESSION['erreurs_ajout'])) {
@@ -148,7 +156,8 @@
                         }
                     ?>
                 </label>
-                <label id="sortie">
+
+                <label class="sortie">
                     <?php
                         // Gestion de la réussite de l'ajout d'une offre
                         if (isset($_SESSION['sortie_ajout'])) {

@@ -26,11 +26,13 @@
         header("Location: login.php");
     }
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta charset="utf-8" />
+
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
         <link rel="stylesheet" href="css/profil.css" />
@@ -130,6 +132,7 @@
             //]]>
         </script>
     </head>
+
     <body>
         <div id="global">
             <div id="entete">
@@ -154,6 +157,7 @@
 
                 <div id="profil_description">
                     <h4>Ramoloss -> <?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
+
                     <p>
                         Très lent et endormi, il lui faut 5 secondes pour ressentir la douleur d'une attaque.
                         Lent et stupide, il aime se la couler douce en observant l'activité autour de lui.
@@ -166,9 +170,21 @@
 
                 <div id="profil_bouton">
                     <table>
-                        <tr><td> <a href="#" onclick="document.formProfil.submit();">Sauvegarder</a> </td></tr>
-                        <tr><td> <a href="profil_public-<?php echo $profil->getCodePe(); ?>.php">Voir mon profil public</a> </td></tr>
-                        <tr><td> <a href="#">Réinitialiser mon profil</a> </td></tr>
+                        <tr>
+                            <td>
+                                <a href="#" onclick="document.formProfil.submit();">Sauvegarder</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="profil_public-<?php echo $profil->getCodePe(); ?>.php">Voir mon profil public</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Réinitialiser mon profil</a>
+                            </td>
+                        </tr>
                     </table>
                 </div>
 
@@ -257,9 +273,9 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
+
         <script type="text/javascript">
             //<![CDATA[
             var anc_onglet = 'infos';

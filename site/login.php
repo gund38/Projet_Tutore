@@ -20,13 +20,16 @@
     // Démarrage de la session
     session_start();
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta charset="utf-8" />
+
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
@@ -35,13 +38,16 @@
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
             </div>
+
             <?php
                 // Appel dynamique du menu selon l'identité de la personne
                 afficherMenu();
             ?>
+
             <div id="contenu">
                 <p>Se connecter au site</p>
-                <label id="erreur">
+
+                <label class="erreur">
                     <?php
                         // Gestion des erreurs au niveau des droits d'accès aux pages
                         if (isset($_SESSION['erreur_droits'])) {
@@ -57,6 +63,7 @@
                         }
                     ?>
                 </label>
+
                 <form action="fonctions/connexion.php" method="post">
                     <table>
                         <tr>
@@ -82,8 +89,10 @@
                         </tr>
                     </table>
                 </form>
+
                 <br />
-                <label id="erreur">
+
+                <label class="erreur">
                     <?php
                         // Gestion des erreurs au niveau de la connexion
                         if (isset($_SESSION['erreurs_connexion'])) {
