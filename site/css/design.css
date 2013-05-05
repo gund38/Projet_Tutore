@@ -206,6 +206,10 @@ body {
     width: 25px;
 }
 
+#contenu #lien_profil {
+    color: mediumblue;
+}
+
 /* --- NOTES ---
 
 1.	Ce gabarit utilise du padding sur l'élément BODY pour créer un retrait

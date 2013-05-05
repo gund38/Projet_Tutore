@@ -231,18 +231,21 @@
             ),
             'Etudiant' => array(
                 'recherche_profil.php',
+                'profil_public.php',
                 'offres.php',
                 'contact.php'
             ),
             'Ancien_etudiant' => array(
                 'profil.php',
                 'recherche_profil.php',
+                'profil_public.php',
                 'offres.php',
                 'ajouter_offre.php',
                 'contact.php'
             ),
             'Enseignant' => array(
                 'recherche_profil.php',
+                'profil_public.php',
                 'offres.php',
                 'ajouter_offre.php',
                 'statistiques.php',
@@ -250,6 +253,7 @@
             ),
             'Administrateur' => array(
                 'recherche_profil.php',
+                'profil_public.php',
                 'offres.php',
                 'ajouter_offre.php',
                 'statistiques.php'
