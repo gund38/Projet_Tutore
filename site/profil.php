@@ -49,6 +49,9 @@
         <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" type="text/javascript"></script>
         <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript"></script>
 
+        <!-- Scripts pour le profil -->
+        <script src="js/profil.js" type="text/javascript" charset="utf-8"></script>
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
 
         <script type="text/javascript">
@@ -56,10 +59,10 @@
             // Fonction pour la configuration du calendrier
             $(function() {
                 // Mettre les calendriers en français
-                $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+                $.datepicker.setDefaults($.datepicker.regional[ "fr" ]);
 
                 // Configuration calendrier "Date de naissance"
-                $( "#date_naiss" ).datepicker({
+                $("#date_naiss").datepicker({
                     showOtherMonths: true,
                     selectOtherMonths: true,
                     changeMonth: true,
@@ -75,7 +78,7 @@
                 });
 
                 // Configuration calendrier "Date de début - fin"
-                $( ".date_deb_fin" ).datepicker({
+                $(".date_deb_fin").datepicker({
                     changeMonth: true,
                     changeYear: true,
                     showOn: "both",
@@ -102,19 +105,6 @@
                     });
                 });
             });
-            //]]>
-        </script>
-
-        <script type="text/javascript">
-            //<![CDATA[
-            // Fonction pour le système de changement d'onglet
-            function change_onglet(name) {
-                document.getElementById('onglet_'+anc_onglet).className = 'onglet_0 onglet';
-                document.getElementById('onglet_'+name).className = 'onglet_1 onglet';
-                document.getElementById('contenu_onglet_'+anc_onglet).style.display = 'none';
-                document.getElementById('contenu_onglet_'+name).style.display = 'block';
-                anc_onglet = name;
-            }
             //]]>
         </script>
 
@@ -172,7 +162,7 @@
                     <table>
                         <tr>
                             <td>
-                                <a href="#" onclick="document.formProfil.submit();">Sauvegarder</a>
+                                <a href="#" onclick="document.forms.formProfil.submit();">Sauvegarder</a>
                             </td>
                         </tr>
                         <tr>
@@ -182,14 +172,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href="#">Réinitialiser mon profil</a>
+                                <a href="#" onclick="resetFormulaire();">Réinitialiser mon profil</a>
                             </td>
                         </tr>
                     </table>
                 </div>
 
                 <div id="profil_general">
-                    <form action="fonctions/sauvegarderProfil.php" method="post" enctype="multipart/form-data" name="formProfil">
+                    <form action="fonctions/sauvegarderProfil.php" method="post" enctype="multipart/form-data" name="formProfil" id="formProfil">
                         <div class="systeme_onglets">
                             <span class="onglet_0 onglet" id="onglet_infos" onclick="javascript:change_onglet('infos');">Informations personnelles</span>
                             <span class="onglet_0 onglet" id="onglet_diplomes" onclick="javascript:change_onglet('diplomes');">Parcours scolaire</span>
@@ -276,7 +266,7 @@
             </div>
         </div>
 
-        <script type="text/javascript">
+        <script type="text/javascript" charset="utf-8">
             //<![CDATA[
             var anc_onglet = 'infos';
             change_onglet(anc_onglet);
