@@ -32,7 +32,7 @@
          * c'est-à-dire d'effectuer automatiquement
          * l'attribution des valeurs aus attributs
          *
-         * @param array $donnees Données de l'a personne'offre
+         * @param array $donnees Données de l'offre
          */
         public function hydrate(array $donnees) {
             foreach ($donnees as $key => $value) {
@@ -63,6 +63,98 @@
             . $this->_departement . " "
             . $this->_remuneration . " "
             . $this->_cheminPDF . "<br />";
+        }
+
+        //---------------Getters---------------//
+
+        /**
+         * Getter de $_codeO
+         *
+         * @return int
+         */
+        public function getCodeO($codeO) {
+            return $this->_codeO;
+        }
+
+        /**
+         * Getter de $_codePe
+         *
+         * @return int
+         */
+        public function getCodePe($codePe) {
+            return $this->_codePe;
+        }
+
+        /**
+         * Getter de $_dateDepot
+         *
+         * @return string
+         */
+        public function getDateDepot($dateDepot) {
+            return $this->_dateDepot;
+        }
+
+        /**
+         * Getter de $_type
+         *
+         * @return string
+         */
+        public function getType($type) {
+            return $this->_type;
+        }
+
+        /**
+         * Getter de $_intitule
+         *
+         * @return string
+         */
+        public function getIntitule($intitule) {
+            return $this->_intitule;
+        }
+
+        /**
+         * Getter de $_entreprise
+         *
+         * @return string
+         */
+        public function getEntreprise($entreprise) {
+            return $this->_entreprise;
+        }
+
+        /**
+         * Getter de $_ville
+         *
+         * @return string
+         */
+        public function getVille($ville) {
+            return $this->_ville;
+        }
+
+        /**
+         * Getter de $_departement
+         *
+         * @return string
+         */
+        public function getDepartement($departement) {
+            return $this->_departement;
+        }
+
+        /**
+         * Getter de $_remuneration
+         *
+         * @return string
+         */
+        public function getRemuneration($remuneration) {
+            return $this->_remuneration;
+        }
+
+        /**
+         * Getter de $_cheminPDF
+         *
+         * @return string
+         */
+        public function getCheminPDF($cheminPDF) {
+            return $this->_cheminPDF;
         }
 
         //---------------Setters---------------//
@@ -149,9 +241,9 @@
         }
 
         /**
-         * Setter de $_remuneration
+         * Setter de $_cheminPDF
          *
-         * @param string $remuneration
+         * @param string $cheminPDF
          */
         public function setCheminPDF($cheminPDF) {
             $this->_cheminPDF = $cheminPDF;

@@ -183,7 +183,7 @@
     );
 
     // Insertion
-    $ajout = $offreManager->addOffre($donnees);
+    $ajout = $offreManager->addOffre(new Offre($donnees));
 
     if ($ajout === false) {
         $_SESSION['erreurs_ajout'] .= "Fail de l'insertion dans la BD<br />\n";

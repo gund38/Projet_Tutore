@@ -73,8 +73,25 @@
          * @param array $donnees
          * @return boolean
          */
-        public function addOffre($donnees) {
+        public function addOffre($offre) {
             $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Offre
+            if (get_class($offre) !== "Offre") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donnees = array(
+                'codePe' => $offre->getCodePe(),
+                'type' => $offre->getType(),
+                'intitule' => $offre->getIntitule(),
+                'entreprise' => $offre->getEntreprise(),
+                'ville' => $offre->getVille(),
+                'departement' => $offre->getDepartement(),
+                'remuneration' => $offre->getRemuneration(),
+                'cheminPDF' => $offre->getCheminPDF()
+            );
 
             $req = $this->_db->prepare('INSERT INTO
                 Offre (codePe, type, intitule, entreprise, ville, departement, remuneration, cheminPDF)
