@@ -156,6 +156,10 @@
                         Une sève sucrée coule du bout de sa queue. Peu nutritive, elle reste agréable a mâchouiller.
                         Il est tellement paresseux qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
                     </p>
+
+                    <p>
+                        <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                    </p>
                 </div>
 
                 <div id="profil_bouton">
@@ -224,7 +228,7 @@
                                                    <?php echo $profil->getVisibiliteEmail() ? "checked" : ""; ?> />
                                         </td>
                                         <td>
-                                            <label for="email">Email&nbsp;:</label>
+                                            <label for="email">Email&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="email" name="email" id="email" size="30%"

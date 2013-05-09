@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="date_deb_exp<?php echo $i; ?>">Date de début&nbsp;:</label>
+                        <label for="date_deb_exp<?php echo $i; ?>">Date de début&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <input type="text"
@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="date_fin_exp<?php echo $i; ?>">Date de fin&nbsp;:</label>
+                        <label for="date_fin_exp<?php echo $i; ?>">Date de fin&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td colspan="3">
                         <input type="text"
@@ -61,7 +61,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="inti_exp<?php echo $i; ?>">Intitulé&nbsp;:</label>
+                        <label for="inti_exp<?php echo $i; ?>">Intitulé&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td colspan="3">
                         <input type="text"
@@ -73,7 +73,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="entre_exp<?php echo $i; ?>">Entreprise&nbsp;:</label>
+                        <label for="entre_exp<?php echo $i; ?>">Entreprise&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td colspan="3">
                         <input type="text"
@@ -85,7 +85,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="ville_exp<?php echo $i; ?>">Ville&nbsp;:</label>
+                        <label for="ville_exp<?php echo $i; ?>">Ville&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <input type="text"
@@ -95,7 +95,7 @@
                                value="<?php echo $expProEnCours->getVille(); ?>" />
                     </td>
                     <td>
-                        <label for="dep_exp<?php echo $i; ?>">Département&nbsp;:</label>
+                        <label for="dep_exp<?php echo $i; ?>">Département&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <select name="dep_exp<?php echo $i; ?>"
@@ -118,7 +118,7 @@
                                <?php echo $expProEnCours->getVisibiliteSalaire() ? "checked" : ""; ?> />
                     </td>
                     <td>
-                        <label for="salaire_exp<?php echo $i; ?>">Salaire annuel&nbsp;:</label>
+                        <label for="salaire_exp<?php echo $i; ?>">Salaire annuel&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <select name="salaire_exp<?php echo $i; ?>"

@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="annee_dip<?php echo $i; ?>">Année d'obtention&nbsp;:</label>
+                        <label for="annee_dip<?php echo $i; ?>">Année d'obtention&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td colspan="3">
                         <input type="text"
@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="type_dip<?php echo $i; ?>">Diplôme obtenu&nbsp;:</label>
+                        <label for="type_dip<?php echo $i; ?>">Diplôme obtenu&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <select name="type_dip<?php echo $i; ?>"
@@ -52,7 +52,7 @@
                         </select>
                     </td>
                     <td>
-                        <label for="disc_dip<?php echo $i; ?>">Discipline&nbsp;:</label>
+                        <label for="disc_dip<?php echo $i; ?>">Discipline&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td>
                         <input type="text"
@@ -63,7 +63,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="etabli_dip<?php echo $i; ?>">Établissement&nbsp;:</label>
+                        <label for="etabli_dip<?php echo $i; ?>">Établissement&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                     </td>
                     <td colspan="3">
                         <input type="text"

@@ -57,7 +57,7 @@
                     <table>
                         <tr>
                             <td>
-                                <label for="intitule">Intitulé&nbsp;:</label>
+                                <label for="intitule">Intitulé&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td colspan="3">
                                 <input type="text" name="intitule" id="intitule" size="50%" />
@@ -65,13 +65,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="entreprise">Entreprise / Organisation&nbsp;:</label>
+                                <label for="entreprise">Entreprise / Organisation&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="entreprise" id="entreprise" />
                             </td>
                             <td>
-                                <label for="ville">Ville&nbsp;:</label>
+                                <label for="ville">Ville&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="ville" id="ville" />
@@ -79,7 +79,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="departement">Département&nbsp;:</label>
+                                <label for="departement">Département&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td>
                                 <select name="departement" id="departement">
@@ -96,7 +96,7 @@
                                 </select>
                             </td>
                             <td>
-                                <label for="remuneration">Rémunération&nbsp;:</label>
+                                <label for="remuneration">Rémunération&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td>
                                 <input type="text" name="remuneration" id="remuneration" />
@@ -108,7 +108,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="type">Type&nbsp;:</label>
+                                <label for="type">Type&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                             </td>
                             <td>
                                 <select name="type" id="type">
@@ -128,7 +128,7 @@
                         <tr>
                             <td colspan="4">
                                 <br />
-                                <label for="fichier">Sélectionner le fichier pdf à uploader (max&nbsp;:&nbsp;2Mo)&nbsp;:</label>
+                                <label for="fichier">Sélectionner le fichier pdf à uploader (max&nbsp;:&nbsp;2Mo)&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
                                 <input type="file" name="fichier" id="fichier" />
                             </td>
@@ -143,7 +143,7 @@
 
                 <br />
 
-                <label class="erreur">
+                <p class="erreur">
                     <?php
                         // Gestion des erreurs au niveau de l'ajout d'une offre
                         if (isset($_SESSION['erreurs_ajout'])) {
@@ -155,9 +155,9 @@
                             echo "\n";
                         }
                     ?>
-                </label>
+                </p>
 
-                <label class="sortie">
+                <p class="sortie">
                     <?php
                         // Gestion de la réussite de l'ajout d'une offre
                         if (isset($_SESSION['sortie_ajout'])) {
@@ -168,7 +168,11 @@
                             echo "\n";
                         }
                     ?>
-                </label>
+                </p>
+
+                <p>
+                    <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                </p>
             </div>
         </div>
     </body>

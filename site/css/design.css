@@ -210,6 +210,10 @@ body {
     color: mediumblue;
 }
 
+.obligatoire {
+    color: red;
+}
+
 /* --- NOTES ---
 
 1.	Ce gabarit utilise du padding sur l'élément BODY pour créer un retrait

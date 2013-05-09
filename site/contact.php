@@ -88,7 +88,7 @@
 
                         <br />
 
-                        <label for="label_message">Votre message :</label>
+                        <label for="label_message">Votre message&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
 
                         <textarea name="message" rows="8" cols="45" id="label_message" placeholder="Taper votre texte.">
                             <?php
@@ -99,7 +99,7 @@
 
                         <br />
 
-                        <label for ="label_email">Votre email :</label>
+                        <label for ="label_email">Votre email&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
 
                         <input type="text" name="email" id="label_email"
                                value="
@@ -129,6 +129,10 @@
                         </label>
                     </fieldset>
                 </form>
+
+                <p>
+                    <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                </p>
             </div>
         </div>
     </body>
