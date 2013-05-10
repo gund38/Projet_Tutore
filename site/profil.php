@@ -74,10 +74,27 @@
                     defaultDate: -8395,
                     minDate: new Date(1900, 1 - 1, 1),
                     maxDate: 0,
-                    dateFormat: "yy-mm-dd"
+                    dateFormat: "dd/mm/yy"
                 });
 
                 // Configuration calendrier "Date de début - fin"
+                $(".date_deb_fin").datepicker({
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    showOn: "both",
+                    buttonImage: "images/calendar.gif",
+                    buttonImageOnly: true,
+                    buttonText: "Calendrier",
+                    minDate: new Date(1900, 1 - 1, 1),
+                    maxDate: 0,
+                    dateFormat: "dd/mm/yy"
+                });
+
+                // Anciens paramètres, sélection uniquement du mois et de l'année
+                // Désactivés car trop ennuyeux à utiliser pour la base de données
+                /* *********************
                 $(".date_deb_fin").datepicker({
                     changeMonth: true,
                     changeYear: true,
@@ -104,6 +121,7 @@
                         of: $(this)
                     });
                 });
+                ********************* */
             });
             //]]>
         </script>
@@ -202,7 +220,7 @@
                                                     <?php echo $profil->getVisibilitePhoto() ? "checked" : ""; ?> />
                                         </td>
                                         <td>
-                                            <label for="photo">Photo de profil&nbsp;:</label>
+                                            <label for="photo">Photo de profil (max&nbsp;:&nbsp;2Mo)&nbsp;:</label>
                                         </td>
                                         <td>
                                             <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
@@ -219,7 +237,7 @@
                                         </td>
                                         <td>
                                             <input type="text" name="date_naiss" id="date_naiss" size="10%" style="min-width: 120px"
-                                                   value="<?php echo $profil->getDateNaissance(); ?>" />
+                                                   value="<?php echo conversionDateUStoFR($profil->getDateNaissance()); ?>" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -244,7 +262,7 @@
                                             <label for="page">Page perso&nbsp;:</label>
                                         </td>
                                         <td>
-                                            <input type="email" name="page" id="page" size="30%"
+                                            <input type="url" name="page" id="page" size="30%"
                                                    value="<?php echo $profil->getPagePerso(); ?>" />
                                         </td>
                                     </tr>

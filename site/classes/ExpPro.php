@@ -196,7 +196,8 @@
          * @param string $dateDebut
          */
         public function setDateDebut($dateDebut) {
-            $this->_dateDebut = $dateDebut;
+            // Conversion de la date en "dd/mm/YYYY"
+            $this->_dateDebut = conversionDateUStoFR($dateDebut);
         }
 
         /**
@@ -205,7 +206,12 @@
          * @param string $dateFin
          */
         public function setDateFin($dateFin) {
-            $this->_dateFin = $dateFin;
+            if ($dateFin != "") {
+                // Conversion de la date en "dd/mm/YYYY"
+                $this->_dateFin = conversionDateUStoFR($dateFin);
+            } else {
+                $this->_dateFin = $dateFin;
+            }
         }
 
         /**

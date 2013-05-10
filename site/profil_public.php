@@ -103,7 +103,7 @@
 
                         <p>
                             <?php
-                                echo $profil->getVisibilitePagePerso() ? "Page perso : <a id=\"lien_profil\" href=\"http://" . $profil->getPagePerso() . "\">" . $profil->getPagePerso() . "</a>" : "";
+                                echo $profil->getVisibilitePagePerso() ? "Page perso : <a id=\"lien_profil\" href=\"" . $profil->getPagePerso() . "\">" . str_replace("http://", "", $profil->getPagePerso()) . "</a>" : "";
                                 echo "\n";
                             ?>
                         </p>

@@ -119,6 +119,20 @@
     }
 
     /**
+
+    /**
+     * Permet la conversion de la date depuis
+     * "YYYY-mm-dd" vers "dd/mm/YYYY"
+     *
+     * @param string $date
+     * @return string
+     */
+    function conversionDateUStoFR($date) {
+        setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
+        return strftime("%d/%m/%Y", strtotime($date));
+    }
+
+    /**
      * Teste les identifiants et retourne vrai s'ils existent,
      * faux sinon
      *
