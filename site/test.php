@@ -27,19 +27,58 @@
 
             $bdd = ConnexionBD::getInstance()->getBDD();
             echo "BD OK<br/>\n";
-
+//
             $profilManager = new ProfilManager($bdd);
             echo "ProfilManager OK<br/>\n";
+//
+//            $listeProfils = $profilManager->getList();
+//            echo "getList() OK<br/>\n";
+//
+//            print_r($listeProfils);
+//            echo "<br/>\n";
+//
+            $profil = $profilManager->getProfil(4);
+//
+            print_r($profil);
+            echo "<br/><br/>\n";
 
-            $listeProfils = $profilManager->getList();
-            echo "getList() OK<br/>\n";
+            $profil->obtenirProfilComplet();
+            print_r($profil);
+            echo "<br/><br/><br/><br/>\n";
 
-            print_r($listeProfils);
+//            $bdd = ConnexionBD::getInstance()->getBDD();
+//            echo "BD OK<br/>\n";
+
+            $diplomeManager = new DiplomeManager($bdd);
+            echo "ProfilManager OK<br/>\n";
+
+            $listeDiplomes = $diplomeManager->getDiplomes(4);
+            echo "getDiplomes() OK<br/>\n";
+
+            $expProManager = new ExpProManager($bdd);
+            echo "ExpProManager OK<br/>\n";
+
+            $listeExpPros = $expProManager->getExpPros(4);
+            echo "getExpPros() OK<br/>\n";
+
+            print_r($listeDiplomes);
             echo "<br/>\n";
 
-            $profil =$profilManager->getProfil(4);
+            print_r($listeExpPros);
+            echo "<br/><br /><br />\n";
 
-            print_r($profil);
+
+            var_dump(validerDateFR("1990-04-04"));
+            echo "<br/>\n";
+            var_dump(validerDateFR("1/01/2004"));
+            echo "<br/>\n";
+            var_dump(validerDateFR("32/01/2004"));
+            echo "<br/>\n";
+            var_dump(validerDateFR("24/13/2004"));
+            echo "<br/>\n";
+            var_dump(validerDateFR("30/02/2013"));
+            echo "<br/>\n";
+            var_dump(validerDateFR("04/04/1990"));
             echo "<br/>\n";
         ?>
     </body>

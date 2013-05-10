@@ -108,7 +108,7 @@
     }
 
     /**
-     *  Expression régulière pour vérifier les nombres entiers
+     * Expression régulière pour vérifier les nombres entiers
      * ou décimaux à 1 ou 2 décimales positifs
      *
      * @param mixed $floatATester Présumé float ou int à tester
@@ -119,6 +119,48 @@
     }
 
     /**
+     * Fonction pour vérifier les dates
+     * au format français (dd/mm/YYYY)
+     *
+     * @param string $dateATester Présumée date à tester
+     * @return string si $dateATester est correcte, false sinon
+     */
+    function validerDateFR($dateATester) {
+        if (!preg_match('#^([0-9]{2}/){2}[0-9]{4}$#', $dateATester)) {
+            return false;
+        }
+
+        $dateParsed = strptime($dateATester, "%d/%m/%Y");
+
+        if (!$dateParsed) {
+            return false;
+        }
+
+        if (!checkdate($dateParsed['tm_mon'] + 1, $dateParsed['tm_mday'], $dateParsed['tm_year'] + 1900)) {
+            return false;
+        }
+
+        return $dateATester;
+    }
+
+    /**
+     * Fonction pour vérifier les URL (HTTP ou HTTPS)
+     *
+     * @param string $URLATester Présumée URL à tester
+     * @return string si $URLATester est correcte, false sinon
+     */
+    function validerURL($URLATester) {
+        if (!preg_match('#^http://#', $URLATester) &&
+                !preg_match('#^https://#', $URLATester)) {
+            return false;
+        }
+
+        if (!filter_var($URLATester, FILTER_VALIDATE_URL)) {
+            return false;
+        }
+
+        return $URLATester;
+    }
 
     /**
      * Permet la conversion de la date depuis

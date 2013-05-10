@@ -31,6 +31,7 @@
      * Création du tableau d'options pour la vérification et
      * le nettoyage des infos soumises par l'utilisateur
      */
+    // @TODO ajouter des vérifications sur les options de liste
     $options = array(
         'intitule' => array(
             'filter' => FILTER_SANITIZE_STRING,
@@ -60,6 +61,7 @@
      * nous en empêche. En effet, le 'vrai' tableau $_POST est détruit
      * et est remplacé par notre version sauvegardée puis restaurée.
      */
+    $resultat = array();
     foreach ($options as $cle => $valeur) {
         $resultat[$cle] = filter_var($_POST[$cle], $valeur['filter'], $valeur['flags']);
 

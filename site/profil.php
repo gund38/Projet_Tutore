@@ -271,6 +271,8 @@
                         </div>
 
                         <div class="contenu_onglet" id="contenu_onglet_diplomes">
+                            <input type="hidden" name="nbDiplomes" id="nbDiplomes"
+                                   value="<?php echo count($profil->getDiplomes()); ?>" />
                             <?php
                                 // Génération et affichage des formulaires des diplômes
                                 require_once 'fonctions/generationFormulaireDiplomes.php';
@@ -278,6 +280,8 @@
                         </div>
 
                         <div class="contenu_onglet" id="contenu_onglet_exppros">
+                            <input type="hidden" name="nbExpPros" id="nbExpPros"
+                                   value="<?php echo count($profil->getExpPros()); ?>" />
                             <?php
                                 // Génération et affichage des formulaires des expériences professionnelles
                                 require_once 'fonctions/generationFormulaireExpPros.php';
@@ -290,6 +294,7 @@
 
         <script type="text/javascript" charset="utf-8">
             //<![CDATA[
+            // Onglet activé par défaut
             var anc_onglet = 'infos';
             change_onglet(anc_onglet);
             //]]>

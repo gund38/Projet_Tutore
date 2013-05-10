@@ -49,12 +49,11 @@
                                id="date_fin_exp<?php echo $i; ?>"
                                class="date_deb_fin"
                                size="10%" style="min-width: 140px"
-                               value="<?php echo $expProEnCours->getDateFin(); ?>"
-                               <?php echo $expProEnCours->getEnCours() ? "disabled" : ""; ?> />
+                               value="<?php echo $expProEnCours->getDateFin(); ?>" />
                         <input type="checkbox"
                                name="enCours_exp<?php echo $i; ?>"
                                id="enCours<?php echo $i; ?>"
-                               OnClick="checkboxEnCours(<?php echo $i; ?>);"
+                               onclick="checkboxEnCours(<?php echo $i; ?>);"
                                <?php echo $expProEnCours->getEnCours() ? "checked" : ""; ?> />
                         <label for="enCours_exp<?php echo $i; ?>">Ceci est mon poste actuel</label>
                     </td>
