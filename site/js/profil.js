@@ -4,6 +4,7 @@ function change_onglet(name) {
     document.getElementById('onglet_' + name).className = 'onglet_1 onglet';
     document.getElementById('contenu_onglet_' + anc_onglet).style.display = 'none';
     document.getElementById('contenu_onglet_' + name).style.display = 'block';
+
     anc_onglet = name;
 }
 
@@ -14,6 +15,14 @@ function checkboxEnCours(id) {
         $("#date_fin_exp" + id).datepicker("option", "disabled", true);
     } else {
         $("#date_fin_exp" + id).datepicker("option", "disabled", false);
+    }
+}
+
+function verificationCheckbox() {
+    var nbExpPros = document.forms.formProfil.nbExpPros.value;
+
+    for (var i = 1; i < nbExpPros; i++) {
+        checkboxEnCours(i);
     }
 }
 

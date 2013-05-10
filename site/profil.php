@@ -123,7 +123,7 @@
         </script>
     </head>
 
-    <body>
+    <body onload="verificationCheckbox();">
         <div id="global">
             <div id="entete">
                 <h1>Site Web des Anciens Étudiants du Master TI</h1>
