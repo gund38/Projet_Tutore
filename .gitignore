@@ -1,8 +1,19 @@
-*.zip
+# Dossiers
 site/tmp/*
 site/pdf/*
+
+# Doxygen
 site/Doxyfile
 site/Doxygen/*
+
+# jquery-ui
+site/css/jquery-ui.css
+site/js/jquery-ui.js
+
+# Archives
+*.zip
+
+# Fichiers temporaires gedit
 *.html~
 *.php~
 *.js~
