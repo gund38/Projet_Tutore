@@ -104,7 +104,7 @@
      * [champATraiter]['msgErreur'] : Message à indiquer si le champ ne passe pas le validage
      *
      * Notes :
-     * - L'option 'neDoitPasEtreVerifie' ne s'applique qu'au champs date_fin_expX
+     * - L'option 'neDoitPasEtreVerifie' ne s'applique qu'aux champs date_fin_expX
      * et est vrai si le champ enCours_expX correspondant est à vrai
      * - Seuls les champ obligatoires (hormis les checkbox)
      * prennent un message en cas de champ vide
@@ -244,10 +244,13 @@
         }
     }
 
+    $presenceFichier = false;
+
     // Vérification du fichier uploadé
     switch ($_FILES['photo']['error']) {
-        case UPLOAD_ERR_NO_FILE:
         case UPLOAD_ERR_OK:
+            $presenceFichier = true;
+        case UPLOAD_ERR_NO_FILE:
             /**
              * Si il n'y a pas de fichier ou que le fichier est bien uploadé,
              * on ne fait rien
@@ -277,6 +280,87 @@
         exit;
     }
 
+    // Si l'utilisateur a envoyé une photo
+    if ($presenceFichier) {
+        // Tableau des extensions autorisées
+        $extensionsAutorisees = array(
+            'jpg',
+            'jpeg',
+            'png',
+            'gif',
+            'bmp'
+        );
+
+        // On extrait l'extension du fichier uploadé
+        $extension_upload = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1));
+
+        if (in_array($extension_upload, $extensionsAutorisees)) {
+            // L'extension est bonne, on ne fait rien
+        } else {
+            $_SESSION['erreurs_profil'] .= "Mauvaise extension, seul les fichiers images sont acceptés (jpg, jpeg, png, gif, bmp) !<br />\n";
+
+            // Suppression du fichier temporaire
+            supprimerFichierTemp($_FILES['photo']['tmp_name'], "profil");
+
+            // Redirection
+            header("Location: $fichierRetour");
+            exit;
+        }
+
+        /*
+         * Préparation du nouveau nom du fichier,
+         * basé sur un identifiant unique
+         */
+        $nom = "../images/profil/" . uniqid() . ".$extension_upload";
+
+        if (rename($_FILES['photo']['tmp_name'], $nom)) {
+            // Le renommage s'est bien passé, on ne fait rien
+        } else {
+            $_SESSION['erreurs_profil'] .= "Erreur lors du renommage<br />\n";
+
+            // Suppression du fichier temporaire
+            supprimerFichierTemp($_FILES['photo']['tmp_name'], "profil");
+
+            // Redirection
+            header("Location: $fichierRetour");
+            exit;
+        }
+    }
+
+    // Création d'un ProfilManager pour l'insertion
+    $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
+
+    // Création du tableau de données
+    $donneesProfil = array(
+        'codePe' => $_SESSION['personneCo']->getCodePe(),
+        'visibiliteEmail' => $resultat['visi_email'] ? 1 : 0,
+        'dateNaissance' => $resultat['date_naiss'],
+        'visibiliteDateNaissance' => $resultat['visi_date_naiss'] ? 1 : 0,
+        'cheminPhoto' => $presenceFichier ? substr(strrchr($nom, '/'), 1) : "",
+        'visibilitePhoto' => $resultat['visi_photo'] ? 1 : 0,
+        'pagePerso' => $resultat['page'],
+        'visibilitePagePerso' => $resultat['visi_page'] ? 1 : 0
+    );
+
+    // Insertion
+    $ajout = $profilManager->updateProfil(new Profil($donneesProfil));
+
+    if ($ajout === false) {
+        $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";
+
+        // Suppression du fichier temporaire
+        supprimerFichierTemp($nom, "profil");
+
+        // Redirection
+        header("Location: $fichierRetour");
+        exit;
+    }
+
+
+
+
+
+
     foreach ($_POST as $key => $value) {
         echo "$key = $value<br />\n";
     }
@@ -291,4 +375,6 @@
 
     echo "<br /><br />\n\n\n";
     echo $_SESSION['erreurs_profil'];
+
+    unset($_SESSION['erreurs_profil']);
 ?>

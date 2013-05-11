@@ -97,10 +97,14 @@
                 Offre (codePe, type, intitule, entreprise, ville, departement, remuneration, cheminPDF)
                 VALUES (:codePe, :type, :intitule, :entreprise, :ville, :departement, :remuneration, :cheminPDF)');
 
+            if (!$req) {
+                return $resultat;
+            }
+
             // Exécution de la requête
             $req->execute($donnees);
 
-            if ($req !== false) {
+            if ($req) {
                 $resultat = true;
             }
 

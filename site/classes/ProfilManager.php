@@ -72,6 +72,57 @@
         }
 
         /**
+         * Update un profil (et ses diplômes et/ou expériences professionnelles)
+         * dans la BD
+         *
+         * @param Profil Profil à update
+         * @return boolean
+         */
+        public function updateProfil($profil) {
+            $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Profil
+            if (get_class($profil) !== "Profil") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donneesProfil = array(
+                'codePe' => $profil->getCodePe(),
+                'visibiliteEmail' => $profil->getVisibiliteEmail(),
+                'dateNaissance' => $profil->getDateNaissance(),
+                'visibiliteDateNaissance' => $profil->getVisibiliteDateNaissance(),
+                'cheminPhoto' => $profil->getCheminPhoto(),
+                'visibilitePhoto' => $profil->getVisibilitePhoto(),
+                'pagePerso' => $profil->getPagePerso(),
+                'visibilitePagePerso' => $profil->getVisibilitePagePerso()
+            );
+
+            $req = $this->_db->prepare('UPDATE Profil SET
+                visibiliteEmail = :visibiliteEmail,
+                dateNaissance = STR_TO_DATE(:dateNaissance, \'%d/%m/%Y\'),
+                visibiliteDateNaissance = :visibiliteDateNaissance,
+                cheminPhoto = :cheminPhoto,
+                visibilitePhoto = :visibilitePhoto,
+                pagePerso = :pagePerso,
+                visibilitePagePerso = :visibilitePagePerso
+                WHERE codePe = :codePe');
+
+            if (!$req) {
+                return $resultat;
+            }
+
+            // Exécution de la requête
+            $req->execute($donneesProfil);
+
+            if ($req) {
+                $resultat = true;
+            }
+
+            return $resultat;
+        }
+
+        /**
          * Setter de $_db
          *
          * @param PDO $db
