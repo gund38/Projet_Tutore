@@ -13,6 +13,8 @@
         ?>
 
         <!-- ///// ExpPro <?php echo $i; ?> \\\\\ -->
+        <input type="hidden" name="id_exp<?php echo $i; ?>" id="id_exp<?php echo $i; ?>"
+               value="<?php echo $expProEnCours->getCodeEP() ?>" />
         <fieldset>
             <table>
                 <tr>

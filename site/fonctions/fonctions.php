@@ -126,6 +126,10 @@
      * @return string si $dateATester est correcte, false sinon
      */
     function validerDateFR($dateATester) {
+        if (empty ($dateATester)) {
+            return $dateATester;
+        }
+
         if (!preg_match('#^([0-9]{2}/){2}[0-9]{4}$#', $dateATester)) {
             return false;
         }
@@ -150,6 +154,10 @@
      * @return string si $URLATester est correcte, false sinon
      */
     function validerURL($URLATester) {
+        if (empty ($URLATester)) {
+            return $URLATester;
+        }
+
         if (!preg_match('#^http://#', $URLATester) &&
                 !preg_match('#^https://#', $URLATester)) {
             return false;

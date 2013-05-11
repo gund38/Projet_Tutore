@@ -175,6 +175,33 @@
                         Il est tellement paresseux qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
                     </p>
 
+                    <p class="erreur">
+                        <?php
+                            // Gestion des erreurs au niveau de l'ajout d'une offre
+                            if (isset($_SESSION['erreurs_profil'])) {
+                                echo substr_count($_SESSION['erreurs_profil'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
+                                echo "<br />\n";
+                                echo $_SESSION['erreurs_profil'];
+                                unset($_SESSION['erreurs_profil']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </p>
+
+                    <p class="sortie">
+                        <?php
+                            // Gestion de la réussite de l'ajout d'une offre
+                            if (isset($_SESSION['sortie_profil'])) {
+                                echo "<br />\n";
+                                echo $_SESSION['sortie_profil'];
+                                unset($_SESSION['sortie_profil']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </p>
+
                     <p>
                         <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
                     </p>
@@ -209,6 +236,8 @@
                         </div>
 
                         <div class="contenu_onglet" id="contenu_onglet_infos">
+                            <input type="hidden" name="idProfil" id="idProfil"
+                                   value="<?php echo $profil->getCodePe(); ?>" />
                             <fieldset>
                                 <table>
                                     <tr>

@@ -35,24 +35,9 @@
 
     unset($_GET);
     $fichierRetour = "../profil.php";
-    $nbErreurs = 0;
-    $_SESSION['erreurs_connexion'] = "";
-
-    // Vérification que les variables ne soient pas vides
-    /**
-     * @TODO modifier ce test en test générique
-     */
-//    if (empty($_POST['login'])) {
-//        $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Login.<br />\n";
-//        $nbErreurs++;
-//    }
-//    if (empty($_POST['mdp'])) {
-//        $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Mot de passe.<br />\n";
-//        $nbErreurs++;
-//    }
 
     /**
-     * Création des options pour la vérification et
+     * Création des options pour la vérification ou
      * le nettoyage des infos soumises par l'utilisateur
      */
     $optionString = array(
@@ -78,6 +63,13 @@
         )
     );
 
+    $optionId = array(
+        'filter' => FILTER_VALIDATE_INT,
+        'flags' => array(
+            'min_range' => '0'
+        )
+    );
+
     $optionURL = array(
         'filter' => FILTER_CALLBACK,
         'flags' => array(
@@ -92,8 +84,38 @@
         )
     );
 
-    // Création du tableau d'options
+    // Parties de message
+    $msgVideBase = "Veuillez remplir le champ";
+    $msgFormat = "doit être au format dd/mm/YYYY";
+    $msgDiplome = "du diplôme numéro";
+    $msgExpPro = "de l'expérience professionnelle numéro";
+
+    /**
+     * Création du tableau d'options
+     *
+     * Ce tableau est organisé comme cela :
+     *
+     * [champATraiter]['filter'] : Le filtre à appliquer pour la vérification ou le nettoyage du champ
+     * [champATraiter]['options'] : Les options du filtre
+     * [champATraiter]['boolean'] : Indique si le champ est un booléen (= checkbox)
+     * [champATraiter]['optionnel'] : Indique si le champ est optionnel
+     * [champATraiter]['neDoitPasEtreVerifie'] : Indique si le champ ne doit pas être vérifié
+     * [champATraiter]['msgVide'] : Message à indiquer si le champ est vide
+     * [champATraiter]['msgErreur'] : Message à indiquer si le champ ne passe pas le validage
+     *
+     * Notes :
+     * - L'option 'neDoitPasEtreVerifie' ne s'applique qu'au champs date_fin_expX
+     * et est vrai si le champ enCours_expX correspondant est à vrai
+     * - Seuls les champ obligatoires (hormis les checkbox)
+     * prennent un message en cas de champ vide
+     * - Les champs de type texte ne prennent pas de messages d'erreur
+     * car ils ne sont que nettoyés, et non pas vérifiés
+     * - Les checkbox non plus car leur type est booléen
+     * (Pour être exact : "on"/Ø transformé en true/false)
+     */
+    // On gère d'abord les infos contenues dans l'onglet 'Informations personnelles'
     $options = array(
+        'idProfil' => $optionId,
         'visi_photo' => $optionBoolean,
         'visi_date_naiss' => $optionBoolean,
         'date_naiss' => $optionDate,
@@ -103,25 +125,79 @@
         'page' => $optionURL,
     );
 
+    $options['visi_photo']['booleen'] = true;
+
+    $options['visi_date_naiss']['booleen'] = true;
+
+    $options['date_naiss']['msgErreur'] = "La date de naissance $msgFormat";
+    $options['date_naiss']['optionnel'] = true;
+
+    $options['visi_email']['booleen'] = true;
+
+    $options['email']['msgVide'] = "$msgVideBase Email";
+    $options['email']['msgErreur'] = "L'email n'est pas correct";
+
+    $options['visi_page']['booleen'] = true;
+
+    $options['page']['msgErreur'] = "L'adresse de la page perso doit être correcte et commencer par \"http://\" ou \"https://\"";
+    $options['page']['optionnel'] = true;
+
+    // Puis les infos contenues dans l'onglet 'Parcours scolaire'
     for ($i = 1; $i <= $_POST['nbDiplomes']; $i++) {
+        $options["id_dip$i"] = $optionId;
+
         $options["visi_dip$i"] = $optionBoolean;
+        $options["visi_dip$i"]['booleen'] = true;
+
         $options["annee_dip$i"] = $optionAnnee;
+        $options["annee_dip$i"]['msgVide'] = "$msgVideBase Année $msgDiplome $i";
+        $options["annee_dip$i"]['msgErreur'] = "L'Année $msgDiplome $i doit être comprise entre 1900 et 2100";
+
         $options["type_dip$i"] = $optionString;
+        $options["type_dip$i"]['msgVide'] = "$msgVideBase Type $msgDiplome $i";
+
         $options["disc_dip$i"] = $optionString;
+        $options["disc_dip$i"]['msgVide'] = "$msgVideBase Discipline $msgDiplome $i";
+
         $options["etabli_dip$i"] = $optionString;
+        $options["etabli_dip$i"]['msgVide'] = "$msgVideBase Établissement $msgDiplome $i";
     }
 
+    // Et enfin les infos contenues dans l'onglet 'Parcours professionnel'
     for ($i = 1; $i <= $_POST['nbExpPros']; $i++) {
+        $options["id_exp$i"] = $optionId;
+
         $options["visi_exp$i"] = $optionBoolean;
+        $options["visi_exp$i"]['booleen'] = true;
+
         $options["date_deb_exp$i"] = $optionDate;
+        $options["date_deb_exp$i"]['msgVide'] = "$msgVideBase Date de début $msgExpPro $i";
+        $options["date_deb_exp$i"]['msgErreur'] = "La Date de début $msgExpPro $i $msgFormat";
+
         $options["date_fin_exp$i"] = $optionDate;
+        $options["date_fin_exp$i"]['msgVide'] = "$msgVideBase Date de fin $msgExpPro $i";
+        $options["date_fin_exp$i"]['msgErreur'] = "La Date de fin $msgExpPro $i $msgFormat";
+
         $options["enCours_exp$i"] = $optionBoolean;
+        $options["enCours_exp$i"]['booleen'] = true;
+
         $options["inti_exp$i"] = $optionString;
+        $options["inti_exp$i"]['msgVide'] = "$msgVideBase Intitulé $msgExpPro $i";
+
         $options["entre_exp$i"] = $optionString;
+        $options["entre_exp$i"]['msgVide'] = "$msgVideBase Entreprise $msgExpPro $i";
+
         $options["ville_exp$i"] = $optionString;
+        $options["ville_exp$i"]['msgVide'] = "$msgVideBase Ville $msgExpPro $i";
+
         $options["dep_exp$i"] = $optionString;
+        $options["dep_exp$i"]['msgVide'] = "$msgVideBase Déparatement $msgExpPro $i";
+
         $options["visi_salaire_exp$i"] = $optionBoolean;
+        $options["visi_salaire_exp$i"]['booleen'] = true;
+
         $options["salaire_exp$i"] = $optionString;
+        $options["salaire_exp$i"]['msgVide'] = "$msgVideBase Salaire $msgExpPro $i";
     }
 
     /*
@@ -142,9 +218,60 @@
         }
     }
 
+    // On détermine si on doit vérifier date_fin_expX en fonction de enCours_expX
+    for ($i = 1; $i <= $_POST['nbExpPros']; $i++) {
+        if ($resultat["enCours_exp$i"]) {
+            $options["date_fin_exp$i"]['neDoitPasEtreVerifie'] = true;
+        }
+    }
 
-//$nbErreurs++;
+    // Nombre d'erreurs et concaténation de tous les messages d'erreurs
+    $nbErreurs = 0;
+    $_SESSION['erreurs_profil'] = "";
 
+    // On parcourt les champs voulus
+    foreach ($options as $cle => $valeur) {
+        if (!$options[$cle]['optionnel'] // Si le champ n'est pas optionnel (= obligatoire)
+                && !$options[$cle]['booleen'] // Et qu'il n'est pas un booléen
+                && !$options[$cle]['neDoitPasEtreVerifie'] // Et qu'il doit être vérifié
+                && empty($resultat[$cle])) { // Et qu'il est vide
+            $_SESSION['erreurs_profil'] .= $options[$cle]['msgVide'] . ". (1 : $cle)<br />\n";
+            $nbErreurs++;
+        } elseif (!$options[$cle]['booleen'] // Si le champ n'est pas un booléen
+                && $resultat[$cle] === false) { // Et qu'il n'est pas valide
+            $_SESSION['erreurs_profil'] .= $options[$cle]['msgErreur'] . ". (2 : $cle)<br />\n";
+            $nbErreurs++;
+        }
+    }
+
+    // Vérification du fichier uploadé
+    switch ($_FILES['photo']['error']) {
+        case UPLOAD_ERR_NO_FILE:
+        case UPLOAD_ERR_OK:
+            /**
+             * Si il n'y a pas de fichier ou que le fichier est bien uploadé,
+             * on ne fait rien
+             */
+            break;
+
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            $_SESSION['erreurs_profil'] .= "Fichier trop grand !<br />\n";
+            $nbErreurs++;
+            break;
+
+        case UPLOAD_ERR_PARTIAL:
+            $_SESSION['erreurs_profil'] .= "Fichier reçu partiellement !<br />\n";
+            $nbErreurs++;
+            break;
+
+        default:
+            $_SESSION['erreurs_profil'] .= "Erreur avec le fichier !<br />\n";
+            $nbErreurs++;
+            break;
+    }
+
+    // S'il y a au moins une erreur, on se redirige vers le formulaire
     if ($nbErreurs != 0) {
         header("Location: $fichierRetour");
         exit;
@@ -161,4 +288,7 @@
 
     echo "<br /><br />\n\n\n";
     var_dump($resultat);
+
+    echo "<br /><br />\n\n\n";
+    echo $_SESSION['erreurs_profil'];
 ?>
