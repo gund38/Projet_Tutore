@@ -18,6 +18,7 @@ function checkboxEnCours(id) {
     }
 }
 
+// Fonction qui vérifie l'état des checkbox au chargement la page
 function verificationCheckbox() {
     var nbExpPros = document.forms.formProfil.nbExpPros.value;
 

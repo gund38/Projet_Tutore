@@ -143,7 +143,7 @@
         $_SESSION['erreurs_ajout'] .= "Mauvaise extension, seul les fichiers PDF sont acceptés !<br />\n";
 
         // Suppression du fichier temporaire
-        supprimerFichierTemp($_FILES['fichier']['tmp_name']);
+        supprimerFichierTemp($_FILES['fichier']['tmp_name'], "ajout");
 
         // Redirection
         header("Location: $fichierRetour");
@@ -159,10 +159,10 @@
     if (rename($_FILES['fichier']['tmp_name'], $nom)) {
         // Le renommage s'est bien passé, on ne fait rien
     } else {
-        $_SESSION['erreurs_ajout'] .= "Fail du rename<br />\n";
+        $_SESSION['erreurs_ajout'] .= "Erreur lors du renommage<br />\n";
 
         // Suppression du fichier temporaire
-        supprimerFichierTemp($_FILES['fichier']['tmp_name']);
+        supprimerFichierTemp($_FILES['fichier']['tmp_name'], "ajout");
 
         // Redirection
         header("Location: $fichierRetour");
@@ -188,10 +188,10 @@
     $ajout = $offreManager->addOffre(new Offre($donnees));
 
     if ($ajout === false) {
-        $_SESSION['erreurs_ajout'] .= "Fail de l'insertion dans la BD<br />\n";
+        $_SESSION['erreurs_ajout'] .= "Erreur de l'insertion dans la BD<br />\n";
 
         // Suppression du fichier temporaire
-        supprimerFichierTemp($nom);
+        supprimerFichierTemp($nom, "ajout");
 
         // Redirection
         header("Location: $fichierRetour");

@@ -216,12 +216,13 @@
      * Fonction de suppression du fichier temporaire uploadé
      *
      * @param string $fichier Chemin du fichier à supprimer
+     * @param string $fonction Fonction qui a appelée celle-ci
      */
-    function supprimerFichierTemp($fichier) {
+    function supprimerFichierTemp($fichier, $fonction) {
         if (unlink($fichier)) {
             // La suppression s'est bien passé, on ne fait rien
         } else {
-            $_SESSION['erreurs_ajout'] .= "Fail de la suppression<br />\n";
+            $_SESSION["erreurs_$fonction"] .= "Erreur lors de la suppression du fichier temporaire<br />\n";
         }
     }
 
