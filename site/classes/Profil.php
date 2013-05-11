@@ -143,6 +143,15 @@
         }
 
         /**
+         * Getter de $_visibilitePagePerso
+         *
+         * @return boolean
+         */
+        public function getVisibilitePagePerso() {
+            return $this->_visibilitePagePerso;
+        }
+
+        /**
          * Getter de $_diplomes
          *
          * @return array of Diplome
@@ -158,15 +167,6 @@
          */
         public function getExpPros() {
             return $this->_expPros;
-        }
-
-        /**
-         * Getter de $_visibilitePagePerso
-         *
-         * @return boolean
-         */
-        public function getVisibilitePagePerso() {
-            return $this->_visibilitePagePerso;
         }
 
         //---------------Setters---------------//
@@ -250,6 +250,24 @@
          */
         public function setVisibilitePagePerso($visibilitePagePerso) {
             $this->_visibilitePagePerso = $visibilitePagePerso;
+        }
+
+        /**
+         * Setter de $_diplomes
+         *
+         * @param array of Diplome $diplomes
+         */
+        public function setDiplomes($diplomes) {
+            $this->_diplomes = $diplomes;
+        }
+
+        /**
+         * Setter de $_expPros
+         *
+         * @param array of ExpPro $expPros
+         */
+        public function setExpPros($expPros) {
+            $this->_expPros = $expPros;
         }
 
     }

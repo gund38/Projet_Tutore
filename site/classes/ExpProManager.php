@@ -33,8 +33,11 @@
             $expPros = array();
 
             $q = $this->_db->prepare('SELECT
-                codeEP, codePe, visibilite, dateDebut, dateFin, enCours, intitule,
-                entreprise, ville, departement, salaire, visibiliteSalaire
+                codeEP, codePe, visibilite,
+                DATE_FORMAT(dateDebut, \'%d/%m/%Y\') AS dateDebut,
+                DATE_FORMAT(dateFin, \'%d/%m/%Y\') AS dateFin,
+                enCours, intitule, entreprise, ville, departement,
+                salaire, visibiliteSalaire
                 FROM ExpPro
                 WHERE codePe = :id
                 ORDER BY dateDebut DESC');

@@ -31,8 +31,10 @@
             $profils = array();
 
             $q = $this->_db->query('SELECT
-                codePe, promo, visibiliteEmail, dateNaissance, visibiliteDateNaissance,
-                cheminPhoto, visibilitePhoto, pagePerso, visibilitePagePerso
+                codePe, promo, visibiliteEmail,
+                DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
+                visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
+                pagePerso, visibilitePagePerso
                 FROM Profil
                 ORDER BY codePe');
 
@@ -51,8 +53,10 @@
          */
         public function getProfil($id) {
             $q = $this->_db->prepare('SELECT
-                codePe, promo, visibiliteEmail, dateNaissance, visibiliteDateNaissance,
-                cheminPhoto, visibilitePhoto, pagePerso, visibilitePagePerso
+                codePe, promo, visibiliteEmail,
+                DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
+                visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
+                pagePerso, visibilitePagePerso
                 FROM Profil
                 WHERE codePe = :id');
 

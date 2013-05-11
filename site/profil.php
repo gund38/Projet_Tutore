@@ -238,6 +238,7 @@
                         <div class="contenu_onglet" id="contenu_onglet_infos">
                             <input type="hidden" name="idProfil" id="idProfil"
                                    value="<?php echo $profil->getCodePe(); ?>" />
+                            <?php /** @TODO Remplacer les id et les nb par $_SESSION pour éviter modifications */ ?>
                             <fieldset>
                                 <table>
                                     <tr>
@@ -266,7 +267,7 @@
                                         </td>
                                         <td>
                                             <input type="text" name="date_naiss" id="date_naiss" size="10%" style="min-width: 120px"
-                                                   value="<?php echo conversionDateUStoFR($profil->getDateNaissance()); ?>" />
+                                                   value="<?php echo $profil->getDateNaissance(); ?>" />
                                         </td>
                                     </tr>
                                     <tr>
