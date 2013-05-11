@@ -1,6 +1,10 @@
 # Dossiers
 site/tmp/*
+!site/tmp/.gitkeep
 site/pdf/*
+!site/pdf/.gitkeep
+site/images/profil/*
+!site/images/profil/photo_profil.png
 
 # Doxygen
 site/Doxyfile
