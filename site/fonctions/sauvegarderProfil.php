@@ -327,6 +327,8 @@
         }
     }
 
+    /** @TODO Vérifier photo profil si changement */
+
     // Création d'un ProfilManager pour l'insertion
     $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
 

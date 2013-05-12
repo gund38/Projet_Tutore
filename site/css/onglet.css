@@ -7,18 +7,18 @@
 }
 
 .onglet_0 {
-    background: #B3B89C;
+    background: #C9C65B;
     border-bottom: 1px solid black;
 }
 
 .onglet_1 {
-    background: #8C965C;
+    background: #969620;
     border-bottom: 0px solid black;
     padding-bottom: 4px;
 }
 
 .contenu_onglet {
-    background-color: #8C965C;
+    background-color: #969620;
     border: 1px solid black;
     margin-top: -1px;
     padding: 5px;

@@ -164,15 +164,11 @@
                 </div>
 
                 <div id="profil_description">
-                    <h4>Ramoloss -> <?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
+                    <h4><?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
 
                     <p>
-                        Très lent et endormi, il lui faut 5 secondes pour ressentir la douleur d'une attaque.
-                        Lent et stupide, il aime se la couler douce en observant l'activité autour de lui.
-                        Un Pokémon crétin constamment dans la lune qui aime pêcher avec sa queue. Endormi ou éveillé, il n'y a aucune différence.
-                        Il est tellement paresseux, qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
-                        Une sève sucrée coule du bout de sa queue. Peu nutritive, elle reste agréable a mâchouiller.
-                        Il est tellement paresseux qu'il lui faut une journée pour remarquer qu'on lui mord la queue.
+                        Ici c'est votre profil ! Vous pouvez modifier toutes vos informations personnelles, ainsi que vos parcours scolaire et professionnel.
+                        Si vous ne voulez pas qu'un élément soit visible sur votre profil public, il vous suffit de mettre l'interrupteur correspondant sur "Non"
                     </p>
 
                     <p class="erreur">
@@ -307,6 +303,9 @@
                                 // Génération et affichage des formulaires des diplômes
                                 require_once 'fonctions/generationFormulaireDiplomes.php';
                             ?>
+                            <p align="center">
+                                <a href="#">Ajouter un autre diplôme</a>
+                            </p>
                         </div>
 
                         <div class="contenu_onglet" id="contenu_onglet_exppros">
@@ -316,6 +315,9 @@
                                 // Génération et affichage des formulaires des expériences professionnelles
                                 require_once 'fonctions/generationFormulaireExpPros.php';
                             ?>
+                            <p align="center">
+                                <a href="#">Ajouter une autre expérience professionnelle</a>
+                            </p>
                         </div>
                     </form>
                 </div>

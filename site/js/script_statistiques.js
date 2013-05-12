@@ -1,9 +1,8 @@
 /******** Camembert ******************/
 function Camembert() {
 	var chartData = [
-            {title:"France",value:700},
-            {title:"Espagne",value:420},
-            {title:"Italie",value:150}
+            {title:"Admis",value:90},
+            {title:"Recalés",value:32},
         ];
 
 	AmCharts.ready(function () {

@@ -9,184 +9,188 @@ h3 {
 
 /* Général */
 body {
-	color: #F0E39E;
-	background: #2C2F22;
+    color: #F0E39E;
+    background: #8AAAD9;
 }
 
 a {
-	color: #FF6533;
+    color: #FF6533;
 }
 
 a:hover, a:focus {
-	color: #FF4C00;
+    color: #FF4C00;
 }
 
 strong {
-	color: #A1B55D;
+    color: #A1B55D;
 }
 
 /* Navigation */
 #navigation {
-	background: #181A12;
+    background: #C4D4ED;
 }
 
 #navigation a {
-	color: #FF6533;
+    color: #FF6533;
+}
+#navigation h1 {
+    color: #F29512;
 }
 
+
 #navigation a:hover, #navigation a:focus {
-	background: #000000;
+    background: #000000;
 }
 
 #sous_menu a{
-	text-decoration: none;  /* On enlève le soulignement */
-	color: #5d90b5;
-	display: block;   /* C'est ici qu'il faut bien comprendre (j'explique plus bas) */
-	padding-left: 1.5em;  /* Une marge intérieure gauche juste pour l'esthétique */
+    text-decoration: none;  /* On enlève le soulignement */
+    color: #A5779C;
+    display: block;   /* C'est ici qu'il faut bien comprendre (j'explique plus bas) */
+    padding-left: 1.5em;  /* Une marge intérieure gauche juste pour l'esthétique */
+    font-weight: bold;
 }
 
 #sous_menu a:hover{
-	background-color: #e9eefb;
-	color: #294f79;
+    background-color: #e9eefb;
+    color: #294f79;
 }
 
 /* Contenu principal */
 #contenu {
-	color: #363B29;
-	background: #cbd888;
+    color: #363B29;
+    background: #C4D4ED;
 }
 
 #contenu a {
-	color: #332510;
+    color: #332510;
 }
 
 #contenu a:hover, #contenu a:focus {
-	color: #6E5122;
+    color: #6E5122;
 }
 
 #contenu strong {
-	color: #181A12;
+    color: #181A12;
 }
 
 #entete {
-	background: #787746;
-	margin-bottom: 20px;
-	margin-left: 70px;
-	margin-right: 70px;
+    background: #F29512;
+    margin-bottom: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
 }
 
 /* --- POSITIONNEMENT --- */
 
 /* Page */
 body {
-	padding: 20px 50px; /* Voir -> Note 1 ci-dessous */
+    padding: 20px 50px; /* Voir -> Note 1 ci-dessous */
 }
 
 /* En-tête */
 #entete {
-	padding: 20px 0;
+    padding: 20px 0;
 }
 
 #entete h1 {
-	margin: 0;
-	font-family: arial;
-	font-weight: bold;
+    margin: 0;
+    font-family: arial;
+    font-weight: bold;
 }
 
 #entete h1 img {
-	float: left;
-	margin: 7px 20px 10px 0;
+    float: left;
+    margin: 7px 20px 10px 0;
 }
 
 #entete .sous-titre {
-	margin: 4px 0 15px 0;
+    margin: 4px 0 15px 0;
 }
 
 /* Menu de navigation */
 #navigation {
-	width: 18%;
-	float: left; /* -> 2 */
+    width: 18%;
+    float: left; /* -> 2 */
 }
 
 #navigation ul {
-	margin: 0;
-	padding: 20px 10px;
-	list-style: none;
+    margin: 0;
+    padding: 20px 10px;
+    list-style: none;
 }
 
 #navigation a {
-	display: block;
-	height: 1%; /* -> 3 */
-	padding: 6px 6px 6px 10px;
-	line-height: 1.5;
-	font-size: .9em;
-	text-decoration: none;
+    display: block;
+    height: 1%; /* -> 3 */
+    padding: 6px 6px 6px 10px;
+    line-height: 1.5;
+    font-size: .9em;
+    text-decoration: none;
 }
 
 /* Contenu */
 #contenu {
-	margin-left: 20%; /* -> 4 */
-	margin-bottom: 20px;
-	padding: 10px 20px;
-	border: 1px solid blue; /*pour test*/
+    margin-left: 20%; /* -> 4 */
+    margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
 #contenu > :first-child {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 #contenu p, #contenu li {
-	line-height: 1.5;
+    line-height: 1.5;
 }
 
 /* Mention de paternité */
 #copyright {
-	margin-left: 20%;
+    margin-left: 20%;
 }
 
 /***************************** Positionement page du profil ***********************************/
 #profil_photo {
-	display: inline-block;
-	width: 200px;
-	border: 5px solid;
-	vertical-align: top;
+    display: inline-block;
+    width: 200px;
+    border: 5px solid;
+    vertical-align: top;
 }
 
 #profil_description {
-	display: inline-block;
-/*	border-right: 5px solid;*/
-	vertical-align: top;
-	width: 50%;
-	margin-top: 10px; /*pour aligner avec #contenu > :first-child */
-	padding: 10px 20px;
+    display: inline-block;
+/*    border-right: 5px solid;*/
+    vertical-align: top;
+    width: 50%;
+    margin-top: 10px; /*pour aligner avec #contenu > :first-child */
+    padding: 10px 20px;
 }
 
 #profil_bouton {
-	display: inline-block;
-	width: 15%;
-	margin-top: 10px;
-        margin-right: 20px;
-        float: right;
+    display: inline-block;
+    width: 15%;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
 }
 
 #profil_bouton a {
-	display: block;
-	width: 150px;
-	line-height: 50px;
-	text-align: center;
-	vertical-align: middle;
-	background: url(../images/boutonnoir.png) no-repeat;
-	color: white;
-	text-decoration: none;
+    display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background: url(../images/boutonnoir.png) no-repeat;
+    color: white;
+    text-decoration: none;
 }
 
 #profil_bouton a:hover {
-	background: url(../images/boutonnoir2.png) no-repeat;
+    background: url(../images/boutonnoir2.png) no-repeat;
 }
 
 #profil_general {
-	margin-top: 10px;
-/*	border: 1px solid blue;*/
+    margin-top: 10px;
+/*    border: 1px solid blue;*/
 }
 
 #profil_general td {
@@ -212,6 +216,22 @@ body {
 
 .obligatoire {
     color: red;
+}
+
+fieldset {
+    border: solid 1px #222;
+}
+
+fieldset legend {
+    padding: 0 10px;
+    border-left: #222 1px solid;
+    border-right: #222 1px solid;
+    font-size: 1.2em;
+    color: #222;
+}
+
+tr.impair {
+    background-color: #8AAAD9;
 }
 
 /* --- NOTES ---

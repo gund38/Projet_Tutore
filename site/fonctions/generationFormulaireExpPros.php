@@ -22,6 +22,7 @@
                 </tr>
                 <tr>
                     <td class="colonne_visi" rowspan="6">
+                        <label for="visi_exp<?php echo $i; ?>"><small>Visibilité globale</small></label>
                         <input type="checkbox"
                                name="visi_exp<?php echo $i; ?>"
                                id="visi_exp<?php echo $i; ?>"

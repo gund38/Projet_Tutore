@@ -37,6 +37,32 @@
         <link rel="stylesheet" href="css/design.css" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
+
+        <style type="text/css">
+            #contenu {
+                text-align:center;
+            }
+
+            table {
+                text-align:center;
+            }
+
+            table.resultat {
+                border-collapse: collapse;
+            }
+
+            table.resultat td {
+                border: 3px solid black;
+            }
+
+            .nom {
+                width: 600px;
+            }
+
+            .promo {
+                width: 150px;
+            }
+        </style>
     </head>
 
     <body>
@@ -51,7 +77,72 @@
             ?>
 
             <div id="contenu">
-                <p>Recherche un profil.</p>
+                <h3>Recherche de profil</h3>
+
+                <p>Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.</p>
+
+                <br /><br/>
+
+                <center>
+                    <form action="rechercher.php" method="post">
+                        <table>
+                            <tr>
+                                <td>Nom ou prénom</td>
+                                <td>Année de promotion</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name="nom" size="17" placeholder="Marco Polo">
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value="all">N'importe quelle année</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2008">2008</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="submit" value="Rechercher">
+                                </td>
+
+                            </tr>
+                        </table>
+                    </form>
+
+                    <br /><br /><br />
+
+                    <fieldset style="width: 800px">
+                        <legend>Résultat de votre recherche</legend>
+
+                        <table class="resultat" cellpadding="10px">
+                            <thead> <!-- En-tête du tableau -->
+                                <tr>
+                                    <th>Prénom & Nom</th>
+                                    <th>Promotion</th>
+                                </tr>
+                            </thead>
+
+                            <tbody> <!-- Corps du tableau -->
+                                <tr class="impair">
+                                    <td class="nom"><a href="profil_public-4.php">Nicolas Dubois</a></td>
+                                    <td class="promo">2013</td>
+                                </tr>
+                                <tr>
+                                    <td class="nom"><a href="profil_public-4.php">Nicolas Larmendier</a></td>
+                                    <td class="promo">2010</td>
+                                </tr>
+                                <tr class="impair">
+                                    <td class="nom"><a href="profil_public-4.php">Nicolas Kamarazov</a></td>
+                                    <td class="promo">2008</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </center>
             </div>
         </div>
     </body>

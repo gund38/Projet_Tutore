@@ -55,15 +55,88 @@
         ?>
 
         <div id="contenu">
-            <h2>Exemples de statistiques</h2>
+            <center>
+            <h3>Statistiques</h3>
+            <br />
 
-            <h3>Camembert :</h3>
+            <table>
+                <tr>
+                    <th>Types de statistique</th>
+                    <th colspan="3">Plage de promos</th>
+                    <th>Type de graphe</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="type" id="type">
+                            <option value="">Répartition des salaires</option>
+                            <option value="">Pourcentage de diplômés</option>
+                            <option value="">Répartition géographique</option>
+                            <option value="">Pourcentage ayant un travail</option>
+                            <option value="">Répartition du niveau d'études final</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="type" id="type">
+                            <option value="">2012</option>
+                            <option value="">2011</option>
+                            <option value="">2010</option>
+                            <option value="">2009</option>
+                            <option value="">2008</option>
+                            <option value="">2007</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="type" id="type">
+                            <option value="">2012</option>
+                            <option value="">2011</option>
+                            <option value="">2010</option>
+                            <option value="">2009</option>
+                            <option value="">2008</option>
+                            <option value="">2007</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="visi_dip" id="" />
+                        <label for="enCours_exp">Toutes les promos</label>
+                    </td>
+                    <td>
+                        <select name="type" id="type">
+                            <option value="">Camembert</option>
+                            <option value="">Histogramme</option>
+                            <option value="">Carte</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="submit" value="Générer" />
+                    </td>
+                </tr>
+            </table>
+            <br /><br />
 
-            <div id="camembert" style="width: 640px; height: 400px;"></div>
+            <style type="text/css">
+                fieldset {
+                    border: solid 1px #222;
+                }
 
-            <h3>Classique :</h3>
+                fieldset legend {
+                    padding: 0 10px;
+                    border-left: #222 1px solid;
+                    border-right: #222 1px solid;
+                    font-size: 1.2em;
+                    color: #222;
+                }
+            </style>
 
-            <div id="classique" style="width: 640px; height: 400px;"></div>
+            <fieldset style="width: 700px; height: 450px;">
+                <legend>Résultat</legend>
+
+
+                <div id="camembert" align="center" style="width: 640px; height: 400px;"></div>
+
+
+                <input align="center" type="submit" value="Télécharger au format JPG" />
+            </fieldset>
+            </center>
         </div>
     </body>
 </html>

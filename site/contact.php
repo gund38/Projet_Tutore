@@ -82,57 +82,64 @@
             ?>
 
             <div id="contenu">
-                <form  action="fonctions/formulaireContact.php" method="post">
-                    <fieldset>
-                        <legend>Formulaire de contact</legend>
+                <center>
+                    <p>
+                        Vous pouvez utiliser le formulaire suivant afin de contacter l'administrateur pour lui signaler une erreur, un problème ou un bug,<br />
+                        ainsi que lui demander la modification ou suppression de votre compte ou tout autre chose.
+                    </p>
+                    <br />
+                    <form  action="fonctions/formulaireContact.php" method="post">
+                        <fieldset style="width: 550px;">
+                            <legend>Formulaire de contact</legend>
 
-                        <br />
+                            <br />
 
-                        <label for="label_message">Votre message&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
+                            <label for="label_message">Votre message&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
 
-                        <textarea name="message" rows="8" cols="45" id="label_message" placeholder="Taper votre texte.">
-                            <?php
-                                if (isset($_POST['message']))
-                                    echo htmlspecialchars($_POST['message']);
-                            ?>
-                        </textarea>
+                            <textarea name="message" rows="8" cols="45" id="label_message" placeholder="Taper votre texte.">
+                                <?php
+                                    if (isset($_POST['message']))
+                                        echo htmlspecialchars($_POST['message']);
+                                ?>
+                            </textarea>
 
-                        <br />
+                            <br />
 
-                        <label for ="label_email">Votre email&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
+                            <label for ="label_email">Votre email&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
 
-                        <input type="text" name="email" id="label_email"
-                               value="
-                               <?php
-                                   if (isset($_POST['email']))
-                                       echo htmlspecialchars($_POST['email']);
-                               ?>"
-                               placeholder="truc@truc.truc"/>
+                            <input type="text" name="email" id="label_email"
+                                   value="
+                                   <?php
+                                       if (isset($_POST['email']))
+                                           echo htmlspecialchars($_POST['email']);
+                                   ?>"
+                                   placeholder="truc@truc.truc"/>
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <input type="submit" value="Envoyer" />
+                            <input type="submit" value="Envoyer" />
 
-                        <label class="erreur">
-                            <?php
-                                if (isset($_SESSION['erreur']))
-                                    echo $_SESSION['erreur'];
-                            ?>
-                        </label>
+                            <label class="erreur">
+                                <?php
+                                    if (isset($_SESSION['erreur']))
+                                        echo $_SESSION['erreur'];
+                                ?>
+                            </label>
 
-                        <label class="sortie">
-                            <?php
-                                if (isset($_SESSION['info']))
-                                    echo $_SESSION['info'];
-                            ?>
-                        </label>
-                    </fieldset>
-                </form>
+                            <label class="sortie">
+                                <?php
+                                    if (isset($_SESSION['info']))
+                                        echo $_SESSION['info'];
+                                ?>
+                            </label>
+                        </fieldset>
+                    </form>
 
-                <p>
-                    <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
-                </p>
+                    <p>
+                        <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                    </p>
+                </center>
             </div>
         </div>
     </body>

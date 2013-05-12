@@ -26,7 +26,7 @@
     supprimerMessageAvertissement();
 
     unset($_GET);
-    $fichierRetour = "../login.php";
+    $fichierRetour = "../index.php";
     $nbErreurs = 0;
     $_SESSION['erreurs_connexion'] = "";
 

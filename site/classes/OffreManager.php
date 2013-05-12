@@ -31,8 +31,10 @@
             $offres = array();
 
             $q = $this->_db->query('SELECT
-                codeO, codePe, dateDepot, type, intitule, entreprise, ville,
-                departement, remuneration, cheminPDF
+                codeO, codePe,
+                DATE_FORMAT(dateDepot, \'%d/%m/%Y\') AS dateDepot,
+                type, intitule, entreprise, ville, departement,
+                remuneration, cheminPDF
                 FROM Offre
                 ORDER BY codeO');
 
@@ -47,13 +49,15 @@
          * Retourne l'offre désignée par son id
          *
          * @param int $id Id de l'offre à récupérer
-         * @return Personne
+         * @return Offre
          */
         public function getOffre($id) {
             $q = $this->_db->prepare('SELECT
-                codeO, codePe, dateDepot, type, intitule, entreprise, ville,
-                departement, remuneration, cheminPDF
-                FROM Personne
+                codeO, codePe,
+                DATE_FORMAT(dateDepot, \'%d/%m/%Y\') AS dateDepot,
+                type, intitule, entreprise, ville, departement,
+                remuneration, cheminPDF
+                FROM Offre
                 WHERE codeO = :id');
 
             $q->execute(array(

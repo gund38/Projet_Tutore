@@ -72,7 +72,7 @@
          *
          * @return int
          */
-        public function getCodeO($codeO) {
+        public function getCodeO() {
             return $this->_codeO;
         }
 
@@ -81,7 +81,7 @@
          *
          * @return int
          */
-        public function getCodePe($codePe) {
+        public function getCodePe() {
             return $this->_codePe;
         }
 
@@ -90,7 +90,7 @@
          *
          * @return string
          */
-        public function getDateDepot($dateDepot) {
+        public function getDateDepot() {
             return $this->_dateDepot;
         }
 
@@ -99,7 +99,7 @@
          *
          * @return string
          */
-        public function getType($type) {
+        public function getType() {
             return $this->_type;
         }
 
@@ -108,7 +108,7 @@
          *
          * @return string
          */
-        public function getIntitule($intitule) {
+        public function getIntitule() {
             return $this->_intitule;
         }
 
@@ -117,7 +117,7 @@
          *
          * @return string
          */
-        public function getEntreprise($entreprise) {
+        public function getEntreprise() {
             return $this->_entreprise;
         }
 
@@ -126,7 +126,7 @@
          *
          * @return string
          */
-        public function getVille($ville) {
+        public function getVille() {
             return $this->_ville;
         }
 
@@ -135,7 +135,7 @@
          *
          * @return string
          */
-        public function getDepartement($departement) {
+        public function getDepartement() {
             return $this->_departement;
         }
 
@@ -144,7 +144,7 @@
          *
          * @return string
          */
-        public function getRemuneration($remuneration) {
+        public function getRemuneration() {
             return $this->_remuneration;
         }
 
@@ -153,7 +153,7 @@
          *
          * @return string
          */
-        public function getCheminPDF($cheminPDF) {
+        public function getCheminPDF() {
             return $this->_cheminPDF;
         }
 

@@ -16,7 +16,7 @@
         private $_visibilitePhoto;
         private $_pagePerso;
         private $_visibilitePagePerso;
-
+/** @TODO Rajouter booléen diplômé et tutti fruti */
         private $_diplomes;
         private $_expPros;
 

@@ -31,6 +31,15 @@
         <link rel="stylesheet" href="css/design.css" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
+
+        <style type="text/css">
+            h2 {
+                font-size: 3em;
+            }
+            p, .objectifs li {
+                font-size: 1.2em;
+            }
+        </style>
     </head>
 
     <body>
@@ -45,7 +54,35 @@
             ?>
 
             <div id="contenu">
-                <p>Index.</p>
+                <table cellpadding="20px">
+                    <tr>
+                        <td>
+                            <h2>Bienvenue sur le site des Anciens Étudiants<br /> du Master TI (Technologie de l'Internet) de Pau !</h2>
+                        </td>
+                        <td>
+                            <img src="images/logo_uppa.jpg" alt="Logo UPPA" width="253" height="234" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                Ce site a plusieurs objectifs :
+                            </p>
+                            <ul class="objectifs">
+                                <li>
+                                    La création d'un annuaire des Anciens Étudiants du Master TI de Pau
+                                </li>
+                                <li>
+                                    La centralisation des offres d'emploi et de stage qui sont envoyés au département informatique
+                                </li>
+                                <li>
+                                    La récupération et le recoupement d'informations sur les Anciens Étudiants afin de générer des statistiques anonymes à destination de l'équipe enseignante
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>

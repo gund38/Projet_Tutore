@@ -45,7 +45,7 @@
             ?>
 
             <div id="contenu">
-                <p>Se connecter au site</p>
+                <h3 align="center">Se connecter au site</h3>
 
                 <label class="erreur">
                     <?php
@@ -64,32 +64,37 @@
                     ?>
                 </label>
 
-                <form action="fonctions/connexion.php" method="post">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="login">Login&nbsp;:</label>
-                            </td>
-                            <td>
-                                <input type="text" name="login" id="login" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="mdp">Mot de passe&nbsp;:</label>
-                            </td>
-                            <td>
-                                <input type="password" name="mdp" id="mdp" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" value="Envoyer" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <br/>
 
+                <center>
+                    <fieldset style="width: 400px; height: 175px;">
+                        <form action="fonctions/connexion.php" method="post">
+                            <table cellpadding="15px">
+                                <tr>
+                                    <td>
+                                        <label for="login">Login&nbsp;:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="login" id="login" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="mdp">Mot de passe&nbsp;:</label>
+                                    </td>
+                                    <td>
+                                        <input type="password" name="mdp" id="mdp" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;">
+                                        <input type="submit" value="Se connecter" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </fieldset>
+                </center>
                 <br />
 
                 <label class="erreur">

@@ -51,23 +51,126 @@
             ?>
 
             <div id="contenu">
-                <p>Consulter les offres.</p>
+                <h3 align="center">Offres d'emploi<?php echo isset($_SESSION['personneCo']) ? " et de stage" : "" ?></h3>
 
-                <?php
-                    $bdd = ConnexionBD::getInstance()->getBDD();
+                <p align="center">Ici vous pouvez rechercher une offre d'emploi ou de stage suivant différents critères.</p>
 
-                    $managerOffre = new OffreManager($bdd);
-                    $offres = $managerOffre->getList();
-                    $taille = count($offres);
+                <br /><br />
 
-                    echo "<p>\n";
-                    for ($i = 0; $i < $taille; $i++) {
-                        echo "\t\t";
-                        $offres[$i]->afficher();
-                        echo "<br />\n";
+                <table align="center">
+                    <tr>
+                        <th>
+                            <label for="intitule">Intitulé&nbsp;:</label>
+                        </th>
+                        <th>
+                            <label for="type">Type&nbsp;:</label>
+                        </th>
+                        <th>
+                            <label for="ville">Ville&nbsp;:</label>
+                        </th>
+                        <th>
+                            <label for="departement">Département&nbsp;:</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="intitule" id="intitule" />
+                        </td>
+                        <td>
+                            <select name="type" id="type">
+                                <?php
+                                    // Récupération de la liste des types d'offre
+                                    $listeTypes = listeTypesOffre();
+
+                                    foreach ($listeTypes as $value) {
+                                        echo "<option value=\"" . $value
+                                        . "\">" . $value
+                                        . "</option>\n";
+                                    }
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="ville" id="ville" />
+                        </td>
+                        <td>
+                            <select name="departement" id="departement">
+                                <?php
+                                    // Récupération de la liste des départements
+                                    $listeDep = listeDepartements();
+
+                                    foreach ($listeDep as $value) {
+                                        echo "<option value=\"" . $value['codeDe']
+                                        . "\">" . $value['nom']
+                                        . "</option>\n";
+                                    }
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="submit" value="Rechercher" />
+                        </td>
+                    </tr>
+                </table>
+
+                <br /><br /><br /><br />
+
+                <style type="text/css">
+                    #recherche td, #recherche th {
+                        border: 1px solid #000;
                     }
-                    echo "\t</p>\n";
-                ?>
+                </style>
+
+                <fieldset>
+                    <legend>Résultat de votre recherche</legend>
+
+                    <table id="recherche" align="center" cellpadding="10px"
+                           style="text-align: center; border: 1px solid #000; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>Date de dépôt</th>
+                                <th>Type</th>
+                                <th>Intitulé du poste</th>
+                                <th>Entreprise / organisation</th>
+                                <th>Ville</th>
+                                <th>Département</th>
+                                <th>Rémunération (€ / mois)</th>
+                                <th>Télécharger l'offre en PDF</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                                $bdd = ConnexionBD::getInstance()->getBDD();
+
+                                $managerOffre = new OffreManager($bdd);
+                                $offres = $managerOffre->getList();
+
+                                $impair = true;
+
+                                foreach ($offres as $offreEnCours) {
+                                    ?>
+                                    <tr<?php echo $impair ? ' class="impair"' : ""; $impair = !$impair; ?>>
+                                        <td><?php echo $offreEnCours->getDateDepot(); ?></td>
+                                        <td><?php echo $offreEnCours->getType(); ?></td>
+                                        <td><?php echo $offreEnCours->getIntitule() ?></td>
+                                        <td><?php echo $offreEnCours->getEntreprise() ?></td>
+                                        <td><?php echo $offreEnCours->getVille() ?></td>
+                                        <td><?php echo $offreEnCours->getDepartement() ?></td>
+                                        <td><?php echo $offreEnCours->getRemuneration() ?></td>
+                                        <td>
+                                            <a href="pdf/<?php echo $offreEnCours->getCheminPDF() ?>"
+                                               type="application/octet-stream">
+                                                <img src="images/icone-pdf.gif" alt="Icône PDF" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </fieldset>
             </div>
         </div>
     </body>
