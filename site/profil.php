@@ -252,6 +252,11 @@
                                             <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
                                             <input type="file" name="photo" id="photo" accept="image/*" />
                                         </td>
+                                        <td>
+                                            <input type="checkbox" name="supprimer_photo" id="supprimer_photo"
+                                                   onclick="checkboxDeletePhoto();"/>
+                                            <label for="supprimerPhoto">Supprimer ma photo de profil actuelle</label>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="colonne_visi">

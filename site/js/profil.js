@@ -8,6 +8,16 @@ function change_onglet(name) {
     anc_onglet = name;
 }
 
+// Fonction qui désactive le champ 'Photo de profil' si la checkbox
+// 'Supprimer photo' est cochée (et vice-versa)
+function checkboxDeletePhoto() {
+    if (document.getElementById('supprimer_photo').checked){
+        document.getElementById('photo').disabled = 'disabled';
+    } else {
+        document.getElementById('photo').disabled = '';
+    }
+}
+
 // Fonction qui désactive les champs 'Date de fin' si la checkbox
 // 'En cours' associée est cochée (et vice-versa)
 function checkboxEnCours(id) {
@@ -18,7 +28,7 @@ function checkboxEnCours(id) {
     }
 }
 
-// Fonction qui vérifie l'état des checkbox au chargement la page
+// Fonction qui vérifie l'état des checkbox 'En cours' au chargement de la page
 function verificationCheckbox() {
     var nbExpPros = document.forms.formProfil.nbExpPros.value;
 

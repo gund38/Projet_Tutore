@@ -117,6 +117,7 @@
     $options = array(
         'idProfil' => $optionId,
         'visi_photo' => $optionBoolean,
+        'supprimer_photo' => $optionBoolean,
         'visi_date_naiss' => $optionBoolean,
         'date_naiss' => $optionDate,
         'visi_email' => $optionBoolean,
@@ -126,6 +127,8 @@
     );
 
     $options['visi_photo']['booleen'] = true;
+
+    $options['supprimer_photo']['booleen'] = true;
 
     $options['visi_date_naiss']['booleen'] = true;
 
@@ -246,32 +249,34 @@
 
     $presenceFichier = false;
 
-    // Vérification du fichier uploadé
-    switch ($_FILES['photo']['error']) {
-        case UPLOAD_ERR_OK:
-            $presenceFichier = true;
-        case UPLOAD_ERR_NO_FILE:
-            /**
-             * Si il n'y a pas de fichier ou que le fichier est bien uploadé,
-             * on ne fait rien
-             */
-            break;
+    if (isset($_FILES['photo'])) {
+        // Vérification du fichier uploadé
+        switch ($_FILES['photo']['error']) {
+            case UPLOAD_ERR_OK:
+                $presenceFichier = true;
+            case UPLOAD_ERR_NO_FILE:
+                /**
+                 * Si il n'y a pas de fichier ou que le fichier est bien uploadé,
+                 * on ne fait rien
+                 */
+                break;
 
-        case UPLOAD_ERR_INI_SIZE:
-        case UPLOAD_ERR_FORM_SIZE:
-            $_SESSION['erreurs_profil'] .= "Fichier trop grand !<br />\n";
-            $nbErreurs++;
-            break;
+            case UPLOAD_ERR_INI_SIZE:
+            case UPLOAD_ERR_FORM_SIZE:
+                $_SESSION['erreurs_profil'] .= "Fichier trop grand !<br />\n";
+                $nbErreurs++;
+                break;
 
-        case UPLOAD_ERR_PARTIAL:
-            $_SESSION['erreurs_profil'] .= "Fichier reçu partiellement !<br />\n";
-            $nbErreurs++;
-            break;
+            case UPLOAD_ERR_PARTIAL:
+                $_SESSION['erreurs_profil'] .= "Fichier reçu partiellement !<br />\n";
+                $nbErreurs++;
+                break;
 
-        default:
-            $_SESSION['erreurs_profil'] .= "Erreur avec le fichier !<br />\n";
-            $nbErreurs++;
-            break;
+            default:
+                $_SESSION['erreurs_profil'] .= "Erreur avec le fichier !<br />\n";
+                $nbErreurs++;
+                break;
+        }
     }
 
     // S'il y a au moins une erreur, on se redirige vers le formulaire
@@ -327,10 +332,23 @@
         }
     }
 
-    /** @TODO Vérifier photo profil si changement */
-
     // Création d'un ProfilManager pour l'insertion
     $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
+
+    // Photo par défaut
+    $photoDefault = "photo_profil_default.jpg";
+
+    // Photo actuelle
+    $photoActuelle = $profilManager->getProfil($resultat['idProfil'])->getCheminPhoto();
+
+    // Choix pour la photo
+    if ($presenceFichier) { // Si l'utilisateur veut changer sa photo
+        $photo = substr(strrchr($nom, '/'), 1);
+    } else if ($resultat['supprimer_photo']) { // Si l'utilisateur veut supprimer sa photo
+        $photo = $photoDefault;
+    } else { // Si l'utilisateur veut garder sa photo
+        $photo = $photoActuelle;
+    }
 
     // Création du tableau de données
     $donneesProfil = array(
@@ -338,16 +356,14 @@
         'visibiliteEmail' => $resultat['visi_email'] ? 1 : 0,
         'dateNaissance' => $resultat['date_naiss'],
         'visibiliteDateNaissance' => $resultat['visi_date_naiss'] ? 1 : 0,
-        'cheminPhoto' => $presenceFichier ? substr(strrchr($nom, '/'), 1) : "",
+        'cheminPhoto' => $photo,
         'visibilitePhoto' => $resultat['visi_photo'] ? 1 : 0,
         'pagePerso' => $resultat['page'],
         'visibilitePagePerso' => $resultat['visi_page'] ? 1 : 0
     );
 
-    // Insertion
-    $ajout = $profilManager->updateProfil(new Profil($donneesProfil));
-
-    if ($ajout === false) {
+    // Update des nouvelles données dans la BD
+    if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
         $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";
 
         // Suppression du fichier temporaire
@@ -358,10 +374,10 @@
         exit;
     }
 
-
-
-
-
+    // Tout s'est bien passé, message de réussite et redirection
+    unset($_SESSION['erreurs_profil']);
+    $_SESSION['sortie_profil'] = "La mise à jour de votre profil a été effectuée avec succès<br />\n";
+    header("Location: $fichierRetour");
 
     foreach ($_POST as $key => $value) {
         echo "$key = $value<br />\n";
@@ -374,6 +390,9 @@
 
     echo "<br /><br />\n\n\n";
     var_dump($resultat);
+
+    echo "<br /><br />\n\n\n";
+    var_dump($_FILES);
 
     echo "<br /><br />\n\n\n";
     echo $_SESSION['erreurs_profil'];
