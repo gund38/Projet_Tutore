@@ -4,7 +4,7 @@ site/tmp/*
 site/pdf/*
 !site/pdf/.gitkeep
 site/images/profil/*
-!site/images/profil/photo_profil.png
+!site/images/profil/photo_profil_default.jpg
 
 # Doxygen
 site/Doxyfile
@@ -18,8 +18,4 @@ site/js/jquery-ui.js
 *.zip
 
 # Fichiers temporaires gedit
-*.html~
-*.php~
-*.js~
-*.css~
-*.gitignore~
+*.*~
