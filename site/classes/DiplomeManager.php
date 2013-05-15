@@ -16,7 +16,7 @@
         /**
          * Contructeur
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function __construct(PDO $db) {
             $this->setDb($db);
@@ -26,7 +26,7 @@
          * Retourne les diplômes désignés par l'id du profil correspondant
          *
          * @param int $id Id du profil
-         * @return array of Diplome
+         * @return Diplome[]
          */
         public function getDiplomes($id) {
             $diplomes = array();
@@ -51,7 +51,7 @@
         /**
          * Setter de $_db
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function setDb(PDO $db) {
             $this->_db = $db;

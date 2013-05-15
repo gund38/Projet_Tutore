@@ -16,7 +16,7 @@
         /**
          * Contructeur
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function __construct(PDO $db) {
             $this->setDb($db);
@@ -25,7 +25,7 @@
         /**
          * Retourne la liste de toutes les offres dans la BD
          *
-         * @return array of Offre
+         * @return Offre[]
          */
         public function getList() {
             $offres = array();
@@ -74,7 +74,7 @@
         /**
          * Ajoute une offre dans la BD
          *
-         * @param array $donnees
+         * @param array $donnees Données de l'offre à ajouter
          * @return boolean
          */
         public function addOffre($offre) {
@@ -118,7 +118,7 @@
         /**
          * Setter de $_db
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function setDb(PDO $db) {
             $this->_db = $db;

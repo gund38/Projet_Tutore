@@ -112,7 +112,7 @@
      * ou décimaux à 1 ou 2 décimales positifs
      *
      * @param mixed $floatATester Présumé float ou int à tester
-     * @return float ou int si $floatATester est correct, false sinon
+     * @return float|int|false float ou int si $floatATester est correct, false sinon
      */
     function validerFloat($floatATester) {
         return preg_match('/^[0-9]+((,|.)[0-9]{1,2})?$/', $floatATester) ? $floatATester : false;
@@ -123,7 +123,7 @@
      * au format français (dd/mm/YYYY)
      *
      * @param string $dateATester Présumée date à tester
-     * @return string si $dateATester est correcte, false sinon
+     * @return string|false string si $dateATester est correcte, false sinon
      */
     function validerDateFR($dateATester) {
         if (empty ($dateATester)) {
@@ -151,7 +151,7 @@
      * Fonction pour vérifier les URL (HTTP ou HTTPS)
      *
      * @param string $URLATester Présumée URL à tester
-     * @return string si $URLATester est correcte, false sinon
+     * @return string|false string si $URLATester est correcte, false sinon
      */
     function validerURL($URLATester) {
         if (empty ($URLATester)) {

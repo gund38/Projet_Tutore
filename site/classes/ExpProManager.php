@@ -16,7 +16,7 @@
         /**
          * Contructeur
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function __construct(PDO $db) {
             $this->setDb($db);
@@ -27,7 +27,7 @@
          * par l'id du profil correspondant
          *
          * @param int $id Id du profil
-         * @return array of ExpPro
+         * @return ExpPro[]
          */
         public function getExpPros($id) {
             $expPros = array();
@@ -56,7 +56,7 @@
         /**
          * Setter de $_db
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function setDb(PDO $db) {
             $this->_db = $db;

@@ -160,7 +160,8 @@
                                         <td><?php echo $offreEnCours->getRemuneration() ?></td>
                                         <td>
                                             <a href="pdf/<?php echo $offreEnCours->getCheminPDF() ?>"
-                                               type="application/octet-stream">
+                                               target="_blank"
+                                               type="application/pdf">
                                                 <img src="images/icone-pdf.gif" alt="Icône PDF" />
                                             </a>
                                         </td>

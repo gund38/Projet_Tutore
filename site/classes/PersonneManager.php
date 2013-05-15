@@ -16,7 +16,7 @@
         /**
          * Contructeur
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function __construct(PDO $db) {
             $this->setDb($db);
@@ -25,7 +25,7 @@
         /**
          * Retourne la liste de toutes les personnes dans la BD
          *
-         * @return array of Personne
+         * @return Personne[]
          */
         public function getList() {
             $persos = array();
@@ -68,7 +68,7 @@
         /**
          * Setter de $_db
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function setDb(PDO $db) {
             $this->_db = $db;

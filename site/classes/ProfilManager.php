@@ -16,7 +16,7 @@
         /**
          * Contructeur
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function __construct(PDO $db) {
             $this->setDb($db);
@@ -25,7 +25,7 @@
         /**
          * Retourne la liste de tous les profils
          *
-         * @return array of Profil
+         * @return Profil[]
          */
         public function getList() {
             $profils = array();
@@ -75,7 +75,7 @@
          * Update un profil (et ses diplômes et/ou expériences professionnelles)
          * dans la BD
          *
-         * @param Profil Profil à update
+         * @param Profil $profil Profil à update
          * @return boolean
          */
         public function updateProfil($profil) {
@@ -125,7 +125,7 @@
         /**
          * Setter de $_db
          *
-         * @param PDO $db
+         * @param PDO $db Base de données
          */
         public function setDb(PDO $db) {
             $this->_db = $db;
