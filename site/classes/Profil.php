@@ -27,10 +27,6 @@
          */
         public function __construct(array $donnees) {
             $this->hydrate($donnees);
-
-            // Initialisation des tableaux
-            $this->_diplomes = array();
-            $this->_expPros = array();
         }
 
         /**
@@ -255,7 +251,7 @@
         /**
          * Setter de $_diplomes
          *
-         * @param array of Diplome $diplomes
+         * @param Diplome[] $diplomes
          */
         public function setDiplomes($diplomes) {
             $this->_diplomes = $diplomes;
@@ -264,7 +260,7 @@
         /**
          * Setter de $_expPros
          *
-         * @param array of ExpPro $expPros
+         * @param ExpPro[] $expPros
          */
         public function setExpPros($expPros) {
             $this->_expPros = $expPros;

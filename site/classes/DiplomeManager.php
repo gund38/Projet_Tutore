@@ -49,6 +49,56 @@
         }
 
         /**
+         * Update un diplôme dans la BD
+         *
+         * @param Diplome $diplome Diplôme à update
+         * @return boolean
+         */
+        public function updateDiplome($diplome) {
+            $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Diplome
+            if (get_class($diplome) !== "Diplome") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donneesDiplome = array(
+                'codeDi' => $diplome->getCodeDi(),
+                'visibilite' => $diplome->getVisibilite(),
+                'annee' => $diplome->getAnnee(),
+                'type' => $diplome->getType(),
+                'discipline' => $diplome->getDiscipline(),
+                'etablissement' => $diplome->getEtablissement()
+            );
+
+            // Préparation de la requête
+            $req = $this->_db->prepare('UPDATE Diplome SET
+                visibilite = :visibilite,
+                annee = :annee,
+                type = :type,
+                discipline = :discipline,
+                etablissement = :etablissement
+                WHERE codeDi = :codeDi');
+
+            // Si la préparation a échoué
+            if (!$req) {
+                return $resultat;
+            }
+
+            // Exécution de la requête
+            $req->execute($donneesDiplome);
+
+            // Si la requête a réussi
+            if ($req) {
+                $resultat = true;
+            }
+
+            return $resultat;
+        }
+
+
+        /**
          * Setter de $_db
          *
          * @param PDO $db Base de données

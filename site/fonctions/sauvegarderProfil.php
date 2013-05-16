@@ -350,7 +350,7 @@
         $photo = $photoActuelle;
     }
 
-    // Création du tableau de données
+    // Création du tableau de données du Profil
     $donneesProfil = array(
         'codePe' => $_SESSION['personneCo']->getCodePe(),
         'visibiliteEmail' => $resultat['visi_email'] ? 1 : 0,
@@ -361,6 +361,20 @@
         'pagePerso' => $resultat['page'],
         'visibilitePagePerso' => $resultat['visi_page'] ? 1 : 0
     );
+
+    // Ajout des diplômes
+    $donneesDiplomes = array();
+    for ($i = 1; $i <= $_POST['nbDiplomes']; $i++) {
+        $donneesDiplomes[] = new Diplome(array(
+            'codeDi' => $resultat["id_dip$i"],
+            'visibilite' => $resultat["visi_dip$i"] ? 1 : 0,
+            'annee' => $resultat["annee_dip$i"],
+            'type' => $resultat["type_dip$i"],
+            'discipline' => $resultat["disc_dip$i"],
+            'etablissement' => $resultat["etabli_dip$i"]
+        ));
+    }
+    $donneesProfil['diplomes'] = $donneesDiplomes;
 
     // Update des nouvelles données dans la BD
     if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
@@ -379,6 +393,7 @@
     $_SESSION['sortie_profil'] = "La mise à jour de votre profil a été effectuée avec succès<br />\n";
     header("Location: $fichierRetour");
 
+    echo "<br /><br />\n\n\n";
     foreach ($_POST as $key => $value) {
         echo "$key = $value<br />\n";
     }
@@ -396,6 +411,12 @@
 
     echo "<br /><br />\n\n\n";
     echo $_SESSION['erreurs_profil'];
+
+    echo "<br /><br />\n\n\n";
+    var_dump($donneesProfil);
+
+    echo "<br /><br />\n\n\n";
+    var_dump(new Profil($donneesProfil));
 
     unset($_SESSION['erreurs_profil']);
 ?>

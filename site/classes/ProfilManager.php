@@ -86,7 +86,7 @@
                 return $resultat;
             }
 
-            // Création du tableau de données
+            // Création du tableau de données du Profil
             $donneesProfil = array(
                 'codePe' => $profil->getCodePe(),
                 'visibiliteEmail' => $profil->getVisibiliteEmail(),
@@ -98,6 +98,7 @@
                 'visibilitePagePerso' => $profil->getVisibilitePagePerso()
             );
 
+            // Préparation de la requête pour le Profil
             $req = $this->_db->prepare('UPDATE Profil SET
                 visibiliteEmail = :visibiliteEmail,
                 dateNaissance = STR_TO_DATE(:dateNaissance, \'%d/%m/%Y\'),
@@ -108,6 +109,7 @@
                 visibilitePagePerso = :visibilitePagePerso
                 WHERE codePe = :codePe');
 
+            // Si la préparation a échoué
             if (!$req) {
                 return $resultat;
             }
@@ -115,9 +117,21 @@
             // Exécution de la requête
             $req->execute($donneesProfil);
 
-            if ($req) {
-                $resultat = true;
+            // Si la requête a echoué
+            if (!$req) {
+                return $resultat;
             }
+
+            // On met à jour les diplômes s'il y en a
+            $diplomes = $profil->getDiplomes();
+            $diplomeManager = new DiplomeManager($this->_db);
+            foreach ($diplomes as $diplomeEnCours) {
+                if (!$diplomeManager->updateDiplome($diplomeEnCours)) {
+                    return $resultat;
+                }
+            }
+
+            $resultat = true;
 
             return $resultat;
         }
