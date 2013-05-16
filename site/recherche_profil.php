@@ -79,24 +79,32 @@
             <div id="contenu">
                 <h3>Recherche de profil</h3>
 
-                <p>Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.</p>
+                <p>
+                    Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.<br />
+                    Une fois la recherche effectuée, il vous suffit de cliquer sur le nom d'une personne pour consulter son profil public.
+                </p>
 
                 <br /><br/>
 
                 <center>
-                    <form action="rechercher.php" method="post">
+                    <form action="fonctions/rechercherProfil.php" method="post">
                         <table>
                             <tr>
-                                <td>Nom ou prénom</td>
-                                <td>Année de promotion</td>
+                                <th>
+                                    <label for="nomPrenom">Nom et/ou prénom&nbsp;:</label>
+                                </th>
+                                <th>
+                                    <label for="promo">Année de promotion&nbsp;:</label>
+                                </th>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" name="nom" size="17" placeholder="Marco Polo">
+                                    <input type="text" name="nomPrenom" id="nomPrenom" placeholder="Marco Polo">
                                 </td>
                                 <td>
-                                    <select>
+                                    <select name="promo" id="promo">
                                         <option value="all">N'importe quelle année</option>
+                                        <option value="2014">2014</option>
                                         <option value="2013">2013</option>
                                         <option value="2012">2012</option>
                                         <option value="2011">2011</option>
@@ -108,7 +116,6 @@
                                 <td>
                                     <input type="submit" value="Rechercher">
                                 </td>
-
                             </tr>
                         </table>
                     </form>
@@ -116,7 +123,7 @@
                     <br /><br /><br />
 
                     <fieldset style="width: 800px">
-                        <legend>Résultat de votre recherche</legend>
+                        <legend>Résultats de votre recherche</legend>
 
                         <table class="resultat" cellpadding="10px">
                             <thead> <!-- En-tête du tableau -->
