@@ -376,6 +376,25 @@
     }
     $donneesProfil['diplomes'] = $donneesDiplomes;
 
+    // Ajout des expériences professionnelles
+    $donneesExpPros = array();
+    for ($i = 1; $i <= $_POST['nbExpPros']; $i++) {
+        $donneesExpPros[] = new ExpPro(array(
+            'codeEP' => $resultat["id_exp$i"],
+            'visibilite' => $resultat["visi_exp$i"] ? 1 : 0,
+            'dateDebut' => $resultat["date_deb_exp$i"],
+            'dateFin' => $resultat["date_fin_exp$i"],
+            'enCours' => $resultat["enCours_exp$i"] ? 1 : 0,
+            'intitule' => $resultat["inti_exp$i"],
+            'entreprise' => $resultat["entre_exp$i"],
+            'ville' => $resultat["ville_exp$i"],
+            'departement' => $resultat["dep_exp$i"],
+            'salaire' => $resultat["salaire_exp$i"],
+            'visibiliteSalaire' => $resultat["visi_salaire_exp$i"] ? 1 : 0
+        ));
+    }
+    $donneesProfil['expPros'] = $donneesExpPros;
+
     // Update des nouvelles données dans la BD
     if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
         $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";
@@ -393,29 +412,29 @@
     $_SESSION['sortie_profil'] = "La mise à jour de votre profil a été effectuée avec succès<br />\n";
     header("Location: $fichierRetour");
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$_POST : </strong><br />\n";
     foreach ($_POST as $key => $value) {
         echo "$key = $value<br />\n";
     }
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$resultat : </strong><br />\n";
     foreach ($resultat as $key => $value) {
         echo "$key = $value<br />\n";
     }
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$resultat : </strong><br />\n";
     var_dump($resultat);
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$_FILES : </strong><br />\n";
     var_dump($_FILES);
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$_SESSION['erreurs_profil'] : </strong><br />\n";
     echo $_SESSION['erreurs_profil'];
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>\$donneesProfil : </strong><br />\n";
     var_dump($donneesProfil);
 
-    echo "<br /><br />\n\n\n";
+    echo "<br /><br />\n\n\n <strong>new Profil : </strong><br />\n";
     var_dump(new Profil($donneesProfil));
 
     unset($_SESSION['erreurs_profil']);

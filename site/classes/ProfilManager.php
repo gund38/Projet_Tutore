@@ -131,8 +131,16 @@
                 }
             }
 
-            $resultat = true;
+            // On met à jour les expériences professionnelles s'il y en a
+            $expPros = $profil->getExpPros();
+            $expProManager = new ExpProManager($this->_db);
+            foreach ($expPros as $expProEnCours) {
+                if (!$expProManager->updateExpPro($expProEnCours)) {
+                    return $resultat;
+                }
+            }
 
+            $resultat = true;
             return $resultat;
         }
 
