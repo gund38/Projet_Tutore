@@ -25,10 +25,26 @@
     // Suppresion du message en cas de renvoi du formulaire
     supprimerMessageAvertissement();
 
-    unset($_GET);
-    $fichierRetour = "../index.php";
+    /**
+     * Création des différents liens de retour
+     *
+     * $fichierRetourDefault : Page de retour par défaut, ici l'index
+     * $fichierRetourErreur : Page de retour en cas d'erreur, ici la page de login
+     *
+     * $fichierRetourPerso : Si ce script a reçu le paramètre 'page' par la méthode GET,
+     * cette page devient la nouvelle page de retour.
+     *
+     * NOTE : Si le paramètre 'page' est présent, il est ajouté à $fichierRetourErreur
+     * pour permettre, même en cas d'erreur, une redirection personnalisée.
+     */
+    $fichierRetourDefault = "../index.php";
+    $fichierRetourErreur = "../login.php";
+    $fichierRetourErreur .= isset($_GET['page']) ? "?" . $_SERVER['QUERY_STRING'] : "";
+    $fichierRetourPerso = isset($_GET['page']) ? "../" . $_GET['page'] : $fichierRetourDefault;
+
     $nbErreurs = 0;
     $_SESSION['erreurs_connexion'] = "";
+    unset($_GET);
 
     // Vérification que les variables ne soient pas vides
     /**
@@ -44,7 +60,7 @@
     }
 
     if ($nbErreurs != 0) {
-        header("Location: $fichierRetour");
+        header("Location: $fichierRetourErreur");
         exit;
     }
 
@@ -72,9 +88,9 @@
 
     if (!$resultat) {
         $_SESSION['erreurs_connexion'] .= "Vos identifiants sont incorrects<br />\n";
+        header("Location: $fichierRetourErreur");
     } else {
         unset($_SESSION['erreurs_connexion']);
+        header("Location: $fichierRetourPerso");
     }
-
-    header("Location: $fichierRetour");
 ?>

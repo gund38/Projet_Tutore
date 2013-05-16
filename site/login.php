@@ -45,30 +45,11 @@
             ?>
 
             <div id="contenu">
-                <h3 align="center">Se connecter au site</h3>
-
-                <label class="erreur">
-                    <?php
-                        // Gestion des erreurs au niveau des droits d'accès aux pages
-                        if (isset($_SESSION['erreur_droits'])) {
-                            if (isset($_SESSION['personneCo'])) {
-                                echo "Vous n'avez pas le droit d'accéder à cette page !";
-                            } else {
-                                echo "Vous devez vous connecter pour accéder à cette page";
-                            }
-                            echo "<br /><br />\n";
-                            unset($_SESSION['erreur_droits']);
-                        } else {
-                            echo "\n";
-                        }
-                    ?>
-                </label>
-
-                <br/>
-
                 <center>
+                    <h3>Se connecter au site</h3>
+
                     <fieldset style="width: 400px; height: 175px;">
-                        <form action="fonctions/connexion.php" method="post">
+                        <form action="fonctions/connexion.php<?php echo isset($_GET['page']) ? "?" . $_SERVER['QUERY_STRING'] : "" ?>" method="post">
                             <table cellpadding="15px">
                                 <tr>
                                     <td>
@@ -94,22 +75,50 @@
                             </table>
                         </form>
                     </fieldset>
-                </center>
-                <br />
 
-                <label class="erreur">
-                    <?php
-                        // Gestion des erreurs au niveau de la connexion
-                        if (isset($_SESSION['erreurs_connexion'])) {
-                            echo substr_count($_SESSION['erreurs_connexion'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
-                            echo "<br />\n";
-                            echo $_SESSION['erreurs_connexion'];
-                            unset($_SESSION['erreurs_connexion']);
-                        } else {
-                            echo "\n";
-                        }
-                    ?>
-                </label>
+                    <br />
+
+                    <label class="sortie">
+                        <?php
+                            // Message si l'utilisateur est déjà connecté
+                            if (!isset($_SESSION['erreur_droits'])
+                                    && isset($_SESSION['personneCo'])) {
+                                echo "Vous êtes déjà connecté :)<br /><br />\n";
+                            }
+                        ?>
+                    </label>
+
+                    <label class="erreur">
+                        <?php
+                            // Gestion des erreurs au niveau des droits d'accès aux pages
+                            if (isset($_SESSION['erreur_droits'])) {
+                                if (isset($_SESSION['personneCo'])) {
+                                    echo "Vous n'avez pas le droit d'accéder à cette page !";
+                                } else {
+                                    echo "Vous devez vous connecter pour accéder à cette page";
+                                }
+                                echo "<br /><br />\n";
+                                unset($_SESSION['erreur_droits']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </label>
+
+                    <label class="erreur">
+                        <?php
+                            // Gestion des erreurs au niveau de la connexion
+                            if (isset($_SESSION['erreurs_connexion'])) {
+                                echo substr_count($_SESSION['erreurs_connexion'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
+                                echo "<br />\n";
+                                echo $_SESSION['erreurs_connexion'];
+                                unset($_SESSION['erreurs_connexion']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </label>
+                </center>
             </div>
         </div>
     </body>
