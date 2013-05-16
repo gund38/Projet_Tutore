@@ -343,10 +343,23 @@
 
     // Choix pour la photo
     if ($presenceFichier) { // Si l'utilisateur veut changer sa photo
+        // On supprime l'ancienne si elle est différente de la photo par défaut
+        if (!strcmp($photoActuelle, $photoDefault) == 0) {
+            unlink("../images/profil/$photoActuelle");
+        }
+
+        // On la remplace par la nouvelle
         $photo = substr(strrchr($nom, '/'), 1);
     } else if ($resultat['supprimer_photo']) { // Si l'utilisateur veut supprimer sa photo
+        // On supprime l'ancienne si elle est différente de la photo par défaut
+        if (!strcmp($photoActuelle, $photoDefault) == 0) {
+            unlink("../images/profil/$photoActuelle");
+        }
+
+        // On la remplace par celle par défaut
         $photo = $photoDefault;
     } else { // Si l'utilisateur veut garder sa photo
+        // On la garde
         $photo = $photoActuelle;
     }
 
