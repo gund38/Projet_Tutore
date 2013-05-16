@@ -31,17 +31,17 @@
         public function getDiplomes($id) {
             $diplomes = array();
 
-            $q = $this->_db->prepare('SELECT
+            $req = $this->_db->prepare('SELECT
                 codeDi, codePe, visibilite, annee, type, discipline, etablissement
                 FROM Diplome
                 WHERE codePe = :id
                 ORDER BY annee DESC');
 
-            $q->execute(array(
+            $req->execute(array(
                 'id' => $id
             ));
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $diplomes[] = new Diplome($donnees);
             }
 

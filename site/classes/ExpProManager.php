@@ -32,7 +32,7 @@
         public function getExpPros($id) {
             $expPros = array();
 
-            $q = $this->_db->prepare('SELECT
+            $req = $this->_db->prepare('SELECT
                 codeEP, codePe, visibilite,
                 DATE_FORMAT(dateDebut, \'%d/%m/%Y\') AS dateDebut,
                 DATE_FORMAT(dateFin, \'%d/%m/%Y\') AS dateFin,
@@ -42,11 +42,11 @@
                 WHERE codePe = :id
                 ORDER BY dateDebut DESC');
 
-            $q->execute(array(
+            $req->execute(array(
                 'id' => $id
             ));
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $expPros[] = new ExpPro($donnees);
             }
 

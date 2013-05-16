@@ -56,7 +56,7 @@
     /*
      * Application des options pour chaque champ du formulaire
      *
-     * Note : on pourrait utiliser la fonction filter_var_array(),
+     * Note : on pourrait utiliser la fonction filter_input(),
      * mais l'utilisation de la fonction supprimerMessageAvertissement()
      * nous en empêche. En effet, le 'vrai' tableau $_POST est détruit
      * et est remplacé par notre version sauvegardée puis restaurée.

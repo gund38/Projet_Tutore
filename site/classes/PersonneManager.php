@@ -30,12 +30,12 @@
         public function getList() {
             $persos = array();
 
-            $q = $this->_db->query('SELECT
+            $req = $this->_db->query('SELECT
                 codePe, type, nom, prenom, email, login, mdp
                 FROM Personne
                 ORDER BY nom');
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $persos[] = new Personne($donnees);
             }
 
@@ -49,16 +49,16 @@
          * @return Personne
          */
         public function getPersonne($id) {
-            $q = $this->_db->prepare('SELECT
+            $req = $this->_db->prepare('SELECT
                 codePe, type, nom, prenom, email, login, mdp
                 FROM Personne
                 WHERE codePe = :id');
 
-            $q->execute(array(
+            $req->execute(array(
                 'id' => $id
             ));
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $personne = new Personne($donnees);
             }
 

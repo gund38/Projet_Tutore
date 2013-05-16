@@ -1,11 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <meta charset="utf-8" />
-    </head>
-    <body></body>
-
 <?php
     /**
      * Ce fichier permet la sauvegarde du profil
@@ -206,7 +198,7 @@
     /*
      * Application des options pour chaque champ du formulaire
      *
-     * Note : on pourrait utiliser la fonction filter_var_array(),
+     * Note : on pourrait utiliser la fonction filter_input(),
      * mais l'utilisation de la fonction supprimerMessageAvertissement()
      * nous en empêche. En effet, le 'vrai' tableau $_POST est détruit
      * et est remplacé par notre version sauvegardée puis restaurée.
@@ -424,31 +416,4 @@
     unset($_SESSION['erreurs_profil']);
     $_SESSION['sortie_profil'] = "La mise à jour de votre profil a été effectuée avec succès<br />\n";
     header("Location: $fichierRetour");
-
-    echo "<br /><br />\n\n\n <strong>\$_POST : </strong><br />\n";
-    foreach ($_POST as $key => $value) {
-        echo "$key = $value<br />\n";
-    }
-
-    echo "<br /><br />\n\n\n <strong>\$resultat : </strong><br />\n";
-    foreach ($resultat as $key => $value) {
-        echo "$key = $value<br />\n";
-    }
-
-    echo "<br /><br />\n\n\n <strong>\$resultat : </strong><br />\n";
-    var_dump($resultat);
-
-    echo "<br /><br />\n\n\n <strong>\$_FILES : </strong><br />\n";
-    var_dump($_FILES);
-
-    echo "<br /><br />\n\n\n <strong>\$_SESSION['erreurs_profil'] : </strong><br />\n";
-    echo $_SESSION['erreurs_profil'];
-
-    echo "<br /><br />\n\n\n <strong>\$donneesProfil : </strong><br />\n";
-    var_dump($donneesProfil);
-
-    echo "<br /><br />\n\n\n <strong>new Profil : </strong><br />\n";
-    var_dump(new Profil($donneesProfil));
-
-    unset($_SESSION['erreurs_profil']);
 ?>

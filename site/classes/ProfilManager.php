@@ -30,7 +30,7 @@
         public function getList() {
             $profils = array();
 
-            $q = $this->_db->query('SELECT
+            $req = $this->_db->query('SELECT
                 codePe, promo, visibiliteEmail,
                 DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
                 visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
@@ -38,7 +38,7 @@
                 FROM Profil
                 ORDER BY codePe');
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $profils[] = new Profil($donnees);
             }
 
@@ -52,7 +52,7 @@
          * @return Profil
          */
         public function getProfil($id) {
-            $q = $this->_db->prepare('SELECT
+            $req = $this->_db->prepare('SELECT
                 codePe, promo, visibiliteEmail,
                 DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
                 visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
@@ -60,11 +60,11 @@
                 FROM Profil
                 WHERE codePe = :id');
 
-            $q->execute(array(
+            $req->execute(array(
                 'id' => $id
             ));
 
-            while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $profil = new Profil($donnees);
             }
 
