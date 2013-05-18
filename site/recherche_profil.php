@@ -94,7 +94,7 @@
                                     <label for="nomPrenom">Nom et/ou prénom&nbsp;:</label>
                                 </th>
                                 <th>
-                                    <label for="promo">Année de promotion&nbsp;:</label>
+                                    <label for="promo">Promotion&nbsp;:</label>
                                 </th>
                             </tr>
                             <tr>
@@ -103,7 +103,7 @@
                                 </td>
                                 <td>
                                     <select name="promo" id="promo">
-                                        <option value="all">N'importe quelle année</option>
+                                        <option value="all">Toutes les promotions</option>
                                         <option value="2014">2014</option>
                                         <option value="2013">2013</option>
                                         <option value="2012">2012</option>

@@ -67,26 +67,16 @@
      */
     $donnees = array();
 
-    // S'il y a au moins un champ de renseigné
-    if (!empty($resultat['nomPrenom']) || $resultat['promo']) {
-        $requete .= ' AND ';
+    // Si le champ 'Nom Prénom' a été renseigné
+    if (!empty($resultat['nomPrenom'])) {
+        $requete .= ' AND (pe.prenom LIKE :prenom OR pe.nom LIKE :nom)';
+        $donnees['prenom'] = $donnees['nom'] = "%" . $resultat['nomPrenom'] . "%";
+    }
 
-        // Si le champ 'Nom Prénom' a été rempli
-        if (!empty($resultat['nomPrenom'])) {
-            $requete .= '(pe.prenom LIKE :prenom OR pe.nom LIKE :nom)';
-            $donnees['prenom'] = $donnees['nom'] = "%" . $resultat['nomPrenom'] . "%";
-        }
-
-        // Si les deux champs ont été renseignés
-        if (!empty($resultat['nomPrenom']) && $resultat['promo']) {
-            $requete .= ' AND ';
-        }
-
-        // Si le champ promo a été renseigné
-        if ($resultat['promo']) {
-            $requete .= 'pr.promo = :promo';
-            $donnees['promo'] = $resultat['promo'] ? $resultat['promo'] : "";
-        }
+    // Si le champ 'Promo' a été renseigné
+    if ($resultat['promo']) {
+        $requete .= ' AND pr.promo = :promo';
+        $donnees['promo'] = $resultat['promo'] ? $resultat['promo'] : "";
     }
 
     // Préparation de la requête
