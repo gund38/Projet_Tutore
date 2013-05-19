@@ -16,7 +16,7 @@
         $bdd = ConnexionBD::getInstance()->getBDD();
 
         $req = $bdd->query('SELECT codeDe, codePostal, nom
-            FROM ListeDepartement
+            FROM Departement
             ORDER BY codeDE');
 
         $liste = array();

@@ -1,6 +1,6 @@
 <?php
     /**
-     * Ce fichier permet la recherche parmi les profil
+     * Ce fichier permet la recherche parmi les profils
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */
@@ -23,6 +23,10 @@
     unset($_GET);
     $fichierRetour = "../recherche_profil.php";
 
+    /**
+     * Création du tableau d'options pour la vérification ou
+     * le nettoyage des infos soumises par l'utilisateur
+     */
     $options = array(
         'nomPrenom' => array(
             'filter' => FILTER_SANITIZE_STRING,
@@ -54,7 +58,7 @@
     $bdd = ConnexionBD::getInstance()->getBDD();
 
     // Création de la requête
-    $requete = 'SELECT pe.prenom, pe.nom, pr.promo
+    $requete = 'SELECT pe.codePe, pe.prenom, pe.nom, pr.promo
         FROM Personne AS pe, Profil AS pr
         WHERE pe.codePe = pr.codePe';
 
@@ -70,14 +74,19 @@
     // Si le champ 'Nom Prénom' a été renseigné
     if (!empty($resultat['nomPrenom'])) {
         $requete .= ' AND (pe.prenom LIKE :prenom OR pe.nom LIKE :nom)';
+
         $donnees['prenom'] = $donnees['nom'] = "%" . $resultat['nomPrenom'] . "%";
     }
 
     // Si le champ 'Promo' a été renseigné
     if ($resultat['promo']) {
         $requete .= ' AND pr.promo = :promo';
+
         $donnees['promo'] = $resultat['promo'] ? $resultat['promo'] : "";
     }
+
+    // Ajout du ORDER BY
+    $requete .= ' ORDER BY pe.nom';
 
     // Préparation de la requête
     $req = $bdd->prepare($requete);
