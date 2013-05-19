@@ -35,34 +35,9 @@
 
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
+        <link rel="stylesheet" href="css/recherche.css" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
-
-        <style type="text/css">
-            #contenu {
-                text-align:center;
-            }
-
-            table {
-                text-align:center;
-            }
-
-            table.resultat {
-                border-collapse: collapse;
-            }
-
-            table.resultat td {
-                border: 3px solid black;
-            }
-
-            .nom {
-                width: 600px;
-            }
-
-            .promo {
-                width: 150px;
-            }
-        </style>
     </head>
 
     <body>
@@ -77,18 +52,18 @@
             ?>
 
             <div id="contenu">
-                <h3>Recherche de profil</h3>
-
-                <p>
-                    Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.<br />
-                    Une fois la recherche effectuée, il vous suffit de cliquer sur le nom d'une personne pour consulter son profil public.
-                </p>
-
-                <br /><br/>
-
                 <center>
+                    <h3>Recherche de profil</h3>
+
+                    <p>
+                        Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.<br />
+                        Une fois la recherche effectuée, il vous suffit de cliquer sur le nom d'une personne pour consulter son profil public.
+                    </p>
+
+                    <br /><br/>
+
                     <form action="fonctions/rechercherProfil.php" method="post">
-                        <table>
+                        <table cellpadding="10px">
                             <tr>
                                 <th>
                                     <label for="nomPrenom">Nom et/ou prénom&nbsp;:</label>
@@ -122,18 +97,18 @@
 
                     <br /><br /><br />
 
-                    <fieldset style="width: 800px">
+                    <fieldset class="resultat_profil">
                         <legend>Résultats de votre recherche</legend>
 
                         <table class="resultat" cellpadding="10px">
-                            <thead> <!-- En-tête du tableau -->
+                            <thead>
                                 <tr>
                                     <th>Prénom & Nom</th>
                                     <th>Promotion</th>
                                 </tr>
                             </thead>
 
-                            <tbody> <!-- Corps du tableau -->
+                            <tbody>
                                 <tr class="impair">
                                     <td class="nom"><a href="profil_public-4.php">Nicolas Dubois</a></td>
                                     <td class="promo">2013</td>

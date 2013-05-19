@@ -1,0 +1,33 @@
+/* Général */
+table.resultat {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.resultat td {
+    border: 1px solid black;
+}
+
+tr.impair {
+    background-color: #8AAAD9;
+}
+
+/* Recherche_profil */
+.nom {
+    width: 400px;
+}
+
+.promo {
+    width: 150px;
+}
+
+fieldset.resultat_profil {
+/*    width: 850px;
+    width: 50%;*/
+
+}
+
+/* Recherche_offres */
+fieldset.resultat_offres {
+/*    width: 1300px;*/
+}

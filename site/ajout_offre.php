@@ -52,13 +52,46 @@
 
             <div id="contenu">
                 <center>
-                    <h3>AJouter une offre</h3>
+                    <h3>Ajouter une offre</h3>
 
                     <p>Utilisez le formulaire suivant pour ajouter une offre d'emploi ou de stage.</p>
+
+                    <p>
+                        <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                    </p>
+
+                    <p class="erreur">
+                        <?php
+                            // Gestion des erreurs au niveau de l'ajout d'une offre
+                            if (isset($_SESSION['erreurs_ajout'])) {
+                                echo substr_count($_SESSION['erreurs_ajout'], "<br />\n") > 2 ? "Erreurs :" : "Erreur :";
+                                echo "<br />\n";
+                                echo $_SESSION['erreurs_ajout'];
+                                unset($_SESSION['erreurs_ajout']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </p>
+
+                    <p class="sortie">
+                        <?php
+                            // Gestion de la réussite de l'ajout d'une offre
+                            if (isset($_SESSION['sortie_ajout'])) {
+                                echo "<br />\n";
+                                echo $_SESSION['sortie_ajout'];
+                                unset($_SESSION['sortie_ajout']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </p>
 
                     <br /><br />
 
                     <fieldset>
+                        <legend>Formulaire d'ajout d'offre</legend>
+
                         <form action="fonctions/ajouterOffre.php" method="post" enctype="multipart/form-data">
                             <table>
                                 <tr>
@@ -146,39 +179,6 @@
                                 </tr>
                             </table>
                         </form>
-
-                        <br />
-
-                        <p class="erreur">
-                            <?php
-                                // Gestion des erreurs au niveau de l'ajout d'une offre
-                                if (isset($_SESSION['erreurs_ajout'])) {
-                                    echo substr_count($_SESSION['erreurs_ajout'], "<br />\n") > 2 ? "Erreurs :" : "Erreur :";
-                                    echo "<br />\n";
-                                    echo $_SESSION['erreurs_ajout'];
-                                    unset($_SESSION['erreurs_ajout']);
-                                } else {
-                                    echo "\n";
-                                }
-                            ?>
-                        </p>
-
-                        <p class="sortie">
-                            <?php
-                                // Gestion de la réussite de l'ajout d'une offre
-                                if (isset($_SESSION['sortie_ajout'])) {
-                                    echo "<br />\n";
-                                    echo $_SESSION['sortie_ajout'];
-                                    unset($_SESSION['sortie_ajout']);
-                                } else {
-                                    echo "\n";
-                                }
-                            ?>
-                        </p>
-
-                        <p>
-                            <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
-                        </p>
                     </fieldset>
                 </center>
             </div>

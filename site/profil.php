@@ -40,14 +40,14 @@
 
         <!-- CSS et scripts pour les checkbox iOS -->
         <link rel="stylesheet" href="css/boutons_iOS" type="text/css" media="screen" charset="utf-8" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- CSS et scripts pour les calendriers -->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <!--<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>-->
-        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" type="text/javascript"></script>
-        <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Scripts pour le profil -->
         <script src="js/profil.js" type="text/javascript" charset="utf-8"></script>
@@ -85,6 +85,10 @@
                         Si vous ne voulez pas qu'un élément soit visible sur votre profil public, il vous suffit de mettre l'interrupteur correspondant sur "Non"
                     </p>
 
+                    <p>
+                        <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
+                    </p>
+
                     <p class="erreur">
                         <?php
                             // Gestion des erreurs au niveau de l'ajout d'une offre
@@ -110,10 +114,6 @@
                                 echo "\n";
                             }
                         ?>
-                    </p>
-
-                    <p>
-                        <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
                     </p>
                 </div>
 
@@ -218,10 +218,12 @@
                         <div class="contenu_onglet" id="contenu_onglet_diplomes">
                             <input type="hidden" name="nbDiplomes" id="nbDiplomes"
                                    value="<?php echo count($profil->getDiplomes()); ?>" />
+
                             <?php
                                 // Génération et affichage des formulaires des diplômes
                                 require_once 'fonctions/generationFormulaireDiplomes.php';
                             ?>
+
                             <p align="center">
                                 <a href="#">Ajouter un autre diplôme</a>
                             </p>
@@ -230,10 +232,12 @@
                         <div class="contenu_onglet" id="contenu_onglet_exppros">
                             <input type="hidden" name="nbExpPros" id="nbExpPros"
                                    value="<?php echo count($profil->getExpPros()); ?>" />
+
                             <?php
                                 // Génération et affichage des formulaires des expériences professionnelles
                                 require_once 'fonctions/generationFormulaireExpPros.php';
                             ?>
+
                             <p align="center">
                                 <a href="#">Ajouter une autre expérience professionnelle</a>
                             </p>

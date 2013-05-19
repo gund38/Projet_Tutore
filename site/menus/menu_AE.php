@@ -19,11 +19,11 @@
         </li>
 
         <li>
-            <a href="offres.php">Offres d'Emploi / Stage</a>
+            <a href="recherche_offres.php">Offres d'Emploi / Stage</a>
         </li>
 
         <li>
-            <a href="ajouter_offre.php">Ajouter une offre</a>
+            <a href="ajout_offre.php">Ajouter une offre</a>
         </li>
 
         <li>

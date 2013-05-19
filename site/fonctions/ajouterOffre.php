@@ -25,7 +25,7 @@
     // Suppresion du message en cas de renvoi du formulaire
     supprimerMessageAvertissement();
 
-    $fichierRetour = "../ajouter_offre.php";
+    $fichierRetour = "../ajout_offre.php";
 
     /*
      * Création du tableau d'options pour la vérification et

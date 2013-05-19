@@ -15,7 +15,7 @@
         </li>
 
         <li>
-            <a href="offres.php">Offres d'Emploi</a>
+            <a href="recherche_offres.php">Offres d'Emploi</a>
         </li>
 
         <li>

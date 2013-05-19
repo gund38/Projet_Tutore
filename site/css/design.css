@@ -230,10 +230,6 @@ fieldset legend {
     color: #222;
 }
 
-tr.impair {
-    background-color: #8AAAD9;
-}
-
 /* --- NOTES ---
 
 1.	Ce gabarit utilise du padding sur l'élément BODY pour créer un retrait

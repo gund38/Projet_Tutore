@@ -279,36 +279,36 @@
          */
         $scriptsAutorises = array(
             'Visiteur' => array(
-                'offres.php',
+                'recherche_offres.php',
                 'contact.php'
             ),
             'Etudiant' => array(
                 'recherche_profil.php',
                 'profil_public.php',
-                'offres.php',
+                'recherche_offres.php',
                 'contact.php'
             ),
             'Ancien_etudiant' => array(
                 'profil.php',
                 'recherche_profil.php',
                 'profil_public.php',
-                'offres.php',
-                'ajouter_offre.php',
+                'recherche_offres.php',
+                'ajout_offre.php',
                 'contact.php'
             ),
             'Enseignant' => array(
                 'recherche_profil.php',
                 'profil_public.php',
-                'offres.php',
-                'ajouter_offre.php',
+                'recherche_offres.php',
+                'ajout_offre.php',
                 'statistiques.php',
                 'contact.php'
             ),
             'Administrateur' => array(
                 'recherche_profil.php',
                 'profil_public.php',
-                'offres.php',
-                'ajouter_offre.php',
+                'recherche_offres.php',
+                'ajout_offre.php',
                 'statistiques.php'
             )
         );
