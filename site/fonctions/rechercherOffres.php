@@ -66,8 +66,9 @@
     $bdd = ConnexionBD::getInstance()->getBDD();
 
     // Création de la requête
-    $requete = 'SELECT o.codeO, o.dateDepot, o.type, o.intitule, o.entreprise,
-        o.ville, d.nom, d.codePostal, o.remuneration, o.cheminPDF
+    $requete = 'SELECT o.codeO, DATE_FORMAT(o.dateDepot, \'%d/%m/%Y\') AS dateDepot,
+        o.type, o.intitule, o.entreprise, o.ville, d.nom, d.codePostal,
+        o.remuneration, o.cheminPDF
         FROM Offre AS o, Departement AS d
         WHERE o.departement = d.codeDe';
 
@@ -111,33 +112,26 @@
     // Ajout du ORDER BY
     $requete .= ' ORDER BY o.dateDepot DESC';
 
-    var_dump($resultat);
-    echo "<br /><br /><br />";
-
-    var_dump($requete);
-    echo "<br /><br /><br />";
-
-    var_dump($donnees);
-    echo "<br /><br /><br />";
-
     // Préparation de la requête
     $req = $bdd->prepare($requete);
 
     // Si la préparation a échoué
     if (!$req) {
-        echo "fail preparation<br />\n";
+        $_SESSION['erreurs_recherche_offres'] .= "La recherche n'a pas fonctionné (préparation), veuillez réessayer.<br />\n";
+        header("Location: $fichierRetour");
+        exit;
     }
 
     // Exécution de la requête
     $req->execute($donnees);
 
-    // Si la requête a réussi
-    if ($req) {
-        echo "requete reussie<br />\n";
+    // Si la requête a échoué
+    if (!$req) {
+        $_SESSION['erreurs_recherche_offres'] .= "La recherche n'a pas fonctionné (exécution), veuillez réessayer.<br />\n";
+        header("Location: $fichierRetour");
+        exit;
     }
 
-    while ($reponse = $req->fetch(PDO::FETCH_ASSOC)) {
-        var_dump($reponse);
-        echo "<br /><br />\n";
-    }
+    $_SESSION['recherche_offres'] = $req->fetchAll(PDO::FETCH_ASSOC);
+    header("Location: $fichierRetour");
 ?>

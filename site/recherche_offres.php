@@ -53,9 +53,21 @@
 
             <div id="contenu">
                 <center>
-                    <h3>Offres d'emploi<?php echo isset($_SESSION['personneCo']) ? " et de stage" : "" ?></h3>
+                    <h3>Offres d'emploi<?php echo isset($_SESSION['personneCo']) ? " et de stage" : ""; ?></h3>
 
-                    <p>Ici vous pouvez rechercher une offre d'emploi ou de stage suivant différents critères.</p>
+                    <p>Ici vous pouvez rechercher une offre d'emploi<?php echo isset($_SESSION['personneCo']) ? " ou de stage" : ""; ?> suivant différents critères.</p>
+
+                    <p class="erreur">
+                        <?php
+                            // Gestion des erreurs au niveau de la recherche d'offres
+                            if (isset($_SESSION['erreurs_recherche_offres'])) {
+                                echo "Erreur :<br />\n{$_SESSION['erreurs_recherche_offres']}";
+                                unset($_SESSION['erreurs_recherche_offres']);
+                            } else {
+                                echo "\n";
+                            }
+                        ?>
+                    </p>
 
                     <br /><br />
 
@@ -81,15 +93,16 @@
                                 </td>
                                 <td>
                                     <select name="type" id="type">
-                                        <option value="all">Emploi + Stage</option>
+
+                                        <option value="all"<?php echo isset($_SESSION['personneCo']) ? "" : " disabled"; ?>>Emploi + Stage</option>
                                         <?php
                                             // Récupération de la liste des types d'offre
                                             $listeTypes = listeTypesOffre();
 
                                             foreach ($listeTypes as $value) {
-                                                echo "<option value=\"" . $value
-                                                . "\">" . $value
-                                                . "</option>\n";
+                                                echo "<option value=\"$value\"";
+                                                echo (strcmp($value, "Stage") === 0 && !isset($_SESSION['personneCo'])) ? " disabled" : "";
+                                                echo ">$value</option>\n";
                                             }
                                         ?>
                                     </select>
@@ -105,9 +118,7 @@
                                             $listeDep = listeDepartements();
 
                                             foreach ($listeDep as $value) {
-                                                echo "<option value=\"" . $value['codeDe']
-                                                . "\">" . $value['nom']
-                                                . "</option>\n";
+                                                echo "<option value=\"{$value['codeDe']}\">{$value['nom']}</option>\n";
                                             }
                                         ?>
                                     </select>
@@ -121,59 +132,65 @@
 
                     <br /><br /><br />
 
-                    <fieldset class="resultat_offres">
-                        <legend>Résultat de votre recherche</legend>
+                    <?php
+                        if (isset($_SESSION['recherche_offres'])) {
+                            if (count($_SESSION['recherche_offres']) > 0) {
+                    ?>
+                                <fieldset class="resultat_offres">
+                                    <legend>Résultats de votre recherche</legend>
 
-                        <table class="resultat" cellpadding="10px">
-                            <thead>
-                                <tr>
-                                    <th>Date de dépôt</th>
-                                    <th>Type</th>
-                                    <th>Intitulé du poste</th>
-                                    <th>Entreprise / organisation</th>
-                                    <th>Ville</th>
-                                    <th>Département</th>
-                                    <th>Rémunération (€ / mois)</th>
-                                    <th>Télécharger l'offre en PDF</th>
-                                </tr>
-                            </thead>
+                                    <table class="resultat" cellpadding="10px">
+                                        <thead>
+                                            <tr>
+                                                <th>Date de dépôt</th>
+                                                <th>Type</th>
+                                                <th>Intitulé du poste</th>
+                                                <th>Entreprise / organisation</th>
+                                                <th>Ville</th>
+                                                <th>Département</th>
+                                                <th>Rémunération (€ / mois)</th>
+                                                <th>Télécharger l'offre en PDF</th>
+                                            </tr>
+                                        </thead>
 
-                            <tbody>
-                                <?php
-                                    $bdd = ConnexionBD::getInstance()->getBDD();
+                                        <tbody>
+                                            <?php
+                                                $impair = true;
 
-                                    $managerOffre = new OffreManager($bdd);
-                                    $offres = $managerOffre->getList();
-
-                                    $impair = true;
-
-                                    foreach ($offres as $offreEnCours) {
-                                        ?>
-                                        <tr<?php
-                                echo $impair ? ' class="impair"' : "";
-                                $impair = !$impair;
-                                        ?>>
-                                            <td><?php echo $offreEnCours->getDateDepot(); ?></td>
-                                            <td><?php echo $offreEnCours->getType(); ?></td>
-                                            <td><?php echo $offreEnCours->getIntitule() ?></td>
-                                            <td><?php echo $offreEnCours->getEntreprise() ?></td>
-                                            <td><?php echo $offreEnCours->getVille() ?></td>
-                                            <td><?php echo $offreEnCours->getDepartement() ?></td>
-                                            <td><?php echo $offreEnCours->getRemuneration() ?></td>
-                                            <td>
-                                                <a href="pdf/<?php echo $offreEnCours->getCheminPDF() ?>"
-                                                   target="_blank"
-                                                   type="application/pdf">
-                                                    <img src="images/icone-pdf.gif" alt="Icône PDF" />
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </fieldset>
+                                                foreach ($_SESSION['recherche_offres'] as $offreEnCours) {
+                                            ?>
+                                                    <tr<?php echo $impair ? ' class="impair"' : ""; ?>>
+                                                        <td><?php echo $offreEnCours['dateDepot']; ?></td>
+                                                        <td><?php echo $offreEnCours['type']; ?></td>
+                                                        <td><?php echo $offreEnCours['intitule']; ?></td>
+                                                        <td><?php echo $offreEnCours['entreprise']; ?></td>
+                                                        <td><?php echo $offreEnCours['ville']; ?></td>
+                                                        <td><?php echo "{$offreEnCours['codePostal']} - {$offreEnCours['nom']}"; ?></td>
+                                                        <td><?php echo $offreEnCours['remuneration']; ?></td>
+                                                        <td>
+                                                            <a href="pdf/<?php echo $offreEnCours['cheminPDF']; ?>"
+                                                               target="_blank"
+                                                               type="application/pdf">
+                                                                <img src="images/icone-pdf.gif" alt="Icône PDF" />
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                            <?php
+                                                    $impair = !$impair;
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                    <?php
+                            } else {
+                    ?>
+                                <h4>Votre recherche n'a pas donné de résultats</h4>
+                    <?php
+                            }
+                            unset($_SESSION['recherche_offres']);
+                        }
+                    ?>
                 </center>
             </div>
         </div>
