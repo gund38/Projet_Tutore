@@ -93,19 +93,21 @@
 
     // Si la préparation a échoué
     if (!$req) {
-        echo "fail preparation<br />\n";
+        $_SESSION['erreurs_recherche_profil'] = "La recherche n'a pas fonctionné (préparation), veuillez réessayer.<br />\n";
+        header("Location: $fichierRetour");
+        exit;
     }
 
     // Exécution de la requête
     $req->execute($donnees);
 
-    // Si la requête a réussi
-    if ($req) {
-        echo "requete reussie<br />\n";
+    // Si la requête a échoué
+    if (!$req) {
+        $_SESSION['erreurs_recherche_profil'] = "La recherche n'a pas fonctionné (exécution), veuillez réessayer.<br />\n";
+        header("Location: $fichierRetour");
+        exit;
     }
 
-    while ($reponse = $req->fetch(PDO::FETCH_ASSOC)) {
-        var_dump($reponse);
-        echo "<br />\n";
-    }
+    $_SESSION['recherche_profil'] = $req->fetchAll(PDO::FETCH_ASSOC);
+    header("Location: $fichierRetour");
 ?>

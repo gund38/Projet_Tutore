@@ -117,7 +117,7 @@
 
     // Si la préparation a échoué
     if (!$req) {
-        $_SESSION['erreurs_recherche_offres'] .= "La recherche n'a pas fonctionné (préparation), veuillez réessayer.<br />\n";
+        $_SESSION['erreurs_recherche_offres'] = "La recherche n'a pas fonctionné (préparation), veuillez réessayer.<br />\n";
         header("Location: $fichierRetour");
         exit;
     }
@@ -127,7 +127,7 @@
 
     // Si la requête a échoué
     if (!$req) {
-        $_SESSION['erreurs_recherche_offres'] .= "La recherche n'a pas fonctionné (exécution), veuillez réessayer.<br />\n";
+        $_SESSION['erreurs_recherche_offres'] = "La recherche n'a pas fonctionné (exécution), veuillez réessayer.<br />\n";
         header("Location: $fichierRetour");
         exit;
     }

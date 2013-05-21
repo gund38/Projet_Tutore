@@ -97,33 +97,51 @@
 
                     <br /><br /><br />
 
-                    <fieldset class="resultat_profil">
-                        <legend>Résultats de votre recherche</legend>
+                    <?php
+                        if (isset($_SESSION['recherche_profil'])) {
+                            if (count($_SESSION['recherche_profil']) > 0) {
+                    ?>
+                                <fieldset class="resultat_profil">
+                                    <legend>Résultats de votre recherche</legend>
 
-                        <table class="resultat" cellpadding="10px">
-                            <thead>
-                                <tr>
-                                    <th>Prénom & Nom</th>
-                                    <th>Promotion</th>
-                                </tr>
-                            </thead>
+                                    <table class="resultat" cellpadding="10px">
+                                        <thead>
+                                            <tr>
+                                                <th>Prénom & Nom</th>
+                                                <th>Promotion</th>
+                                            </tr>
+                                        </thead>
 
-                            <tbody>
-                                <tr class="impair">
-                                    <td class="nom"><a href="profil_public-4.php">Nicolas Dubois</a></td>
-                                    <td class="promo">2013</td>
-                                </tr>
-                                <tr>
-                                    <td class="nom"><a href="profil_public-4.php">Nicolas Larmendier</a></td>
-                                    <td class="promo">2010</td>
-                                </tr>
-                                <tr class="impair">
-                                    <td class="nom"><a href="profil_public-4.php">Nicolas Kamarazov</a></td>
-                                    <td class="promo">2008</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </fieldset>
+                                        <tbody>
+                                            <?php
+                                                $impair = true;
+
+                                                foreach ($_SESSION['recherche_profil'] as $profilEnCours) {
+                                            ?>
+                                                    <tr<?php echo $impair ? ' class="impair"' : ""; ?>>
+                                                        <td class="nom">
+                                                            <a href="profil_public-<?php echo $profilEnCours['codePe']; ?>.php">
+                                                                <?php echo "{$profilEnCours['prenom']} {$profilEnCours['nom']}"; ?>
+                                                            </a>
+                                                        </td>
+                                                        <td class="promo"><?php echo $profilEnCours['promo']; ?></td>
+                                                    </tr>
+                                            <?php
+                                                    $impair = !$impair;
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                    <?php
+                            } else {
+                    ?>
+                                <h4>Votre recherche n'a pas donné de résultats</h4>
+                    <?php
+                            }
+                            unset($_SESSION['recherche_profil']);
+                        }
+                    ?>
                 </center>
             </div>
         </div>
