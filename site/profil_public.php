@@ -76,7 +76,7 @@
                 ?>
 
                 <div id="profil_photo">
-                    <img src="images/profil/<?php echo $profil->getCheminPhoto(); ?>" alt="Photo du Profil" title="Photo du Profil" width="200px">
+                    <img src="images/profil/<?php echo $profil->getCheminPhoto(); ?>" alt="Photo du Profil" title="Photo du Profil" width="150px">
                 </div>
 
                 <div id="profil_description">

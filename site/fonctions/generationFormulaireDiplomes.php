@@ -11,7 +11,7 @@
 
         <!-- ///// Diplome <?php echo $i; ?> \\\\\ -->
         <input type="hidden" name="id_dip<?php echo $i; ?>" id="id_dip<?php echo $i; ?>"
-               value="<?php echo $diplomeEnCours->getCodeDi() ?>" />
+               value="<?php echo $diplomeEnCours->getCodeDi(); ?>" />
         <fieldset>
             <table>
                 <tr>
@@ -19,6 +19,11 @@
                 </tr>
                 <tr>
                     <td class="colonne_visi" rowspan="4">
+                        <label for="visi_dip<?php echo $i; ?>">
+                            <center>
+                                <small>Visibilité globale</small>
+                            </center>
+                        </label>
                         <input type="checkbox"
                                name="visi_dip<?php echo $i; ?>"
                                id="visi_dip<?php echo $i; ?>"

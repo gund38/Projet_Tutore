@@ -77,20 +77,12 @@
                                 <th>
                                     <label for="intitule">Intitulé&nbsp;:</label>
                                 </th>
-                                <th>
-                                    <label for="type">Type&nbsp;:</label>
-                                </th>
-                                <th>
-                                    <label for="ville">Ville&nbsp;:</label>
-                                </th>
-                                <th>
-                                    <label for="departement">Département&nbsp;:</label>
-                                </th>
-                            </tr>
-                            <tr>
                                 <td>
                                     <input type="text" name="intitule" id="intitule" />
                                 </td>
+                                <th>
+                                    <label for="type">Type&nbsp;:</label>
+                                </th>
                                 <td>
                                     <select name="type" id="type">
 
@@ -107,9 +99,11 @@
                                         ?>
                                     </select>
                                 </td>
-                                <td>
-                                    <input type="text" name="ville" id="ville" />
-                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="ville">Ville&nbsp;:</label>
+                                </th>
                                 <td>
                                     <select name="departement" id="departement">
                                         <option value="all">Tous les départements</option>
@@ -123,7 +117,15 @@
                                         ?>
                                     </select>
                                 </td>
+                                <th>
+                                    <label for="departement">Département&nbsp;:</label>
+                                </th>
                                 <td>
+                                    <input type="text" name="ville" id="ville" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="center">
                                     <input type="submit" value="Rechercher" />
                                 </td>
                             </tr>

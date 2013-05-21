@@ -96,7 +96,7 @@
                     <fieldset style="width: 400px; height: 175px;">
                         <legend>Connexion</legend>
 
-                        <form action="fonctions/connexion.php<?php echo isset($_GET['page']) ? "?" . $_SERVER['QUERY_STRING'] : "" ?>" method="post">
+                        <form action="fonctions/connexion.php<?php echo isset($_GET['page']) ? "?" . $_SERVER['QUERY_STRING'] : ""; ?>" method="post">
                             <table cellpadding="15px">
                                 <tr>
                                     <td>

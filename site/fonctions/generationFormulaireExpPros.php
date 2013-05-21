@@ -14,7 +14,7 @@
 
         <!-- ///// ExpPro <?php echo $i; ?> \\\\\ -->
         <input type="hidden" name="id_exp<?php echo $i; ?>" id="id_exp<?php echo $i; ?>"
-               value="<?php echo $expProEnCours->getCodeEP() ?>" />
+               value="<?php echo $expProEnCours->getCodeEP(); ?>" />
         <fieldset>
             <table>
                 <tr>
@@ -22,7 +22,11 @@
                 </tr>
                 <tr>
                     <td class="colonne_visi" rowspan="6">
-                        <label for="visi_exp<?php echo $i; ?>"><small>Visibilité globale</small></label>
+                        <label for="visi_exp<?php echo $i; ?>">
+                            <center>
+                                <small>Visibilité globale</small>
+                            </center>
+                        </label>
                         <input type="checkbox"
                                name="visi_exp<?php echo $i; ?>"
                                id="visi_exp<?php echo $i; ?>"
@@ -114,6 +118,11 @@
                 </tr>
                 <tr>
                     <td class="colonne_visi">
+                        <label for="visi_salaire_exp<?php echo $i; ?>">
+                            <center>
+                                <small>Visibilité salaire</small>
+                            </center>
+                        </label>
                         <input type="checkbox"
                                name="visi_salaire_exp<?php echo $i; ?>"
                                id="visi_salaire_exp<?php echo $i; ?>"

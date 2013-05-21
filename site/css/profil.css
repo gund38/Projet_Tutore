@@ -1,7 +1,7 @@
 /***************************** Positionement page du profil ***********************************/
 #profil_photo {
     display: inline-block;
-    width: 200px;
+    width: 150px;
     border: 5px solid;
     vertical-align: top;
 }
@@ -10,7 +10,7 @@
     display: inline-block;
     /*border-right: 5px solid;*/
     vertical-align: top;
-    width: 55%;
+    width: 50%;
     margin-top: 10px; /*pour aligner avec #contenu > :first-child */
     padding: 1px 20px;
 }
@@ -20,7 +20,7 @@
 }
 
 #profil_bouton {
-    display: inline-block;
+    display: table;
     width: 10%;
     margin-top: 10px;
     /*border: 1px solid blue;*/
