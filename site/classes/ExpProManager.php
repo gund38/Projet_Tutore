@@ -40,7 +40,7 @@
                 salaire, visibiliteSalaire
                 FROM ExpPro
                 WHERE codePe = :id
-                ORDER BY dateDebut DESC');
+                ORDER BY dateDebut ASC');
 
             $req->execute(array(
                 'id' => $id

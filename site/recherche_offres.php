@@ -105,6 +105,12 @@
                                     <label for="ville">Ville&nbsp;:</label>
                                 </th>
                                 <td>
+                                    <input type="text" name="ville" id="ville" />
+                                </td>
+                                <th>
+                                    <label for="departement">Département&nbsp;:</label>
+                                </th>
+                                <td>
                                     <select name="departement" id="departement">
                                         <option value="all">Tous les départements</option>
                                         <?php
@@ -116,12 +122,6 @@
                                             }
                                         ?>
                                     </select>
-                                </td>
-                                <th>
-                                    <label for="departement">Département&nbsp;:</label>
-                                </th>
-                                <td>
-                                    <input type="text" name="ville" id="ville" />
                                 </td>
                             </tr>
                             <tr>

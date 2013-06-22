@@ -129,11 +129,11 @@
                                 <a href="profil_public-<?php echo $profil->getCodePe(); ?>.php">Voir mon profil public</a>
                             </td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <td>
                                 <a href="#" onclick="resetFormulaire();">Réinitialiser mon profil</a>
                             </td>
-                        </tr>
+                        </tr>-->
                     </table>
                 </div>
 
