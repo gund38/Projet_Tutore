@@ -40,12 +40,11 @@
 
         <!-- CSS et scripts pour les checkbox iOS -->
         <link rel="stylesheet" href="css/boutons_iOS" type="text/css" media="screen" charset="utf-8" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- CSS et scripts pour les calendriers -->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <!--<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>-->
         <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript" charset="utf-8"></script>
 

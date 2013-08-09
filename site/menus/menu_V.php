@@ -15,6 +15,10 @@
         </li>
 
         <li>
+            <a href="inscription.php">Inscription</a>
+        </li>
+
+        <li>
             <a href="recherche_offres.php">Offres d'Emploi</a>
         </li>
 

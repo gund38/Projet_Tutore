@@ -93,7 +93,7 @@
                         <legend>Formulaire d'ajout d'offre</legend>
 
                         <form action="fonctions/ajouterOffre.php" method="post" enctype="multipart/form-data">
-                            <table>
+                            <table cellpadding="10px">
                                 <tr>
                                     <td>
                                         <label for="intitule">Intitulé&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>

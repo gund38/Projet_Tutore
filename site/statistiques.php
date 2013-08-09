@@ -40,11 +40,12 @@
         <script src="js/amcharts.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/script_statistiques.js" type="text/javascript" charset="utf-8"></script>
 
+        <!-- Scripts pour l'export -->
         <script src="js/canvg.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/rgbcolor.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/exportPNG.js" type="text/javascript" charset="utf-8"></script>
 
-        <script type="text/javascript">
+        <script type="text/javascript" charset="utf-8">
             function checkboxAll() {
                 if (document.getElementById('promo_all').checked) {
                     document.getElementById('promo_deb').disabled = 'disabled';
