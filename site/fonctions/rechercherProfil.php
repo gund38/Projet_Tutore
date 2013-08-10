@@ -60,7 +60,8 @@
     // Création de la requête
     $requete = 'SELECT pe.codePe, pe.prenom, pe.nom, pr.promo
         FROM Personne AS pe, Profil AS pr
-        WHERE pe.codePe = pr.codePe';
+        WHERE pe.codePe = pr.codePe
+        AND pe.type = \'Ancien_etudiant\'';
 
     /**
      * Création du tableau de données

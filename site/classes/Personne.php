@@ -106,6 +106,8 @@
             return $this->_email;
         }
 
+        /** @TODO Ajouter si nécessaire les getters de login et mdp */
+
         //---------------Setters---------------//
 
         /**

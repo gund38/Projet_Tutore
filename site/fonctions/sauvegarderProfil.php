@@ -278,6 +278,7 @@
     }
 
     // Si l'utilisateur a envoyé une photo
+    $nom = null;
     if ($presenceFichier) {
         // Tableau des extensions autorisées
         $extensionsAutorisees = array(
@@ -334,6 +335,7 @@
     $photoActuelle = $profilManager->getProfil($resultat['idProfil'])->getCheminPhoto();
 
     // Choix pour la photo
+    $photo = null;
     if ($presenceFichier) { // Si l'utilisateur veut changer sa photo
         // On supprime l'ancienne si elle est différente de la photo par défaut
         if (!strcmp($photoActuelle, $photoDefault) == 0) {
@@ -362,7 +364,7 @@
         'dateNaissance' => $resultat['date_naiss'],
         'visibiliteDateNaissance' => $resultat['visi_date_naiss'] ? 1 : 0,
         'cheminPhoto' => $photo,
-        'visibilitePhoto' => $resultat['visi_photo'] ? 1 : 0,
+        'visibilitePhoto' => ($resultat['visi_photo'] && !$resultat['supprimer_photo'] && (strcmp($photo, $photoDefault) != 0)) ? 1 : 0,
         'pagePerso' => $resultat['page'],
         'visibilitePagePerso' => $resultat['visi_page'] ? 1 : 0
     );
@@ -400,6 +402,7 @@
     }
     $donneesProfil['expPros'] = $donneesExpPros;
 
+    /** @TODO Ajouter la modification de l'email */
     // Update des nouvelles données dans la BD
     if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
         $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";

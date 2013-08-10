@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Sam 04 Mai 2013 à 15:58
--- Version du serveur: 5.5.29
--- Version de PHP: 5.3.10-1ubuntu3.6
+-- Généré le : Sam 10 Août 2013 à 10:25
+-- Version du serveur: 5.5.31
+-- Version de PHP: 5.3.10-1ubuntu3.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,90 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Diplome`
---
--- Création: Sam 04 Mai 2013 à 13:54
+-- Structure de la table `Departement`
 --
 
-DROP TABLE IF EXISTS `Diplome`;
-CREATE TABLE IF NOT EXISTS `Diplome` (
-  `codeDi` int(8) NOT NULL AUTO_INCREMENT,
-  `codePe` int(8) NOT NULL,
-  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
-  `annee` int(4) DEFAULT NULL,
-  `type` enum('IUT','Licence','Master') NOT NULL,
-  `discipline` varchar(30) DEFAULT NULL,
-  `etablissement` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`codeDi`),
-  KEY `codePe` (`codePe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- Contenu de la table `Diplome`
---
-
-INSERT INTO `Diplome` (`codeDi`, `codePe`, `visibilite`, `annee`, `type`, `discipline`, `etablissement`) VALUES
-(2, 4, 0, 2012, 'Licence', 'Informatique', 'UFR Sciences, UPPA, Pau'),
-(3, 4, 1, 2014, 'Master', 'Technologie de l''Internet', 'UFR Sciences, UPPA, Pau'),
-(4, 4, 1, 2011, 'IUT', 'Informatique', 'IUT de Bayonne, UPPA, Anglet');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ExpPro`
---
--- Création: Dim 14 Avril 2013 à 16:20
---
-
-DROP TABLE IF EXISTS `ExpPro`;
-CREATE TABLE IF NOT EXISTS `ExpPro` (
-  `codeEP` int(8) NOT NULL AUTO_INCREMENT,
-  `codePe` int(8) NOT NULL,
-  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
-  `dateDebut` date DEFAULT NULL,
-  `dateFin` date DEFAULT NULL,
-  `enCours` tinyint(1) NOT NULL DEFAULT '0',
-  `intitule` varchar(30) DEFAULT NULL,
-  `entreprise` varchar(30) DEFAULT NULL,
-  `ville` varchar(30) DEFAULT NULL,
-  `departement` int(3) NOT NULL,
-  `salaire` enum('< 5000','>2000000000') DEFAULT NULL,
-  `visibiliteSalaire` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`codeEP`),
-  KEY `departement` (`departement`),
-  KEY `codePe` (`codePe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `ExpPro`
---
-
-INSERT INTO `ExpPro` (`codeEP`, `codePe`, `visibilite`, `dateDebut`, `dateFin`, `enCours`, `intitule`, `entreprise`, `ville`, `departement`, `salaire`, `visibiliteSalaire`) VALUES
-(2, 4, 1, '2011-04-01', '2011-06-30', 0, 'Développeur Web Stagiaire', 'A.T.I.', 'Bayonne', 65, '< 5000', 0),
-(3, 4, 1, '2012-10-01', NULL, 1, 'Développeur Web', 'UPPA', 'Pau', 65, '>2000000000', 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ListeDepartement`
---
--- Création: Mer 10 Avril 2013 à 22:13
---
-
-DROP TABLE IF EXISTS `ListeDepartement`;
-CREATE TABLE IF NOT EXISTS `ListeDepartement` (
+DROP TABLE IF EXISTS `Departement`;
+CREATE TABLE IF NOT EXISTS `Departement` (
   `codeDe` int(3) NOT NULL,
-  `Nom` varchar(60) NOT NULL,
+  `nom` varchar(60) NOT NULL,
   `codePostal` varchar(3) NOT NULL,
   PRIMARY KEY (`codeDe`),
   UNIQUE KEY `codePostal` (`codePostal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `ListeDepartement`
+-- Contenu de la table `Departement`
 --
 
-INSERT INTO `ListeDepartement` (`codeDe`, `Nom`, `codePostal`) VALUES
+INSERT INTO `Departement` (`codeDe`, `nom`, `codePostal`) VALUES
 (1, 'Ain', '01'),
 (2, 'Aisne', '02'),
 (3, 'Allier', '03'),
@@ -206,14 +139,74 @@ INSERT INTO `ListeDepartement` (`codeDe`, `Nom`, `codePostal`) VALUES
 (97, 'Guadeloupe', '971'),
 (98, 'Martinique', '972'),
 (99, 'Guyane', '973'),
-(100, 'La Réunion', '974');
+(100, 'La Réunion', '974'),
+(101, 'Mayotte', '976');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Diplome`
+--
+
+DROP TABLE IF EXISTS `Diplome`;
+CREATE TABLE IF NOT EXISTS `Diplome` (
+  `codeDi` int(8) NOT NULL AUTO_INCREMENT,
+  `codePe` int(8) NOT NULL,
+  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
+  `annee` int(4) DEFAULT NULL,
+  `type` enum('BTS','IUT','Licence','Master','Ingénieur','Doctorat') NOT NULL,
+  `discipline` varchar(30) DEFAULT NULL,
+  `etablissement` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`codeDi`),
+  KEY `codePe` (`codePe`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `Diplome`
+--
+
+INSERT INTO `Diplome` (`codeDi`, `codePe`, `visibilite`, `annee`, `type`, `discipline`, `etablissement`) VALUES
+(2, 4, 0, 2012, 'Licence', 'Informatique', 'UFR Sciences, UPPA, Pau'),
+(3, 4, 1, 2014, 'Master', 'Technologie de l&#39;Internet', 'UFR Sciences, UPPA, Pau'),
+(4, 4, 1, 2011, 'IUT', 'Informatique', 'IUT de Bayonne, UPPA, Anglet');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ExpPro`
+--
+
+DROP TABLE IF EXISTS `ExpPro`;
+CREATE TABLE IF NOT EXISTS `ExpPro` (
+  `codeEP` int(8) NOT NULL AUTO_INCREMENT,
+  `codePe` int(8) NOT NULL,
+  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
+  `dateDebut` date DEFAULT NULL,
+  `dateFin` date DEFAULT NULL,
+  `enCours` tinyint(1) NOT NULL DEFAULT '0',
+  `intitule` varchar(30) DEFAULT NULL,
+  `entreprise` varchar(30) DEFAULT NULL,
+  `ville` varchar(30) DEFAULT NULL,
+  `departement` int(3) NOT NULL,
+  `salaire` enum('Ne souhaite pas répondre','Inférieur à 20 000 €','Entre 20 000 € et 25 000 €','Entre 25 000 € et 30 000 €','Entre 30 000 € et 35 000 €','Entre 35 000 € et 40 000 €','Entre 40 000 € et 45 000 €','Supérieur à 45 000 €') DEFAULT NULL,
+  `visibiliteSalaire` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codeEP`),
+  KEY `departement` (`departement`),
+  KEY `codePe` (`codePe`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `ExpPro`
+--
+
+INSERT INTO `ExpPro` (`codeEP`, `codePe`, `visibilite`, `dateDebut`, `dateFin`, `enCours`, `intitule`, `entreprise`, `ville`, `departement`, `salaire`, `visibiliteSalaire`) VALUES
+(2, 4, 1, '2011-04-20', '2011-06-11', 0, 'Développeur Web Stagiaire', 'A.T.I.', 'Bayonne', 65, 'Entre 35 000 € et 40 000 €', 0),
+(3, 4, 1, '2013-02-11', '0000-00-00', 1, 'Développeur Web', 'UPPA', 'Pau', 65, 'Ne souhaite pas répondre', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `Offre`
---
--- Création: Mer 10 Avril 2013 à 22:13
 --
 
 DROP TABLE IF EXISTS `Offre`;
@@ -222,68 +215,71 @@ CREATE TABLE IF NOT EXISTS `Offre` (
   `codePe` int(8) NOT NULL,
   `dateDepot` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `type` enum('Emploi','Stage') NOT NULL,
-  `intitule` varchar(30) NOT NULL,
+  `intitule` varchar(50) NOT NULL,
   `entreprise` varchar(30) NOT NULL,
   `ville` varchar(30) NOT NULL,
   `departement` int(3) NOT NULL,
-  `remuneration` int(8) NOT NULL,
+  `remuneration` float NOT NULL,
   `cheminPDF` varchar(30) NOT NULL,
   PRIMARY KEY (`codeO`),
   KEY `codePe` (`codePe`),
   KEY `departement` (`departement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `Offre`
 --
 
 INSERT INTO `Offre` (`codeO`, `codePe`, `dateDepot`, `type`, `intitule`, `entreprise`, `ville`, `departement`, `remuneration`, `cheminPDF`) VALUES
-(7, 4, '2013-04-14 15:26:55', 'Stage', 'Développeur Java / C++', 'éâêîôûùèà', 'éâêîôûùèà', 9, 120000, '516acabf55bf8.pdf'),
-(8, 4, '2013-04-14 15:27:50', 'Emploi', 'ÉTUDIANT INGÉNIEUR', 'Google&co', 'L&#39;Île-de-France', 1, 144000, '516acaf653c6a.pdf');
+(7, 4, '2013-04-14 15:26:55', 'Stage', 'Développeur Java / C++', 'Google', 'Bayonne', 65, 2500, '516acabf55bf8.pdf'),
+(8, 4, '2013-04-14 15:27:50', 'Emploi', 'Administrateur en base de données', 'Dassault', 'Toulouse', 32, 3500, '516acaf653c6a.pdf'),
+(9, 4, '2013-05-09 18:01:06', 'Stage', 'Création de site web', 'UFR Sciences, UPPA', 'Pau', 65, 1337.42, '518be4623a80a.pdf'),
+(10, 4, '2013-05-19 12:27:34', 'Emploi', 'Web Designer', 'Google', 'Paris', 76, 3500, '5198c5360472b.pdf'),
+(11, 4, '2013-05-19 12:34:45', 'Emploi', 'Ingénieur en Tests Unitaires', 'Orange', 'Nice', 6, 2790.37, '5198c6e5db3b3.pdf');
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `Personne`
 --
--- Création: Sam 13 Avril 2013 à 15:26
---
 
 DROP TABLE IF EXISTS `Personne`;
 CREATE TABLE IF NOT EXISTS `Personne` (
   `codePe` int(8) NOT NULL AUTO_INCREMENT,
   `type` enum('Administrateur','Ancien_etudiant','Enseignant','Etudiant') NOT NULL,
-  `nom` varchar(30) NOT NULL,
+  `compteValide` tinyint(1) NOT NULL DEFAULT '0',
   `prenom` varchar(30) NOT NULL,
+  `nom` varchar(30) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
   `login` varchar(30) NOT NULL,
   `mdp` varchar(30) NOT NULL,
   PRIMARY KEY (`codePe`),
   UNIQUE KEY `login_unique` (`login`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `Personne`
 --
 
-INSERT INTO `Personne` (`codePe`, `type`, `nom`, `prenom`, `email`, `login`, `mdp`) VALUES
-(1, 'Etudiant', 'Dubois', 'Nicolas', 'DU@gmail.com', 'DU', 'chemise'),
-(2, 'Enseignant', 'Lacayrelle', 'Annig', 'BD@gmail.com', 'Lacayrelle', 'bd'),
-(3, 'Administrateur', 'Belloir', 'Nicolas', 'UML@gmail.com', 'Belloir', 'uml'),
-(4, 'Ancien_etudiant', 'Bélellou', 'Kévin', 'polo@gmail.com', 'polo', 'marco');
+INSERT INTO `Personne` (`codePe`, `type`, `compteValide`, `prenom`, `nom`, `email`, `login`, `mdp`) VALUES
+(1, 'Etudiant', 1, 'Nicolas', 'Dubois', 'DU@gmail.com', 'DU', 'chemise'),
+(2, 'Enseignant', 1, 'Annig', 'Lacayrelle', 'BD@gmail.com', 'Lacayrelle', 'bd'),
+(3, 'Administrateur', 1, 'Nicolas', 'Belloir', 'UML@gmail.com', 'Belloir', 'uml'),
+(4, 'Ancien_etudiant', 1, 'Kévin', 'Bélellou', 'polo@gmail.com', 'polo', 'marco'),
+(5, 'Ancien_etudiant', 1, 'Maxime', 'Tchoupi', 'maxime.tchoupi@gmail.com', 'mtchoupi', 'mtchoupi'),
+(6, 'Ancien_etudiant', 1, 'Kévin', 'Pringles', 'kpringles@gmail.com', 'kpringles', 'kpringles');
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `Profil`
 --
--- Création: Ven 03 Mai 2013 à 15:09
---
 
 DROP TABLE IF EXISTS `Profil`;
 CREATE TABLE IF NOT EXISTS `Profil` (
   `codePe` int(8) NOT NULL,
   `promo` int(4) NOT NULL,
+  `diplomeMaster` tinyint(1) NOT NULL DEFAULT '0',
   `visibiliteEmail` tinyint(1) NOT NULL DEFAULT '0',
   `dateNaissance` date DEFAULT NULL,
   `visibiliteDateNaissance` tinyint(1) NOT NULL DEFAULT '0',
@@ -298,32 +294,10 @@ CREATE TABLE IF NOT EXISTS `Profil` (
 -- Contenu de la table `Profil`
 --
 
-INSERT INTO `Profil` (`codePe`, `promo`, `visibiliteEmail`, `dateNaissance`, `visibiliteDateNaissance`, `cheminPhoto`, `visibilitePhoto`, `pagePerso`, `visibilitePagePerso`) VALUES
-(4, 2014, 1, '1990-04-16', 0, NULL, 1, 'www.polo.marco', 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `test`
---
--- Création: Sam 13 Avril 2013 à 19:59
---
-
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE IF NOT EXISTS `test` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `texte` longtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
-
---
--- Contenu de la table `test`
---
-
-INSERT INTO `test` (`id`, `texte`) VALUES
-(29, 'L''âme, l''esprit et le corps sont à nous ! Will&co + # ;               filter = L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + #'),
-(30, 'L''Ã¢me, l''esprit et le corps sont Ã  nous ! Will&co + # ;               filter = L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + # ; L&#39;ÃƒÂ¢me, l&#39;esprit et le corps sont ÃƒÂ  nous ! Will&co + #'),
-(31, 'L''âme, l''esprit et le corps sont à nous ! Will&co + # ;               filter = L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;âme, l&#39;esprit et le corps sont à nous ! Will&co + # ; L&#39;Ã¢me, l&#39;esprit et le corps sont Ã  nous ! Will&co + #');
+INSERT INTO `Profil` (`codePe`, `promo`, `diplomeMaster`, `visibiliteEmail`, `dateNaissance`, `visibiliteDateNaissance`, `cheminPhoto`, `visibilitePhoto`, `pagePerso`, `visibilitePagePerso`) VALUES
+(4, 2014, 1, 1, '1990-04-04', 0, 'photo_profil_default.jpg', 0, 'http://www.google.fr', 1),
+(5, 2012, 1, 0, NULL, 0, NULL, 0, NULL, 0),
+(6, 2011, 0, 0, NULL, 0, NULL, 0, NULL, 0);
 
 --
 -- Contraintes pour les tables exportées
@@ -340,14 +314,14 @@ ALTER TABLE `Diplome`
 --
 ALTER TABLE `ExpPro`
   ADD CONSTRAINT `ExpPro_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ExpPro_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `ExpPro_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `Departement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `Offre`
 --
 ALTER TABLE `Offre`
   ADD CONSTRAINT `Offre_ibfk_1` FOREIGN KEY (`codePe`) REFERENCES `Personne` (`codePe`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `Offre_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `ListeDepartement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `Offre_ibfk_2` FOREIGN KEY (`departement`) REFERENCES `Departement` (`codeDe`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `Profil`

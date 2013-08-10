@@ -27,18 +27,17 @@
 
             $bdd = ConnexionBD::getInstance()->getBDD();
             echo "BD OK<br/>\n";
-//
+
             $profilManager = new ProfilManager($bdd);
             echo "ProfilManager OK<br/>\n";
-//
-//            $listeProfils = $profilManager->getList();
-//            echo "getList() OK<br/>\n";
-//
-//            print_r($listeProfils);
-//            echo "<br/>\n";
-//
+
+            $listeProfils = $profilManager->getList();
+            echo "getList() OK<br/>\n";
+            print_r($listeProfils);
+            echo "<br/>\n";
+
             $profil = $profilManager->getProfil(4);
-//
+
             print_r($profil);
             echo "<br/><br/>\n";
 

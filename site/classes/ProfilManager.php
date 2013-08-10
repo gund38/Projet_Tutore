@@ -31,12 +31,14 @@
             $profils = array();
 
             $req = $this->_db->query('SELECT
-                codePe, promo, visibiliteEmail,
-                DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
-                visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
-                pagePerso, visibilitePagePerso
-                FROM Profil
-                ORDER BY codePe');
+                pr.codePe, pe.nom, pe.prenom, pr.promo,
+                pe.email, pr.visibiliteEmail,
+                DATE_FORMAT(pr.dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
+                pr.visibiliteDateNaissance, pr.cheminPhoto, pr.visibilitePhoto,
+                pr.pagePerso, pr.visibilitePagePerso
+                FROM Profil AS pr, Personne AS pe
+                WHERE pr.codePe = pe.codePe
+                ORDER BY pr.codePe');
 
             while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $profils[] = new Profil($donnees);
@@ -52,13 +54,17 @@
          * @return Profil
          */
         public function getProfil($id) {
+            $profil = null;
+
             $req = $this->_db->prepare('SELECT
-                codePe, promo, visibiliteEmail,
-                DATE_FORMAT(dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
-                visibiliteDateNaissance, cheminPhoto, visibilitePhoto,
-                pagePerso, visibilitePagePerso
-                FROM Profil
-                WHERE codePe = :id');
+                pr.codePe, pe.nom, pe.prenom, pr.promo,
+                pe.email, pr.visibiliteEmail,
+                DATE_FORMAT(pr.dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
+                pr.visibiliteDateNaissance, pr.cheminPhoto, pr.visibilitePhoto,
+                pr.pagePerso, pr.visibilitePagePerso
+                FROM Profil AS pr, Personne AS pe
+                WHERE pr.codePe = pe.codePe
+                AND pr.codePe = :id');
 
             $req->execute(array(
                 'id' => $id

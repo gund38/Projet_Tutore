@@ -76,11 +76,11 @@
                 ?>
 
                 <div id="profil_photo">
-                    <img src="images/profil/<?php echo $profil->getCheminPhoto(); ?>" alt="Photo du Profil" title="Photo du Profil" width="150px">
+                    <img src="images/profil/<?php echo $profil->getVisibilitePhoto() ? $profil->getCheminPhoto() : "photo_profil_default.jpg"; ?>" alt="Photo du Profil" title="Photo du Profil" width="150px">
                 </div>
 
                 <div id="profil_description">
-                    <h4><?php echo $_SESSION['personneCo']->getPrenom() . ' ' . $_SESSION['personneCo']->getNom(); ?></h4>
+                    <h4><?php echo $profil->getPrenom() . ' ' . $profil->getNom(); ?></h4>
                 </div>
 
                 <div id="profil_general">
@@ -96,19 +96,20 @@
 
                         <p>
                             <?php
-                                echo $profil->getVisibiliteEmail() ? "Email : <a id=\"lien_profil\" href=\"mailto:" . $profil->getDateNaissance() . "\">" . $profil->getDateNaissance() . "</a>" : "";
+                                echo $profil->getVisibiliteEmail() ? "Email : <a id=\"lien_profil\" href=\"mailto:" . $profil->getEmail() . "\">" . $profil->getEmail() . "</a>" : "";
                                 echo "\n";
                             ?>
                         </p>
 
                         <p>
                             <?php
-                                echo $profil->getVisibilitePagePerso() ? "Page perso : <a id=\"lien_profil\" href=\"" . $profil->getPagePerso() . "\">" . str_replace("http://", "", $profil->getPagePerso()) . "</a>" : "";
+                                echo $profil->getVisibilitePagePerso() ? "Page perso : <a id=\"lien_profil\" href=\"" . $profil->getPagePerso() . "\" target=\"_blank\">" . $profil->getPagePerso() . "</a>" : "";
                                 echo "\n";
                             ?>
                         </p>
                     </fieldset>
 
+                    <?php /** @TODO Finir l'affichage des diplômes et des exp pros */ ?>
                     <fieldset>
                         <legend>Parcours scolaire</legend>
 
@@ -116,14 +117,32 @@
                             $diplomes = $profil->getDiplomes();
 
                             foreach ($diplomes as $diplomeEnCours) {
-                                ?>
-                                <?php
+                                if ($diplomeEnCours->getVisibilite()) {
+                                    echo "<p>\n";
+                                    echo $diplomeEnCours->getAnnee() . " : " . $diplomeEnCours->getType() . " " .
+                                            $diplomeEnCours->getDiscipline() . " à " . $diplomeEnCours->getEtablissement();
+                                    echo "\n</p>\n";
+                                }
                             }
                         ?>
                     </fieldset>
 
                     <fieldset>
                         <legend>Parcours professionnel</legend>
+
+                        <?php
+                            $expPros = $profil->getExpPros();
+
+                            foreach ($expPros as $expProEnCours) {
+                                if ($expProEnCours->getVisibilite()) {
+                                    echo "<p>\n";
+                                    echo $expProEnCours->getDateDebut() . " - " . ($expProEnCours->getEnCours() ? "maintenant" : $expProEnCours->getDateFin()) .
+                                            " : " . $expProEnCours->getIntitule() . " chez " . $expProEnCours->getEntreprise() . ", " . $expProEnCours->getVille();
+                                    /** @TODO Réfléchir à l'utilité de l'affichage du salaire */
+                                    echo "\n</p>\n";
+                                }
+                            }
+                        ?>
                     </fieldset>
                 </div>
             </div>

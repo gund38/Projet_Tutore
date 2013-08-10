@@ -8,7 +8,11 @@
     class Profil {
 
         private $_codePe;
+        private $_nom;
+        private $_prenom;
         private $_promo;
+//        private $_diplomeMaster;
+        private $_email;
         private $_visibiliteEmail;
         private $_dateNaissance;
         private $_visibiliteDateNaissance;
@@ -76,12 +80,39 @@
         }
 
         /**
+         * Getter de $_nom
+         *
+         * @return string
+         */
+        public function getNom() {
+            return $this->_nom;
+        }
+
+        /**
+         * Getter de $_prenom
+         *
+         * @return string
+         */
+        public function getPrenom() {
+            return $this->_prenom;
+        }
+
+        /**
          * Getter de $_promo
          *
          * @return int
          */
         public function getPromo() {
             return $this->_promo;
+        }
+
+        /**
+         * Getter de $_email
+         *
+         * @return string
+         */
+        public function getEmail() {
+            return $this->_email;
         }
 
         /**
@@ -177,12 +208,39 @@
         }
 
         /**
+         * Setter de $_nom
+         *
+         * @param int $nom
+         */
+        public function setNom($nom) {
+            $this->_nom = $nom;
+        }
+
+        /**
+         * Setter de $_prenom
+         *
+         * @param int $prenom
+         */
+        public function setPrenom($prenom) {
+            $this->_prenom = $prenom;
+        }
+
+        /**
          * Setter de $_promo
          *
          * @param int $promo
          */
         public function setPromo($promo) {
             $this->_promo = $promo;
+        }
+
+        /**
+         * Setter de $_email
+         *
+         * @param string $email
+         */
+        public function setEmail($email) {
+            $this->_email = $email;
         }
 
         /**
