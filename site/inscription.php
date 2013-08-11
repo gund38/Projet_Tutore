@@ -30,9 +30,10 @@
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/design.css" />
 
-        <!-- Scripts pour la vérification de la force du mdp -->
+        <!-- Scripts pour la vérification de la force et de l'exactitude du mdp -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/jquery.passMeter.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.identical.js" type="text/javascript" charset="utf-8"></script>
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
@@ -99,13 +100,14 @@
                                     </td>
                                     <td>
                                         <input type="password" name="mdp" id="mdp" />
-                                        <div id="result"></div>
+                                        <div id="result">Force du mot de passe : -</div>
                                     </td>
                                     <td>
                                         <label for="mdp2">Répétez le mot de passe&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                                     </td>
                                     <td>
                                         <input type="password" name="mdp2" id="mdp2" />
+                                        <div id="resultat">Les mots de passe ne sont pas identiques</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -129,6 +131,13 @@
                 'low'       :   'Faible',
                 'good'      :   'Bon',
                 'strong'    :   'Fort'
+            });
+        </script>
+        <script type="text/javascript" charset="utf-8">
+            $.identical({
+                // Champs
+                'mdpBase'       :   '#mdp',
+                'mdpVerif'      :   '#mdp2'
             });
         </script>
     </body>
