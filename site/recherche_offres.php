@@ -156,7 +156,7 @@
                                                 <th>Entreprise / organisation</th>
                                                 <th>Ville</th>
                                                 <th>Département</th>
-                                                <th>Rémunération (€ / mois)</th>
+                                                <th>Rémunération (€&nbsp;/&nbsp;mois)</th>
                                                 <th class="sorttable_nosort">Télécharger l'offre en PDF</th>
                                             </tr>
                                         </thead>
