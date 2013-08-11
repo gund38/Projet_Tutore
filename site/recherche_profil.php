@@ -37,6 +37,9 @@
         <link rel="stylesheet" href="css/design.css" />
         <link rel="stylesheet" href="css/recherche.css" />
 
+        <!-- Script pour le tri du tableau -->
+        <script src="js/sorttable.js" type="text/javascript" charset="utf-8"></script>
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
@@ -104,7 +107,7 @@
                                 <fieldset class="resultat_profil">
                                     <legend>Résultats de votre recherche</legend>
 
-                                    <table class="resultat" cellpadding="10px">
+                                    <table class="resultat sortable" cellpadding="10px">
                                         <thead>
                                             <tr>
                                                 <th>Prénom & Nom</th>
@@ -114,11 +117,9 @@
 
                                         <tbody>
                                             <?php
-                                                $impair = true;
-
                                                 foreach ($_SESSION['recherche_profil'] as $profilEnCours) {
                                             ?>
-                                                    <tr<?php echo $impair ? ' class="impair"' : ""; ?>>
+                                                    <tr>
                                                         <td class="nom">
                                                             <a href="profil_public-<?php echo $profilEnCours['codePe']; ?>.php">
                                                                 <?php echo "{$profilEnCours['prenom']} {$profilEnCours['nom']}"; ?>
@@ -127,7 +128,6 @@
                                                         <td class="promo"><?php echo $profilEnCours['promo']; ?></td>
                                                     </tr>
                                             <?php
-                                                    $impair = !$impair;
                                                 }
                                             ?>
                                         </tbody>
@@ -145,5 +145,10 @@
                 </center>
             </div>
         </div>
+        <style type="text/css">
+            table.sortable tbody tr:nth-child(2n+1) td {
+                background: #8AAAD9;
+            }
+        </style>
     </body>
 </html>

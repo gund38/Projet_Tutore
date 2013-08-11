@@ -37,6 +37,9 @@
         <link rel="stylesheet" href="css/design.css" />
         <link rel="stylesheet" href="css/recherche.css" />
 
+        <!-- Script pour le tri du tableau -->
+        <script src="js/sorttable.js" type="text/javascript" charset="utf-8"></script>
+
         <title>Site Web des Anciens Étudiants du Master TI</title>
     </head>
 
@@ -55,7 +58,10 @@
                 <center>
                     <h3>Offres d'emploi<?php echo isset($_SESSION['personneCo']) ? " et de stage" : ""; ?></h3>
 
-                    <p>Ici vous pouvez rechercher une offre d'emploi<?php echo isset($_SESSION['personneCo']) ? " ou de stage" : ""; ?> suivant différents critères.</p>
+                    <p>
+                        Ici vous pouvez rechercher une offre d'emploi<?php echo isset($_SESSION['personneCo']) ? " ou de stage" : ""; ?> suivant différents critères.<br />
+                        Vous pouvez cliquer sur les colonnes pour les trier dans l'ordre alphanumérique croissant ou décroissant.
+                    </p>
 
                     <p class="erreur">
                         <?php
@@ -141,7 +147,7 @@
                                 <fieldset class="resultat_offres">
                                     <legend>Résultats de votre recherche</legend>
 
-                                    <table class="resultat" cellpadding="10px">
+                                    <table class="resultat sortable" cellpadding="10px">
                                         <thead>
                                             <tr>
                                                 <th>Date de dépôt</th>
@@ -151,17 +157,15 @@
                                                 <th>Ville</th>
                                                 <th>Département</th>
                                                 <th>Rémunération (€ / mois)</th>
-                                                <th>Télécharger l'offre en PDF</th>
+                                                <th class="sorttable_nosort">Télécharger l'offre en PDF</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <?php
-                                                $impair = true;
-
                                                 foreach ($_SESSION['recherche_offres'] as $offreEnCours) {
                                             ?>
-                                                    <tr<?php echo $impair ? ' class="impair"' : ""; ?>>
+                                                    <tr>
                                                         <td><?php echo $offreEnCours['dateDepot']; ?></td>
                                                         <td><?php echo $offreEnCours['type']; ?></td>
                                                         <td><?php echo $offreEnCours['intitule']; ?></td>
@@ -178,7 +182,6 @@
                                                         </td>
                                                     </tr>
                                             <?php
-                                                    $impair = !$impair;
                                                 }
                                             ?>
                                         </tbody>
@@ -196,5 +199,10 @@
                 </center>
             </div>
         </div>
+        <style type="text/css">
+            table.sortable tbody tr:nth-child(2n+1) td {
+                background: #8AAAD9;
+            }
+        </style>
     </body>
 </html>

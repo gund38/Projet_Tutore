@@ -8,10 +8,6 @@ table.resultat td {
     border: 1px solid black;
 }
 
-tr.impair {
-    background-color: #8AAAD9;
-}
-
 /* Recherche_profil */
 .nom {
     width: 400px;
