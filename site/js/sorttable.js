@@ -102,6 +102,9 @@ sorttable = {
               fleche_bas.innerHTML = '&nbsp;&#x25BD';
               headrow[i].appendChild(fleche_haut);
               headrow[i].appendChild(fleche_bas);
+
+              // Ajout de l'infobulle
+              headrow[i].title = "Cliquer pour trier dans l'ordre croissant";
               // ------------------------------
 
 	      dean_addEvent(headrow[i],"click", sorttable.innerSortFunction = function(e) {
@@ -124,6 +127,9 @@ sorttable = {
             // Modification des symboles
             this.querySelector(".fleche_haut").innerHTML = '&nbsp;&#x25B3;';
             this.querySelector(".fleche_bas").innerHTML = '&nbsp;&#x25BC;';
+
+            // Modification de l'infobulle
+            this.title = "Actuellement dans l'ordre décroissant\nCliquer pour inverser";
             // ------------------------------
 
             return;
@@ -146,6 +152,9 @@ sorttable = {
             // Modification des symboles
             this.querySelector(".fleche_haut").innerHTML = '&nbsp;&#x25B2;';
             this.querySelector(".fleche_bas").innerHTML = '&nbsp;&#x25BD;';
+
+            // Modification de l'infobulle
+            this.title = "Actuellement dans l'ordre croissant\nCliquer pour inverser";
             // ------------------------------
 
             return;
@@ -157,11 +166,13 @@ sorttable = {
           if (ancien) {
             ancien.querySelector(".fleche_haut").innerHTML = '&nbsp;&#x25B3;';
             ancien.querySelector(".fleche_bas").innerHTML = '&nbsp;&#x25BD;';
+            ancien.title = "Cliquer pour trier dans l'ordre croissant";
           }
           ancien = document.querySelector(".sorttable_sorted_reverse");
           if (ancien) {
             ancien.querySelector(".fleche_haut").innerHTML = '&nbsp;&#x25B3;';
             ancien.querySelector(".fleche_bas").innerHTML = '&nbsp;&#x25BD;';
+            ancien.title = "Cliquer pour trier dans l'ordre croissant";
           }
           // ------------------------------
 
@@ -191,6 +202,9 @@ sorttable = {
           // ------------------------------
           // Modification du symbole
           this.querySelector(".fleche_haut").innerHTML = '&nbsp;&#x25B2;';
+
+          // Modification de l'infobulle
+          this.title = "Actuellement dans l'ordre croissant\nCliquer pour inverser";
           // ------------------------------
 
 

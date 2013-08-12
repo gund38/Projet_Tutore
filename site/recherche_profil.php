@@ -41,6 +41,12 @@
         <script src="js/sorttable.js" type="text/javascript" charset="utf-8"></script>
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
+
+        <style type="text/css">
+            .resultat a {
+                color: #332510;
+            }
+        </style>
     </head>
 
     <body>
@@ -60,7 +66,8 @@
 
                     <p>
                         Ici vous pouvez rechercher vos collègues ou vos aînés par leur nom et/ou leur année de promotion.<br />
-                        Une fois la recherche effectuée, il vous suffit de cliquer sur le nom d'une personne pour consulter son profil public.
+                        Une fois la recherche effectuée, il vous suffit de cliquer sur le nom d'une personne pour consulter son profil public.<br />
+                        Vous pouvez cliquer sur les colonnes pour les trier dans l'ordre alphanumérique croissant ou décroissant.
                     </p>
 
                     <br /><br/>

@@ -176,7 +176,8 @@
                                                         <td>
                                                             <a href="pdf/<?php echo $offreEnCours['cheminPDF']; ?>"
                                                                target="_blank"
-                                                               type="application/pdf">
+                                                               type="application/pdf"
+                                                               download="<?php echo $offreEnCours['type'] . " - " . $offreEnCours['intitule']; ?>">
                                                                 <img src="images/icone-pdf.gif" alt="Icône PDF" />
                                                             </a>
                                                         </td>
