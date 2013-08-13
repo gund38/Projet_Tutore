@@ -11,7 +11,7 @@
         private $_nom;
         private $_prenom;
         private $_promo;
-//        private $_diplomeMaster;
+        private $_diplomeMaster;
         private $_email;
         private $_visibiliteEmail;
         private $_dateNaissance;
@@ -20,7 +20,7 @@
         private $_visibilitePhoto;
         private $_pagePerso;
         private $_visibilitePagePerso;
-/** @TODO Rajouter booléen diplômé et tutti fruti */
+
         private $_diplomes;
         private $_expPros;
 
@@ -104,6 +104,15 @@
          */
         public function getPromo() {
             return $this->_promo;
+        }
+
+        /**
+         * Getter de $_diplomeMaster
+         *
+         * @return boolean
+         */
+        public function getDiplomeMaster() {
+            return $this->_diplomeMaster;
         }
 
         /**
@@ -232,6 +241,15 @@
          */
         public function setPromo($promo) {
             $this->_promo = $promo;
+        }
+
+        /**
+         * Setter de $_diplomeMaster
+         *
+         * @param boolean $diplomeMaster
+         */
+        public function setDiplomeMaster($diplomeMaster) {
+            $this->_diplomeMaster = $diplomeMaster;
         }
 
         /**

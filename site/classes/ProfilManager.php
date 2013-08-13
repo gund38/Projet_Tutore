@@ -32,7 +32,7 @@
 
             $req = $this->_db->query('SELECT
                 pr.codePe, pe.nom, pe.prenom, pr.promo,
-                pe.email, pr.visibiliteEmail,
+                pr.diplomeMaster, pe.email, pr.visibiliteEmail,
                 DATE_FORMAT(pr.dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
                 pr.visibiliteDateNaissance, pr.cheminPhoto, pr.visibilitePhoto,
                 pr.pagePerso, pr.visibilitePagePerso
@@ -58,7 +58,7 @@
 
             $req = $this->_db->prepare('SELECT
                 pr.codePe, pe.nom, pe.prenom, pr.promo,
-                pe.email, pr.visibiliteEmail,
+                pr.diplomeMaster, pe.email, pr.visibiliteEmail,
                 DATE_FORMAT(pr.dateNaissance, \'%d/%m/%Y\') AS dateNaissance,
                 pr.visibiliteDateNaissance, pr.cheminPhoto, pr.visibilitePhoto,
                 pr.pagePerso, pr.visibilitePagePerso
