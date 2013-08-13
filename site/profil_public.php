@@ -92,7 +92,6 @@
                         </p>
                     </fieldset>
 
-                    <?php /** @TODO Finir l'affichage des diplômes et des exp pros */ ?>
                     <fieldset>
                         <legend>Parcours scolaire</legend>
 
@@ -102,8 +101,8 @@
                             foreach ($diplomes as $diplomeEnCours) {
                                 if ($diplomeEnCours->getVisibilite()) {
                                     echo "<p>\n";
-                                    echo $diplomeEnCours->getAnnee() . " : " . $diplomeEnCours->getType() . " " .
-                                            $diplomeEnCours->getDiscipline() . " à " . $diplomeEnCours->getEtablissement();
+                                    echo $diplomeEnCours->getAnnee() . " : " . $diplomeEnCours->getType() . " "
+                                            . $diplomeEnCours->getDiscipline() . " à " . $diplomeEnCours->getEtablissement();
                                     echo "\n</p>\n";
                                 }
                             }
@@ -118,9 +117,13 @@
 
                             foreach ($expPros as $expProEnCours) {
                                 if ($expProEnCours->getVisibilite()) {
+                                    $codePostal = infosDepartement($expProEnCours->getDepartement());
+                                    $codePostal = $codePostal['codePostal'];
+
                                     echo "<p>\n";
-                                    echo $expProEnCours->getDateDebut() . " - " . ($expProEnCours->getEnCours() ? "maintenant" : $expProEnCours->getDateFin()) .
-                                            " : " . $expProEnCours->getIntitule() . " chez " . $expProEnCours->getEntreprise() . ", " . $expProEnCours->getVille();
+                                    echo $expProEnCours->getDateDebut() . " - " . ($expProEnCours->getEnCours() ? "maintenant" : $expProEnCours->getDateFin())
+                                            . " : " . $expProEnCours->getIntitule() . " chez " . $expProEnCours->getEntreprise()
+                                            . ", " . $expProEnCours->getVille() . " ($codePostal)";
                                     /** @TODO Réfléchir à l'utilité de l'affichage du salaire */
                                     echo "\n</p>\n";
                                 }

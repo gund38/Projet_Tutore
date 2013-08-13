@@ -73,9 +73,11 @@
                         <td>
                             <h2>Bienvenue sur le site des Anciens Étudiants du Master TI (Technologie de l'Internet) de Pau !</h2>
                         </td>
+
                         <td>
                             <img src="images/logo_uppa.jpg" alt="Logo UPPA" width="253" height="234" />
                         </td>
+
                         <td rowspan="2">
                             <table id="dernieres_offres">
                                 <thead>
@@ -86,12 +88,14 @@
                                             </h4>
                                         </th>
                                     </tr>
+
                                     <tr>
                                         <th>Date de dépôt</th>
                                         <th>Type</th>
                                         <th>Intitulé du poste</th>
                                     </tr>
                                 </thead>
+
                                 <tbody align="center">
                                     <?php
                                         // Récupération connexion BD
@@ -101,32 +105,14 @@
                                         $requete = 'SELECT DATE_FORMAT(o.dateDepot, \'%d/%m/%Y\') AS dateDepot,
                                             o.type, o.intitule
                                             FROM Offre AS o';
-
                                         $requete .= isset($_SESSION['personneCo']) ? "" : " WHERE o.type = \"Emploi\"";
-
                                         $requete .= ' ORDER BY o.dateDepot DESC LIMIT 5';
 
-                                        // Préparation de la requête
-                                        $req = $bdd->prepare($requete);
+                                        // Éxécution de la requête
+                                        $req = $bdd->query($requete);
 
-                                        // Si la préparation a échoué
-                                        if (!$req) {
-                                            echo "La requête n'a pas fonctionné (préparation), veuillez réessayer.<br />\n";
-                                            exit;
-                                        }
-
-                                        // Exécution de la requête
-                                        $req->execute();
-
-                                        // Si la requête a échoué
-                                        if (!$req) {
-                                            echo "La requête n'a pas fonctionné (exécution), veuillez réessayer.<br />\n";
-                                            exit;
-                                        }
-
+                                        // Extraction des résultats
                                         $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
-
-                                        //print_r($resultats);
 
                                         foreach ($resultats as $offreEnCours) {
                                     ?>
@@ -139,6 +125,7 @@
                                         }
                                     ?>
                                 </tbody>
+
                                 <tfoot align="center">
                                     <tr>
                                         <td colspan="3">
@@ -147,6 +134,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+
                             <form action="fonctions/rechercherOffres.php" method="post" name="voir_plus">
                                 <?php
                                     if (!isset($_SESSION['personneCo'])) {
@@ -164,6 +152,7 @@
                             <p>
                                 Ce site a plusieurs objectifs :
                             </p>
+
                             <ul class="objectifs">
                                 <li>
                                     La création d'un annuaire des Anciens Étudiants du Master TI de Pau

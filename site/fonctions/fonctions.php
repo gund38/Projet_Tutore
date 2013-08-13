@@ -33,6 +33,30 @@
     }
 
     /**
+     * Retourne les infos du département souhaité
+     *
+     * @param int $codeDe Le code du département souhaité
+     * @return array
+     */
+    function infosDepartement($codeDe) {
+        // Récupératon de la connexion à la BD
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $requete = 'SELECT codePostal, nom
+            FROM Departement
+            WHERE codeDe = :codeDe';
+
+        $req = $bdd->prepare($requete);
+        $req->execute(array(
+            'codeDe' => $codeDe
+        ));
+
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $resultat;
+    }
+
+    /**
      * Retourne la liste des types de diplôme depuis la BD
      *
      * @return array
