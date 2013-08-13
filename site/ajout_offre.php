@@ -5,26 +5,9 @@
      * @author Kévin Bélellou et Nicolas Dubois
      */
 
-    /**
-     * Chargement des fichiers de classes
-     *
-     * @param string $classe La classe à charger
-     */
-    function chargerClasse($classe) {
-        require_once 'classes/' . $classe . '.php';
-    }
-
-    spl_autoload_register('chargerClasse');
-    require_once 'fonctions/fonctions.php';
-
-    // Démarrage de la session
-    session_start();
-
-    // On vérifie si l'on a le droit d'accéder à cette page
-    if (!verifierAcces(__FILE__)) {
-        $_SESSION['erreur_droits'] = true;
-        header("Location: login.php?page=" . substr(strrchr($_SERVER['PHP_SELF'], '/'), 1));
-    }
+    // Inclusion et appel de la fonction d'en-tête
+    require_once 'fonctions/header.php';
+    enTete(true);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -167,7 +150,7 @@
                                 <tr>
                                     <td colspan="4">
                                         <br />
-                                        <label for="fichier">Sélectionner le fichier pdf à uploader (max&nbsp;:&nbsp;2Mo)&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
+                                        <label for="fichier">Sélectionner le fichier pdf à ajouter (max&nbsp;:&nbsp;2Mo)&nbsp;<span class="obligatoire">*</span>&nbsp;:</label>
                                         <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
                                         <input type="file" name="fichier" id="fichier" />
                                     </td>

@@ -5,20 +5,9 @@
      * @author Kévin Bélellou et Nicolas Dubois
      */
 
-    /**
-     * Chargement des fichiers de classes
-     *
-     * @param string $classe La classe à charger
-     */
-    function chargerClasse($classe) {
-        require_once 'classes/' . $classe . '.php';
-    }
-
-    spl_autoload_register('chargerClasse');
-    require_once 'fonctions/fonctions.php';
-
-    // Démarrage de la session
-    session_start();
+    // Inclusion et appel de la fonction d'en-tête
+    require_once 'fonctions/header.php';
+    enTete(false);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
