@@ -105,6 +105,9 @@ sorttable = {
 
               // Ajout de l'infobulle
               headrow[i].title = "Cliquer pour trier dans l'ordre croissant";
+
+              // Ajout du curseur
+              headrow[i].style.cursor = 'pointer';
               // ------------------------------
 
 	      dean_addEvent(headrow[i],"click", sorttable.innerSortFunction = function(e) {

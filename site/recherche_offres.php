@@ -183,6 +183,7 @@
                 </center>
             </div>
         </div>
+
         <style type="text/css">
             table.sortable tbody tr:nth-child(2n+1) td {
                 background: #8AAAD9;

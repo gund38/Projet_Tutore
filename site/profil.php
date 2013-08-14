@@ -177,7 +177,8 @@
                                         </td>
                                         <td>
                                             <input type="email" name="email" id="email" size="30%"
-                                                   value="<?php echo $_SESSION['personneCo']->getEmail(); ?>" />
+                                                   value="<?php echo $_SESSION['personneCo']->getEmail(); ?>"
+                                                   disabled />
                                         </td>
                                     </tr>
                                     <tr>

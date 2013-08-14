@@ -61,7 +61,7 @@
     $requete = 'SELECT pe.codePe, pe.prenom, pe.nom, pr.promo
         FROM Personne AS pe, Profil AS pr
         WHERE pe.codePe = pr.codePe
-        AND pe.type = \'Ancien_etudiant\'';
+        AND pe.type = \'Ancien_etudiant\''; // @TODO Ajouter condition compte validé
 
     /**
      * Création du tableau de données

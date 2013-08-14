@@ -11,7 +11,7 @@ function change_onglet(name) {
 // Désactivation du champ 'Photo de profil' si la checkbox
 // 'Supprimer photo' est cochée (et vice-versa)
 function checkboxDeletePhoto() {
-    if (document.getElementById('supprimer_photo').checked){
+    if (document.getElementById('supprimer_photo').checked) {
         document.getElementById('photo').disabled = 'disabled';
     } else {
         document.getElementById('photo').disabled = '';
@@ -21,7 +21,7 @@ function checkboxDeletePhoto() {
 // Désactivation des champs 'Date de fin' si la checkbox
 // 'En cours' associée est cochée (et vice-versa)
 function checkboxEnCours(id) {
-    if (document.getElementById('enCours' + id).checked){
+    if (document.getElementById('enCours' + id).checked) {
         $("#date_fin_exp" + id).datepicker("option", "disabled", true);
     } else {
         $("#date_fin_exp" + id).datepicker("option", "disabled", false);

@@ -82,6 +82,7 @@
                                     <option value="">Répartition géographique</option>
                                     <option value="">Pourcentage ayant un travail</option>
                                     <option value="">Répartition du niveau d'études final</option>
+                                    <?php /** @TODO Stat supplémentaire : provenance des offres (admin, enseignant, ancien étudiant) */ ?>
                                 </select>
                             </td>
                             <td>
