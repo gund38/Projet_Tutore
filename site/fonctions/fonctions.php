@@ -329,6 +329,7 @@
                 'contact.php'
             ),
             'Administrateur' => array(
+                'admin.php',
                 'recherche_profil.php',
                 'profil_public.php',
                 'recherche_offres.php',

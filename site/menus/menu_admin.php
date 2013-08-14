@@ -27,7 +27,7 @@
         </li>
 
         <li>
-            <a href="#">Gérer les comptes</a>
+            <a href="admin.php">Gérer les comptes</a>
         </li>
 
         <li>
