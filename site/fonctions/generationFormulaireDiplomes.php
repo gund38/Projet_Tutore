@@ -1,4 +1,11 @@
 <?php
+    /**
+     * Ce fichier permet la génération des
+     * formulaires de diplômes
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
+
     // Récupération de la liste des types de diplôme
     $listeTypes = listeTypesDiplome();
 

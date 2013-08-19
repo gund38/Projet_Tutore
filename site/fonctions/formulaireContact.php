@@ -4,6 +4,7 @@
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */
+
     session_start();
 
     $_SESSION['erreur'] = NULL; //pour evite un bug lorsque tous champs sont remplies, on rentre pas dans le else

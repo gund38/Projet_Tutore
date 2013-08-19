@@ -14,6 +14,7 @@
         private $_email;
         private $_login;
         private $_mdp;
+        // @TODO ajouter compteValide
 
         /**
          * Constructeur
@@ -106,7 +107,7 @@
             return $this->_email;
         }
 
-        /** @TODO Ajouter si nécessaire les getters de login et mdp */
+        // @TODO Ajouter si nécessaire les getters de login et mdp
 
         //---------------Setters---------------//
 

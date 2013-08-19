@@ -1,4 +1,11 @@
 <?php
+    /**
+     * Ce fichier permet la génération des
+     * formulaires d'expériences professionnelles
+     *
+     * @author Kévin Bélellou et Nicolas Dubois
+     */
+
     // Récupération de la liste des départements
     $listeDep = listeDepartements();
 

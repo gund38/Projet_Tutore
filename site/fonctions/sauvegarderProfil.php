@@ -49,7 +49,7 @@
 
     $optionAnnee = array(
         'filter' => FILTER_VALIDATE_INT,
-        'flags' => array(
+        'flags' => array( // @TODO réfléchir utilité de ce paramètre
             'min_range' => '1900',
             'max_range' => '2100'
         )
@@ -402,7 +402,7 @@
     }
     $donneesProfil['expPros'] = $donneesExpPros;
 
-    /** @TODO Ajouter la modification de l'email */
+    // @TODO Ajouter la modification de l'email
     // Update des nouvelles données dans la BD
     if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
         $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";
