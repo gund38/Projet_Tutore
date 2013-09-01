@@ -61,7 +61,7 @@
 
                 <br /><br />
 
-                <form action="" method="post">
+                <form action="fonctions/generer_stats.php" method="post">
                     <table cellpadding="10px">
                         <tr>
                             <th>
@@ -77,31 +77,35 @@
                         <tr>
                             <td>
                                 <select name="type_stat" id="type_stat">
-                                    <option value="">Répartition des salaires</option>
-                                    <option value="">Pourcentage de diplômés</option>
-                                    <option value="">Répartition géographique</option>
-                                    <option value="">Pourcentage ayant un travail</option>
-                                    <option value="">Répartition du niveau d'études final</option>
-                                    <?php /** @TODO Stat supplémentaire : provenance des offres (admin, enseignant, ancien étudiant) */ ?>
+                                    <option value="rep_salaires">Répartition des salaires</option>
+                                    <option value="rep_geo" selected>Répartition géographique</option>
+                                    <option value="pour_travail">Pourcentage ayant un travail</option>
+                                    <option value="pour_diplomes">Pourcentage de diplômés</option>
+                                    <option value="rep_etudes">Répartition du niveau d'études final</option>
+                                    <?php // @TODO Stat supplémentaire : provenance des offres (admin, enseignant, ancien étudiant) ?>
                                 </select>
                             </td>
                             <td>
                                 <select name="promo_deb" id="promo_deb">
-                                    <option value="2012">2012</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2007">2007</option>
+                                    <?php
+                                        $promos = minMaxPromos();
+
+                                        for ($i = $promos['min']; $i <= $promos['max']; $i++) {
+                                    ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                        }
+                                    ?>
                                 </select>
 
                                 <select name="promo_fin" id="promo_fin">
-                                    <option value="2012">2012</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2007">2007</option>
+                                    <?php
+                                        for ($i = $promos['min']; $i <= $promos['max']; $i++) {
+                                    ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                        }
+                                    ?>
                                 </select>
 
                                 <input type="checkbox" name="promo_all" id="promo_all" onclick="checkboxAll();"/>

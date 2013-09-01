@@ -8,7 +8,7 @@ function Camembert() {
         {title: "Entre 30 000 € et 35 000 €", value: 5},
         {title: "Entre 35 000 € et 40 000 €", value: 3},
         {title: "Entre 40 000 € et 45 000 €", value: 2},
-        {title: "Supérieur à 45 000 €", value: 1},
+        {title: "Supérieur à 45 000 €", value: 1}
     ];
 
     AmCharts.ready(function () {
@@ -74,17 +74,17 @@ function Classique() {
         chart.depth3D = 15;
 
 
-        // Permet de faire une ratation de 90° des noms de catégories, évite ainsi les trucs illisibles.
+        // Permet de faire une rotation de 90° des noms de catégories, évite ainsi les trucs illisibles.
         var catAxis = chart.categoryAxis;
         catAxis.gridCount = chartData.length;
         catAxis.labelRotation = 90;
-        catAxis.forceShowField="region"; // pour forcer l'affichage de toutes les catégories
+        catAxis.forceShowField = "region"; // pour forcer l'affichage de toutes les catégories
 
-        //Maintenant nous allons générer le graphe. On commence par créer un objet de type AmGraph().
+        // Maintenant nous allons générer le graphe. On commence par créer un objet de type AmGraph().
         var graph = new AmCharts.AmGraph();
 
         // Ensuite on précise quelles valeurs seront représentées par les colonnes.
-        graph.valueField = "visits"
+        graph.valueField = "visits";
 
         // On définit le type (par défaut c'est une courbe)
         graph.type = "column";

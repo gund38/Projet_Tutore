@@ -132,6 +132,23 @@
     }
 
     /**
+     * Retourne le min et le max des promos
+     *
+     * @return array
+     */
+    function minMaxPromos() {
+        // Récupératon de la connexion à la BD
+        $bdd = ConnexionBD::getInstance()->getBDD();
+
+        $req = $bdd->query("SELECT MIN(promo) AS min, MAX(promo) AS max
+            FROM Profil");
+
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $resultat;
+    }
+
+    /**
      * Expression régulière pour vérifier les nombres entiers
      * ou décimaux à 1 ou 2 décimales positifs
      *
