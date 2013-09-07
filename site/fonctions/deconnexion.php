@@ -7,7 +7,7 @@
 
     session_start();
 
-    unset($_SESSION['PersonneCo']);
+    unset($_SESSION);
 
     session_destroy();
 

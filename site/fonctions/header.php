@@ -12,6 +12,8 @@
      * @param boolean $verifAcces Définit si l'on doit verifier les droits
      */
     function enTete($verifAcces) {
+        error_reporting(E_ALL | E_STRICT);
+
         /**
          * Chargement des fichiers de classes
          *
