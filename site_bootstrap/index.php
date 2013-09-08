@@ -112,7 +112,7 @@
                     <div class="col-lg-3">
                         <img src="images/logo_uppa.jpg" alt="Logo UPPA"
                              class="img-rounded"
-                             width="202" height="187" />
+                             width="202px" height="187px" />
                     </div>
                 </div>
 

@@ -75,7 +75,7 @@
                         </td>
 
                         <td>
-                            <img src="images/logo_uppa.jpg" alt="Logo UPPA" width="253" height="234" />
+                            <img src="images/logo_uppa.jpg" alt="Logo UPPA" width="253px" height="234px" />
                         </td>
 
                         <td rowspan="2">
