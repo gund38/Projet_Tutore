@@ -4,8 +4,8 @@
             <a href="index.php">Accueil</a>
         </li>
 
-        <li class="<?php echo strcmp($page, "Offres") == 0 ? "active" : "" ?>">
-            <a href="#offres">Offres d'emploi</a>
+        <li class="<?php echo strcmp($page, "Recherche_offres") == 0 ? "active" : "" ?>">
+            <a href="recherche_offres.php">Offres d'emploi</a>
         </li>
 
         <li class="<?php echo strcmp($page, "Contact") == 0 ? "active" : "" ?>">
@@ -22,11 +22,15 @@
           action="fonctions/connexion.php" method="post"
           name="formConnexion" id="formConnexion">
         <div class="form-group">
+            <label class="sr-only" for="login">Email</label>
+
             <input type="text" placeholder="Email" class="form-control"
                    name="login" id="login" />
         </div>
 
         <div class="form-group">
+            <label class="sr-only" for="mdp">Mot de passe</label>
+
             <input type="password" placeholder="Mot de passe" class="form-control"
                    name="mdp" id="mdp" />
         </div>

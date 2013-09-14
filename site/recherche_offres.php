@@ -74,7 +74,6 @@
                                 </th>
                                 <td>
                                     <select name="type" id="type">
-
                                         <option value="all"<?php echo isset($_SESSION['personneCo']) ? "" : " disabled"; ?>>Emploi + Stage</option>
                                         <?php
                                             // Récupération de la liste des types d'offre

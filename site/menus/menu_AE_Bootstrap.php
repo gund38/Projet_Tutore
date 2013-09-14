@@ -12,8 +12,8 @@
             <a href="#recherche_profil">Rechercher un profil</a>
         </li>
 
-        <li class="<?php echo strcmp($page, "Offres") == 0 ? "active" : "" ?>">
-            <a href="#offres">Offres d'emploi / stage</a>
+        <li class="<?php echo strcmp($page, "Recherche_offres") == 0 ? "active" : "" ?>">
+            <a href="recherche_offres.php">Offres d'emploi / stage</a>
         </li>
 
         <li class="<?php echo strcmp($page, "Ajout_offre") == 0 ? "active" : "" ?>">
