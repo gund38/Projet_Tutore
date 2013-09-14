@@ -15,18 +15,18 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.css" rel="stylesheet">
+        <link href="dist/css/bootstrap.css" rel="stylesheet" />
 
         <!-- Bootstrap theme -->
-        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet" />
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
 
         <!-- CSS checkbox iOS -->
         <link rel="stylesheet" href="css/boutons_iOS" type="text/css" media="screen" charset="utf-8" />
@@ -42,28 +42,8 @@
                 padding-bottom: 30px;
             }
 
-            .theme-dropdown .dropdown-menu {
-                display: block;
-                position: static;
-                margin-bottom: 20px;
-            }
-
-            .theme-showcase > p > .btn {
-                margin: 5px 0;
-            }
-        </style>
-
-        <style type="text/css">
             .obligatoire {
                 color: red;
-            }
-
-            .erreur {
-                color: red;
-            }
-
-            .sortie {
-                color: blue;
             }
 
             .iPhoneCheckContainer {
@@ -79,12 +59,12 @@
                 width: 120px;
             }
 
-            td {
-                padding: 10px;
-            }
-
             table {
                 width: 100%;
+            }
+
+            td {
+                padding: 10px;
             }
 
             .formLabel {
@@ -95,51 +75,24 @@
                 width: 100%;
                 text-align: right;
             }
+
+            .input-group-addon {
+                cursor: pointer;
+            }
+
+            .jumbotron small {
+                font-size: 75%;
+            }
         </style>
     </head>
 
-    <body>
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+    <body onload="verificationCheckbox();">
+        <?php
+            $page = "Profil";
+            require_once 'menus/menuBootstrap.php';
+        ?>
 
-                    <a class="navbar-brand" href="index.php">SWAGMaster</a>
-                </div>
-
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.php">Accueil</a></li>
-
-                        <li class="active"><a href="profil.php">Profil</a></li>
-
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-
-                    <form class="navbar-form navbar-right" action="">
-                        <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
-                        </div>
-
-                        <button type="submit" class="btn btn-success">Se connecter</button>
-
-                        <button class="btn btn-primary">S'inscrire</button>
-                    </form>
-                </div> <!-- /.navbar-collapse -->
-            </div> <!-- /.container -->
-        </div> <!-- /.navbar -->
-
-        <div class="container theme-showcase">
-            <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="container" role="main">
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-lg-2">
@@ -159,54 +112,78 @@
                             <small>Les champs marqués par <span class="obligatoire">*</span> sont obligatoires.</small>
                         </p>
 
-                        <p class="erreur">
-                            <?php
-                                // Gestion des erreurs au niveau de l'ajout d'une offre
-                                if (isset($_SESSION['erreurs_profil'])) {
-                                    echo substr_count($_SESSION['erreurs_profil'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
-                                    echo "<br />\n";
-                                    echo $_SESSION['erreurs_profil'];
-                                    unset($_SESSION['erreurs_profil']);
-                                } else {
-                                    echo "\n";
-                                }
-                            ?>
-                        </p>
+                        <?php
+                            // Gestion des erreurs au niveau de la sauvegarde du profil
+                            if (isset($_SESSION['erreurs_profil'])) {
+                        ?>
+                                <div class="alert alert-danger alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-                        <p class="sortie">
-                            <?php
-                                // Gestion de la réussite de l'ajout d'une offre
-                                if (isset($_SESSION['sortie_profil'])) {
-                                    echo "<br />\n";
-                                    echo $_SESSION['sortie_profil'];
-                                    unset($_SESSION['sortie_profil']);
-                                } else {
-                                    echo "\n";
-                                }
-                            ?>
-                        </p>
-                    </div>
+                                    <small><?php echo $_SESSION['erreurs_profil']; ?></small>
+                                </div>
+                        <?php
+                                unset($_SESSION['erreurs_profil']);
+                            }
+
+                            // Gestion de la réussite de la sauvegarde du profil
+                            if (isset($_SESSION['sortie_profil'])) {
+                        ?>
+                                <div class="alert alert-success alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                                    <small><?php echo $_SESSION['sortie_profil']; ?></small>
+                                </div>
+                        <?php
+                                unset($_SESSION['sortie_profil']);
+                            }
+                        ?>
+                    </div> <!-- /.col-lg-7 -->
 
                     <div class="col-lg-3 text-center">
                         <br />
-                        <button type="submit" class="btn btn-success btn-lg">Sauvegarder</button>
+
+                        <button class="btn btn-success btn-lg"
+                                onclick="document.forms.formProfil.submit();">
+                            Sauvegarder
+                        </button>
+
                         <br /><br />
-                        <a href="#" class="btn btn-primary btn-lg">Voir mon profil public</a>
+
+                        <a href="#profil_public" class="btn btn-primary btn-lg">Voir mon profil public</a>
                     </div>
                 </div> <!-- /.row -->
             </div> <!-- /.jumbotron -->
 
-            <ul class="nav nav-tabs" id="onglets">
-                <li class="active"><a href="#infos" data-toggle="tab">Informations personnelles</a></li>
-                <li><a href="#scol" data-toggle="tab">Parcours scolaire</a></li>
-                <li><a href="#pro" data-toggle="tab">Parcours professionnel</a></li>
+            <ul class="nav nav-tabs" id="onglets" role="tablist">
+                <li class="active">
+                    <a href="#infos" data-toggle="tab">Informations personnelles</a>
+                </li>
+
+                <li>
+                    <a href="#scol" data-toggle="tab">Parcours scolaire</a>
+                </li>
+
+                <li>
+                    <a href="#pro" data-toggle="tab">Parcours professionnel</a>
+                </li>
             </ul>
 
-            <div id="ongletsContent" class="tab-content">
-                <div id="infos" class="tab-pane fade active in">
-                    <div class="well">
-                        <form role="form"
-                              action="" method="post">
+            <form role="form" action="fonctions/sauvegarderProfil.php"
+                  method="post" enctype="multipart/form-data"
+                  name="formProfil" id="formProfil">
+                <div id="ongletsContent" class="tab-content">
+                    <div id="infos" class="tab-pane fade active in" role="tabpanel">
+                        <div class="well">
+                            <?php
+                                // Récupération complète du profil courant
+                                $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
+                                $profil = $profilManager->getProfil($_SESSION['personneCo']->getCodePe());
+                                $profil->obtenirProfilComplet();
+                            ?>
+
+                            <input type="hidden" name="idProfil" id="idProfil"
+                                   value="<?php echo $profil->getCodePe(); ?>" />
+
                             <table>
                                 <thead>
                                     <tr>
@@ -222,7 +199,8 @@
                                     <tr>
                                         <td class="colonne_visi">
                                             <input type="checkbox" class="form-control checkboxiOS"
-                                                   name="visi_photo" id="visi_photo" />
+                                                   name="visi_photo" id="visi_photo"
+                                                   <?php echo $profil->getVisibilitePhoto() ? "checked" : ""; ?> />
                                         </td>
 
                                         <td class="formLabel">
@@ -237,7 +215,9 @@
                                         <td>
                                             <div class="checkbox">
                                                 <label class="control-label">
-                                                    <input type="checkbox" class="form-control" />
+                                                    <input type="checkbox" class="form-control"
+                                                           name="supprimer_photo" id="supprimer_photo"
+                                                           onclick="checkboxDeletePhoto();" />
                                                     Supprimer ma photo de profil actuelle
                                                 </label>
                                             </div>
@@ -247,7 +227,8 @@
                                     <tr>
                                         <td class="colonne_visi">
                                             <input type="checkbox" class="form-control checkboxiOS"
-                                                   name="visi_date_naiss" id="visi_date_naiss" />
+                                                   name="visi_date_naiss" id="visi_date_naiss"
+                                                   <?php echo $profil->getVisibiliteDateNaissance() ? "checked" : ""; ?> />
                                         </td>
 
                                         <td class="formLabel">
@@ -258,7 +239,9 @@
                                             <div class="input-group">
                                                 <input type="date" class="form-control"
                                                        id="date_naiss" name="date_naiss"
-                                                       placeholder="" />
+                                                       placeholder=""
+                                                       value="<?php echo $profil->getDateNaissance(); ?>" />
+
                                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
                                                     <i class="icon-calendar icon-border"></i>
                                                 </span>
@@ -269,7 +252,8 @@
                                     <tr>
                                         <td class="colonne_visi">
                                             <input type="checkbox" class="form-control checkboxiOS"
-                                                   name="visi_email" id="visi_email" />
+                                                   name="visi_email" id="visi_email"
+                                                   <?php echo $profil->getVisibiliteEmail() ? "checked" : ""; ?> />
                                         </td>
 
                                         <td class="formLabel">
@@ -279,14 +263,16 @@
                                         <td colspan="2">
                                             <input type="email" class="form-control"
                                                    id="email" name="email"
-                                                   placeholder="Email" />
+                                                   placeholder="Email"
+                                                   value="<?php echo $_SESSION['personneCo']->getEmail(); ?>" />
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="colonne_visi">
                                             <input type="checkbox" class="form-control checkboxiOS"
-                                                   name="visi_page" id="visi_page" />
+                                                   name="visi_page" id="visi_page"
+                                                   <?php echo $profil->getVisibilitePagePerso() ? "checked" : ""; ?> />
                                         </td>
 
                                         <td class="formLabel">
@@ -296,47 +282,41 @@
                                         <td colspan="2">
                                             <input type="url" class="form-control"
                                                    id="page" name="page"
-                                                   placeholder="Page perso" />
+                                                   placeholder="Page perso"
+                                                   value="<?php echo $profil->getPagePerso(); ?>" />
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </form>
-                    </div> <!-- /.well -->
-                </div> <!-- /.tab-pane #infos -->
+                        </div> <!-- /.well -->
+                    </div> <!-- /.tab-pane #infos -->
 
-                <div id="scol" class="tab-pane fade">
-                    <?php
-                        // Récupération complète du profil courant
-                        $profilManager = new ProfilManager(ConnexionBD::getInstance()->getBDD());
-                        $profil = $profilManager->getProfil($_SESSION['personneCo']->getCodePe());
-                        $profil->obtenirProfilComplet();
-                    ?>
+                    <div id="scol" class="tab-pane fade" role="tabpanel">
+                        <input type="hidden" name="nbDiplomes" id="nbDiplomes"
+                               value="<?php echo count($profil->getDiplomes()); ?>" />
 
-                    <input type="hidden" name="nbDiplomes" id="nbDiplomes"
-                           value="<?php echo count($profil->getDiplomes()); ?>" />
+                        <?php
+                            // Génération et affichage des formulaires des diplômes
+                            require_once 'fonctions/generationFormulaireDiplomesBootstrap.php';
+                        ?>
+                    </div> <!--/.tab-pane #scol -->
 
-                    <?php
-                        // Génération et affichage des formulaires des diplômes
-                        require_once 'fonctions/generationFormulaireDiplomesBootstrap.php';
-                    ?>
-                </div> <!--/.tab-pane #scol -->
+                    <div id="pro" class="tab-pane fade" role="tabpanel">
+                        <input type="hidden" name="nbExpPros" id="nbExpPros"
+                               value="<?php echo count($profil->getExpPros()); ?>" />
 
-                <div id="pro" class="tab-pane fade">
-                    <input type="hidden" name="nbExpPros" id="nbExpPros"
-                           value="<?php echo count($profil->getExpPros()); ?>" />
-
-                    <?php
-                        // Génération et affichage des formulaires des expériences professionnelles
-                        require_once 'fonctions/generationFormulaireExpProsBootstrap.php';
-                    ?>
-                </div> <!-- /.tab-pane #pro -->
-            </div> <!-- /.tab-content -->
+                        <?php
+                            // Génération et affichage des formulaires des expériences professionnelles
+                            require_once 'fonctions/generationFormulaireExpProsBootstrap.php';
+                        ?>
+                    </div> <!-- /.tab-pane #pro -->
+                </div> <!-- /.tab-content -->
+            </form>
         </div> <!-- /.container -->
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- ================================================== -->
+
+        <!-- Bootstrap core JavaScript -->
         <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -400,6 +380,40 @@
             // Affichage du calendrier quand clic sur l'image
             function afficherCalendrier(objet) {
                 $(objet).parent().datepicker("show");
+            }
+        </script>
+
+        <!-- JavaScript checkbox -->
+        <script type="text/javascript" charset="utf-8">
+            // Désactivation du champ 'Photo de profil' si la checkbox
+            // 'Supprimer photo' est cochée (et vice-versa)
+            function checkboxDeletePhoto() {
+                if (document.getElementById('supprimer_photo').checked) {
+                    document.getElementById('photo').disabled = 'disabled';
+                } else {
+                    document.getElementById('photo').disabled = '';
+                }
+            }
+
+            // Désactivation des champs 'Date de fin' si la checkbox
+            // 'En cours' associée est cochée (et vice-versa)
+            function checkboxEnCours(id) {
+                if (document.getElementById('enCours' + id).checked) {
+                    $("#date_fin_exp" + id).datepicker("option", "disabled", true);
+                    $("#date_fin_exp" + id ).parent().children(".input-group-addon").css('cursor', 'not-allowed');
+                } else {
+                    $("#date_fin_exp" + id).datepicker("option", "disabled", false);
+                    $("#date_fin_exp" + id ).parent().children(".input-group-addon").css('cursor', 'pointer');
+                }
+            }
+
+            // Vérification de l'état des checkbox 'En cours' au chargement de la page
+            function verificationCheckbox() {
+                var nbExpPros = document.forms.formProfil.nbExpPros.value;
+
+                for (var i = 1; i < nbExpPros; i++) {
+                    checkboxEnCours(i);
+                }
             }
         </script>
     </body>

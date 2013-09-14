@@ -40,9 +40,7 @@
                         <td class="colonne_visi" rowspan="6">
                             <label for="visi_exp<?php echo $i; ?>"
                                    class="control-label">
-                                <p class="text-info">
-                                    <small>Visibilité globale</small>
-                                </p>
+                                <small class="text-info">Visibilité globale</small>
                             </label>
 
                             <input type="checkbox" class="form-control checkboxiOS"
@@ -187,9 +185,7 @@
                         <td class="colonne_visi">
                             <label for="visi_salaire_exp<?php echo $i; ?>"
                                    class="control-label">
-                                <p class="text-info">
-                                    <small>Visibilité salaire</small>
-                                </p>
+                                <small class="text-info">Visibilité salaire</small>
                             </label>
 
                             <input type="checkbox" class="form-control checkboxiOS"

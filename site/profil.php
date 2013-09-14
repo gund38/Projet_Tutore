@@ -73,7 +73,7 @@
 
                     <p class="erreur">
                         <?php
-                            // Gestion des erreurs au niveau de l'ajout d'une offre
+                            // Gestion des erreurs au niveau de la sauvegarde du profil
                             if (isset($_SESSION['erreurs_profil'])) {
                                 echo substr_count($_SESSION['erreurs_profil'], "<br />\n") > 1 ? "Erreurs :" : "Erreur :";
                                 echo "<br />\n";
@@ -87,7 +87,7 @@
 
                     <p class="sortie">
                         <?php
-                            // Gestion de la réussite de l'ajout d'une offre
+                            // Gestion de la réussite de la sauvegarde du profil
                             if (isset($_SESSION['sortie_profil'])) {
                                 echo "<br />\n";
                                 echo $_SESSION['sortie_profil'];
@@ -150,7 +150,7 @@
                                         </td>
                                         <td>
                                             <input type="checkbox" name="supprimer_photo" id="supprimer_photo"
-                                                   onclick="checkboxDeletePhoto();"/>
+                                                   onclick="checkboxDeletePhoto();" />
                                             <label for="supprimerPhoto">Supprimer ma photo de profil actuelle</label>
                                         </td>
                                     </tr>

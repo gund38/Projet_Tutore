@@ -36,9 +36,7 @@
                         <td class="colonne_visi" rowspan="4">
                             <label for="visi_dip<?php echo $i; ?>"
                                    class="control-label">
-                                <p class="text-info">
-                                    <small>Visibilité globale</small>
-                                </p>
+                                <small class="text-info">Visibilité globale</small>
                             </label>
 
                             <input type="checkbox" class="form-control checkboxiOS"

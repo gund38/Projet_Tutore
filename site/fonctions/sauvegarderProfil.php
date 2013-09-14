@@ -230,11 +230,11 @@
                 && !$options[$cle]['booleen'] // Et qu'il n'est pas un booléen
                 && !$options[$cle]['neDoitPasEtreVerifie'] // Et qu'il doit être vérifié
                 && empty($resultat[$cle])) { // Et qu'il est vide
-            $_SESSION['erreurs_profil'] .= $options[$cle]['msgVide'] . ". (1 : $cle)<br />\n";
+            $_SESSION['erreurs_profil'] .= $options[$cle]['msgVide'] . "<br />\n";
             $nbErreurs++;
         } elseif (!$options[$cle]['booleen'] // Si le champ n'est pas un booléen
                 && $resultat[$cle] === false) { // Et qu'il n'est pas valide
-            $_SESSION['erreurs_profil'] .= $options[$cle]['msgErreur'] . ". (2 : $cle)<br />\n";
+            $_SESSION['erreurs_profil'] .= $options[$cle]['msgErreur'] . "<br />\n";
             $nbErreurs++;
         }
     }
