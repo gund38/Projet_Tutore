@@ -415,4 +415,68 @@
         }
     }
 
+    /**
+     * Fonction de pagination
+     *
+     * @param int $page Page courante
+     * @param int $total_page Nb total de pages
+     * @return string
+     */
+    function pagination($pageCourante, $total_pages) {
+        $autour = 1;
+        $intervalle = '[...]';
+        $html = '<center><ul class="pagination">' . "\n";
+        $intervalleDebut = $intervalleFin = false;
+        $tab_autour = array();
+
+        // Préparation des balises HTML
+        $baliseDebut = "\t" . '<li class="';
+        $baliseMilieu = '"><a href="';
+        $baliseFin = "</a></li>\n";
+
+        // Préparation de la requête des liens
+        $requeteOriginale = str_replace("&", "&amp;", $_SERVER['QUERY_STRING']);
+        $emplacementPage = strpos($requeteOriginale, "&amp;page=");
+        $requeteNettoyee = $requeteOriginale;
+        if ($emplacementPage !== false) {
+            $requeteNettoyee = substr($requeteOriginale, 0, $emplacementPage);
+        }
+
+        // Tableau des pages autour
+        for ($i = $pageCourante - $autour; $i <= $pageCourante + $autour; $i++) {
+            $tab_autour[] = $i;
+        }
+
+        // Ajout du lien "précedent"
+        if ($pageCourante - 1 >= 1) {
+            $html .= $baliseDebut . $baliseMilieu . '?' . "$requeteNettoyee&amp;page=" . ($pageCourante - 1) . '">' . "&laquo;" . $baliseFin;
+        }
+
+        // Création des liens
+        for ($j = 1; $j <= $total_pages; $j++) {
+            if ($j == $pageCourante) { // Si c'est la page courante
+                $html .= $baliseDebut . 'active' . $baliseMilieu . '#">' . $j . '</a></li>' . ' ' . "\n";
+
+            } elseif ($j == 1 || $j == $total_pages || in_array($j, $tab_autour)) { // Si c'est la première, la dernière ou une des pages du tableau
+                $html .= $baliseDebut . $baliseMilieu . '?' . "$requeteNettoyee&amp;page=" . $j . '">' . $j . $baliseFin;
+
+            } elseif ($j < $pageCourante && !$intervalleDebut) { // Intervalle de début
+                $html .= $baliseDebut . 'disabled' . $baliseMilieu . '#">' . $intervalle . $baliseFin;
+                $intervalleDebut = true;
+
+            } elseif ($j > $pageCourante && !$intervalleFin) { // Intervalle de fin
+                $html .= $baliseDebut . 'disabled' . $baliseMilieu . '#">' . $intervalle . $baliseFin;
+                $intervalleFin = true;
+            }
+        }
+
+        // Ajout du lien "suivant"
+        if ($pageCourante + 1 <= $total_pages) {
+            $html .= $baliseDebut . $baliseMilieu . '?' . "$requeteNettoyee&amp;page=" . ($pageCourante + 1) . '">' . "&raquo;" . $baliseFin;
+        }
+
+        $html .= "</ul></center>\n";
+
+        return $html;
+    }
 ?>

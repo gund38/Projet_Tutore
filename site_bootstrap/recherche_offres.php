@@ -63,6 +63,11 @@
         <?php
             $page = "Recherche_offres";
             require_once 'menus/menuBootstrap.php';
+
+            require_once 'fonctions/rechercherOffresBootstrap.php';
+            if (isset($_GET['intitule'], $_GET['type'], $_GET['ville'], $_GET['departement'])) {
+                rechercherOffresBootstrap();
+            }
         ?>
 
         <div class="container" role="main">
@@ -76,8 +81,8 @@
             </div>
 
             <div class="well">
-                <form role="form" action="fonctions/rechercherOffres.php"
-                      method="post"
+                <form role="form" action=""
+                      method="get"
                       name="formReOffres" id="formReOffres">
                     <center>
                         <table>
@@ -87,7 +92,9 @@
                                 </th>
 
                                 <td>
-                                    <input type="text" name="intitule" id="intitule" class="form-control" />
+                                    <input type="text" name="intitule" id="intitule"
+                                           class="form-control" placeholder="Intitulé"
+                                           <?php echo isset($_GET['intitule']) ? 'value="' . $_GET['intitule'] . '"' : "" ?> />
                                 </td>
 
                                 <th>
@@ -101,9 +108,12 @@
                                             // Récupération de la liste des types d'offre
                                             $listeTypes = listeTypesOffre();
 
+                                            $typePresent = isset($_GET['type']);
+
                                             foreach ($listeTypes as $value) {
                                                 echo "<option value=\"$value\"";
                                                 echo (strcmp($value, "Stage") === 0 && !isset($_SESSION['personneCo'])) ? " disabled" : "";
+                                                echo ($typePresent && strcmp($_GET['type'], $value) == 0) ? " selected" : "";
                                                 echo ">$value</option>\n";
                                             }
                                         ?>
@@ -117,7 +127,9 @@
                                 </th>
 
                                 <td>
-                                    <input type="text" name="ville" id="ville" class="form-control" />
+                                    <input type="text" name="ville" id="ville"
+                                           class="form-control" placeholder="Ville"
+                                           <?php echo isset($_GET['ville']) ? 'value="' . $_GET['ville'] . '"' : "" ?> />
                                 </td>
 
                                 <th>
@@ -131,8 +143,12 @@
                                             // Récupération de la liste des départements
                                             $listeDep = listeDepartements();
 
+                                            $depPresent = isset($_GET['departement']);
+
                                             foreach ($listeDep as $value) {
-                                                echo "<option value=\"{$value['codeDe']}\">{$value['nom']}</option>\n";
+                                                echo "<option value=\"{$value['codeDe']}\"";
+                                                echo ($depPresent && strcmp($_GET['departement'], $value['codeDe']) == 0) ? " selected" : "";
+                                                echo ">{$value['nom']}</option>\n";
                                             }
                                         ?>
                                     </select>
@@ -199,6 +215,18 @@
                             </tbody>
                         </table>
             <?php
+                        // Paramètres de la pagination
+                        $page = 1;
+                        if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+                            $page = $_GET['page'];
+                        }
+
+                        $nb_pages = $_SESSION['nb_pages'];
+                        unset($_SESSION['nb_pages']);
+
+                        // Affichage de la pagination
+                        // @TODO Inconvénient de la pagination : le tri sur colonnes ne marche que pour les résultats affichés
+                        echo pagination($page, $nb_pages);
                     } else {
             ?>
                         <h3 class="text-danger">Votre recherche n'a pas donné de résultats</h3>
