@@ -49,36 +49,44 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <h1>Site Web des Anciens Étudiants du Master TI</h1>
-                    </div>
+                    </div> <!-- /.col-lg-9 -->
 
                     <div class="col-lg-3">
                         <img src="images/logo_uppa.jpg" alt="Logo UPPA"
                              class="img-rounded"
                              width="202px" height="187px" />
-                    </div>
-                </div>
+                    </div> <!-- /.col-lg-3 -->
+                </div> <!-- /.row -->
 
                 <p>
                     Ce site a plusieurs objectifs :
                 </p>
 
                 <ul class="icons-ul">
-                    <li><i class="icon-li icon-ok"></i>
+                    <li>
+                        <i class="icon-li icon-ok"></i>
                         La création d'un annuaire des Anciens Étudiants du Master TI (Technologie de l'Internet) de Pau
                     </li>
-                    <li><i class="icon-li icon-ok"></i>
+
+                    <li>
+                        <i class="icon-li icon-ok"></i>
                         La centralisation des offres d'emploi et de stage qui sont envoyés au département informatique
                     </li>
-                    <li><i class="icon-li icon-ok"></i>
+
+                    <li>
+                        <i class="icon-li icon-ok"></i>
                         La récupération et le recoupement d'informations sur les Anciens Étudiants afin de générer des statistiques anonymes à destination de l'équipe enseignante
                     </li>
                 </ul>
-                <p><a class="btn btn-primary btn-lg">En savoir plus &raquo;</a></p>
+
+                <p>
+                    <a class="btn btn-primary btn-lg">En savoir plus &raquo;</a>
+                </p>
             </div> <!--/.jumbotron -->
 
             <div class="page-header">
                 <h1>Les 5 dernières offres d'emploi<?php echo isset($_SESSION['personneCo']) ? "&nbsp;/&nbsp;stage" : ""; ?> ajoutées&nbsp;:</h1>
-            </div>
+            </div> <!-- /.page-header -->
 
             <div class="well">
                 <table class="table table-striped">
@@ -123,7 +131,7 @@
 
                 <button class="btn btn-info">En voir plus...</button>
             </div> <!--/.well -->
-        </div> <!-- /container -->
+        </div> <!-- /.container -->
 
         <!-- ================================================== -->
 

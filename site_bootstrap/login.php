@@ -21,8 +21,10 @@
 
         <!-- Bootstrap core CSS -->
         <link href="dist/css/bootstrap.css" rel="stylesheet">
+
         <!-- Bootstrap theme -->
         <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
         <!-- Font Awesome CSS -->
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
@@ -33,74 +35,16 @@
                 padding-top: 70px;
                 padding-bottom: 30px;
             }
-
-            .theme-dropdown .dropdown-menu {
-                display: block;
-                position: static;
-                margin-bottom: 20px;
-            }
-
-            .theme-showcase > p > .btn {
-                margin: 5px 0;
-            }
         </style>
     </head>
 
     <body>
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+        <?php
+            $page = "Login";
+            require_once 'menus/menuBootstrap.php';
+        ?>
 
-                    <a class="navbar-brand" href="index.php">SWAGMaster</a>
-                </div>
-
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.php">Accueil</a></li>
-
-                        <li><a href="profil.php">Profil</a></li>
-
-                        <li><a href="#contact">Contact</a></li>
-
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>-->
-                    </ul>
-
-                    <form class="navbar-form navbar-right" action="">
-                        <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
-                        </div>
-
-                        <button type="submit" class="btn btn-success">Se connecter</button>
-
-                        <button class="btn btn-primary">S'inscrire</button>
-                    </form>
-                </div> <!--/.navbar-collapse -->
-            </div> <!--/.container -->
-        </div> <!--/.navbar -->
-
-        <div class="container theme-showcase">
-
+        <div class="container" role="main">
             <?php print_r($_SESSION); echo isset($_SESSION['personneCo']) ? "oui" : "non"; ?>
 
             <p class="sortie">
@@ -143,11 +87,12 @@
                     }
                 ?>
             </p>
-        </div>
+        </div> <!-- /.container -->
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+
+        <!-- ================================================== -->
+
+        <!-- Bootstrap core JavaScript -->
         <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     </body>

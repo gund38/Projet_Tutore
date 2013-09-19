@@ -98,7 +98,7 @@
                     <div class="col-lg-2">
                         <img src="images/profil/5209f222cbfdb.jpg" alt="Image de profil"
                              class="img-rounded" width="150px" />
-                    </div>
+                    </div> <!-- /.col-lg-2 -->
 
                     <div class="col-lg-7">
                         <h2>Kévin Bélellou</h2>
@@ -150,7 +150,7 @@
                         <br /><br />
 
                         <a href="#profil_public" class="btn btn-primary btn-lg">Voir mon profil public</a>
-                    </div>
+                    </div> <!-- /.col-lg-3 -->
                 </div> <!-- /.row -->
             </div> <!-- /.jumbotron -->
 
@@ -220,7 +220,7 @@
                                                            onclick="checkboxDeletePhoto();" />
                                                     Supprimer ma photo de profil actuelle
                                                 </label>
-                                            </div>
+                                            </div> <!-- /.checkbox -->
                                         </td>
                                     </tr>
 
@@ -245,7 +245,7 @@
                                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
                                                     <i class="icon-calendar icon-border"></i>
                                                 </span>
-                                            </div>
+                                            </div> <!-- /.input-group -->
                                         </td>
                                     </tr>
 

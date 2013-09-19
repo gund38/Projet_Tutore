@@ -78,7 +78,7 @@
                     Ici vous pouvez rechercher une offre d'emploi<?php echo isset($_SESSION['personneCo']) ? " ou de stage" : ""; ?> suivant différents critères.<br />
                     Vous pouvez cliquer sur les colonnes pour les trier dans l'ordre alphanumérique croissant ou décroissant.
                 </p>
-            </div>
+            </div> <!-- /.jumbotron -->
 
             <div class="well">
                 <form role="form" action=""
