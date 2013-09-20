@@ -73,6 +73,7 @@
     $donnees = array();
 
     // Si le champ 'Nom Prénom' a été renseigné
+    // @TODO Revoir algo recherche pour nom/prénom incluant la découpe des mots
     if (!empty($resultat['nomPrenom'])) {
         $requete .= ' AND (pe.prenom LIKE :prenom OR pe.nom LIKE :nom)';
 

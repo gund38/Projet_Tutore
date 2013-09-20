@@ -5,7 +5,7 @@
         </li>
 
         <li class="<?php echo strcmp($page, "Recherche_profil") == 0 ? "active" : "" ?>">
-            <a href="#recherche_profil">Rechercher un profil</a>
+            <a href="recherche_profil.php">Rechercher un profil</a>
         </li>
 
         <li class="<?php echo strcmp($page, "Recherche_offres") == 0 ? "active" : "" ?>">

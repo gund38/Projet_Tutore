@@ -5,7 +5,7 @@
         </li>
 
         <li class="<?php echo strcmp($page, "Recherche_profil") == 0 ? "active" : "" ?>">
-            <a href="#recherche_profil">Rechercher un profil</a>
+            <a href="recherche_profil.php">Rechercher un profil</a>
         </li>
 
         <li class="<?php echo strcmp($page, "Recherche_offres") == 0 ? "active" : "" ?>">
@@ -22,7 +22,7 @@
             </a>
 
             <ul class="dropdown-menu">
-                <li class="active"> <?php // @TODO Utilité de la classe "active" pour le dropdown ?>
+                <li class="active"> <!-- // @TODO Utilité de la classe "active" pour le dropdown -->
                     <a href="#stats">Statistiques</a>
                 </li>
 

@@ -60,6 +60,7 @@
         $donnees = array();
 
         // Si le champ 'intitule' a été renseigné
+        // @TODO Revoir algo recherche pour intitule incluant la découpe des mots
         if (!empty($resultat['intitule'])) {
             $requete .= ' AND o.intitule LIKE :intitule';
 

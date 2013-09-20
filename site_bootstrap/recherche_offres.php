@@ -44,12 +44,8 @@
                 padding: 10px;
             }
 
-            th label, .col-lg-2 label {
+            th label {
                 width: 100%;
-                text-align: right;
-            }
-
-            .col-lg-2 label {
                 text-align: right;
             }
 
@@ -174,7 +170,7 @@
             ?>
                         <h3 class="text-primary">Résultats de votre recherche</h3>
 
-                        <table class="table table-striped sortable" cellpadding="10px">
+                        <table class="table table-striped sortable">
                             <thead>
                                 <tr>
                                     <th>Date de dépôt</th>

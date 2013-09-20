@@ -124,7 +124,7 @@
                                     echo $expProEnCours->getDateDebut() . " - " . ($expProEnCours->getEnCours() ? "maintenant" : $expProEnCours->getDateFin())
                                             . " : " . $expProEnCours->getIntitule() . " chez " . $expProEnCours->getEntreprise()
                                             . ", " . $expProEnCours->getVille() . " ($codePostal)";
-                                    /** @TODO Réfléchir à l'utilité de l'affichage du salaire */
+                                    // @TODO Réfléchir à l'utilité de l'affichage du salaire
                                     echo "\n</p>\n";
                                 }
                             }

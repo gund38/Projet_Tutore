@@ -130,7 +130,7 @@
                         <div class="contenu_onglet" id="contenu_onglet_infos">
                             <input type="hidden" name="idProfil" id="idProfil"
                                    value="<?php echo $profil->getCodePe(); ?>" />
-                            <?php // @TODO Remplacer les id et les nb par $_SESSION pour éviter modifications ?>
+                            <!-- // @TODO Remplacer les id et les nb par $_SESSION pour éviter modifications -->
                             <fieldset>
                                 <table>
                                     <tr>
