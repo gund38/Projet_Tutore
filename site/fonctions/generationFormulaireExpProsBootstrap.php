@@ -18,11 +18,11 @@
     $i = 0;
     foreach ($expPros as $expProEnCours) {
         $i++;
-        ?>
-
+?>
         <!-- ///// ExpPro <?php echo $i; ?> \\\\\ -->
         <input type="hidden" name="id_exp<?php echo $i; ?>" id="id_exp<?php echo $i; ?>"
                value="<?php echo $expProEnCours->getCodeEP(); ?>" />
+
         <div class="well">
             <table>
                 <thead>
@@ -218,6 +218,6 @@
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
 ?>

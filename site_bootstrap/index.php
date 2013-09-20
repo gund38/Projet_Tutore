@@ -40,6 +40,7 @@
 
     <body>
         <?php
+            // Affichage menu
             $page = "Accueil";
             require_once 'menus/menuBootstrap.php';
         ?>
@@ -116,6 +117,7 @@
                             // Extraction des résultats
                             $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
 
+                            // Affichage des résultats
                             foreach ($resultats as $offreEnCours) {
                         ?>
                         <tr>

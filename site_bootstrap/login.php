@@ -43,6 +43,10 @@
                 margin: 0 auto;
             }
 
+            .alert {
+                padding-right: 35px;
+            }
+
             .form-signin .form-signin-heading,
             .form-signin .checkbox {
                 margin-bottom: 10px;
@@ -82,6 +86,7 @@
 
     <body>
         <?php
+            // Affichage menu
             $page = "Login";
             require_once 'menus/menuBootstrap.php';
         ?>
@@ -138,8 +143,6 @@
             <?php
                     }
                     unset($_SESSION['erreur_droits']);
-                } else {
-                    echo "\n";
                 }
 
                 // Gestion des erreurs au niveau de la connexion

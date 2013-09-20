@@ -52,17 +52,37 @@
             .jumbotron {
                 margin-bottom: 0px;
             }
+
+            .alert {
+                max-width: 330px;
+                padding: 15px;
+                padding-right: 35px;
+                margin: 0 auto;
+            }
         </style>
     </head>
 
     <body>
         <?php
+            // Affichage menu
             $page = "Recherche_offres";
             require_once 'menus/menuBootstrap.php';
 
+            // Active la recherche si les paramètres sont présents
             require_once 'fonctions/rechercherOffresBootstrap.php';
             if (isset($_GET['intitule'], $_GET['type'], $_GET['ville'], $_GET['departement'])) {
-                rechercherOffresBootstrap();
+                // Vérifie qu'un visiteur ne recherche pas de stage
+                if (isset($_SESSION['personneCo']) || strcmp($_GET['type'], "Emploi") == 0) {
+                    rechercherOffresBootstrap();
+                } else {
+        ?>
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                        <p>Vous devez vous connecter pour pouvoir rechercher une offre de stage</p>
+                    </div>
+        <?php
+                }
             }
         ?>
 
@@ -106,6 +126,7 @@
 
                                             $typePresent = isset($_GET['type']);
 
+                                            // Affichage de la liste
                                             foreach ($listeTypes as $value) {
                                                 echo "<option value=\"$value\"";
                                                 echo (strcmp($value, "Stage") === 0 && !isset($_SESSION['personneCo'])) ? " disabled" : "";
@@ -141,6 +162,7 @@
 
                                             $depPresent = isset($_GET['departement']);
 
+                                            // Affichage de la liste
                                             foreach ($listeDep as $value) {
                                                 echo "<option value=\"{$value['codeDe']}\"";
                                                 echo ($depPresent && strcmp($_GET['departement'], $value['codeDe']) == 0) ? " selected" : "";
@@ -162,10 +184,12 @@
             </div> <!-- /.well -->
 
             <?php
+                // Si on a effectué une recherche
                 if (isset($_SESSION['recherche_offres'])) {
             ?>
                     <div class="well">
             <?php
+                    // S'il y a des résultats
                     if (count($_SESSION['recherche_offres']) > 0) {
             ?>
                         <h3 class="text-primary">Résultats de votre recherche</h3>
@@ -186,6 +210,7 @@
 
                             <tbody>
                                 <?php
+                                    // Affichage des résultats
                                     foreach ($_SESSION['recherche_offres'] as $offreEnCours) {
                                 ?>
                                         <tr>
@@ -224,6 +249,7 @@
                         // @TODO Inconvénient de la pagination : le tri sur colonnes ne marche que pour les résultats affichés
                         echo pagination($page, $nb_pages);
                     } else {
+                        // S'il n'y a pas eu de résultats
             ?>
                         <h3 class="text-danger">Votre recherche n'a pas donné de résultats</h3>
             <?php

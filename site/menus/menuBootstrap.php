@@ -13,6 +13,7 @@
         </div>
 
         <?php
+            // Afichage du bon menu selon l'identité de l'utilisateur
             if (!isset($_SESSION['personneCo'])) {
                 require_once 'menus/menu_V_Bootstrap.php';
             } else {

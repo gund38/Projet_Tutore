@@ -88,6 +88,7 @@
 
     <body onload="verificationCheckbox();">
         <?php
+            // Affichage menu
             $page = "Profil";
             require_once 'menus/menuBootstrap.php';
         ?>

@@ -14,11 +14,11 @@
     $i = 0;
     foreach ($diplomes as $diplomeEnCours) {
         $i++;
-        ?>
-
+?>
         <!-- ///// Diplome <?php echo $i; ?> \\\\\ -->
         <input type="hidden" name="id_dip<?php echo $i; ?>" id="id_dip<?php echo $i; ?>"
                value="<?php echo $diplomeEnCours->getCodeDi(); ?>" />
+
         <div class="well">
             <table>
                 <thead>
@@ -119,6 +119,6 @@
                 </tbody>
             </table>
         </div>
-        <?php
+<?php
     }
 ?>

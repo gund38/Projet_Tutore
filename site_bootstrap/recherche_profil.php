@@ -61,9 +61,11 @@
 
     <body>
         <?php
+            // Affichage menu
             $page = "Recherche_profil";
             require_once 'menus/menuBootstrap.php';
 
+            // Active la recherche si les paramètres sont présents
             require_once 'fonctions/rechercherProfilBootstrap.php';
             if (isset($_GET['nomPrenom'], $_GET['promo'])) {
                 rechercherProfilBootstrap();
@@ -107,10 +109,12 @@
                                     <select name="promo" id="promo" class="form-control">
                                         <option value="all">Toutes les promotions</option>
                                         <?php
+                                            // Récupération du min et du max pour les promos
                                             $promos = minMaxPromos();
 
                                             $promoPresente = isset($_GET['promo']);
 
+                                            // Affichage de la liste
                                             for ($i = $promos['max']; $i >= $promos['min']; $i--) {
                                                 echo "<option value=\"$i\"";
                                                 echo ($promoPresente && strcmp($_GET['promo'], $i) == 0) ? " selected" : "";
@@ -130,10 +134,12 @@
             </div> <!-- /.well -->
 
             <?php
+                // Si on a effectué une recherche
                 if (isset($_SESSION['recherche_profil'])) {
             ?>
                     <div class="well">
             <?php
+                    // S'il y a eu des résultats
                     if (count($_SESSION['recherche_profil']) > 0) {
             ?>
                         <h3 class="text-primary">Résultats de votre recherche</h3>
@@ -149,6 +155,7 @@
 
                                 <tbody>
                                     <?php
+                                        // Affichage des résultats
                                         foreach ($_SESSION['recherche_profil'] as $profilEnCours) {
                                     ?>
                                             <tr>
@@ -180,6 +187,7 @@
                         // @TODO Inconvénient de la pagination : le tri sur colonnes ne marche que pour les résultats affichés
                         echo pagination($page, $nb_pages);
                     } else {
+                        // S'il n'y a pas eu de résultats
             ?>
                         <h3 class="text-danger">Votre recherche n'a pas donné de résultats</h3>
             <?php
