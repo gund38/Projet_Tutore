@@ -36,11 +36,16 @@
      *
      * NOTE : Si le paramètre 'page' est présent, il est ajouté à $fichierRetourErreur
      * pour permettre, même en cas d'erreur, une redirection personnalisée.
+     *
+     * NOTE 2 : Si le paramètre 'page' est égal à "login.php", on redirige sur "index.php"
      */
     $fichierRetourDefault = "../index.php";
     $fichierRetourErreur = "../login.php";
     $fichierRetourErreur .= isset($_GET['page']) ? "?" . $_SERVER['QUERY_STRING'] : "";
-    $fichierRetourPerso = isset($_GET['page']) ? "../" . $_GET['page'] : $fichierRetourDefault;
+    $fichierRetourPerso = isset($_GET['page']) ? "../" . substr(strstr($_SERVER['QUERY_STRING'], '='), 1) : $fichierRetourDefault;
+    if (isset($_GET['page']) && strcmp($_GET['page'], "login.php") == 0) {
+        $fichierRetourPerso = "../index.php";
+    }
 
     $nbErreurs = 0;
     $_SESSION['erreurs_connexion'] = "";
@@ -51,7 +56,7 @@
      * @TODO modifier ce test en test générique
      */
     if (empty($_POST['login'])) {
-        $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Login.<br />\n";
+        $_SESSION['erreurs_connexion'] .= "Veuillez remplir le champ Email.<br />\n";
         $nbErreurs++;
     }
     if (empty($_POST['mdp'])) {

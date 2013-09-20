@@ -19,8 +19,8 @@
     </a>
 
     <form class="navbar-form navbar-right" role="form"
-          action="fonctions/connexion.php" method="post"
-          name="formConnexion" id="formConnexion">
+          action="fonctions/connexion.php?<?php echo str_replace("&", "&amp;", (isset($_GET['page']) ? $_SERVER['QUERY_STRING'] : "page=" . substr(strrchr($_SERVER['REQUEST_URI'], '/'), 1))); ?>"
+          method="post" name="formConnexion" id="formConnexion">
         <div class="form-group">
             <label class="sr-only" for="login">Email</label>
 

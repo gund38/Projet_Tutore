@@ -7,7 +7,7 @@
 
     // Inclusion et appel de la fonction d'en-tête
     require_once 'fonctions/header.php';
-    enTete(false);
+    enTete(true);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
