@@ -60,10 +60,9 @@
 
                         <td>
                             <div class="input-group">
-                                <input type="date" class="form-control date_deb_fin"
+                                <input type="text" class="form-control date_deb_fin"
                                        name="date_deb_exp<?php echo $i; ?>"
                                        id="date_deb_exp<?php echo $i; ?>"
-                                       size="10%" style="min-width: 140px"
                                        value="<?php echo $expProEnCours->getDateDebut(); ?>" />
 
                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
@@ -83,10 +82,9 @@
 
                         <td>
                             <div class="input-group">
-                                <input type="date" class="form-control date_deb_fin"
+                                <input type="text" class="form-control date_deb_fin"
                                        name="date_fin_exp<?php echo $i; ?>"
                                        id="date_fin_exp<?php echo $i; ?>"
-                                       size="10%" style="min-width: 140px"
                                        value="<?php echo $expProEnCours->getDateFin(); ?>" />
 
                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
@@ -121,7 +119,6 @@
                             <input type="text" class="form-control"
                                    name="inti_exp<?php echo $i; ?>"
                                    id="inti_exp<?php echo $i; ?>"
-                                   size="50%"
                                    value="<?php echo $expProEnCours->getIntitule(); ?>" />
                         </td>
                     </tr>
@@ -138,7 +135,6 @@
                             <input type="text" class="form-control"
                                    name="entre_exp<?php echo $i; ?>"
                                    id="entre_exp<?php echo $i; ?>"
-                                   size="50%"
                                    value="<?php echo $expProEnCours->getEntreprise(); ?>" />
                         </td>
                     </tr>
@@ -155,7 +151,6 @@
                             <input type="text" class="form-control"
                                    name="ville_exp<?php echo $i; ?>"
                                    id="ville_exp<?php echo $i; ?>"
-                                   size="15%"
                                    value="<?php echo $expProEnCours->getVille(); ?>" />
                         </td>
 

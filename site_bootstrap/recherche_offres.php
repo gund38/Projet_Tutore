@@ -20,13 +20,13 @@
         <meta name="author" content="" />
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 
         <!-- Bootstrap theme -->
-        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
 
@@ -51,6 +51,15 @@
 
             .jumbotron {
                 margin-bottom: 0px;
+            }
+
+            table {
+                margin: 0 auto;
+            }
+
+            .pagination, .btn-submit {
+                display: table;
+                margin: 20px auto;
             }
 
             .alert {
@@ -97,89 +106,87 @@
             </div> <!-- /.jumbotron -->
 
             <div class="well">
-                <form role="form" action=""
+                <form role="form" action="recherche_offres.php"
                       method="get"
                       name="formReOffres" id="formReOffres">
-                    <center>
-                        <table>
-                            <tr>
-                                <th>
-                                    <label for="intitule" class="control-label">Intitulé</label>
-                                </th>
+                    <table>
+                        <tr>
+                            <th>
+                                <label for="intitule" class="control-label">Intitulé</label>
+                            </th>
 
-                                <td>
-                                    <input type="text" name="intitule" id="intitule"
-                                           class="form-control" placeholder="Intitulé"
-                                           <?php echo isset($_GET['intitule']) ? 'value="' . $_GET['intitule'] . '"' : "" ?> />
-                                </td>
+                            <td>
+                                <input type="text" name="intitule" id="intitule"
+                                       class="form-control" placeholder="Intitulé"
+                                       <?php echo isset($_GET['intitule']) ? 'value="' . $_GET['intitule'] . '"' : "" ?> />
+                            </td>
 
-                                <th>
-                                    <label for="type" class="control-label">Type</label>
-                                </th>
+                            <th>
+                                <label for="type" class="control-label">Type</label>
+                            </th>
 
-                                <td>
-                                    <select name="type" id="type" class="form-control">
-                                        <option value="all"<?php echo isset($_SESSION['personneCo']) ? "" : " disabled"; ?>>Emploi + Stage</option>
-                                        <?php
-                                            // Récupération de la liste des types d'offre
-                                            $listeTypes = listeTypesOffre();
+                            <td>
+                                <select name="type" id="type" class="form-control">
+                                    <option value="all"<?php echo isset($_SESSION['personneCo']) ? "" : " disabled"; ?>>Emploi + Stage</option>
+                                    <?php
+                                        // Récupération de la liste des types d'offre
+                                        $listeTypes = listeTypesOffre();
 
-                                            $typePresent = isset($_GET['type']);
+                                        $typePresent = isset($_GET['type']);
 
-                                            // Affichage de la liste
-                                            foreach ($listeTypes as $value) {
-                                                echo "<option value=\"$value\"";
-                                                echo (strcmp($value, "Stage") === 0 && !isset($_SESSION['personneCo'])) ? " disabled" : "";
-                                                echo ($typePresent && strcmp($_GET['type'], $value) == 0) ? " selected" : "";
-                                                echo ">$value</option>\n";
-                                            }
-                                        ?>
-                                    </select>
-                                </td>
-                            </tr>
+                                        // Affichage de la liste
+                                        foreach ($listeTypes as $value) {
+                                            echo "<option value=\"$value\"";
+                                            echo (strcmp($value, "Stage") === 0 && !isset($_SESSION['personneCo'])) ? " disabled" : "";
+                                            echo ($typePresent && strcmp($_GET['type'], $value) == 0) ? " selected" : "";
+                                            echo ">$value</option>\n";
+                                        }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <th>
-                                    <label for="ville" class="control-label">Ville</label>
-                                </th>
+                        <tr>
+                            <th>
+                                <label for="ville" class="control-label">Ville</label>
+                            </th>
 
-                                <td>
-                                    <input type="text" name="ville" id="ville"
-                                           class="form-control" placeholder="Ville"
-                                           <?php echo isset($_GET['ville']) ? 'value="' . $_GET['ville'] . '"' : "" ?> />
-                                </td>
+                            <td>
+                                <input type="text" name="ville" id="ville"
+                                       class="form-control" placeholder="Ville"
+                                       <?php echo isset($_GET['ville']) ? 'value="' . $_GET['ville'] . '"' : "" ?> />
+                            </td>
 
-                                <th>
-                                    <label for="departement" class="control-label">Département</label>
-                                </th>
+                            <th>
+                                <label for="departement" class="control-label">Département</label>
+                            </th>
 
-                                <td>
-                                    <select name="departement" id="departement" class="form-control">
-                                        <option value="all">Tous les départements</option>
-                                        <?php
-                                            // Récupération de la liste des départements
-                                            $listeDep = listeDepartements();
+                            <td>
+                                <select name="departement" id="departement" class="form-control">
+                                    <option value="all">Tous les départements</option>
+                                    <?php
+                                        // Récupération de la liste des départements
+                                        $listeDep = listeDepartements();
 
-                                            $depPresent = isset($_GET['departement']);
+                                        $depPresent = isset($_GET['departement']);
 
-                                            // Affichage de la liste
-                                            foreach ($listeDep as $value) {
-                                                echo "<option value=\"{$value['codeDe']}\"";
-                                                echo ($depPresent && strcmp($_GET['departement'], $value['codeDe']) == 0) ? " selected" : "";
-                                                echo ">{$value['nom']}</option>\n";
-                                            }
-                                        ?>
-                                    </select>
-                                </td>
-                            </tr>
+                                        // Affichage de la liste
+                                        foreach ($listeDep as $value) {
+                                            echo "<option value=\"{$value['codeDe']}\"";
+                                            echo ($depPresent && strcmp($_GET['departement'], $value['codeDe']) == 0) ? " selected" : "";
+                                            echo ">{$value['nom']}</option>\n";
+                                        }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td colspan="4" align="center">
-                                    <input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
-                                </td>
-                            </tr>
+                        <tr>
+                            <td colspan="4">
+                                <input type="submit" class="btn btn-primary btn-lg btn-submit" value="Rechercher" />
+                            </td>
+                        </tr>
                         </table>
-                    </center>
                 </form>
             </div> <!-- /.well -->
 

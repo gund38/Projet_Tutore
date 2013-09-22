@@ -425,7 +425,7 @@
     function pagination($pageCourante, $total_pages) {
         $autour = 1;
         $intervalle = '[...]';
-        $html = '<center><ul class="pagination">' . "\n";
+        $html = '<ul class="pagination">' . "\n";
         $intervalleDebut = $intervalleFin = false;
         $tab_autour = array();
 
@@ -455,7 +455,7 @@
         // Création des liens
         for ($j = 1; $j <= $total_pages; $j++) {
             if ($j == $pageCourante) { // Si c'est la page courante
-                $html .= $baliseDebut . 'active' . $baliseMilieu . '#">' . $j . '</a></li>' . ' ' . "\n";
+                $html .= $baliseDebut . 'active' . $baliseMilieu . '#">' . $j . $baliseFin;
 
             } elseif ($j == 1 || $j == $total_pages || in_array($j, $tab_autour)) { // Si c'est la première, la dernière ou une des pages du tableau
                 $html .= $baliseDebut . $baliseMilieu . '?' . "$requeteNettoyee&amp;page=" . $j . '">' . $j . $baliseFin;
@@ -475,7 +475,7 @@
             $html .= $baliseDebut . $baliseMilieu . '?' . "$requeteNettoyee&amp;page=" . ($pageCourante + 1) . '">' . "&raquo;" . $baliseFin;
         }
 
-        $html .= "</ul></center>\n";
+        $html .= "</ul>\n";
 
         return $html;
     }

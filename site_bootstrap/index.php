@@ -20,13 +20,13 @@
         <meta name="author" content="" />
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 
         <!-- Bootstrap theme -->
-        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
 
@@ -55,7 +55,7 @@
                     <div class="col-lg-3">
                         <img src="images/logo_uppa.jpg" alt="Logo UPPA"
                              class="img-rounded"
-                             width="202px" height="187px" />
+                             width="202" height="187" />
                     </div> <!-- /.col-lg-3 -->
                 </div> <!-- /.row -->
 

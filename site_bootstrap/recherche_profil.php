@@ -20,13 +20,13 @@
         <meta name="author" content="" />
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 
         <!-- Bootstrap theme -->
-        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
 
@@ -56,6 +56,15 @@
             .jumbotron {
                 margin-bottom: 0px;
             }
+
+            table {
+                margin: 0 auto;
+            }
+
+            .pagination {
+                display: table;
+                margin: 20px auto;
+            }
         </style>
     </head>
 
@@ -84,52 +93,50 @@
             </div> <!-- /.jumbotron -->
 
             <div class="well">
-                <form role="form" action=""
+                <form role="form" action="recherche_profil.php"
                       method="get"
                       name="formReProfil" id="formReProfil">
-                    <center>
-                        <table>
-                            <tr>
-                                <th>
-                                    <label for="nomPrenom" class="control-label">Nom et/ou prénom</label>
-                                </th>
+                    <table>
+                        <tr>
+                            <th>
+                                <label for="nomPrenom" class="control-label">Nom et/ou prénom</label>
+                            </th>
 
-                                <td>
-                                    <!-- // @TODO Utilité du placeholder si label ? -->
-                                    <input type="text" name="nomPrenom" id="nomPrenom"
-                                           class="form-control" placeholder="Nom et/ou Prénom"
-                                           <?php echo isset($_GET['nomPrenom']) ? 'value="' . $_GET['nomPrenom'] . '"' : "" ?> />
-                                </td>
+                            <td>
+                                <!-- // @TODO Utilité du placeholder si label ? -->
+                                <input type="text" name="nomPrenom" id="nomPrenom"
+                                       class="form-control" placeholder="Nom et/ou Prénom"
+                                       <?php echo isset($_GET['nomPrenom']) ? 'value="' . $_GET['nomPrenom'] . '"' : "" ?> />
+                            </td>
 
-                                <th>
-                                    <label for="promo" class="control-label">Promotion</label>
-                                </th>
+                            <th>
+                                <label for="promo" class="control-label">Promotion</label>
+                            </th>
 
-                                <td>
-                                    <select name="promo" id="promo" class="form-control">
-                                        <option value="all">Toutes les promotions</option>
-                                        <?php
-                                            // Récupération du min et du max pour les promos
-                                            $promos = minMaxPromos();
+                            <td>
+                                <select name="promo" id="promo" class="form-control">
+                                    <option value="all">Toutes les promotions</option>
+                                    <?php
+                                        // Récupération du min et du max pour les promos
+                                        $promos = minMaxPromos();
 
-                                            $promoPresente = isset($_GET['promo']);
+                                        $promoPresente = isset($_GET['promo']);
 
-                                            // Affichage de la liste
-                                            for ($i = $promos['max']; $i >= $promos['min']; $i--) {
-                                                echo "<option value=\"$i\"";
-                                                echo ($promoPresente && strcmp($_GET['promo'], $i) == 0) ? " selected" : "";
-                                                echo ">$i</option>\n";
-                                            }
-                                        ?>
-                                    </select>
-                                </td>
+                                        // Affichage de la liste
+                                        for ($i = $promos['max']; $i >= $promos['min']; $i--) {
+                                            echo "<option value=\"$i\"";
+                                            echo ($promoPresente && strcmp($_GET['promo'], $i) == 0) ? " selected" : "";
+                                            echo ">$i</option>\n";
+                                        }
+                                    ?>
+                                </select>
+                            </td>
 
-                                <td>
-                                    <input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
-                                </td>
-                            </tr>
-                        </table>
-                    </center>
+                            <td>
+                                <input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div> <!-- /.well -->
 
@@ -144,35 +151,33 @@
             ?>
                         <h3 class="text-primary">Résultats de votre recherche</h3>
 
-                        <center>
-                            <table class="table table-striped sortable resultat_profil">
-                                <thead>
-                                    <tr>
-                                        <th>Prénom & Nom</th>
-                                        <th>Promotion</th>
-                                    </tr>
-                                </thead>
+                        <table class="table table-striped sortable resultat_profil">
+                            <thead>
+                                <tr>
+                                    <th>Prénom & Nom</th>
+                                    <th>Promotion</th>
+                                </tr>
+                            </thead>
 
-                                <tbody>
-                                    <?php
-                                        // Affichage des résultats
-                                        foreach ($_SESSION['recherche_profil'] as $profilEnCours) {
-                                    ?>
-                                            <tr>
-                                                <td class="nom">
-                                                    <!-- // @TODO Remettre l'édition des liens avec réécriture d'URL -->
-                                                    <a href="profil_public.php?id=<?php echo $profilEnCours['codePe']; ?>">
-                                                        <?php echo "{$profilEnCours['prenom']} {$profilEnCours['nom']}"; ?>
-                                                    </a>
-                                                </td>
-                                                <td class="promo"><?php echo $profilEnCours['promo']; ?></td>
-                                            </tr>
-                                    <?php
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </center>
+                            <tbody>
+                                <?php
+                                    // Affichage des résultats
+                                    foreach ($_SESSION['recherche_profil'] as $profilEnCours) {
+                                ?>
+                                        <tr>
+                                            <td class="nom">
+                                                <!-- // @TODO Remettre l'édition des liens avec réécriture d'URL -->
+                                                <a href="profil_public.php?id=<?php echo $profilEnCours['codePe']; ?>">
+                                                    <?php echo "{$profilEnCours['prenom']} {$profilEnCours['nom']}"; ?>
+                                                </a>
+                                            </td>
+                                            <td class="promo"><?php echo $profilEnCours['promo']; ?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
             <?php
                         // Paramètres de la pagination
                         $page = 1;

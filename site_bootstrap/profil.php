@@ -20,19 +20,19 @@
         <meta name="author" content="" />
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 
         <!-- Bootstrap theme -->
-        <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" />
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
         <!-- CSS checkbox iOS -->
-        <link rel="stylesheet" href="css/boutons_iOS" type="text/css" media="screen" charset="utf-8" />
+        <link href="css/boutons_iOS.css" type="text/css" rel="stylesheet" />
 
         <!-- CSS calendrier -->
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
 
         <title>Site Web des Anciens Étudiants du Master TI</title>
 
@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <img src="images/profil/5209f222cbfdb.jpg" alt="Image de profil"
-                             class="img-rounded" width="150px" />
+                             class="img-rounded" width="150" />
                     </div> <!-- /.col-lg-2 -->
 
                     <div class="col-lg-7">
@@ -238,9 +238,8 @@
 
                                         <td>
                                             <div class="input-group">
-                                                <input type="date" class="form-control"
+                                                <input type="text" class="form-control"
                                                        id="date_naiss" name="date_naiss"
-                                                       placeholder=""
                                                        value="<?php echo $profil->getDateNaissance(); ?>" />
 
                                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
@@ -323,7 +322,7 @@
 
          <!-- JavaScript checkbox iOS -->
         <script src="js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
-        <script type="text/javascript" charset="utf-8">
+        <script type="text/javascript">
             // Affichage et configuration des checkbox style iOS
             $(window).ready(function() {
                 $('.checkboxiOS').iphoneStyle({
@@ -338,7 +337,7 @@
         <!-- JavaScript calendrier -->
         <script src="js/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script type="text/javascript" charset="utf-8">
+        <script type="text/javascript">
             // Configuration des calendriers
             $(function() {
                 // Mettre les calendriers en français
@@ -377,7 +376,7 @@
                 });
             });
         </script>
-        <script type="text/javascript" charset="utf-8">
+        <script type="text/javascript">
             // Affichage du calendrier quand clic sur l'image
             function afficherCalendrier(objet) {
                 $(objet).parent().datepicker("show");
@@ -385,7 +384,7 @@
         </script>
 
         <!-- JavaScript checkbox -->
-        <script type="text/javascript" charset="utf-8">
+        <script type="text/javascript">
             // Désactivation du champ 'Photo de profil' si la checkbox
             // 'Supprimer photo' est cochée (et vice-versa)
             function checkboxDeletePhoto() {

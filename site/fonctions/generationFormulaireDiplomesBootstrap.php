@@ -58,7 +58,7 @@
                             <input type="text" class="form-control"
                                    name="annee_dip<?php echo $i; ?>"
                                    id="annee_dip<?php echo $i; ?>"
-                                   maxlength="4" size="5%" style="min-width: 60px"
+                                   maxlength="4"
                                    value="<?php echo $diplomeEnCours->getAnnee(); ?>" />
                         </td>
                     </tr>
@@ -112,7 +112,6 @@
                             <input type="text" class="form-control"
                                    name="etabli_dip<?php echo $i; ?>"
                                    id="etabli_dip<?php echo $i; ?>"
-                                   size="30%"
                                    value="<?php echo $diplomeEnCours->getEtablissement(); ?>" />
                         </td>
                     </tr>
