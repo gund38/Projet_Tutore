@@ -4,6 +4,7 @@
      *
      * @author Kévin Bélellou et Nicolas Dubois
      */
+
     // Inclusion et appel de la fonction d'en-tête
     require_once 'fonctions/header.php';
     enTete(true);
@@ -82,7 +83,7 @@
                                             FROM Personne
                                             WHERE compteValide = 0';
 
-                                        // Éxécution de la requête
+                                        // Exécution de la requête
                                         $req = $bdd->query($requete);
 
                                         // Extraction des résultats

@@ -16,18 +16,18 @@
             <a href="#ajout_offre">Ajouter une offre</a>
         </li>
 
-        <li class="dropdown">
+        <li class="dropdown<?php echo strcmp($page, "Admin") == 0 ? " active" : "" ?>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Administration <b class="caret"></b>
             </a>
 
             <ul class="dropdown-menu">
                 <li class="active"> <!-- // @TODO Utilité de la classe "active" pour le dropdown -->
-                    <a href="#stats">Statistiques</a>
+                    <a href="#stats">Statistiques</a> <!-- // @TODO Sortir stats du menu admin ? -->
                 </li>
 
                 <li>
-                    <a href="#valider_comptes">Valider comptes</a>
+                    <a href="admin.php">Valider comptes</a>
                 </li>
 
                 <li>
