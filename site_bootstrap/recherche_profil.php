@@ -38,6 +38,7 @@
 
             table {
                 width: 75%;
+                margin: 0 auto;
             }
 
             table.resultat_profil {
@@ -55,10 +56,6 @@
 
             .jumbotron {
                 margin-bottom: 0px;
-            }
-
-            table {
-                margin: 0 auto;
             }
 
             .pagination {

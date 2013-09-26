@@ -86,7 +86,7 @@
         </style>
     </head>
 
-    <body onload="verificationCheckbox();">
+    <body>
         <?php
             // Affichage menu
             $page = "Profil";
@@ -388,33 +388,27 @@
             // Désactivation du champ 'Photo de profil' si la checkbox
             // 'Supprimer photo' est cochée (et vice-versa)
             function checkboxDeletePhoto() {
-                if (document.getElementById('supprimer_photo').checked) {
-                    document.getElementById('photo').disabled = 'disabled';
-                } else {
-                    document.getElementById('photo').disabled = '';
-                }
+                $("#photo").prop("disabled", $("#supprimer_photo").prop("checked"));
             }
 
             // Désactivation des champs 'Date de fin' si la checkbox
             // 'En cours' associée est cochée (et vice-versa)
-            function checkboxEnCours(id) {
-                if (document.getElementById('enCours' + id).checked) {
-                    $("#date_fin_exp" + id).datepicker("option", "disabled", true);
-                    $("#date_fin_exp" + id ).parent().children(".input-group-addon").css('cursor', 'not-allowed');
+            function checkboxEnCours($id) {
+                if ($("#enCours" + $id).prop("checked")) {
+                    $("#date_fin_exp" + $id).datepicker("option", "disabled", true);
+                    $("#date_fin_exp" + $id ).parent().children(".input-group-addon").css('cursor', 'not-allowed');
                 } else {
-                    $("#date_fin_exp" + id).datepicker("option", "disabled", false);
-                    $("#date_fin_exp" + id ).parent().children(".input-group-addon").css('cursor', 'pointer');
+                    $("#date_fin_exp" + $id).datepicker("option", "disabled", false);
+                    $("#date_fin_exp" + $id ).parent().children(".input-group-addon").css('cursor', 'pointer');
                 }
             }
 
             // Vérification de l'état des checkbox 'En cours' au chargement de la page
-            function verificationCheckbox() {
-                var nbExpPros = document.forms.formProfil.nbExpPros.value;
-
-                for (var i = 1; i < nbExpPros; i++) {
-                    checkboxEnCours(i);
+            $(window).load(function verificationCheckbox() {
+                for (var $i = 1; $i <= $("#nbExpPros").attr("value"); $i++) {
+                    checkboxEnCours($i);
                 }
-            }
+            });
         </script>
     </body>
 </html>
