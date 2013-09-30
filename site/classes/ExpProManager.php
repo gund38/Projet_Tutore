@@ -7,10 +7,6 @@
      */
     class ExpProManager {
 
-        /**
-         *
-         * @var PDO
-         */
         private $_db;
 
         /**
@@ -33,14 +29,14 @@
             $expPros = array();
 
             $req = $this->_db->prepare('SELECT
-                codeEP, codePe, visibilite,
-                DATE_FORMAT(dateDebut, \'%d/%m/%Y\') AS dateDebut,
-                DATE_FORMAT(dateFin, \'%d/%m/%Y\') AS dateFin,
-                enCours, intitule, entreprise, ville, departement,
-                salaire, visibiliteSalaire
-                FROM ExpPro
-                WHERE codePe = :id
-                ORDER BY dateDebut ASC');
+                ep.codeEP, ep.codePe, ep.visibilite,
+                DATE_FORMAT(ep.dateDebut, \'%d/%m/%Y\') AS dateDebut,
+                DATE_FORMAT(ep.dateFin, \'%d/%m/%Y\') AS dateFin,
+                ep.enCours, ep.intitule, ep.entreprise, ep.ville,
+                ep.departement, ep.salaire, ep.visibiliteSalaire
+                FROM ExpPro AS ep
+                WHERE ep.codePe = :id
+                ORDER BY ep.dateDebut ASC');
 
             $req->execute(array(
                 'id' => $id

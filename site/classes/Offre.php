@@ -49,22 +49,6 @@
             }
         }
 
-        /**
-         * Affiche les infos de l'offre
-         */
-        public function afficher() {
-            echo $this->_codeO . " "
-            . $this->_codePe . " "
-            . $this->_dateDepot . " "
-            . $this->_type . " "
-            . $this->_intitule . " "
-            . $this->_entreprise . " "
-            . $this->_ville . " "
-            . $this->_departement . " "
-            . $this->_remuneration . " "
-            . $this->_cheminPDF . "<br />";
-        }
-
         //---------------Getters---------------//
 
         /**

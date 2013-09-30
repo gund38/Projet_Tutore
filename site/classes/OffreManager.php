@@ -7,10 +7,6 @@
      */
     class OffreManager {
 
-        /**
-         *
-         * @var PDO
-         */
         private $_db;
 
         /**
@@ -31,12 +27,12 @@
             $offres = array();
 
             $req = $this->_db->query('SELECT
-                codeO, codePe,
-                DATE_FORMAT(dateDepot, \'%d/%m/%Y\') AS dateDepot,
-                type, intitule, entreprise, ville, departement,
-                remuneration, cheminPDF
-                FROM Offre
-                ORDER BY codeO');
+                o.codeO, o.codePe,
+                DATE_FORMAT(o.dateDepot, \'%d/%m/%Y\') AS dateDepot,
+                o.type, o.intitule, o.entreprise, o.ville
+                o.departement, o.remuneration, o.cheminPDF
+                FROM Offre AS o
+                ORDER BY o.codeO');
 
             while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $offres[] = new Offre($donnees);
@@ -53,12 +49,12 @@
          */
         public function getOffre($id) {
             $req = $this->_db->prepare('SELECT
-                codeO, codePe,
-                DATE_FORMAT(dateDepot, \'%d/%m/%Y\') AS dateDepot,
-                type, intitule, entreprise, ville, departement,
-                remuneration, cheminPDF
-                FROM Offre
-                WHERE codeO = :id');
+                o.codeO, o.codePe,
+                DATE_FORMAT(o.dateDepot, \'%d/%m/%Y\') AS dateDepot,
+                o.type, o.intitule, o.entreprise, o.ville
+                o.departement, o.remuneration, o.cheminPDF
+                FROM Offre AS o
+                WHERE o.codeO = :id');
 
             $req->execute(array(
                 'id' => $id

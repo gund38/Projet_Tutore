@@ -9,12 +9,12 @@
 
         private $_codePe;
         private $_type;
+        private $_compteValide;
         private $_nom;
         private $_prenom;
         private $_email;
         private $_login;
         private $_mdp;
-        // @TODO ajouter compteValide
 
         /**
          * Constructeur
@@ -47,19 +47,6 @@
             }
         }
 
-        /**
-         * Affiche les infos de la personne
-         */
-        public function afficher() {
-            echo $this->_codePe . " "
-            . $this->_type . " "
-            . $this->_nom . " "
-            . $this->_prenom . " "
-            . $this->_email . " "
-            . $this->_login . " "
-            . $this->_mdp . "<br />";
-        }
-
         //---------------Getters---------------//
 
         /**
@@ -78,6 +65,15 @@
          */
         public function getType() {
             return $this->_type;
+        }
+
+        /**
+         * Getter de $_compteValide
+         *
+         * @return boolean
+         */
+        public function getCompteValide() {
+            return $this->_compteValide;
         }
 
         /**
@@ -127,6 +123,15 @@
          */
         public function setType($type) {
             $this->_type = $type;
+        }
+
+        /**
+         * Setter de $_compteValide
+         *
+         * @param boolean $compteValide
+         */
+        public function setCompteValide($compteValide) {
+            $this->_compteValide = $compteValide;
         }
 
         /**

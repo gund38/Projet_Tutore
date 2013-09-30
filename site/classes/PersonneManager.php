@@ -7,10 +7,6 @@
      */
     class PersonneManager {
 
-        /**
-         *
-         * @var PDO
-         */
         private $_db;
 
         /**
@@ -31,9 +27,10 @@
             $persos = array();
 
             $req = $this->_db->query('SELECT
-                codePe, type, nom, prenom, email, login, mdp
-                FROM Personne
-                ORDER BY nom');
+                p.codePe, p.type, p.compteValide, p.nom,
+                p.prenom, p.email, p.login, p.mdp
+                FROM Personne AS p
+                ORDER BY p.nom');
 
             while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
                 $persos[] = new Personne($donnees);
@@ -50,9 +47,10 @@
          */
         public function getPersonne($id) {
             $req = $this->_db->prepare('SELECT
-                codePe, type, nom, prenom, email, login, mdp
-                FROM Personne
-                WHERE codePe = :id');
+                p.codePe, p.type, p.compteValide, p.nom,
+                p.prenom, p.email, p.login, p.mdp
+                FROM Personne AS p
+                WHERE p.codePe = :id');
 
             $req->execute(array(
                 'id' => $id

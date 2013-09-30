@@ -7,10 +7,6 @@
      */
     class DiplomeManager {
 
-        /**
-         *
-         * @var PDO
-         */
         private $_db;
 
         /**
@@ -32,10 +28,11 @@
             $diplomes = array();
 
             $req = $this->_db->prepare('SELECT
-                codeDi, codePe, visibilite, annee, type, discipline, etablissement
-                FROM Diplome
-                WHERE codePe = :id
-                ORDER BY annee DESC');
+                d.codeDi, d.codePe, d.visibilite, d.annee,
+                d.type, d.discipline, d.etablissement
+                FROM Diplome AS d
+                WHERE d.codePe = :id
+                ORDER BY d.annee DESC');
 
             $req->execute(array(
                 'id' => $id
