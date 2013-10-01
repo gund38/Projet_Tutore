@@ -22,20 +22,29 @@
             </a>
 
             <ul class="dropdown-menu">
-                <li class="active"> <!-- // @TODO Utilité de la classe "active" pour le dropdown -->
+                <li> <!-- // @TODO Utilité de la classe "active" pour le dropdown -->
                     <a href="#stats">Statistiques</a> <!-- // @TODO Sortir stats du menu admin ? -->
                 </li>
 
                 <li>
-                    <a href="admin.php">Valider comptes</a>
+                    <a href="admin.php#valid_comptes"
+                       class="liensOnglets">
+                        Valider comptes
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#supprimer_comptes">Supprimer comptes</a>
+                    <a href="admin.php#valid_master"
+                       class="liensOnglets">
+                        Étudiants <span class="icon-arrow-right"></span> Anciens Étudiants
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#modifier_offres">Gérer offres</a>
+                    <a href="#modifier_offres"
+                       class="liensOnglets">
+                        Gérer offres
+                    </a>
                 </li>
             </ul>
         </li>

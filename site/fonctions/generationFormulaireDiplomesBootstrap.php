@@ -24,9 +24,9 @@
                 <thead>
                     <tr>
                         <th class="colonne_visi">
-                            <p class="text-info">
+                            <span class="text-info">
                                 <i class="icon-eye-open icon-2x pull-left"></i> <strong>Visibilité publique</strong>
-                            </p>
+                            </span>
                         </th>
                     </tr>
                 </thead>

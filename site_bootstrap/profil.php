@@ -156,15 +156,15 @@
             </div> <!-- /.jumbotron -->
 
             <ul class="nav nav-tabs" id="onglets" role="tablist">
-                <li class="active">
+                <li class="active" role="tab">
                     <a href="#infos" data-toggle="tab">Informations personnelles</a>
                 </li>
 
-                <li>
+                <li role="tab">
                     <a href="#scol" data-toggle="tab">Parcours scolaire</a>
                 </li>
 
-                <li>
+                <li role="tab">
                     <a href="#pro" data-toggle="tab">Parcours professionnel</a>
                 </li>
             </ul>
@@ -189,9 +189,9 @@
                                 <thead>
                                     <tr>
                                         <th class="colonne_visi">
-                                            <p class="text-info">
+                                            <span class="text-info">
                                                 <i class="icon-eye-open icon-2x pull-left"></i> <strong>Visibilité publique</strong>
-                                            </p>
+                                            </span>
                                         </th>
                                     </tr>
                                 </thead>
@@ -325,7 +325,7 @@
         <script type="text/javascript">
             // Affichage et configuration des checkbox style iOS
             $(window).ready(function() {
-                $('.checkboxiOS').iphoneStyle({
+                $(".checkboxiOS").iphoneStyle({
                     resizeContainer: false,
                     resizeHandle: false,
                     checkedLabel: 'Oui',
@@ -341,7 +341,7 @@
             // Configuration des calendriers
             $(function() {
                 // Mettre les calendriers en français
-                $.datepicker.setDefaults($.datepicker.regional[ "fr" ]);
+                $.datepicker.setDefaults($.datepicker.regional["fr"]);
 
                 // Configuration calendrier "Date de naissance"
                 $("#date_naiss").datepicker({
