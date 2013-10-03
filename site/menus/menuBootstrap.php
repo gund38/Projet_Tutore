@@ -35,5 +35,5 @@
                 }
             }
         ?>
-    </div> <!--/.container -->
-</div> <!--/.navbar -->
+    </div> <!-- /.container -->
+</div> <!-- /.navbar -->

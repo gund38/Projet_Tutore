@@ -10,8 +10,7 @@
     enTete(false);
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
@@ -83,7 +82,7 @@
                 <p>
                     <a class="btn btn-primary btn-lg">En savoir plus &raquo;</a>
                 </p>
-            </div> <!--/.jumbotron -->
+            </div> <!-- /.jumbotron -->
 
             <div class="page-header">
                 <h1>Les 5 dernières offres d'emploi<?php echo isset($_SESSION['personneCo']) ? "&nbsp;/&nbsp;stage" : ""; ?> ajoutées&nbsp;:</h1>
@@ -132,7 +131,7 @@
                 </table>
 
                 <button class="btn btn-info">En voir plus...</button>
-            </div> <!--/.well -->
+            </div> <!-- /.well -->
         </div> <!-- /.container -->
 
         <!-- ================================================== -->

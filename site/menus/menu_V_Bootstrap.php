@@ -37,4 +37,4 @@
 
         <input type="submit" class="btn btn-success" value="Se connecter" />
     </form>
-</div> <!--/.navbar-collapse -->
+</div> <!-- /.navbar-collapse -->

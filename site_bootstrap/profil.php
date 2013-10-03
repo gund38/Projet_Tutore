@@ -10,8 +10,7 @@
     enTete(true);
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
@@ -210,6 +209,7 @@
 
                                         <td>
                                             <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
+
                                             <input type="file" name="photo" id="photo" accept="image/*" />
                                         </td>
 
@@ -299,7 +299,7 @@
                             // Génération et affichage des formulaires des diplômes
                             require_once 'fonctions/generationFormulaireDiplomesBootstrap.php';
                         ?>
-                    </div> <!--/.tab-pane #scol -->
+                    </div> <!-- /.tab-pane #scol -->
 
                     <div id="pro" class="tab-pane fade" role="tabpanel">
                         <input type="hidden" name="nbExpPros" id="nbExpPros"

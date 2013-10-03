@@ -10,8 +10,7 @@
     enTete(false);
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
@@ -38,6 +37,7 @@
 
             table {
                 width: 75%;
+                margin: 0 auto;
             }
 
             td {
@@ -51,10 +51,6 @@
 
             .jumbotron {
                 margin-bottom: 0px;
-            }
-
-            table {
-                margin: 0 auto;
             }
 
             .pagination, .btn-submit {

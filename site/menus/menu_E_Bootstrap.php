@@ -21,4 +21,4 @@
        class="btn btn-success navbar-btn navbar-right">
         Se déconnecter
     </a>
-</div> <!--/.navbar-collapse -->
+</div> <!-- /.navbar-collapse -->

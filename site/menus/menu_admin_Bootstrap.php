@@ -13,7 +13,7 @@
         </li>
 
         <li class="<?php echo strcmp($page, "Ajout_offre") == 0 ? "active" : "" ?>">
-            <a href="#ajout_offre">Ajouter une offre</a>
+            <a href="ajout_offre.php">Ajouter une offre</a>
         </li>
 
         <li class="dropdown<?php echo strcmp($page, "Admin") == 0 ? " active" : "" ?>">
@@ -54,4 +54,4 @@
        class="btn btn-success navbar-btn navbar-right">
         Se déconnecter
     </a>
-</div> <!--/.navbar-collapse -->
+</div> <!-- /.navbar-collapse -->
