@@ -64,6 +64,53 @@
                 margin: 20px auto;
             }
         </style>
+
+        <style type="text/css">
+            .password_strength_container {
+
+                height: 10px;
+                margin-top: 2px;
+                position: relative;
+                width: 100%;
+            }
+
+            .password_strength {
+                background-color: #C81818;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                width: 0;
+            }
+
+            .password_strength_bg {
+                /*background-color: #E8E8E8;*/
+                background-color: #CCCCCC;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
+
+            .password_strength_separator {
+                background-color: #FFFFFF;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                width: 2px;
+            }
+
+            .password_strength_desc {
+                float: right;
+                line-height: 16px;
+                margin-top: 6px;
+            }
+
+            .password_strength_icon {
+                float: right;
+                margin-left: 3px;
+                margin-top: 5px;
+            }
+        </style>
     </head>
 
     <body>
@@ -195,14 +242,23 @@
 
                             <tr>
                                 <th>
-                                    <label for="mdp" class="control-label">
+                                    <label for="mdp1" class="control-label">
                                         Mot de passe&nbsp;<span class="obligatoire">*</span>
                                     </label>
                                 </th>
 
                                 <td>
-                                    <input type="password" name="mdp" id="mdp"
+                                    <input type="password" name="mdp1" id="mdp1"
                                            class="form-control" placeholder="Mot de passe" />
+
+                                    <div class="password_strength_container">
+                                        <div class="password_strength_bg"></div>
+                                        <div class="password_strength"></div>
+                                        <div class="password_strength_separator" style="left: 25%;"></div>
+                                        <div class="password_strength_separator" style="left: 50%;"></div>
+                                        <div class="password_strength_separator" style="left: 75%;"></div>
+                                        <div class="password_strength_desc">&nbsp;</div>
+                                    </div>
                                 </td>
 
                                 <th>
@@ -254,6 +310,44 @@
                         $("#reserveAE .iPhoneCheckContainer").removeClass("iPhoneCheckDisabled") :
                         $("#reserveAE .iPhoneCheckContainer").addClass("iPhoneCheckDisabled");
                 }).change();
+            });
+        </script>
+
+        <!-- zxcvbn.js, password meter -->
+        <script src="js/zxcvbn-async.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            // Appel du password meter dès qu'une touche est appuyée dans l'input mdp1
+            $(window).load(function() {
+                var couleurs = [
+                    "",
+                    "#C81818",
+                    "#FFAC1D",
+                    "#A6C060",
+                    "#27B30F"
+                ];
+
+                var messages = [
+                    ["",        "Insuffisant"],
+                    ["#C81818", "Faible"],
+                    ["#E28F00", "Moyen"],
+                    ["#8AA050", "Bon"],
+                    ["#27B30F", "Excellent !"]
+                ];
+
+                $("#mdp1").keyup(function forceMDP() {
+                    if (!window.zxcvbn) {
+                        return 0;
+                    }
+
+                    var result = zxcvbn($(this).val());
+                    var score = result.score;
+
+                    $(".password_strength").css("backgroundColor", couleurs[score]);
+                    $(".password_strength").css("width", (score * 25) + "%");
+
+                    $(".password_strength_desc").css("color", messages[score][0]);
+                    $(".password_strength_desc").html(messages[score][1]);
+                }).keyup();
             });
         </script>
     </body>
