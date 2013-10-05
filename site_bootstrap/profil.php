@@ -120,7 +120,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                                     <small><?php echo $_SESSION['erreurs_profil']; ?></small>
-                                </div>
+                                </div> <!-- /.alert -->
                         <?php
                                 unset($_SESSION['erreurs_profil']);
                             }
@@ -132,7 +132,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                                     <small><?php echo $_SESSION['sortie_profil']; ?></small>
-                                </div>
+                                </div> <!-- /.alert -->
                         <?php
                                 unset($_SESSION['sortie_profil']);
                             }
@@ -320,7 +320,7 @@
         <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
-         <!-- JavaScript checkbox iOS -->
+        <!-- JavaScript checkbox iOS -->
         <script src="js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             // Affichage et configuration des checkbox style iOS

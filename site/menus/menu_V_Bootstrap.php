@@ -13,7 +13,7 @@
         </li>
     </ul>
 
-    <a href="#inscription"
+    <a href="inscription.php"
        class="btn btn-primary navbar-btn navbar-right">
         S'inscrire
     </a>

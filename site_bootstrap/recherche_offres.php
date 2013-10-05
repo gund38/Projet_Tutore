@@ -85,7 +85,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                         <p>Vous devez vous connecter pour pouvoir rechercher une offre de stage</p>
-                    </div>
+                    </div> <!-- /.alert -->
         <?php
                 }
             }

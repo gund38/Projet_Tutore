@@ -98,7 +98,7 @@
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                             <small><?php echo $_SESSION['erreurs_ajout']; ?></small>
-                        </div>
+                        </div> <!-- /.alert -->
                 <?php
                         unset($_SESSION['erreurs_ajout']);
                     }
@@ -110,7 +110,7 @@
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                             <small><?php echo $_SESSION['sortie_ajout']; ?></small>
-                        </div>
+                        </div> <!-- /.alert -->
                 <?php
                         unset($_SESSION['sortie_ajout']);
                     }
@@ -192,15 +192,15 @@
                                     <div class="col-lg-7">
                                         <input type="number" name="remuneration" id="remuneration"
                                                class="form-control" min="0" />
-                                    </div>
+                                    </div> <!-- /.col-lg-7 -->
 
                                     <div class="col-lg-5">
                                         <select name="periodicite" id="periodicite" class="form-control">
                                             <option value="mois">€ / mois</option>
                                             <option value="annee">€ / an</option>
                                         </select>
-                                    </div>
-                                </div>
+                                    </div> <!-- /.col-lg-5 -->
+                                </div> <!-- /.row -->
                             </td>
                         </tr>
 
@@ -232,14 +232,14 @@
                                         <label for="fichier" class="control-label">
                                             Sélectionner le fichier PDF à ajouter (max&nbsp;:&nbsp;2Mo)&nbsp;<span class="obligatoire">*</span>
                                         </label>
-                                    </div>
+                                    </div> <!-- /.col-lg-4 -->
 
                                     <div class="col-lg-8">
                                         <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
 
                                         <input type="file" name="fichier" id="fichier" />
-                                    </div>
-                                </div>
+                                    </div> <!-- /.col-lg-8 -->
+                                </div> <!-- /.row -->
                             </td>
                         </tr>
 

@@ -118,7 +118,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                         <p>Vous êtes déjà connecté :)</p>
-                    </div>
+                    </div> <!-- /.alert -->
             <?php
                 }
 
@@ -130,7 +130,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                         <p>Vous n'avez pas le droit d'accéder à cette page !</p>
-                    </div>
+                    </div> <!-- /.alert -->
             <?php
                     } else {
             ?>
@@ -138,7 +138,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                         <p>Vous devez vous connecter pour accéder à cette page</p>
-                    </div>
+                    </div> <!-- /.alert -->
             <?php
                     }
                     unset($_SESSION['erreur_droits']);
@@ -157,7 +157,7 @@
                                 echo $_SESSION['erreurs_connexion'];
                             ?>
                         </p>
-                    </div>
+                    </div> <!-- /.alert -->
             <?php
                     unset($_SESSION['erreurs_connexion']);
                 }
