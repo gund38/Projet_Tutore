@@ -149,7 +149,7 @@
 
                         <br /><br />
 
-                        <a href="#profil_public" class="btn btn-primary btn-lg">Voir mon profil public</a>
+                        <a href="profil_public.php?id=<?php echo $_SESSION['personneCo']->getCodePe(); ?>" class="btn btn-primary btn-lg">Voir mon profil public</a>
                     </div> <!-- /.col-lg-3 -->
                 </div> <!-- /.row -->
             </div> <!-- /.jumbotron -->
