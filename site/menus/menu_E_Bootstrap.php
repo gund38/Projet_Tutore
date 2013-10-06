@@ -13,7 +13,7 @@
         </li>
 
         <li class="<?php echo strcmp($page, "Contact") == 0 ? "active" : "" ?>">
-            <a href="#contact">Contact</a>
+            <a href="contact.php">Contact</a>
         </li>
     </ul>
 
