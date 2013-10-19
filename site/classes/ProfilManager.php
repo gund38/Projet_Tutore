@@ -151,6 +151,50 @@
         }
 
         /**
+         * Ajoute un profil dans la BD
+         *
+         * @param Profil $profil Profil à ajouter
+         * @return boolean
+         */
+        public function addProfil($profil) {
+            $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Profil
+            if (get_class($profil) !== "Profil") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donnees = array(
+                'codePe' => $profil->getCodePe(),
+                'promo' => $profil->getPromo(),
+                'diplomeMaster' => $profil->getDiplomeMaster(),
+                'visibiliteEmail' => false,
+                'visibiliteDateNaissance' => false,
+                'visibilitePhoto' => false,
+                'visibilitePagePerso' => false,
+            );
+
+            // Préparation de la requête
+            $req = $this->_db->prepare('INSERT INTO
+                Profil (codePe, promo, diplomeMaster, visibiliteEmail, visibiliteDateNaissance, visibilitePhoto, visibilitePagePerso)
+                VALUES (:codePe, :promo, :diplomeMaster, :visibiliteEmail, :visibiliteDateNaissance, :visibilitePhoto, :visibilitePagePerso)');
+
+            if (!$req) {
+                return $resultat;
+            }
+
+            // Exécution de la requête
+            $req->execute($donnees);
+
+            if ($req) {
+                $resultat = true;
+            }
+
+            return $resultat;
+        }
+
+        /**
          * Setter de $_db
          *
          * @param PDO $db Base de données

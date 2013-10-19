@@ -103,7 +103,23 @@
             return $this->_email;
         }
 
-        // @TODO Ajouter si nécessaire les getters de login et mdp
+        /**
+         * Getter de $_login
+         *
+         * @return string
+         */
+        public function getLogin() {
+            return $this->_login;
+        }
+
+        /**
+         * Getter de $_mdp
+         *
+         * @return string
+         */
+        public function getMdp() {
+            return $this->_mdp;
+        }
 
         //---------------Setters---------------//
 

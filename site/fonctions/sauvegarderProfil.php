@@ -405,7 +405,7 @@
     // @TODO Ajouter la modification de l'email
     // Update des nouvelles données dans la BD
     if (!$profilManager->updateProfil(new Profil($donneesProfil))) {
-        $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD<br />\n";
+        $_SESSION['erreurs_profil'] .= "Erreur de l'insertion dans la BD.Veuillez réessayer<br />\n";
 
         // Suppression du fichier temporaire
         supprimerFichierTemp($nom, "profil");

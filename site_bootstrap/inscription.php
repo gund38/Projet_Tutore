@@ -63,6 +63,14 @@
                 display: table;
                 margin: 20px auto;
             }
+
+            .alert {
+                max-width: 450px;
+                padding: 15px;
+                padding-right: 35px;
+                margin: 0 auto;
+                text-align: center;
+            }
         </style>
 
         <style type="text/css">
@@ -118,6 +126,10 @@
             // Affichage menu
             $page = "Inscription";
             require_once 'menus/menuBootstrap.php';
+
+            // Récupération année courante
+            $dateCourante = getdate();
+            $anneeCourante = $dateCourante['year'];
         ?>
 
         <div class="container" role="main">
@@ -160,7 +172,7 @@
             </div> <!-- /.jumbotron -->
 
             <div class="well">
-                <form role="form" action=""
+                <form role="form" action="fonctions/inscrire.php"
                       method="post"
                       name="formInscription" id="formInscription">
                     <div id="formulaire">
@@ -174,9 +186,9 @@
 
                                 <td>
                                     <select name="type" id="type" class="form-control">
-                                        <option value="ancien_etudiant">Ancien Étudiant</option>
-                                        <option value="etudiant">Étudiant</option>
-                                        <option value="enseignant">Enseignant</option>
+                                        <option value="Ancien_etudiant">Ancien Étudiant</option>
+                                        <option value="Etudiant">Étudiant</option>
+                                        <option value="Enseignant">Enseignant</option>
                                     </select>
                                 </td>
 
@@ -224,7 +236,7 @@
                                 </th>
 
                                 <td>
-                                    <input type="number" name="promo" id="promo"
+                                    <input type="number" name="promo" id="promo" max="<?php echo $anneeCourante; ?>"
                                            class="form-control" />
                                 </td>
 
@@ -302,11 +314,11 @@
         <script type="text/javascript">
             $(window).load(function() {
                 $("#type").change(function affichageInputs() {
-                    $("#reserveAE").css("display", $("#type").prop("value") === "ancien_etudiant" ? "" : "none");
+                    $("#reserveAE").css("display", $("#type").prop("value") === "Ancien_etudiant" ? "" : "none");
 
-                    $("#reserveAE input").prop("disabled", $("#type").prop("value") !== "ancien_etudiant");
+                    $("#reserveAE input").prop("disabled", $("#type").prop("value") !== "Ancien_etudiant");
 
-                    $("#type").prop("value") === "ancien_etudiant" ?
+                    $("#type").prop("value") === "Ancien_etudiant" ?
                         $("#reserveAE .iPhoneCheckContainer").removeClass("iPhoneCheckDisabled") :
                         $("#reserveAE .iPhoneCheckContainer").addClass("iPhoneCheckDisabled");
                 }).change();

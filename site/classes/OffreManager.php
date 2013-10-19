@@ -70,7 +70,7 @@
         /**
          * Ajoute une offre dans la BD
          *
-         * @param array $donnees Données de l'offre à ajouter
+         * @param Offre $offre Offre à ajouter
          * @return boolean
          */
         public function addOffre($offre) {
@@ -93,6 +93,7 @@
                 'cheminPDF' => $offre->getCheminPDF()
             );
 
+            // Préparation de la requête
             $req = $this->_db->prepare('INSERT INTO
                 Offre (codePe, type, intitule, entreprise, ville, departement, remuneration, cheminPDF)
                 VALUES (:codePe, :type, :intitule, :entreprise, :ville, :departement, :remuneration, :cheminPDF)');

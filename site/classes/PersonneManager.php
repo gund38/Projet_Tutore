@@ -64,6 +64,51 @@
         }
 
         /**
+         * Ajoute une personne dans la BD
+         *
+         * @param Personne $personne Personne à ajouter
+         * @return boolean
+         */
+        public function addPersonne($personne) {
+            $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Personne
+            if (get_class($personne) !== "Personne") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donnees = array(
+                'codePe' => $personne->getCodePe(),
+                'type' => $personne->getType(),
+                'compteValide' => $personne->getCompteValide(),
+                'nom' => $personne->getNom(),
+                'prenom' => $personne->getPrenom(),
+                'email' => $personne->getEmail(),
+                'login' => $personne->getLogin(),
+                'mdp' => $personne->getMdp()
+            );
+
+            // Préparation de la requête
+            $req = $this->_db->prepare('INSERT INTO
+                Personne (codePe, type, compteValide, nom, prenom, email, login, mdp)
+                VALUES (:codePe, :type, :compteValide, :nom, :prenom, :email, :login, :mdp)');
+
+            if (!$req) {
+                return $resultat;
+            }
+
+            // Exécution de la requête
+            $req->execute($donnees);
+
+            if ($req) {
+                $resultat = true;
+            }
+
+            return $resultat;
+        }
+
+        /**
          * Setter de $_db
          *
          * @param PDO $db Base de données

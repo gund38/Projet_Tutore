@@ -188,7 +188,7 @@
     $ajout = $offreManager->addOffre(new Offre($donnees));
 
     if ($ajout === false) {
-        $_SESSION['erreurs_ajout'] .= "Erreur de l'insertion dans la BD<br />\n";
+        $_SESSION['erreurs_ajout'] .= "Erreur de l'insertion dans la BD. Veuillez réessayer<br />\n";
 
         // Suppression du fichier temporaire
         supprimerFichierTemp($nom, "ajout");
