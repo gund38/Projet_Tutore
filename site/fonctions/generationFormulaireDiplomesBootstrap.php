@@ -58,7 +58,7 @@
                             <input type="text" class="form-control"
                                    name="annee_dip<?php echo $i; ?>"
                                    id="annee_dip<?php echo $i; ?>"
-                                   maxlength="4"
+                                   maxlength="4" required
                                    value="<?php echo $diplomeEnCours->getAnnee(); ?>" />
                         </td>
                     </tr>
@@ -74,7 +74,7 @@
                         <td>
                             <select name="type_dip<?php echo $i; ?>"
                                     id="type_dip<?php echo $i; ?>"
-                                    class="form-control">
+                                    class="form-control" required>
                                 <?php
                                     foreach ($listeTypes as $value) {
                                         echo "<option value=\"" . $value . "\"";
@@ -95,7 +95,7 @@
                         <td>
                             <input type="text" class="form-control"
                                    name="disc_dip<?php echo $i; ?>"
-                                   id="disc_dip<?php echo $i; ?>"
+                                   id="disc_dip<?php echo $i; ?>" required
                                    value="<?php echo $diplomeEnCours->getDiscipline(); ?>" />
                         </td>
                     </tr>
@@ -111,13 +111,13 @@
                         <td colspan="3">
                             <input type="text" class="form-control"
                                    name="etabli_dip<?php echo $i; ?>"
-                                   id="etabli_dip<?php echo $i; ?>"
+                                   id="etabli_dip<?php echo $i; ?>" required
                                    value="<?php echo $diplomeEnCours->getEtablissement(); ?>" />
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> <!-- /.well -->
 <?php
     }
 ?>

@@ -79,9 +79,9 @@
                     </li>
                 </ul>
 
-                <p>
+<!--                <p>
                     <a class="btn btn-primary btn-lg">En savoir plus &raquo;</a>
-                </p>
+                </p>-->
             </div> <!-- /.jumbotron -->
 
             <div class="page-header">

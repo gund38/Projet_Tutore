@@ -131,7 +131,7 @@
 
                             <td colspan="3">
                                 <input type="text" name="intitule" id="intitule"
-                                       class="form-control" placeholder="Intitulé" />
+                                       class="form-control" placeholder="Intitulé" required />
                             </td>
                         </tr>
 
@@ -144,7 +144,7 @@
 
                             <td>
                                 <input type="text" name="entreprise" id="entreprise"
-                                       class="form-control" placeholder="Entreprise" />
+                                       class="form-control" placeholder="Entreprise" required />
                             </td>
 
                             <th>
@@ -155,7 +155,7 @@
 
                             <td>
                                 <input type="text" name="ville" id="ville"
-                                       class="form-control" placeholder="Ville" />
+                                       class="form-control" placeholder="Ville" required />
                             </td>
                         </tr>
 
@@ -167,7 +167,7 @@
                             </th>
 
                             <td>
-                                <select name="departement" id="departement" class="form-control">
+                                <select name="departement" id="departement" class="form-control" required>
                                     <?php
                                         // Récupération de la liste des départements
                                         $listeDep = listeDepartements();
@@ -191,11 +191,11 @@
                                 <div class="row">
                                     <div class="col-lg-7">
                                         <input type="number" name="remuneration" id="remuneration"
-                                               class="form-control" min="0" />
+                                               class="form-control" min="0" required />
                                     </div> <!-- /.col-lg-7 -->
 
                                     <div class="col-lg-5">
-                                        <select name="periodicite" id="periodicite" class="form-control">
+                                        <select name="periodicite" id="periodicite" class="form-control" required>
                                             <option value="mois">€ / mois</option>
                                             <option value="annee">€ / an</option>
                                         </select>
@@ -212,7 +212,7 @@
                             </th>
 
                             <td>
-                                <select name="type" id="type" class="form-control">
+                                <select name="type" id="type" class="form-control" required>
                                     <?php
                                         // Récupération de la liste des types d'offre
                                         $listeTypes = listeTypesOffre();
@@ -237,7 +237,7 @@
                                     <div class="col-lg-8">
                                         <input type="hidden" name="MAX_FILE_SIZE" value="2097150" />
 
-                                        <input type="file" name="fichier" id="fichier" />
+                                        <input type="file" name="fichier" id="fichier" required />
                                     </div> <!-- /.col-lg-8 -->
                                 </div> <!-- /.row -->
                             </td>

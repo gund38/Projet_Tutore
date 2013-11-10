@@ -11,7 +11,7 @@ function Camembert() {
         {title: "Supérieur à 45 000 €", value: 1}
     ];
 
-    AmCharts.ready(function () {
+    AmCharts.ready(function() {
         var pie = new AmCharts.AmPieChart();
         pie.valueField = "value";
         pie.titleField = "title";
@@ -35,30 +35,30 @@ Camembert();
 /******************* Classique ********************/
 function Classique() {
     var chartData = [
-        { region: "Pyrénées Atlantiques", visits: 4252 },
-        { region: "Landes", visits: 1882 },
-        { region: "Gironde", visits: 1809 },
-        { region: "Lot-Et-Garonne", visits: 1322 },
-        { region: "Dordogne", visits: 1122 },
-        { region: "Lot", visits: 1114 },
-        { region: "Tarn", visits: 984 },
-        { region: "Ariège", visits: 711 },
-        { region: "Allier", visits: 665 },
-        { region: "Calvados", visits: 580 },
-        { region: "Loire", visits: 443 },
-        { region: "Savoie", visits: 441 },
-        { region: "Yonne", visits: 395 },
-        { region: "Somme", visits: 386 },
-        { region: "Pas de Calais", visits: 384 },
-        { region: "Jura", visits: 338 },
-        { region: "Vendée", visits: 999}
+        {region: "Pyrénées Atlantiques", visits: 4252},
+        {region: "Landes", visits: 1882},
+        {region: "Gironde", visits: 1809},
+        {region: "Lot-Et-Garonne", visits: 1322},
+        {region: "Dordogne", visits: 1122},
+        {region: "Lot", visits: 1114},
+        {region: "Tarn", visits: 984},
+        {region: "Ariège", visits: 711},
+        {region: "Allier", visits: 665},
+        {region: "Calvados", visits: 580},
+        {region: "Loire", visits: 443},
+        {region: "Savoie", visits: 441},
+        {region: "Yonne", visits: 395},
+        {region: "Somme", visits: 386},
+        {region: "Pas de Calais", visits: 384},
+        {region: "Jura", visits: 338},
+        {region: "Vendée", visits: 999}
     ];
 
     /**
      * On commence par créer un objet AmSerialChart, on définit la source (dataProvider) et les catégories sur
      * l'axe x (categoryFiel). Ici on crée donc le tableau qui va contenir notre futur graphe.
      */
-    AmCharts.ready(function () {
+    AmCharts.ready(function() {
         var chart = new AmCharts.AmSerialChart();
         chart.dataProvider = chartData;
         chart.categoryField = "region";

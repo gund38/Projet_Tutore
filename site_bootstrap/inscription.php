@@ -185,7 +185,7 @@
                                 </th>
 
                                 <td>
-                                    <select name="type" id="type" class="form-control">
+                                    <select name="type" id="type" class="form-control" required>
                                         <option value="Ancien_etudiant">Ancien Étudiant</option>
                                         <option value="Etudiant">Étudiant</option>
                                         <option value="Enseignant">Enseignant</option>
@@ -200,7 +200,7 @@
 
                                 <td>
                                     <input type="text" name="nom" id="nom"
-                                           class="form-control" placeholder="Prenom" />
+                                           class="form-control" placeholder="Nom" required />
                                 </td>
                             </tr>
 
@@ -213,7 +213,7 @@
 
                                 <td>
                                     <input type="text" name="prenom" id="prenom"
-                                           class="form-control" placeholder="Prénom" />
+                                           class="form-control" placeholder="Prénom" required />
                                 </td>
 
                                 <th>
@@ -224,7 +224,7 @@
 
                                 <td>
                                     <input type="email" name="email" id="email"
-                                           class="form-control" placeholder="Email" />
+                                           class="form-control" placeholder="Email" required />
                                 </td>
                             </tr>
 
@@ -236,8 +236,9 @@
                                 </th>
 
                                 <td>
-                                    <input type="number" name="promo" id="promo" max="<?php echo $anneeCourante; ?>"
-                                           class="form-control" />
+                                    <input type="number" name="promo" id="promo"
+                                           class="form-control" required
+                                           max="<?php echo $anneeCourante; ?>"/>
                                 </td>
 
                                 <th>
@@ -261,7 +262,7 @@
 
                                 <td>
                                     <input type="password" name="mdp1" id="mdp1"
-                                           class="form-control" placeholder="Mot de passe" />
+                                           class="form-control" placeholder="Mot de passe" required />
 
                                     <div class="password_strength_container">
                                         <div class="password_strength_bg"></div>
@@ -281,7 +282,7 @@
 
                                 <td>
                                     <input type="password" name="mdp2" id="mdp2"
-                                           class="form-control" placeholder="Répétez le mot de passe" />
+                                           class="form-control" placeholder="Répétez le mot de passe" required />
                                 </td>
                             </tr>
                         </table>
@@ -310,7 +311,7 @@
             });
         </script>
 
-        <!-- Affichage des inputs 'Promo' et 'Master validé' ssi utilisateur = Ancient Étudiant -->
+        <!-- Affichage des inputs 'Promo' et 'Master validé' ssi utilisateur = Ancien Étudiant -->
         <script type="text/javascript">
             $(window).load(function() {
                 $("#type").change(function affichageInputs() {
@@ -319,8 +320,8 @@
                     $("#reserveAE input").prop("disabled", $("#type").prop("value") !== "Ancien_etudiant");
 
                     $("#type").prop("value") === "Ancien_etudiant" ?
-                        $("#reserveAE .iPhoneCheckContainer").removeClass("iPhoneCheckDisabled") :
-                        $("#reserveAE .iPhoneCheckContainer").addClass("iPhoneCheckDisabled");
+                            $("#reserveAE .iPhoneCheckContainer").removeClass("iPhoneCheckDisabled") :
+                            $("#reserveAE .iPhoneCheckContainer").addClass("iPhoneCheckDisabled");
                 }).change();
             });
         </script>
@@ -339,7 +340,7 @@
                 ];
 
                 var messages = [
-                    ["",        "Insuffisant"],
+                    ["", "Insuffisant"],
                     ["#C81818", "Faible"],
                     ["#E28F00", "Moyen"],
                     ["#8AA050", "Bon"],

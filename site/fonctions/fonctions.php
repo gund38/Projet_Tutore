@@ -167,7 +167,7 @@
      * @return string|false string si $dateATester est correcte, false sinon
      */
     function validerDateFR($dateATester) {
-        if (empty ($dateATester)) {
+        if (empty($dateATester)) {
             return $dateATester;
         }
 
@@ -195,7 +195,7 @@
      * @return string|false string si $URLATester est correcte, false sinon
      */
     function validerURL($URLATester) {
-        if (empty ($URLATester)) {
+        if (empty($URLATester)) {
             return $URLATester;
         }
 

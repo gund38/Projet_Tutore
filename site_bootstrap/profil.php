@@ -263,7 +263,7 @@
                                         <td colspan="2">
                                             <input type="email" class="form-control"
                                                    id="email" name="email"
-                                                   placeholder="Email"
+                                                   placeholder="Email" required
                                                    value="<?php echo $_SESSION['personneCo']->getEmail(); ?>" />
                                         </td>
                                     </tr>

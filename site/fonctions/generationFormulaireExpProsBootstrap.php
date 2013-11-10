@@ -45,7 +45,7 @@
 
                             <input type="checkbox" class="form-control checkboxiOS"
                                    name="visi_exp<?php echo $i; ?>"
-                                   id="visi_exp<?php echo $i; ?>"
+                                   id="visi_exp<?php echo $i; ?>" required
                                    <?php echo $expProEnCours->getVisibilite() ? "checked" : ""; ?> />
                         </td>
                     </tr>
@@ -62,7 +62,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control date_deb_fin"
                                        name="date_deb_exp<?php echo $i; ?>"
-                                       id="date_deb_exp<?php echo $i; ?>"
+                                       id="date_deb_exp<?php echo $i; ?>" required
                                        value="<?php echo $expProEnCours->getDateDebut(); ?>" />
 
                                 <span class="input-group-addon" onclick="afficherCalendrier($(this));">
@@ -118,7 +118,7 @@
                         <td colspan="3">
                             <input type="text" class="form-control"
                                    name="inti_exp<?php echo $i; ?>"
-                                   id="inti_exp<?php echo $i; ?>"
+                                   id="inti_exp<?php echo $i; ?>" required
                                    value="<?php echo $expProEnCours->getIntitule(); ?>" />
                         </td>
                     </tr>
@@ -134,7 +134,7 @@
                         <td colspan="3">
                             <input type="text" class="form-control"
                                    name="entre_exp<?php echo $i; ?>"
-                                   id="entre_exp<?php echo $i; ?>"
+                                   id="entre_exp<?php echo $i; ?>" required
                                    value="<?php echo $expProEnCours->getEntreprise(); ?>" />
                         </td>
                     </tr>
@@ -150,7 +150,7 @@
                         <td>
                             <input type="text" class="form-control"
                                    name="ville_exp<?php echo $i; ?>"
-                                   id="ville_exp<?php echo $i; ?>"
+                                   id="ville_exp<?php echo $i; ?>" required
                                    value="<?php echo $expProEnCours->getVille(); ?>" />
                         </td>
 
@@ -164,7 +164,7 @@
                         <td>
                             <select name="dep_exp<?php echo $i; ?>"
                                     id="dep_exp<?php echo $i; ?>"
-                                    class="form-control">
+                                    class="form-control" required>
                                 <?php
                                     foreach ($listeDep as $value) {
                                         echo "<option value=\"" . $value['codeDe'] . "\"";
@@ -199,7 +199,7 @@
                         <td>
                             <select name="salaire_exp<?php echo $i; ?>"
                                     id="salaire_exp<?php echo $i; ?>"
-                                    class="form-control">
+                                    class="form-control" required>
                                 <?php
                                     foreach ($listeTranches as $value) {
                                         echo "<option value=\"" . $value . "\"";
@@ -212,7 +212,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> <!-- /.well -->
 <?php
     }
 ?>
