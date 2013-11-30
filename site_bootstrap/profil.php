@@ -82,6 +82,10 @@
             .jumbotron small {
                 font-size: 75%;
             }
+
+            .modal-dialog {
+                width: 900px;
+            }
         </style>
     </head>
 
@@ -299,6 +303,40 @@
                             // Génération et affichage des formulaires des diplômes
                             require_once 'fonctions/generationFormulaireDiplomesBootstrap.php';
                         ?>
+
+                        <div class="well" id="ajout_diplome" style="text-align: center">
+                            <!--<a href="#ajout_diplome" onclick="ajoutDiplome();">Ajouter un nouveau Diplôme</a>-->
+
+                            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_diplome">
+                                Ajouter un nouveau Diplôme
+                            </button>
+
+                            <div class="modal fade" id="modal_diplome" tabindex="-1" role="dialog" aria-labelledby="modalLabel_diplome" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                                            <h4 class="modal-title" id="modalLabel_diplome">Ajouter un nouveau Diplôme</h4>
+                                        </div> <!-- /.modal-header -->
+
+                                        <div class="modal-body">
+                                            <div class="alert alert-danger hidden" id="erreurs_saveDiplome">
+                                            </div> <!-- /.alert -->
+                                        </div> <!-- /.modal_body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+                                            <button type="button" id="btn_saveDiplome" class="btn btn-primary" onclick="save('Diplome');">
+                                                <i class="icon-check"></i>
+                                                Sauvegarder
+                                            </button>
+                                        </div> <!-- /.modal-footer -->
+                                    </div> <!-- /.modal-content -->
+                                </div> <!-- /.modal-dialog -->
+                            </div> <!-- /.modal -->
+                        </div> <!-- /.well #ajout_diplome -->
                     </div> <!-- /.tab-pane #scol -->
 
                     <div id="pro" class="tab-pane fade" role="tabpanel">
@@ -309,6 +347,38 @@
                             // Génération et affichage des formulaires des expériences professionnelles
                             require_once 'fonctions/generationFormulaireExpProsBootstrap.php';
                         ?>
+
+                        <div class="well" id="ajout_emploi" style="text-align: center">
+                            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_emploi">
+                                Ajouter un nouvel Emploi
+                            </button>
+
+                            <div class="modal fade" id="modal_emploi" tabindex="-1" role="dialog" aria-labelledby="modalLabel_diplome" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                                            <h4 class="modal-title" id="modalLabel_emploi">Ajouter un nouvel Emploi</h4>
+                                        </div> <!-- /.modal-header -->
+
+                                        <div class="modal-body">
+                                            <div class="alert alert-danger hidden" id="erreurs_saveEmploi">
+                                            </div> <!-- /.alert -->
+                                        </div> <!-- /.modal_body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+                                            <button type="button" id="btn_saveEmploi" class="btn btn-primary" onclick="save('Emploi');">
+                                                <i class="icon-check"></i>
+                                                Sauvegarder
+                                            </button>
+                                        </div> <!-- /.modal-footer -->
+                                    </div> <!-- /.modal-content -->
+                                </div> <!-- /.modal-dialog -->
+                            </div> <!-- /.modal -->
+                        </div> <!-- /.well #ajout_emploi -->
                     </div> <!-- /.tab-pane #pro -->
                 </div> <!-- /.tab-content -->
             </form>
@@ -324,14 +394,15 @@
         <script src="js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             // Affichage et configuration des checkbox style iOS
-            $(window).ready(function() {
+            function checkboxiOS() {
                 $(".checkboxiOS").iphoneStyle({
                     resizeContainer: false,
                     resizeHandle: false,
                     checkedLabel: 'Oui',
                     uncheckedLabel: 'Non'
                 });
-            });
+            }
+            $(window).ready(checkboxiOS());
         </script>
 
         <!-- JavaScript calendrier -->
@@ -339,7 +410,7 @@
         <script src="js/jquery.ui.datepicker-fr.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             // Configuration des calendriers
-            $(function() {
+            function confCalendrier() {
                 // Mettre les calendriers en français
                 $.datepicker.setDefaults($.datepicker.regional["fr"]);
 
@@ -350,10 +421,6 @@
                     changeMonth: true,
                     changeYear: true,
                     showOn: "focus",
-                    //buttonImage: "",
-                    //buttonImageOnly: true,
-                    //buttonText: "",
-                    //defaultDate: -8395,
                     minDate: new Date(1900, 1 - 1, 1),
                     maxDate: 0,
                     dateFormat: "dd/mm/yy"
@@ -365,18 +432,14 @@
                     selectOtherMonths: true,
                     changeMonth: true,
                     changeYear: true,
-                    //showOn: "both",
                     showOn: "focus",
-                    //buttonImage: "images/calendar.gif",
-                    //buttonImageOnly: true,
-                    //buttonText: "Calendrier",
-                    minDate: new Date(1900, 1 - 1, 1),
+                    minDate: new Date(1980, 1 - 1, 1),
                     maxDate: 0,
                     dateFormat: "dd/mm/yy"
                 });
-            });
-        </script>
-        <script type="text/javascript">
+            }
+            $(window).ready(confCalendrier());
+
             // Affichage du calendrier quand clic sur l'image
             function afficherCalendrier(objet) {
                 $(objet).parent().datepicker("show");
@@ -393,22 +456,106 @@
 
             // Désactivation des champs 'Date de fin' si la checkbox
             // 'En cours' associée est cochée (et vice-versa)
-            function checkboxEnCours($id) {
-                if ($("#enCours" + $id).prop("checked")) {
-                    $("#date_fin_exp" + $id).datepicker("option", "disabled", true);
-                    $("#date_fin_exp" + $id ).parent().children(".input-group-addon").css('cursor', 'not-allowed');
+            function checkboxEnCours(id) {
+                if ($("#enCours" + id).prop("checked")) {
+                    $("#date_fin_exp" + id).datepicker("option", "disabled", true);
+                    $("#date_fin_exp" + id).parent().children(".input-group-addon").css('cursor', 'not-allowed');
                 } else {
-                    $("#date_fin_exp" + $id).datepicker("option", "disabled", false);
-                    $("#date_fin_exp" + $id ).parent().children(".input-group-addon").css('cursor', 'pointer');
+                    $("#date_fin_exp" + id).datepicker("option", "disabled", false);
+                    $("#date_fin_exp" + id).parent().children(".input-group-addon").css('cursor', 'pointer');
                 }
             }
 
             // Vérification de l'état des checkbox 'En cours' au chargement de la page
             $(window).load(function verificationCheckbox() {
-                for (var $i = 1; $i <= $("#nbExpPros").attr("value"); $i++) {
-                    checkboxEnCours($i);
+                for (var i = 1; i <= $("#nbExpPros").attr("value"); i++) {
+                    checkboxEnCours(i);
                 }
             });
+        </script>
+
+        <!-- Ajouts et sauvegardes dynamiques -->
+        <script type="text/javascript">
+            // Récupération en AJAX des formulaires
+            // Puis lancement fonctions de configuration (checkbox et calendrier)
+            $(window).load(function() {
+                // Récupération formulaire diplôme
+                $.ajax({
+                    dataType: "html",
+                    url: "ajax/formulaireDiplome.php"
+                }).done(function(htmlDiplome) {
+                    $("#modal_diplome div.modal-body").append(htmlDiplome);
+                    checkboxiOS();
+                });
+
+                // Récupération formulaire emploi
+                $.ajax({
+                    dataType: "html",
+                    url: "ajax/formulaireEmploi.php"
+                }).done(function(htmlEmploi) {
+                    $("#modal_emploi div.modal-body").append(htmlEmploi);
+                    checkboxiOS();
+                    confCalendrier();
+                });
+            });
+
+            // Fonction de sauvegarde des formulaires
+            function save(objet) {
+                var bouton, url, modal, donnees;
+
+                // On attribue les variables selon le type de formulaire
+                switch (objet) {
+                    case "Diplome":
+                        bouton = $("#btn_saveDiplome i");
+                        url = "ajax/ajouterDiplome.php";
+                        modal = $("#erreurs_saveDiplome");
+
+                        donnees = {
+                            codePe: $("#idProfil").val(),
+                            visi_dip: $("#visi_dip").prop("checked"),
+                            annee_dip: $("#annee_dip").val(),
+                            type_dip: $("#type_dip").val(),
+                            disc_dip: $("#disc_dip").val(),
+                            etabli_dip: $("#etabli_dip").val()
+                        };
+                        break;
+                    case "Emploi":
+                        bouton = $("#btn_saveEmploi i");
+                        url = "ajax/ajouterEmploi.php";
+                        modal = $("#erreurs_saveEmploi");
+
+                        donnees = {
+
+                        };
+                        break;
+                    default:
+                        return false;
+                }
+
+                // Ajout d'une icône d'attente (utile si la sauvegarde prends du temps)
+                bouton.removeClass("icon-check").addClass("icon-spin icon-spinner");
+
+                // Appel en AJAX de la fonction de sauvegarde
+                $.ajax({
+                    async: false,
+                    cache: false,
+                    data: donnees,
+                    dataType: "html",
+                    type: "POST",
+                    url: url
+                }).done(function(reponse){
+                    if (reponse === "OK") { // Si tout est bon (sauvegarde effectuée)
+                        $(document.forms.formProfil).submit();
+                    } else { // Sinon
+                        // Suppresion de l'icône d'attente
+                        bouton.removeClass("icon-spin icon-spinner").addClass("icon-check");
+
+                        // On affiche les erreurs
+                        modal.empty().append(reponse);
+                        modal.removeClass("hidden").addClass("show");
+                    }
+                });
+            }
         </script>
     </body>
 </html>

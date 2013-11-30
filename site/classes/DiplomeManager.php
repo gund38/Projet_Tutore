@@ -46,6 +46,51 @@
         }
 
         /**
+         * Ajoute un diplôme dans la BD
+         *
+         * @param Diplome $diplome Diplôme à ajouter
+         * @return boolean
+         */
+        public function addDiplome($diplome) {
+            $resultat = false;
+
+            // On vérifie que le paramètre est bien du type Diplome
+            if (get_class($diplome) !== "Diplome") {
+                return $resultat;
+            }
+
+            // Création du tableau de données
+            $donneesDiplome = array(
+                'codePe' => $diplome->getCodePe(),
+                'visibilite' => $diplome->getVisibilite(),
+                'annee' => $diplome->getAnnee(),
+                'type' => $diplome->getType(),
+                'discipline' => $diplome->getDiscipline(),
+                'etablissement' => $diplome->getEtablissement()
+            );
+
+            // Préparation de la requête
+            $req = $this->_db->prepare('INSERT INTO
+                Diplome (codePe, visibilite, annee, type, discipline, etablissement)
+                VALUES (:codePe, :visibilite, :annee, :type, :discipline, :etablissement)');
+
+            // Si la préparation a échoué
+            if (!$req) {
+                return $resultat;
+            }
+
+            // Exécution de la requête
+            $req->execute($donneesDiplome);
+
+            // Si la requête a réussi
+            if ($req) {
+                $resultat = true;
+            }
+
+            return $resultat;
+        }
+
+        /**
          * Update un diplôme dans la BD
          *
          * @param Diplome $diplome Diplôme à update

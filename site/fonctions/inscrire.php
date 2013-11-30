@@ -158,7 +158,7 @@
     $ajout = $personneManager->addPersonne(new Personne($donnees));
 
     if ($ajout === false) {
-        $_SESSION['erreurs_inscription'] .= "Erreur de l'insertion dans la BD.Veuillez réessayer<br />\n";
+        $_SESSION['erreurs_inscription'] .= "Erreur de l'insertion dans la BD. Veuillez réessayer<br />\n";
 
         // Redirection
         header("Location: $fichierRetour");
@@ -190,7 +190,7 @@
         $ajout = $profilManager->addProfil(new Profil($donnees));
 
         if ($ajout === false) {
-            $_SESSION['erreurs_inscription'] .= "Erreur de l'insertion du profil dans la BD.Veuillez réessayer<br />\n";
+            $_SESSION['erreurs_inscription'] .= "Erreur de l'insertion du profil dans la BD. Veuillez réessayer<br />\n";
 
             // Redirection
             header("Location: $fichierRetour");

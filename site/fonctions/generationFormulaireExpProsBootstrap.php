@@ -10,7 +10,7 @@
     // Récupération de la liste des départements
     $listeDep = listeDepartements();
 
-    // Récupération de la liste des types de diplôme
+    // Récupération de la liste des tranches de salaires
     $listeTranches = listeTranchesSalaire();
 
     $expPros = $profil->getExpPros();
@@ -45,7 +45,7 @@
 
                             <input type="checkbox" class="form-control checkboxiOS"
                                    name="visi_exp<?php echo $i; ?>"
-                                   id="visi_exp<?php echo $i; ?>" required
+                                   id="visi_exp<?php echo $i; ?>"
                                    <?php echo $expProEnCours->getVisibilite() ? "checked" : ""; ?> />
                         </td>
                     </tr>
@@ -171,7 +171,7 @@
                                         echo strcmp($value['codeDe'], $expProEnCours->getDepartement()) == 0 ? " selected" : "";
                                         echo ">" . $value['nom'] . "</option>\n";
                                     }
-                                    ?>
+                                ?>
                             </select>
                         </td>
                     </tr>

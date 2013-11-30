@@ -15,7 +15,7 @@
     foreach ($diplomes as $diplomeEnCours) {
         $i++;
 ?>
-        <!-- ///// Diplome <?php echo $i; ?> \\\\\ -->
+        <!-- ///// Diplôme <?php echo $i; ?> \\\\\ -->
         <input type="hidden" name="id_dip<?php echo $i; ?>" id="id_dip<?php echo $i; ?>"
                value="<?php echo $diplomeEnCours->getCodeDi(); ?>" />
 
